@@ -12,7 +12,7 @@ __TODO__: Find a procedure for testing the code before commiting and running on 
 ## Naming conventions
 We use the chart folder for Helm charts (with the Flux version we have been using we need to download and the Helm charts to this repo), the namespaces folder is used strictly for creating new namespaces and can be seen as a reference for what namespaces is in use. The releases folder holds all our deployed manifests. Under releases we structure the manifests in their respective folders named after the namespace which they reside.
 
-For the manifest we have this naming structure _prefix-application-name.yaml_. Descriptive names is key so that the rest of the team knows at first glance what the manifest does. Prefix is the manifest kind noted in short hand if apropriate, e.g. issuer, clusterissuer (cissuer for short), ingress (ing), fluxhelmrealeas (fhr).
+For the manifest we have this naming structure _prefix-application-name.yaml_. Descriptive names is key so that the rest of the team knows at first glance what the manifest does. Prefix is the manifest kind noted in short hand if apropriate, e.g. issuer, clusterissuer (cissuer for short), ingress (ing), helmrelease (hr), fluxhelmrealeas (fhr).
 
 __TODO__: Do we need a list of shorthands? Or is this clear enough?
 
