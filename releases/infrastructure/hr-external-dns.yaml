@@ -16,12 +16,6 @@ spec:
     provider: azure
     azure: 
       secretName: azure-dns-config-file
-    domainFilters: [$(DOMAIN_FILTER)]
-    extraEnv: 
-      - name: DOMAIN_FILTER
-        valueFrom:
-          configMapKeyRef:
-            name: external-dns
-            key: domain-filter
+    domainFilters: [sdp.ofstad.xyz]
     rbac:
       create: true
