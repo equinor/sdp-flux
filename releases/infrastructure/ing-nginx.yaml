@@ -1,0 +1,25 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: infrastructure
+  labels:
+    chart: nginx-ingress
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  chartGitPath: nginx-ingress
+  releaseName: nginx-ingress
+  values:
+    controller:
+      ingressClass: nginx
+      publishService:
+        enabled: true # Ref: https://github.com/kubernetes-incubator/external-dns/blob/master/docs/faq.md#why-is-externaldns-only-adding-a-single-ip-address-in-route-53-on-aws-when-using-the-nginx-ingress-controller-how-do-i-get-it-to-use-the-fqdn-of-the-elb-assigned-to-my-nginx-ingress-controller-service-instead
+      stats:
+        enabled: false # Turn on after enable Prometheus
+      metrics:
+        enabled: false # Turn on after enable Prometheus
+      service:
+        enableHttp: true # Turn off?
+      externalTrafficPolicy: "Local"

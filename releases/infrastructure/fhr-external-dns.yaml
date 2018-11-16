@@ -1,0 +1,26 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: external-dns
+  namespace: infrastructure
+  labels:
+    chart: external-dns
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  chartGitPath: external-dns
+  releaseName: external-dns
+  values:
+    provider: azure
+    azure: 
+      secretName: azure-dns-config-file
+    domainFilters: [$(DOMAIN_FILTER)]
+    extraEnv: 
+      - name: DOMAIN_FILTER
+        valueFrom:
+          configMapKeyRef:
+            name: external-dns
+            key: domain-filter
+    rbac:
+      create: true
