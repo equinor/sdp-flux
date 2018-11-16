@@ -1,16 +1,17 @@
 ---
-apiVersion: helm.integrations.flux.weave.works/v1alpha2
-kind: FluxHelmRelease
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
 metadata:
   name: cert-manager
   namespace: infrastructure
-  labels:
-    chart: cert-manager
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  chartGitPath: cert-manager
   releaseName: cert-manager
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: cert-manager
+    version: 0.5.0
   values: 
     ingressShim:
       defaultIssuerName: letsencrypt-staging
