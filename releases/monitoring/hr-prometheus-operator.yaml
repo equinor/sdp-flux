@@ -1,16 +1,16 @@
 ---
-apiVersion: helm.integrations.flux.weave.works/v1alpha2
-kind: FluxHelmRelease
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
 metadata:
   name: prometheus-operator
   namespace: monitoring
-  labels:
-    chart: prometheus-operator
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  chartGitPath: prometheus-operator
   releaseName: prometheus-operator
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: prometheus-operator
   values:
     alertmanager:
       ingress: 
