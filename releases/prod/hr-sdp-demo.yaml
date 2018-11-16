@@ -11,7 +11,7 @@ spec:
   chart:
     git: https://github.com/Statoil/sdp-flux
     ref: master
-    name: charts/sdp-demo
+    path: charts/sdp-demo
   values:
     ingress:
       enabled: true
