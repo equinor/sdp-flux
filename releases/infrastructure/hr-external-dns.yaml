@@ -1,16 +1,17 @@
 ---
-apiVersion: helm.integrations.flux.weave.works/v1alpha2
-kind: FluxHelmRelease
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
 metadata:
   name: external-dns
   namespace: infrastructure
-  labels:
-    chart: external-dns
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  chartGitPath: external-dns
   releaseName: external-dns
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: external-dns
+    version: 1.0.2
   values:
     provider: azure
     azure: 
