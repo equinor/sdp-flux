@@ -11,6 +11,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: cert-manager
+    version: 0.5.1
   values: 
     ingressShim:
       defaultIssuerName: letsencrypt-staging

@@ -11,6 +11,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: external-dns
+    version: 0.5.7
   values:
     provider: azure
     azure: 

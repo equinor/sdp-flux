@@ -11,6 +11,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: prometheus-operator
+    version: 0.25.0
   values:
     alertmanager:
       ingress: 
