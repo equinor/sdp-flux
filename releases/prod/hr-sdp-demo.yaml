@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: sdp-demo
   chart:
-    git: https://github.com/Statoil/sdp-flux
+    git: ssh://git@github.com/Statoil/sdp-flux.git
     ref: master
     path: charts/sdp-demo
   values:
