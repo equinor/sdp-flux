@@ -1,10 +1,11 @@
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
     k8s-app: oauth2-proxy
   name: oauth2-proxy
-  namespace: kube-system
+  namespace: infrastructure
 spec:
   replicas: 1
   selector:
@@ -38,16 +39,14 @@ spec:
         ports:
         - containerPort: 4180
           protocol: TCP
-        
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   labels:
     k8s-app: oauth2-proxy
   name: oauth2-proxy
-  namespace: kube-system
+  namespace: infrastructure
 spec:
   ports:
   - name: http
