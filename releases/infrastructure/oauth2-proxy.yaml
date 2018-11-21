@@ -1,0 +1,71 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+  namespace: infrastructure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: oauth2-proxy
+  template:
+    metadata:
+      labels:
+        k8s-app: oauth2-proxy
+    spec:
+      containers:
+      - args:
+        - --provider=azure
+        - --email-domain=*
+        - --upstream=file:///dev/null
+        - --http-address=0.0.0.0:4180
+        - --azure-tenant=3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+        #- --http-address=40.115.125.107:80
+        # Register a new application
+        env:
+        - name: OAUTH2_PROXY_CLIENT_ID
+          value: 5101ef2a-bb47-41e9-9e5b-5dac70999acb
+        - name: OAUTH2_PROXY_CLIENT_SECRET
+          value: NyzZFWADDW/XhkMFpt42eXq9nIzEUPM0I06GHFi5ezE=
+        # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
+        - name: OAUTH2_PROXY_COOKIE_SECRET
+          value: fHEksmahJbgbYZVGL9gC+w==
+        image: docker.io/colemickens/oauth2_proxy:latest
+        imagePullPolicy: Always
+        name: oauth2-proxy
+        ports:
+        - containerPort: 4180
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    k8s-app: oauth2-proxy
+  name: oauth2-proxy
+  namespace: infrastructure
+spec:
+  ports:
+  - name: http
+    port: 4180
+    protocol: TCP
+    targetPort: 4180
+  selector:
+    k8s-app: oauth2-proxy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
