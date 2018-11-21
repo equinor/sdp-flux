@@ -1,16 +1,17 @@
 ---
-apiVersion: helm.integrations.flux.weave.works/v1alpha2
-kind: FluxHelmRelease
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
 metadata:
   name: sdp-demo
   namespace: prod
-  labels:
-    chart: sdp-demo
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  chartGitPath: sdp-demo
   releaseName: sdp-demo
+  chart:
+    git: ssh://git@github.com/Statoil/sdp-flux.git
+    ref: master
+    path: charts/sdp-demo
   values:
     ingress:
       enabled: true
@@ -21,6 +22,6 @@ spec:
       hosts:
       - demo2.sdp.esselt.net
       tls:
-      - secretName: demo2-sdp-esselt-net-tls
+      - secretName: demo2-tls
         hosts:
         - demo2.sdp.esselt.net
