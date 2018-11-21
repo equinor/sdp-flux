@@ -27,9 +27,9 @@ spec:
         # Register a new application
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
-          value: 5101ef2a-bb47-41e9-9e5b-5dac70999acb
+          value: 44955838-424e-4bd3-aa0b-effd83160573
         - name: OAUTH2_PROXY_CLIENT_SECRET
-          value: NyzZFWADDW/XhkMFpt42eXq9nIzEUPM0I06GHFi5ezE=
+          value: ..:R[Ak]eF>[V#;^]rz(I!e7:8@(H
         # docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'
         - name: OAUTH2_PROXY_COOKIE_SECRET
           value: fHEksmahJbgbYZVGL9gC+w==
