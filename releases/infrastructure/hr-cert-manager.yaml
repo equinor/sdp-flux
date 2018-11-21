@@ -14,5 +14,5 @@ spec:
     version: 0.5.1
   values: 
     ingressShim:
-      defaultIssuerName: letsencrypt-staging
+      defaultIssuerName: letsencrypt-prod
       defaultIssuerKind: ClusterIssuer

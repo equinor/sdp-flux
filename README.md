@@ -28,7 +28,10 @@ In the shortest terms add these [annotations to your ingress](http://docs.cert-m
 kubernetes.io/ingress.class: nginx
 kubernetes.io/tls-acme: "true"
 ```
-
+if you want a Let's Encrypt testing certificate (to not expend the cert quota), you can specify a Certificate Issuer;
+```
+certmanager.k8s.io/cluster-issuer: nameOfClusterIssuer(letsencrypt-staging)
+```
 This works because we have defined a default issuer and protocol when we deployed [Cert Manager](releases/infrastructure/fhr-cert-manager.yaml).
 
 ### Automaticly create DNS entries (External DNS)
