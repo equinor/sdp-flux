@@ -46,13 +46,12 @@ spec:
       paths:
       - path: /oauth2
         backend:
-          serviceName: oauth2-proxy
+          serviceName: oauth2-proxy.infrastructure
           servicePort: 4180
       - path: /
         backend:
           serviceName: verdaccio-verdaccio
           servicePort: 4873
-        
   tls:
   - hosts:
     - verdaccio.sdp.handlel.app
