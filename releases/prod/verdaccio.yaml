@@ -12,6 +12,9 @@ spec:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: verdaccio
     version: 0.5.0
+  values:
+    ingress:
+      enabled: false
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
