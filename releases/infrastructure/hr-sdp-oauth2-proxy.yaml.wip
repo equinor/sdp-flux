@@ -1,0 +1,16 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: sdp-oauth2-proxy
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: sdp-oauth2-proxy
+  chart:
+    git: ssh://git@github.com/Statoil/sdp-flux.git
+    ref: master
+    path: custom-charts/sdp-oauth2-proxy
+  values:
+   
