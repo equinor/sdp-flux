@@ -12,7 +12,7 @@ __TODO__: Find a procedure for testing the code before commiting and running on 
 ## Naming conventions
 We use the chart folder for Helm charts (with the Flux version we have been using we need to download and the Helm charts to this repo), the namespaces folder is used strictly for creating new namespaces and can be seen as a reference for what namespaces is in use. The releases folder holds all our deployed manifests. Under releases we structure the manifests in their respective folders named after the namespace which they reside.
 
-For the manifest we have this naming structure _prefix-application-name.yaml_. Descriptive names is key so that the rest of the team knows at first glance what the manifest does. Prefix is the manifest kind noted in short hand if apropriate, e.g. issuer, clusterissuer (cissuer for short), ingress (ing), helmrelease (hr), fluxhelmrealeas (fhr).
+For the manifest we have this naming structure _prefix-application-name.yaml_. Descriptive names is key so that the rest of the team knows at first glance what the manifest does. Prefix is the manifest kind noted in short hand if apropriate, e.g. issuer, clusterissuer (cissuer for short), ingress (ing), helmrelease (hr).
 
 __TODO__: Do we need a list of shorthands? Or is this clear enough?
 
@@ -28,11 +28,20 @@ In the shortest terms add these [annotations to your ingress](http://docs.cert-m
 kubernetes.io/ingress.class: nginx
 kubernetes.io/tls-acme: "true"
 ```
-if you want a Let's Encrypt testing certificate (to not expend the cert quota), you can specify a Certificate Issuer;
+
+If you want a Let's Encrypt testing certificate (to not expend the cert quota), you can specify another certificate issuer. For a cluster issuer add this:
+
 ```
-certmanager.k8s.io/cluster-issuer: nameOfClusterIssuer(letsencrypt-staging)
+certmanager.k8s.io/cluster-issuer: "letsencrypt-staging"
 ```
-This works because we have defined a default issuer and protocol when we deployed [Cert Manager](releases/infrastructure/fhr-cert-manager.yaml).
+
+To use a local (for the namespace) issuer use this:
+
+```
+certmanager.k8s.io/issuer: "letsencrypt-staging"
+```
+
+This works because we have defined a default issuer and protocol when we deployed [Cert Manager](releases/infrastructure/hr-cert-manager.yaml).
 
 ### Automaticly create DNS entries (External DNS)
 We have implemented External DNS with the Kubernetes cluster and connected it to the Azure DNS Zone. This is done with a Azure AD Service Principal that has rights to only change this DNS Zone.
@@ -45,21 +54,24 @@ external-dns.alpha.kubernetes.io/hostname: demo.example.com.
 
 ### Full example using Cert Manager and External DNS
 This example manifest uses the techniques in the two previous sections and shows how these works together to automate some tedious tasks.
+More info can be found on [HelmRelease](https://github.com/weaveworks/flux/blob/master/site/helm-integration.md), in this example we use a git repository
+for the Helm chart, but you could use a Helm repository.
 
 ```
 ---
-apiVersion: helm.integrations.flux.weave.works/v1alpha2
-kind: FluxHelmRelease
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
 metadata:
   name: sdp-demo
   namespace: prod
-  labels:
-    chart: sdp-demo
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  chartGitPath: sdp-demo
   releaseName: sdp-demo
+  chart:
+    git: ssh://git@github.com/Statoil/sdp-flux.git
+    ref: master
+    path: charts/sdp-demo
   values:
     ingress:
       enabled: true
