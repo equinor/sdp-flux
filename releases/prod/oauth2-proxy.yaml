@@ -5,7 +5,7 @@ metadata:
   labels:
     k8s-app: oauth2-proxy
   name: oauth2-proxy
-  namespace: prod
+  namespace: staging
 spec:
   replicas: 1
   selector:
@@ -46,7 +46,7 @@ metadata:
   labels:
     k8s-app: oauth2-proxy
   name: oauth2-proxy
-  namespace: prod
+  namespace: staging
 spec:
   ports:
   - name: http

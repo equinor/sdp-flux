@@ -3,7 +3,7 @@ apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: verdaccio
-  namespace: prod
+  namespace: staging
   annotations:
     flux.weave.works/automated: "true"
 spec:
@@ -31,8 +31,8 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: oauth2-proxy-ingress
-  namespace: prod
+  name: verdaccio-oauth2
+  namespace: staging
 spec:
   rules:
   - host: verdaccio.sdp.handlel.app
