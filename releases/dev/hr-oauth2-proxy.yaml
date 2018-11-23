@@ -19,7 +19,7 @@ spec:
     replicaCount: 1
     image:
       repository: docker.io/colemickens/oauth2_proxy
-      tag: latest
+      tag: insecure_do_not_use
       pullPolicy: Always
     container:
       args:
