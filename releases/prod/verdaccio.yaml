@@ -2,12 +2,12 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: verdaccio
-  namespace: staging
+  name: verdaccio-test
+  namespace: dev
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  releaseName: verdaccio
+  releaseName: verdaccio-test
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: verdaccio
@@ -18,24 +18,24 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-        external-dns.alpha.kubernetes.io/hostname: verdaccio.sdp.handlel.app.
+        external-dns.alpha.kubernetes.io/hostname: test.sdp.handlel.app.
         nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
         nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       hosts:
-      - verdaccio.sdp.handlel.app
+      - test.sdp.handlel.app
       tls:
-      - secretName: verdaccio-sdp-handlel-app-tls
+      - secretName: test-sdp-handlel-app-tls
         hosts:
-        - verdaccio.sdp.handlel.app
+        - test.sdp.handlel.app
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: verdaccio-oauth2
-  namespace: staging
+  name: verdaccio-oauth2-test
+  namespace: dev
 spec:
   rules:
-  - host: verdaccio.sdp.handlel.app
+  - host: test.sdp.handlel.app
     http:
       paths:
       - backend:
@@ -44,5 +44,5 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - verdaccio.sdp.handlel.app
-    secretName: verdaccio-sdp-handlel-app-tls
+    - test.sdp.handlel.app
+    secretName: test-sdp-handlel-app-tls
