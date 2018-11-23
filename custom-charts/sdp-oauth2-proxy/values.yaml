@@ -4,7 +4,7 @@
 
 namespace: default
 labels:
-  k8s_app: oauth2_proxy
+  k8s_app: sdp-oauth2_proxy
 replicaCount: 1
 image:
   repository: docker.io/colemickens/oauth2_proxy
