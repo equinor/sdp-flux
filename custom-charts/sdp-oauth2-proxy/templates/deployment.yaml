@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-deployment
+  name: {{ .Release.Name }}
   labels:
     app.kubernetes.io/name: {{ include "sdp-oauth2-proxy.name" . }}
     helm.sh/chart: {{ include "sdp-oauth2-proxy.chart" . }}

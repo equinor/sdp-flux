@@ -39,6 +39,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: oauth2-proxy-service
+          serviceName: oauth2-proxy
           servicePort: 4180
         path: /oauth2
