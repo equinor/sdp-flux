@@ -16,6 +16,29 @@ For the manifest we have this naming structure _prefix-application-name.yaml_. D
 
 __TODO__: Do we need a list of shorthands? Or is this clear enough?
 
+## Using Sealed Secrets
+Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a system called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this system we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster
+
+### First time
+After first run we need to export the private and public key. The public key is what we all use to encrypt the secrets and the private key is used by the controller to decrypt the secrets and put them in the cluster. It is important to have a backup of the private key, but _NEVER_ commit that to the repository.
+
+- To get the private key (remember to store this file somewhere safe so we can restore in case of emergency)
+  `kubectl get secret -n infrastructure sealed-secrets-key -o yaml > sealedsecrets.yaml`
+
+- Use the kubeseal tool to get the public key
+  `kubeseal --controller-namespace infrastructure --controller-name sealed-secrets --fetch-cert > secret.pem`
+
+### Daily usage
+You need to use the kubectl to initially create the secret and then pipe this to kubeseal to make it encrypted.
+```
+# To use from literal
+kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-literal=KEY=VALUES -o json | kubeseal --cert secret.pem > SECRETNAME.json
+
+# To use from file
+kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-file=FILENAME -o json | kubeseal --cert secret.pem > SECRETNAME.json
+```
+Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
+
 ## Tips and tricks
 How to do something we do a lot? If you know, type them up here and we shall all be the wiser for it.
 
