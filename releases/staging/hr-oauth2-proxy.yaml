@@ -13,19 +13,9 @@ spec:
     ref: oauth2-proxy
     path: custom-charts/sdp-oauth2-proxy
   values:
-    labels:
-      k8s_app: sdp-oauth2-proxy
     replicaCount: 1
-    image:
-      repository: docker.io/colemickens/oauth2_proxy
-      tag: insecure_do_not_use
-      pullPolicy: Always
     container:
       args:
-        provider: azure
-        email_domain: "*"
-        upstream: file:///dev/null
-        http_address: "0.0.0.0:4180"
         azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
       env:
         OAUTH2_PROXY_CLIENT_ID: 44955838-424e-4bd3-aa0b-effd83160573
