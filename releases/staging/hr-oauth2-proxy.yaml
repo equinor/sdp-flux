@@ -2,20 +2,19 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: oauth2-proxy
+  name: oauth2-proxy-helmRelease-name
   namespace: staging
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  releaseName: oauth2-proxy
+  releaseName: oauth2-proxy-releaseName
   chart:
     git: ssh://git@github.com/Statoil/sdp-flux.git
     ref: oauth2-proxy
     path: custom-charts/sdp-oauth2-proxy
   values:
-    namespace: dev
     labels:
-      k8s_app: sdp-oauth2_proxy
+      k8s_app: sdp-oauth2-proxy
     replicaCount: 1
     image:
       repository: docker.io/colemickens/oauth2_proxy
