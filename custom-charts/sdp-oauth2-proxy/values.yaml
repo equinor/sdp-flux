@@ -2,10 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 labels:
-  k8s_app: sdp-oauth2_proxy
+  k8s_app: sdp-oauth2-proxy
 replicaCount: 1
 image:
-  repository: docker.io/a5huynh/oauth2_proxy
+  repository: a5huynh/oauth2_proxy
   tag: latest
   pullPolicy: Always
 container:

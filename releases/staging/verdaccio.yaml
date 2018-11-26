@@ -18,31 +18,27 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-        external-dns.alpha.kubernetes.io/hostname: verdaccio.sdp.handlel.app.
+        external-dns.alpha.kubernetes.io/hostname: accio.sdp.handlel.app.
         nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
         nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       hosts:
-      - verdaccio.sdp.handlel.app
+      - accio.sdp.handlel.app
       tls:
-      - secretName: verdaccio-sdp-handlel-app-tls
+      - secretName: accio-sdp-handlel-app-tls
         hosts:
-        - verdaccio.sdp.handlel.app
+        - accio.sdp.handlel.app
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: oauth2-proxy
+  name: verdaccio-oauth2-proxy
   namespace: staging
 spec:
   rules:
-  - host: verdaccio.sdp.handlel.app
+  - host: accio.sdp.handlel.app
     http:
       paths:
       - backend:
           serviceName: oauth2-proxy-service
           servicePort: 4180
         path: /oauth2
-  tls:
-  - hosts:
-    - verdaccio.sdp.handlel.app
-    secretName: verdaccio-sdp-handlel-app-tls
