@@ -1,13 +1,11 @@
 # Default values for sdp-oauth2-proxy.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
-namespace: default
 labels:
   k8s_app: sdp-oauth2_proxy
 replicaCount: 1
 image:
-  repository: docker.io/colemickens/oauth2_proxy
+  repository: docker.io/a5huynh/oauth2_proxy
   tag: latest
   pullPolicy: Always
 container:
@@ -15,7 +13,7 @@ container:
     provider: azure
     email_domain: "*"
     upstream: file:///dev/null
-    http_adress: 0.0.0.0:4180
+    http_address: 0.0.0.0:4180
     azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
   env:
     OAUTH2_PROXY_CLIENT_ID: 44955838-424e-4bd3-aa0b-effd83160573

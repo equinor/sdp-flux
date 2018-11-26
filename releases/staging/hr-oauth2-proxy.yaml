@@ -2,18 +2,18 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: sdp-oauth2-proxy
-  namespace: dev
+  name: oauth2-proxy
+  namespace: staging
   annotations:
     flux.weave.works/automated: "true"
 spec:
-  releaseName: sdp-oauth2-proxy
+  releaseName: oauth2-proxy
   chart:
     git: ssh://git@github.com/Statoil/sdp-flux.git
     ref: oauth2-proxy
     path: custom-charts/sdp-oauth2-proxy
   values:
-    namespace: default
+    namespace: dev
     labels:
       k8s_app: sdp-oauth2_proxy
     replicaCount: 1
@@ -26,7 +26,7 @@ spec:
         provider: azure
         email_domain: "*"
         upstream: file:///dev/null
-        http_adress: 0.0.0.0:4180
+        http_address: "0.0.0.0:4180"
         azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
       env:
         OAUTH2_PROXY_CLIENT_ID: 44955838-424e-4bd3-aa0b-effd83160573

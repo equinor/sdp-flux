@@ -1,4 +1,3 @@
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -23,8 +22,8 @@ spec:
         - --upstream=file:///dev/null
         - --http-address=0.0.0.0:4180
         - --azure-tenant=3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-        #- --http-address=40.115.125.107:80
         # Register a new application
+        # https://github.com/settings/applications/new
         env:
         - name: OAUTH2_PROXY_CLIENT_ID
           value: 44955838-424e-4bd3-aa0b-effd83160573
@@ -55,17 +54,3 @@ spec:
     targetPort: 4180
   selector:
     k8s-app: oauth2-proxy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
