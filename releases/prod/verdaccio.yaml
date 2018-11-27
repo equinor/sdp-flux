@@ -1,0 +1,43 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: verdaccio
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: verdaccio
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: verdaccio
+    version: 0.5.0
+  values:
+    ingress:
+      enabled: false
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: oauth2-proxy
+  namespace: infrastructure
+  annotations:
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+  - host: verdaccio.sdp.handlel.app
+    http:
+      paths:
+      - path: /oauth2
+        backend:
+          serviceName: oauth2-proxy
+          servicePort: 4180
+      - path: /
+        backend:
+          serviceName: verdaccio-verdaccio
+          servicePort: 4873
+  tls:
+  - hosts:
+    - verdaccio.sdp.handlel.app
+    secretName: verdaccio-sdp-handlel-app-tls
