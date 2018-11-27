@@ -14,7 +14,7 @@ spec:
     version: 0.1.21
   values:
     alertmanager:
-      ingress: 
+      ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
@@ -28,7 +28,12 @@ spec:
           - alertmanager.sdp.handlel.app
 
     grafana:
-      ingress: 
+      sidecar:
+        dashboards:
+          enabled: true
+          label: grafana_dashboard
+
+      ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
@@ -46,7 +51,12 @@ spec:
         insecureSkipVerify: true
 
     prometheus:
-      ingress: 
+      prometheusSpec:
+        serviceMonitorSelector:
+          matchLabels:
+            release: prometheus-operator
+        serviceMonitorNamespaceSelector: {}
+      ingress:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: nginx
@@ -61,6 +71,6 @@ spec:
 
     coreDns:
       enabled: false
-    
+
     kubeDns:
       enabled: true
