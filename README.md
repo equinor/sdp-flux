@@ -42,6 +42,29 @@ Make sure to place the secrets in the appropriate namespace folder to keep the r
 ## Tips and tricks
 How to do something we do a lot? If you know, type them up here and we shall all be the wiser for it.
 
+### Using Azure Container Registry
+We assume the ACR has been created and set up in the bootstrapping portion of the Kubernetes cluster. Take a look in sdp-aks repository for information on how to create and set up a new ACR. To use the ACR we need a service principal that also should have been created in bootstrap.
+
+- Start by creating the secret which stores docker registry information
+  `kubectl -n NAMESPACE create secret docker-registry SECRET_NAME --docker-server=REGISTRY_URL --docker-username=SERVICE_PRINCIPAL_ID --docker-password=SERVICE_PRINCIPAL_PASSWORD --docker-email=gm_sds_rdi@equinor.com"`
+
+- The usual way to use this is to create a chart that has support for [imagePullSecrets](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). View the sdp-demo chart as an example reference.
+  We need to define image to a tagged image in our ACR and the imagePullSecrets need to reference our newly created secret.
+
+A example Pod
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-reg
+spec:
+  containers:
+  - name: private-reg-container
+    image: REGISTRY_URL/<your-private-image>
+  imagePullSecrets:
+  - name: SECRET_NAME
+```
+
 ### Produce certificates from ingress config (Cert Manager)
 We use [Cert Manager](https://github.com/jetstack/cert-manager) for creating, validating and deploying Lets Encrypt certificates. Cert Manager can shortcut the usuall procedure of creating a Certificate resource and then referencing the secret from this Certificate in the ingress by adding a few annotations to the ingress.
 
