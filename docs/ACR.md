@@ -12,7 +12,7 @@ This process is a bit fluid as we use a few different repositories, test environ
 On to the stages
 
 ### Create app
-In this situation all i want is to create a homepage that displays "Hello World" from a nginx container. Create a folder and initialize a Git repository, remember to push this to GitLab or GitHub. We create a file named `index.html` and put this inside.
+In this demo situation all I want is to create a homepage that displays "Hello World" from a nginx container. Create a folder and initialize a Git repository, remember to push this to GitLab or GitHub. We create a file named `index.html` and put this inside.
 
 ```
 <html>
@@ -151,7 +151,7 @@ This is a task that can further be disected down in smaller parts. We start with
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: nginx-hello-world-staging
+  name: nginx-hello-world
   namespace: staging
   annotations:
     flux.weave.works/automated: "true"
