@@ -189,3 +189,8 @@ spec:
 
 - Push the docker image to the registry
   `docker push sdpacr.azurecr.io/nginx-hello-world:0.1.0`
+
+## TODO
+- Use more complicated example
+- Example repository to simplify the new app deployment procedure?
+- Maybe use a Makefile to ease the the deployment procedure?
