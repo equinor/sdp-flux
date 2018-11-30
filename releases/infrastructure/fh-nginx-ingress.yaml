@@ -24,3 +24,22 @@ spec:
       service:
         enableHttp: true # Turn off?
       externalTrafficPolicy: "Local"
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nginx-ingress
+  namespace: infrastructure
+  labels:
+    release: prometheus-operator
+spec:
+  endpoints:
+  - interval: 5s
+    port: metrics
+  jobLabel: nginx-ingress
+  namespaceSelector:
+    matchNames:
+    - infrastructure
+  selector:
+    matchLabels:
+      app: nginx-ingress
