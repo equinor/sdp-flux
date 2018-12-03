@@ -19,6 +19,11 @@ __TODO__: Do we need a list of shorthands? Or is this clear enough?
 ## Using Sealed Secrets
 Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a system called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this system we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster
 
+### Install client
+
+- Download [kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases)
+- Put `kubeseal-linux-amd64` or `kubeseal-darwin-amd64` in your path
+
 ### First time
 After first run we need to export the private and public key. The public key is what we all use to encrypt the secrets and the private key is used by the controller to decrypt the secrets and put them in the cluster. It is important to have a backup of the private key, but _NEVER_ commit that to the repository.
 
