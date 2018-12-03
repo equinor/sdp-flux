@@ -12,3 +12,4 @@ spec:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: kured
     version: 0.1.1
+  values:
