@@ -37,10 +37,10 @@ After first run we need to export the private and public key. The public key is 
 You need to use the kubectl to initially create the secret and then pipe this to kubeseal to make it encrypted.
 ```
 # To use from literal
-kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-literal=KEY=VALUES -o json | kubeseal --cert secret.pem > SECRETNAME.json
+kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-literal=KEY=VALUES -o json | kubeseal --format=yaml --cert secret.pem > SECRETNAME.yaml
 
 # To use from file
-kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-file=FILENAME -o json | kubeseal --cert secret.pem > SECRETNAME.json
+kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-file=FILENAME -o json | kubeseal --format=yaml --cert secret.pem > SECRETNAME.yaml
 ```
 Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
 
