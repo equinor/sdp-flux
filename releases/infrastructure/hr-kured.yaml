@@ -1,0 +1,14 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: infrastructure
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: kured
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: kured
+    version: 0.1.1
