@@ -10,9 +10,9 @@ In production we never commit straight to the repository, always create a new br
 __TODO__: Find a procedure for testing the code before commiting and running on prod.
 
 ## Naming conventions
-We use the chart folder for Helm charts (with the Flux version we have been using we need to download and the Helm charts to this repo), the namespaces folder is used strictly for creating new namespaces and can be seen as a reference for what namespaces is in use. The releases folder holds all our deployed manifests. Under releases we structure the manifests in their respective folders named after the namespace which they reside.
+This readme should always be called README.md and be placed on the root. In addition to this readme we have docs in the `docs` folder. The `custom-charts` folder contains the charts we have created ourselves and and is needed for our cluster. The creation of new namespaces is done by creating a new file with the same name as the namespace(.yaml) and place it under the folder `namespaces`.
 
-For the manifest we have this naming structure _prefix-application-name.yaml_. Descriptive names is key so that the rest of the team knows at first glance what the manifest does. Prefix is the manifest kind noted in short hand if apropriate, e.g. issuer, clusterissuer (cissuer for short), ingress (ing), helmrelease (hr).
+The different applications and workloads we run is placed in the folder with the same name as their namespace. E.g. sdp-demo should be run in staging namespace and is therefore placed `staging/sdp-demo.yaml`. For all services that can be described and run from one manifest should have the same name as the workload(.yaml) under namespace folder. If multiple manifests is needed a directory should be created and files placed inside. Preferably the manifest should be named as per the kind, e.g. helmrelease.yaml if only one resource of this kind is created.
 
 __TODO__: Do we need a list of shorthands? Or is this clear enough?
 
