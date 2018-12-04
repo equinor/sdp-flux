@@ -9,35 +9,73 @@ metadata:
 spec:
   releaseName: verdaccio
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
-    name: verdaccio
-    version: 0.5.0
+    git: ssh://git@github.com/soofstad/charts.git
+    ref: master
+    path: stable/verdaccio
   values:
+    image:
+      repository: sdpequinor/verdaccio-github-auth
+      tag: latest
+    environmentsFromSecrets:
+      enabled: true
+    env:
+      secret:
+        name: verdaccio-client-secret
+        key: OAUTH_CLIENT_SECRET
     ingress:
-      enabled: false
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: oauth2-proxy
-  namespace: infrastructure
-  annotations:
+      enabled: true
+      annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-spec:
-  rules:
-  - host: verdaccio.sdp.handlel.app
-    http:
-      paths:
-      - path: /oauth2
-        backend:
-          serviceName: oauth2-proxy
-          servicePort: 4180
-      - path: /
-        backend:
-          serviceName: verdaccio-verdaccio
-          servicePort: 4873
-  tls:
-  - hosts:
-    - verdaccio.sdp.handlel.app
-    secretName: verdaccio-sdp-handlel-app-tls
+        external-dns.alpha.kubernetes.io/hostname: npm.sdp.handlel.app.
+      hosts:
+      - npm.sdp.handlel.app
+      tls:
+      - secretName: npm-sdp-handlel-app-tls
+        hosts:
+        - npm.sdp.handlel.app
+    configMap: |
+      storage: /verdaccio/storage
+
+      middlewares:
+        github-oauth:
+          client-id: 18d1e01089443d4230d0
+          client-secret: $OAUTH_CLIENT_SECRET
+        audit:
+          enabled: true
+
+      auth:
+        github-oauth:
+          org: Statoil 
+          cache-ttl-ms: 60000
+      security:
+        api:
+          jwt:
+            sign:
+              expiresIn: 60d
+              notBefore: 1
+        web:
+          sign:
+            expiresIn: 7d
+
+      uplinks:
+        npmjs:
+          url: https://registry.npmjs.org/
+
+      packages:
+        '@equinor-internal/*':
+          access: $authenticated
+          publish: $authenticated
+          proxy: npmjs
+
+        '**':
+          access: $all
+          publish: $authenticated
+          proxy: npmjs
+
+      web:
+        enable: true
+        title: Equinor NPM-registry
+
+      logs:
+        - {type: stdout, format: pretty-timestamped, level: http}
