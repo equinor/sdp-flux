@@ -14,15 +14,13 @@ This readme should always be called README.md and be placed on the root. In addi
 
 The different applications and workloads we run is placed in the folder with the same name as their namespace. E.g. sdp-demo should be run in staging namespace and is therefore placed `staging/sdp-demo.yaml`. For all services that can be described and run from one manifest should have the same name as the workload(.yaml) under namespace folder. If multiple manifests is needed a directory should be created and files placed inside. Preferably the manifest should be named as per the kind, e.g. helmrelease.yaml if only one resource of this kind is created.
 
-__TODO__: Do we need a list of shorthands? Or is this clear enough?
-
 ## Using Sealed Secrets
 Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a system called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this system we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster
 
 ### Install client
 
 - Download [kubeseal](https://github.com/bitnami-labs/sealed-secrets/releases)
-- Put `kubeseal-linux-amd64` or `kubeseal-darwin-amd64` in your path
+- Put `kubeseal-linux-amd64` or `kubeseal-darwin-amd64` in your path and rename it to `kubeseal`.
 
 ### First time
 After first run we need to export the private and public key. The public key is what we all use to encrypt the secrets and the private key is used by the controller to decrypt the secrets and put them in the cluster. It is important to have a backup of the private key, but _NEVER_ commit that to the repository.
