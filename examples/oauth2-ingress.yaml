@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard-auth
+  namespace: infrastructure
+spec:
+  rules:
+  - host: dashboard.sdp.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: oauth2-proxy-equinor-wide
+          servicePort: 4180
+        path: /oauth2
+  tls:
+  - hosts:
+    - dashboard.sdp.equinor.com
+    secretName: dashboard-sdp-equinor-com-tls

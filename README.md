@@ -41,7 +41,34 @@ kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-literal=K
 kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-file=FILENAME -o json | kubeseal --cert secret.pem --format yaml > SECRETNAME.yaml
 ```
 Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
+## Oauth2 Proxy
+To utilize oauth2-proxy to authenticate users before they can access a web application, add these lines to the **ingress annotation**:
+``` 
+nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+```
+You also need a **host specific ingress for the proxy**. That could look like [this](examples/oauth2-ingress.yaml).
 
+There is also a few more things to note;
+* The oauth2-proxy need to be deployed in the same namespace
+* The proxy must be configured with the specific Azure app. This is where we define access. Each proxy can only authenticate *one* application.
+* Note that in Helm version < v3, the name of a helm release must be uniq in the *cluster*, NOT within a *namespace*. So to deploy multiple oauth2-proxy instances, the helm release name must be different, the service name will also change.
+### Configure Oauth2-proxy
+To deploy a new oauth2-proxy using our custom Helm chart.  
+Note the *azure_tenant* container argument and the *envFromSecret*. The envFromSecret should point to a *single secret* containing these keys:
+* OAUTH2_PROXY_CLIENT_ID
+* OAUTH2_PROXY_CLIENT_SECRET
+* OAUTH2_PROXY_COOKIE_SECRET
+```
+kind: HelmRelease
+  values:
+    container:
+      args:
+        azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+    envFromSecret: oauth2-proxy-secret
+```
+The cookie secret can be created like this;  
+`docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'`
 ## Tips and tricks
 How to do something we do a lot? If you know, type them up here and we shall all be the wiser for it.
 
