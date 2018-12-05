@@ -47,59 +47,26 @@ To utilize oauth2-proxy to authenticate users before they can access a web appli
 nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
 nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
 ```
-You also need a **host specific ingress for the proxy**. That could look like this;
-```
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: kubernetes-dashboard-auth
-  namespace: kube-system
-spec:
-  rules:
-  - host: dashboard.sdp.equinor.com
-    http:
-      paths:
-      - backend:
-          serviceName: oauth2-proxy-equinor-wide
-          servicePort: 4180
-        path: /oauth2
-  tls:
-  - hosts:
-    - dashboard.sdp.equinor.com
-    secretName: dashboard-sdp-equinor-com-tls
-```
+You also need a **host specific ingress for the proxy**. That could look like [this](examples/oauth2-ingress.yaml).
+
 There is also a few more things to note;
 * The oauth2-proxy need to be deployed in the same namespace
 * The proxy must be configured with the specific Azure app. This is where we define access. Each proxy can only authenticate *one* application.
 * Note that in Helm version < v3, the name of a helm release must be uniq in the *cluster*, NOT within a *namespace*. So to deploy multiple oauth2-proxy instances, the helm release name must be different, the service name will also change.
 ### Configure Oauth2-proxy
-To deploy a new oauth2-proxy using our custom Helm chart, create something like this;
+To deploy a new oauth2-proxy using our custom Helm chart.  
+Note the *azure_tenant* container argument and the *envFromSecret*. The envFromSecret should point to a *single secret* containing these keys:
+* OAUTH2_PROXY_CLIENT_ID
+* OAUTH2_PROXY_CLIENT_SECRET
+* OAUTH2_PROXY_COOKIE_SECRET
 ```
----
-apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
-metadata:
-  name: oauth2-proxy-ks
-  namespace: kube-system
-  annotations:
-    flux.weave.works/automated: "true"
-spec:
-  releaseName: oauth2-proxy-sdp-only
-  chart:
-    git: ssh://git@github.com/Statoil/sdp-flux.git
-    ref: master
-    path: custom-charts/sdp-oauth2-proxy
   values:
     container:
       args:
         azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-      secretName: oauth2-proxy-secret
+    envFromSecret: oauth2-proxy-secret
 ```
-Note the *azure_tenant* container argument and the *secretName*. The secretName should point to a *single secret* containing these keys:
-* OAUTH2_PROXY_CLIENT_ID
-* OAUTH2_PROXY_CLIENT_SECRET
-* OAUTH2_PROXY_COOKIE_SECRET
-
 The cookie secret can be created like this;  
 `docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'`
 ## Tips and tricks
