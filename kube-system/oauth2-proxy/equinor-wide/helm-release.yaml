@@ -10,7 +10,7 @@ spec:
   releaseName: oauth2-proxy-ks
   chart:
     git: ssh://git@github.com/Statoil/sdp-flux.git
-    ref: secret-oauth
+    ref: master
     path: custom-charts/sdp-oauth2-proxy
   values:
     replicaCount: 1

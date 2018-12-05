@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: kubernetes-dashboard-auth
-  namespace: infraastructure
+  namespace: infrastructure
 spec:
   rules:
   - host: dashboard.sdp.equinor.com
