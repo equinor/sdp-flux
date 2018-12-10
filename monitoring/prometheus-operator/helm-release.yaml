@@ -69,6 +69,15 @@ spec:
 
     prometheus:
       prometheusSpec:
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: managed-premium
+              resources:
+                requests:
+                  storage: 30Gi # Storage size calculation: https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects
         serviceMonitorSelector:
           matchLabels:
             release: prometheus-operator
