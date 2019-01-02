@@ -12,4 +12,6 @@ spec:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: kured
     version: 0.1.1
-  values: {}
+  values:
+    period: 10m0s
+    reboot-sentinel: "/var/run/reboot-required-night"
