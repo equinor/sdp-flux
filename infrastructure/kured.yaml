@@ -13,5 +13,6 @@ spec:
     name: kured
     version: 0.1.1
   values:
-    period: 10m0s
-    reboot-sentinel: "/var/run/reboot-required-night"
+    extraArgs:
+      period: 10m0s
+      reboot-sentinel: "/var/run/reboot-required-night"
