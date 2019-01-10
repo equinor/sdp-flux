@@ -1,0 +1,35 @@
+# Default values for aks-node-puppet.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: esselt/aks-node-puppet
+  tag: latest
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+tolerations: []
+
+affinity: {}
+
+#env: {}
+# GIT_REPO=git@github.com:Super/Env.git
+# GIT_BRANCH=master
+
+#envSecret: {}
+# GIT_SSH_PRIVATE_KEY=puppetrepokey
+# Gets the value from key GIT_SSH_PRIVATE_KEY in the secret named puppetrepokey
