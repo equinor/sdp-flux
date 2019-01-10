@@ -1,0 +1,36 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: elasticsearch
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: false
+spec:
+  chart:
+    name: elasticsearch
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 1.15.5
+  releaseName: elasticsearch
+  values:
+    image:
+      repository: docker.elastic.co/elasticsearch/elasticsearch
+      tag: 6.5.4
+    cluster:
+      xpackEnable: true
+      env:
+        XPACK_MONITORING_ENABLED: "true"
+        XPACK_ML_ENABLED: "true"
+        XPACK_WATCHER_ENABLED: "true"
+    data:
+      updateStrategy:
+        type: RollingUpdate
+      persistence:
+        size: 30Gi
+        storageClass: managed-premium
+    master:
+      updateStrategy:
+        type: RollingUpdate
+      persistence:
+        size: 4Gi
+        storageClass: managed-premium
