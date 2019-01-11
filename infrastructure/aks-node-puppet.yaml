@@ -14,5 +14,5 @@ spec:
     path: helm/aks-node-puppet
   values:
     env:
-      GIT_REPO: http://github.com/esselt/aks-puppet.git
+      GIT_REPO: http://github.com/Statoil/sdp-aks-puppet.git
       GIT_BRANCH: master
