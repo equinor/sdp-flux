@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: aks-node-puppet
   chart:
-    git: http://github.com/esselt/aks-node-puppet.git
+    git: http://github.com/Statoil/sdp-flux.git
     ref: master
     path: helm/aks-node-puppet
   values:
