@@ -29,17 +29,17 @@ spec:
         kubernetes.io/tls-acme: "true"
         external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com.
       hosts:
-      - npm.sdpaks.equinor.com
+      - npm.equinor.com
       tls:
-      - secretName: npm-sdp-handlel-app-tls
+      - secretName: npm-equinor-com-tls
         hosts:
-        - npm.sdpaks.equinor.com
+        - npm.equinor.com
     configMap: |
       storage: /verdaccio/storage
 
       middlewares:
         github-oauth:
-          client-id: 18d1e01089443d4230d0
+          client-id: 9167dfca2cef9d1f7373
           client-secret: $OAUTH_CLIENT_SECRET
         audit:
           enabled: true
