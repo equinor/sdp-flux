@@ -5,7 +5,7 @@ metadata:
   namespace: infrastructure
 spec:
   rules:
-  - host: dashboard.sdp.equinor.com
+  - host: dashboard.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -14,5 +14,5 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - dashboard.sdp.equinor.com
+    - dashboard.sdpaks.equinor.com
     secretName: dashboard-sdp-equinor-com-tls

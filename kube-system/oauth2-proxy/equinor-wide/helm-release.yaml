@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: oauth2-proxy-ks
   chart:
-    git: ssh://git@github.com/Statoil/sdp-flux.git
+    git: ssh://git@github.com/equinor/sdp-flux.git
     ref: master
     path: custom-charts/sdp-oauth2-proxy
   values:

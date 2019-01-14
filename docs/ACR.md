@@ -112,7 +112,7 @@ metadata:
     flux.weave.works/tag.chart-image: glob:rc-*
 spec:
   chart:
-    git: git@github.com:Statoil/sdp-flux.git # This must be the sdp-flux repo
+    git: git@github.com:equinor/sdp-flux.git # This must be the sdp-flux repo
     ref: master
     path: custom-charts/nginx-hello-world # Change this path if apropriate
   values:
@@ -125,13 +125,13 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-        external-dns.alpha.kubernetes.io/hostname: helloworld.stg.sdp.equinor.com.
+        external-dns.alpha.kubernetes.io/hostname: helloworld.stg.sdpaks.equinor.com.
       hosts:
-      - helloworld.stg.sdp.equinor.com
+      - helloworld.stg.sdpaks.equinor.com
       tls:
       - secretName: helloworld-stg-tls
         hosts:
-        - helloworld.stg.sdp.equinor.com
+        - helloworld.stg.sdpaks.equinor.com
 ```
 
 - Make sure you have the container registry secret populated before you run this on the cluster. You can upload the secret by modifying this command
@@ -158,7 +158,7 @@ metadata:
     flux.weave.works/tag.chart-image: semver:~0.1 # This will automatically update the image from 0.1.0 to 0.1.1 and so on
 spec:
   chart:
-    git: git@github.com:Statoil/sdp-flux.git # This must be the sdp-flux repo
+    git: git@github.com:equinor/sdp-flux.git # This must be the sdp-flux repo
     ref: master
     path: custom-charts/nginx-hello-world # Change this path if apropriate
   values:
@@ -171,13 +171,13 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
-        external-dns.alpha.kubernetes.io/hostname: helloworld.sdp.equinor.com.
+        external-dns.alpha.kubernetes.io/hostname: helloworld.sdpaks.equinor.com.
       hosts:
-      - helloworld.sdp.equinor.com
+      - helloworld.sdpaks.equinor.com
       tls:
       - secretName: helloworld-tls
         hosts:
-        - helloworld.sdp.equinor.com
+        - helloworld.sdpaks.equinor.com
 ```
 
 - Commit this to the branch, push to remote and create a pull request
