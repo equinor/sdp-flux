@@ -39,6 +39,9 @@ kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-literal=K
 
 # To use from file
 kubectl -n NAMESPACE create secret generic SECRETNAME --dry-run --from-file=FILENAME -o json | kubeseal --cert secret.pem --format yaml > SECRETNAME.yaml
+
+# To create TLS secret
+kubectl create secret tls SECRETNAME --key mycert.key --cert mycert.crt --dry-run -o json | kubeseal --format yaml --cert secret.pem > sealed-secret-tls.yaml
 ```
 Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
 ## Oauth2 Proxy
