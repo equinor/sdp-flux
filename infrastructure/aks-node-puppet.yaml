@@ -11,7 +11,7 @@ spec:
   chart:
     git: http://github.com/equinor/sdp-aks-node-puppet.git
     ref: master
-    path: custom-charts/aks-node-puppet
+    path: helm/aks-node-puppet
   values:
     env:
       GIT_REPO: http://github.com/Statoil/sdp-aks-puppet.git
