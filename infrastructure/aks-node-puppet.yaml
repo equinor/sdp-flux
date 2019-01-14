@@ -9,7 +9,7 @@ metadata:
 spec:
   releaseName: aks-node-puppet
   chart:
-    git: http://github.com/Statoil/sdp-flux.git
+    git: http://github.com/equinor/sdp-aks-node-puppet.git
     ref: master
     path: custom-charts/aks-node-puppet
   values:
