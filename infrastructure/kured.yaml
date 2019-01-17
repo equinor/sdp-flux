@@ -1,3 +1,5 @@
+# Azure makes sure to patch security updates on our AKS nodes, but does not ensure these updates are applied.
+# To apply these updates we need to reboot the nodes, our solution to this is to use Kured.
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease

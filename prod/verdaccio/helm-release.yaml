@@ -1,3 +1,4 @@
+# Private NPM repository for internal use, uses Oath2 authentication
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease

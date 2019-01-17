@@ -1,3 +1,4 @@
+# Some applications do not have proper authentication in themselves, for these we can use oath2-proxy with Azure AD to authenticate.
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
