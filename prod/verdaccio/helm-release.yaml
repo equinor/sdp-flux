@@ -1,0 +1,81 @@
+# Private NPM repository for internal use, uses Oath2 authentication
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: verdaccio
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: verdaccio
+  chart:
+    git: ssh://git@github.com/soofstad/charts.git
+    ref: master
+    path: stable/verdaccio
+  values:
+    image:
+      repository: sdpequinor/verdaccio-github-auth
+      tag: latest
+    environmentsFromSecrets:
+      enabled: true
+    env:
+      secret:
+        name: verdaccio-client-secret
+        key: OAUTH_CLIENT_SECRET
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com.
+      hosts:
+      - npm.equinor.com
+      tls:
+      - secretName: npm-equinor-com-tls
+        hosts:
+        - npm.equinor.com
+    configMap: |
+      storage: /verdaccio/storage
+
+      middlewares:
+        github-oauth:
+          client-id: 9167dfca2cef9d1f7373
+          client-secret: $OAUTH_CLIENT_SECRET
+        audit:
+          enabled: true
+
+      auth:
+        github-oauth:
+          org: equinor 
+          cache-ttl-ms: 60000
+      security:
+        api:
+          jwt:
+            sign:
+              expiresIn: 60d
+              notBefore: 1
+        web:
+          sign:
+            expiresIn: 7d
+
+      uplinks:
+        npmjs:
+          url: https://registry.npmjs.org/
+
+      packages:
+        '@equinor-internal/*':
+          access: $authenticated
+          publish: $authenticated
+          proxy: npmjs
+
+        '**':
+          access: $all
+          publish: $authenticated
+          proxy: npmjs
+
+      web:
+        enable: true
+        title: Equinor NPM-registry
+
+      logs:
+        - {type: stdout, format: pretty-timestamped, level: http}

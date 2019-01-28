@@ -1,0 +1,20 @@
+# This installs and configures Puppet on the nodes running in Kubernetes cluster. Very specific to match Azure AKS with Ubuntu.
+# We have to do this to ensure the nodes meets compliance and to make sure we can edit the configuration in a predictable manner.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: aks-node-puppet
+  namespace: infrastructure
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: aks-node-puppet
+  chart:
+    git: http://github.com/equinor/sdp-aks-node-puppet.git
+    ref: master
+    path: helm/aks-node-puppet
+  values:
+    env:
+      GIT_REPO: http://github.com/equinor/sdp-aks-puppet.git
+      GIT_BRANCH: master

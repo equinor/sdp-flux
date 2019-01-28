@@ -1,0 +1,56 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    flux.weave.works/automated: false
+  name: filebeat
+  namespace: monitoring
+spec:
+  chart:
+    name: filebeat
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 1.0.5
+  releaseName: filebeat
+  values:
+    image:
+      repository: docker.elastic.co/beats/filebeat
+      tag: 6.5.4
+    config:
+      setup.dashboards.enabled: true
+      setup.kibana:
+        host: "kibana:443"
+      filebeat.prospectors: null
+      filebeat.autodiscover:
+        providers:
+        - type: kubernetes
+          hints.enabled: true
+      processors:
+      - add_kubernetes_metadata:
+          in_cluster: true
+      - drop_event:
+          when:
+            or:
+              - equals:
+                  kubernetes.container.name: tunnel-front
+              - equals:
+                  kubernetes.container.name: redirector
+              - equals:
+                  kubernetes.container.name: filebeat
+              - equals:
+                  kubernetes.container.name: metricbeat
+              - equals:
+                  kubernetes.container.name: kube-proxy
+              - equals:
+                  kubernetes.container.name: kube-svc-redirect
+              - equals:
+                  kubernetes.container.name: kube-dns
+              - equals:
+                  kubernetes.container.name: heapster
+              - equals:
+                  kubernetes.container.name: main
+              - equals:
+                  kubernetes.container.name: kubernetes-dashboard
+      output.file: nil
+      output.elasticsearch:
+          hosts: ["elasticsearch-client:9200"]

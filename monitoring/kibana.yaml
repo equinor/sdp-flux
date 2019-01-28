@@ -1,0 +1,33 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    flux.weave.works/automated: false
+  name: kibana
+  namespace: monitoring
+spec:
+  chart:
+    name: kibana
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 1.0.2
+  releaseName: kibana
+  values:
+    image:
+      repository: docker.elastic.co/kibana/kibana
+      tag: 6.5.4
+    files:
+      kibana.yml:
+        elasticsearch.url: http://elasticsearch-client:9200
+    ingress:
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: kibana.sdp.handel.app.
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+      enabled: true
+      hosts:
+      - kibana.sdp.handel.app
+      tls:
+      - hosts:
+        - kibana.sdp.handel.app
+        secretName: kibana-tls

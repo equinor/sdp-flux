@@ -1,0 +1,20 @@
+# Azure makes sure to patch security updates on our AKS nodes, but does not ensure these updates are applied.
+# To apply these updates we need to reboot the nodes, our solution to this is to use Kured.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: kured
+  namespace: infrastructure
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: kured
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: kured
+    version: 0.1.1
+  values:
+    extraArgs:
+      period: 10m0s
+      reboot-sentinel: "/var/run/reboot-required-night"

@@ -1,0 +1,103 @@
+# Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: prometheus-operator
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: prometheus-operator
+    version: 0.1.21
+  values:
+    alertmanager:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          kubernetes.io/tls-acme: "true"
+          external-dns.alpha.kubernetes.io/hostname: alertmanager.sdpaks.equinor.com.
+        hosts:
+        - alertmanager.sdpaks.equinor.com
+        tls:
+        - secretName: alertmanager-tls
+          hosts:
+          - alertmanager.sdpaks.equinor.com
+
+    grafana:
+      sidecar:
+        dashboards:
+          enabled: true
+          label: grafana_dashboard
+      adminPassword: false
+      env:
+        GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
+        GF_USERS_AUTO_ASSIGN_ORG: true
+        GF_AUTH_BASIC_ENABLED: false
+        GF_AUTH_DISABLE_LOGIN_FORM: false
+        GF_AUTH_OAUTH_AUTO_LOGIN: true
+        GF_AUTH_GENERIC_OAUTH_CLIENT_ID: 38eca179-361a-4722-82f3-e8e17c39531c
+        GF_AUTH_GENERIC_OAUTH_ENABLED: true
+        GF_AUTH_ANONYMOUS_ENABLED: false
+        GF_AUTH_GENERIC_OAUTH_NAME: Azure AD
+        GF_AUTH_GENERIC_OAUTH_SCOPES: openid email name
+        GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
+        GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
+        GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
+
+      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          kubernetes.io/tls-acme: "true"
+          external-dns.alpha.kubernetes.io/hostname: grafana.sdpaks.equinor.com.
+        hosts:
+        - grafana.sdpaks.equinor.com
+        tls:
+        - secretName: grafana-tls
+          hosts:
+          - grafana.sdpaks.equinor.com
+
+    kubeApiServer:
+      tlsConfig:
+        insecureSkipVerify: true
+
+    prometheus:
+      prometheusSpec:
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: managed-premium
+              resources:
+                requests:
+                  storage: 30Gi # Storage size calculation: https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects
+        serviceMonitorSelector:
+          matchLabels:
+            release: prometheus-operator
+        serviceMonitorNamespaceSelector: {}
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+          kubernetes.io/tls-acme: "true"
+          external-dns.alpha.kubernetes.io/hostname: prometheus.sdpaks.equinor.com.
+        hosts:
+        - prometheus.sdpaks.equinor.com
+        tls:
+        - secretName: prometheus-tls
+          hosts:
+          - prometheus.sdpaks.equinor.com
+
+    coreDns:
+      enabled: false
+
+    kubeDns:
+      enabled: true

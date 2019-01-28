@@ -1,0 +1,21 @@
+# Default values for sdp-oauth2-proxy.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+labels:
+  k8s_app: sdp-oauth2-proxy
+replicaCount: 1
+image:
+  repository: a5huynh/oauth2_proxy
+  tag: latest
+  pullPolicy: Always
+container:
+  args:
+    provider: azure
+    email_domain: "*"
+    upstream: file:///dev/null
+    http_address: 0.0.0.0:4180
+#    azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+
+# If you use Sealed Secrets to create the secret; this command may be helpful;
+# kubectl -n infrastructure create secret generic oauth2-proxy-equinor-secret --dry-run --from-literal=OAUTH2_PROXY_CLIENT_ID={id} --from-literal=OAUTH2_PROXY_CLIENT_SECRET={secret} --from-literal=OAUTH2_PROXY_COOKIE_SECRET={secret} -o json | kubeseal --cert secret.pem --format yaml > SECRETNAME.yaml
+# envFromSecret: oauth2-proxy-secret

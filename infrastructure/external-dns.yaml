@@ -1,0 +1,29 @@
+# For our services we need DNS as we share one public IP. This is not static and guaranteed and we need to dynamically assign
+# and update DNS records. This can be done manually or with External DNS that supports Azure DNS, where we have our DNS Zone.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: infrastructure
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: external-dns
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: external-dns
+    version: 1.0.2
+  values:
+    provider: azure
+    azure: 
+      secretName: azure-dns-config-file
+    domainFilters: [$(DOMAIN_FILTER)]
+    extraEnv: 
+      - name: DOMAIN_FILTER
+        valueFrom:
+          configMapKeyRef:
+            name: external-dns
+            key: domain-filter
+    rbac:
+      create: true
