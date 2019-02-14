@@ -38,7 +38,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: kibana-auth
-  namespace: infrastructure
+  namespace: monitoring
 spec:
   rules:
   - host: kibana.sdpaks.equinor.com
