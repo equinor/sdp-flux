@@ -1,0 +1,27 @@
+# Private web analytics solution
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: matomo
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: matomo
+  chart:
+    git: ssh://git@github.com/equinor/sdp-flux.git
+    ref: develop
+    path: custom-charts/matomo
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        external-dns.alpha.kubernetes.io/hostname: matomo.dev.sdpaks.equinor.com.
+      hosts:
+      - matomo.dev.sdpaks.equinor.com
+      tls:
+      - secretName: matomo-tls
+        hosts:
+        - matomo.dev.sdpaks.equinor.com    
