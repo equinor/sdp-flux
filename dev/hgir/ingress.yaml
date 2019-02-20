@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hgir-ingress
+  namespace: dev
+  labels:
+    app: hgir
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname:  hgir.dev.sdpaks.equinor.com.
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+spec:
+  tls:
+  - hosts:
+    - hgir.dev.sdpaks.equinor.com
+  rules:
+    - host: hgir.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hgir-service
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hgir-ingress-auth
+  namespace: dev
+  labels:
+    app: hgir
+spec:
+  tls:
+  - hosts:
+    - hgir.dev.sdpaks.equinor.com
+  rules:
+    - host: hgir.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-hgir
+              servicePort: 4180

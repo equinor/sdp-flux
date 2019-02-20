@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: hgir
+  name: hgir-deployment
+  namespace: dev
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hgir
+    spec:
+      containers:
+        - name: hgir
+          image: sdpakscr.azurecr.io/hgir
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - mountPath: /data
+              name: storage
+              readOnly: false
+      imagePullSecrets:
+          - name: registry-sdpakscr
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: hgir-pvc
