@@ -9,10 +9,13 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname:  hgir.dev.sdpaks.equinor.com.
     nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
     - hgir.dev.sdpaks.equinor.com
+    secretName: hgir-tls
   rules:
     - host: hgir.dev.sdpaks.equinor.com
       http:
@@ -33,6 +36,7 @@ spec:
   tls:
   - hosts:
     - hgir.dev.sdpaks.equinor.com
+    secretName: hgir-tls
   rules:
     - host: hgir.dev.sdpaks.equinor.com
       http:
