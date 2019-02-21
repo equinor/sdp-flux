@@ -1,0 +1,38 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alertmanager-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: alertmanager.sdpaks.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: oauth2-proxy-sdp
+          servicePort: 4180
+        path: /oauth2
+  tls:
+  - hosts:
+    - alertmanager.sdpaks.equinor.com
+    secretName: alertmanager-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: prometheus.sdpaks.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: oauth2-proxy-sdp
+          servicePort: 4180
+        path: /oauth2
+  tls:
+  - hosts:
+    - prometheus.sdpaks.equinor.com
+    secretName: prometheus-tls
