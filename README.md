@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/equinor/sdp-flux.svg?token=yR5pmi3sbtpmzTWwTfNG&branch=master)](https://travis-ci.com/equinor/sdp-flux)
 
 # Repository used for Kubernetes GitOps
-This is the repository where we define the manifest to be run in Kubernetes. We use [Flux](https://github.com/weaveworks/flux) as the basis for our GitOps workflow.
+This is the repository where we define the manifest to be run in Kubernetes. We use [Flux](https://github.com/weaveworks/flux) as the basis for our GitOps workflow. 
 
 ## How it works
 In essence we create manifests to be run on the Kubernetes cluster, commit them to this repository and then the Flux controller notices the new commit and applies all the YAML files (can be simplified down to `kubectl apply -f FILENAME`).
