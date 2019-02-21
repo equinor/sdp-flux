@@ -105,3 +105,5 @@ spec:
 
     kubeDns:
       enabled: true
+      
+    defaultRules.rules.kubeApiserver: false
