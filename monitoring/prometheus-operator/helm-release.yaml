@@ -105,4 +105,8 @@ spec:
 
     kubeDns:
       enabled: true
-      
+    
+    defaultRules:
+      rules:
+        kubeApiServer: false
+        kubeScheduler: false
