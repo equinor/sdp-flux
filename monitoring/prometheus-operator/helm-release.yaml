@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: prometheus-operator
-    version: 0.1.21
+    version: 3.0.0
   values:
     alertmanager:
       ingress:
@@ -101,9 +101,8 @@ spec:
           - prometheus.sdpaks.equinor.com
 
     coreDns:
-      enabled: false
+      enabled: true
 
     kubeDns:
       enabled: true
       
-    defaultRules.rules.kubeApiserver: false
