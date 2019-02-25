@@ -4,7 +4,7 @@ language: C
 env:
   global:
     - HELM_URL=https://storage.googleapis.com/kubernetes-helm
-    - HELM_TAR=helm-v2.4.1-linux-amd64.tar.gz
+    - HELM_TAR=helm-v2.12.3-linux-amd64.tar.gz
 
 install:
   - wget -q ${HELM_URL}/${HELM_TAR}
