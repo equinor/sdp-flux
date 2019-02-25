@@ -42,21 +42,21 @@ spec:
               containerPort: 80
               protocol: TCP
           resources:
-            {{- toYaml .Values.resources | indent 12 }}
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /bitnami
               name: volume
       {{- with .Values.nodeSelector }}
       nodeSelector:
-        {{- toYaml . | indent 8 }}
+        {{- toYaml . | nindent 8 }}
       {{- end }}
     {{- with .Values.affinity }}
       affinity:
-        {{- toYaml . | indent 8 }}
+        {{- toYaml . | nindent 8 }}
     {{- end }}
     {{- with .Values.tolerations }}
       tolerations:
-        {{- toYaml . | indent 8 }}
+        {{- toYaml . | nindent 8 }}
     {{- end }}
   volumeClaimTemplates:
     - metadata:
