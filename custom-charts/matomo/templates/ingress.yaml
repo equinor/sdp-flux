@@ -30,11 +30,19 @@ spec:
     - host: {{ . | quote }}
       http:
         paths:
+<<<<<<< HEAD
 	{{- range $ingressPaths }}
+=======
+  {{- range $ingressPaths }}
+>>>>>>> master
           - path: {{ . }}
             backend:
               serviceName: {{ $fullName }}
               servicePort: http
+<<<<<<< HEAD
 	{{- end }}
+=======
+  {{- end }}
+>>>>>>> master
   {{- end }}
 {{- end }}
