@@ -59,14 +59,10 @@ mariadb:
 
   replication:
     enabled: false
-   
+
   master:
     persistence:
-<<<<<<< HEAD
-      size: 2Gi
-=======
       size: 2Gi
 
   service:
     port: 3306
->>>>>>> master
