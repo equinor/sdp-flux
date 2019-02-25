@@ -6,8 +6,7 @@ metadata:
   name: matomo
   namespace: prod
   annotations:
-    flux.weave.works/automated: "true"
-    kubernetes.io/tls-acme: "true"
+    flux.weave.works/automated: "true"    
 spec:
   releaseName: matomo
   chart:
@@ -20,6 +19,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         external-dns.alpha.kubernetes.io/hostname: matomo.dev.sdpaks.equinor.com.
+        kubernetes.io/tls-acme: "true"
       hosts:
       - matomo.dev.sdpaks.equinor.com
       tls:
