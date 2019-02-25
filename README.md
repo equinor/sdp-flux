@@ -74,6 +74,9 @@ kind: HelmRelease
 ```
 The cookie secret can be created like this;  
 `docker run -ti --rm python:3-alpine python -c 'import secrets,base64; print(base64.b64encode(base64.b64encode(secrets.token_bytes(16))));'`
+
+You only need to copy the content after b'<JUST FROM HERE>'.
+
 ## Tips and tricks
 How to do something we do a lot? If you know, type them up here and we shall all be the wiser for it.
 
