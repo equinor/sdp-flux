@@ -19,8 +19,6 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         external-dns.alpha.kubernetes.io/hostname: matomo.sdpaks.equinor.com.
-        nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-        nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         kubernetes.io/tls-acme: "true"
       hosts:
       - matomo.sdpaks.equinor.com
@@ -28,22 +26,3 @@ spec:
       - secretName: matomo-tls
         hosts:
         - matomo.sdpaks.equinor.com
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: matomo-auth
-  namespace: prod
-spec:
-  rules:
-  - host: matomo.sdpaks.equinor.com
-    http:
-      paths:
-      - backend:
-          serviceName: oauth2-proxy-all
-          servicePort: 4180
-        path: /oauth2
-  tls:
-  - hosts:
-    - matomo.sdpaks.equinor.com
-    secretName: matomo-tls
