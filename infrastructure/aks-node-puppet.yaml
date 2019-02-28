@@ -17,4 +17,4 @@ spec:
   values:
     env:
       GIT_REPO: http://github.com/equinor/sdp-aks-puppet.git
-      GIT_BRANCH: master
+      GIT_BRANCH: develop
