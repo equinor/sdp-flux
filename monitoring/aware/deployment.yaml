@@ -8,6 +8,7 @@ metadata:
   namespace: monitoring
   annotations:
     flux.weave.works/automated: 'true'
+    flux.weave.works/tag.aware: glob:latest
 spec:
   replicas: 2
   template:
