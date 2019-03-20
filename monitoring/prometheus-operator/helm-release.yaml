@@ -110,3 +110,11 @@ spec:
       rules:
         kubeApiServer: false
         kubeScheduler: false
+    
+    resources:
+      requests:
+        cpu: 250m
+        memory: "2Gi"
+      limits:
+        cpu: 1000m
+        memory: "10Gi"
