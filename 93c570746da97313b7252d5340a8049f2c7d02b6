@@ -1,0 +1,1 @@
+{"jobID":"87d0f4e5-f34a-0446-b8c5-0a1cd140cb77","spec":{"type":"policy","cause":{"Message":"flux image automatation test","User":"soofstad \u003cstigofstad@gmail.com\u003e"},"spec":{"monitoring:deployment/aware":{"add":{"automated":"true"},"remove":{}}}},"result":null}
