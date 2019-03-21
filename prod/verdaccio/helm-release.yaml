@@ -27,13 +27,13 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
-        external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com.
+        external-dns.alpha.kubernetes.io/hostname: npm.dev.sdpaks.equinor.com.
       hosts:
-      - npm.equinor.com
+      - npm.dev.sdpaks.equinor.com
       tls:
       - secretName: npm-equinor-com-tls
         hosts:
-        - npm.equinor.com
+        - npm.dev.sdpaks.equinor.com
     configMap: |
       storage: /verdaccio/storage
 

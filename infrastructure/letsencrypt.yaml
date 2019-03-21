@@ -8,7 +8,7 @@ metadata:
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
-    email: boyh@equinor.com
+    email: gm_sds_rdi@equinor.com
     privateKeySecretRef:
       name: letsencrypt-staging-secret
     http01: {}
@@ -21,7 +21,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: boyh@equinor.com
+    email: gm_sds_rdi@equinor.com
     privateKeySecretRef:
       name: letsencrypt-prod-secret
     http01: {}
