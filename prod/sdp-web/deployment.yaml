@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: sdp-web
+  name: sdp-web
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: sdp-web
+    spec:
+      containers:
+      - name: sdp-web
+        image: sdpequinor/sdp-web:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
+
