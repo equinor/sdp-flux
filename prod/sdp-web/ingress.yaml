@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdp-web
+  namespace: prod
+  labels:
+    app: sdp-web
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: sdp-web.dev.sdpaks.equinor.com.
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - sdp-web.dev.sdpaks.equinor.com
+    secretName: sdp-web-tls
+  rules:
+    - host: sdp-web.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sdp-web
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdp-web-auth
+  namespace: prod
+  labels:
+    app: sdp-web
+spec:
+  tls:
+  - hosts:
+    - sdp-web.dev.sdpaks.equinor.com
+    secretName: sdp-web-tls
+  rules:
+    - host: sdp-web.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-all
+              servicePort: 4180
