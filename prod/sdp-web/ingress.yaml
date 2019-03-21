@@ -24,24 +24,4 @@ spec:
             backend:
               serviceName: sdp-web
               servicePort: 80
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: sdp-web-auth
-  namespace: prod
-  labels:
-    app: sdp-web
-spec:
-  tls:
-  - hosts:
-    - sdp-web.dev.sdpaks.equinor.com
-    secretName: sdp-web-tls
-  rules:
-    - host: sdp-web.dev.sdpaks.equinor.com
-      http:
-        paths:
-          - path: /oauth2 
-            backend:
-              serviceName: oauth2-proxy-all
-              servicePort: 4180
+
