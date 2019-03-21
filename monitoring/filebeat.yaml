@@ -38,10 +38,8 @@ spec:
                   kubernetes.container.name: tunnel-front
               - equals:
                   kubernetes.container.name: redirector
-      #         - equals:
-      #             kubernetes.container.name: filebeat
-      #         - equals:
-      #             kubernetes.container.name: metricbeat
+              - equals:
+                  kubernetes.container.name: filebeat
               - equals:
                   kubernetes.container.name: kube-proxy
               - equals:
@@ -50,10 +48,8 @@ spec:
                   kubernetes.container.name: kube-dns
               - equals:
                   kubernetes.container.name: heapster
-      #         - equals:
-      #             kubernetes.container.name: main
-      #         - equals:
-      #             kubernetes.container.name: kubernetes-dashboard
+              - equals:
+                  kubernetes.container.name: heapster-nanny
       output.file: nil
       output.elasticsearch:
           hosts: ["elasticsearch-client:9200"]
