@@ -25,6 +25,9 @@ spec:
         providers:
         - type: kubernetes
           hints.enabled: true
+      filebeat.modules:
+        - module: system
+        - module: auditd
       processors:
       - add_kubernetes_metadata:
           in_cluster: true
