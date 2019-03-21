@@ -5,6 +5,9 @@ kind: HelmRelease
 metadata:
   name: matomo
   namespace: prod
+  labels:
+    app: matomo
+    service: web
   annotations:
     flux.weave.works/automated: "true"
 spec:
