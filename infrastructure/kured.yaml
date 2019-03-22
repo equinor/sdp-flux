@@ -15,6 +15,7 @@ spec:
     name: kured
     version: 1.1.1
   values:
+    updateStrategy: rollingUpdate
     extraArgs:
       period: 10m0s
       reboot-sentinel: "/var/run/reboot-required-night"
