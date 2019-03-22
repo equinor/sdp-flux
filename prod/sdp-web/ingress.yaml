@@ -12,10 +12,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - sdp-web.sdpaks.equinor.com
+    - sdp.equinor.com
     secretName: sdp-web-tls
   rules:
-    - host: sdp-web.sdpaks.equinor.com
+    - host: sdp.equinor.com
       http:
         paths:
           - path: /
