@@ -50,6 +50,8 @@ spec:
                   kubernetes.container.name: heapster
               - equals:
                   kubernetes.container.name: heapster-nanny
+              - equals:
+                  auditd.log.exe: /opt/microsoft/omsagent/ruby/bin/ruby
       output.file: nil
       output.elasticsearch:
           hosts: ["elasticsearch-client:9200"]
