@@ -10,12 +10,12 @@ spec:
   chart:
     name: elasticsearch
     repository: https://kubernetes-charts.storage.googleapis.com/
-    version: 1.15.5
+    version: 1.21.3
   releaseName: elasticsearch
   values:
     image:
       repository: docker.elastic.co/elasticsearch/elasticsearch
-      tag: 6.5.4
+      tag: 6.6.1
     cluster:
       xpackEnable: true
       env:
