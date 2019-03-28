@@ -59,6 +59,9 @@ spec:
         app: hgir
         tier: database
     spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
       imagePullSecrets:
           - name: registry-sdpakscr
       containers:
