@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
@@ -6,6 +7,8 @@ metadata:
     tier: frontend
   name: hgir
   namespace: dev
+  annotations:
+    flux.weave.works/automated: 'true'
 spec:
   replicas: 1
   template:
@@ -17,33 +20,33 @@ spec:
         flux.weave.works/automated: 'true'
     spec:
       imagePullSecrets:
-          - name: registry-sdpakscr
+      - name: registry-sdpakscr
       containers:
-        - name: hgir
-          image: sdpakscr.azurecr.io/hgir
-          imagePullPolicy: Always
-          env:
-            - name: DATABASE_HOST
-              value: hgir-database
-            - name: DATABASE_PORT
-              value: "5432"
-            - name: DATABASE_NAME
-              value: api
-            - name:  DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name:  hgir-secrets
-                  key:  DATABASE_PASSWORD
-          ports:
-            - containerPort: 80
-              name: http
-          resources:
-            requests:
-              cpu: 50m
-              memory: "100Mi"
-            limits:
-              cpu: 100m
-              memory: "200Mi"
+      - name: hgir
+        image: sdpakscr.azurecr.io/hgir
+        imagePullPolicy: Always
+        env:
+        - name: DATABASE_HOST
+          value: hgir-database
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_NAME
+          value: api
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: DATABASE_PASSWORD
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
@@ -65,35 +68,35 @@ spec:
         runAsUser: 0
         fsGroup: 0
       imagePullSecrets:
-          - name: registry-sdpakscr
+      - name: registry-sdpakscr
       containers:
-        - name: hgir-db
-          image: postgres:10.2-alpine
-          env:
-            - name: POSTGRES_USER
-              value: api
-            - name: POSTGRES_DB
-              value: api
-            - name: PGDATA 
-              value: /var/lib/postgresql/data/postgres
-            - name:  POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name:  hgir-secrets
-                  key:  DATABASE_PASSWORD
-          ports:
-            - containerPort: 5432
-          resources:
-            requests:
-              cpu: 50m
-              memory: "100Mi"
-            limits:
-              cpu: 100m
-              memory: "200Mi"
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: db
-              subPath: postgres
+      - name: hgir-db
+        image: postgres:10.2-alpine
+        env:
+        - name: POSTGRES_USER
+          value: api
+        - name: POSTGRES_DB
+          value: api
+        - name: PGDATA
+          value: /var/lib/postgresql/data/postgres
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: DATABASE_PASSWORD
+        ports:
+        - containerPort: 5432
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: db
+          subPath: postgres
       volumes:
       - name: db
         persistentVolumeClaim:
