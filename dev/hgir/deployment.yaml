@@ -13,6 +13,8 @@ spec:
       labels:
         app: hgir
         tier: frontend
+      annotations:
+        flux.weave.works/automated: 'true'
     spec:
       imagePullSecrets:
           - name: registry-sdpakscr
