@@ -12,6 +12,3 @@ spec:
   resources:
     requests:
       storage: 8Gi
-  mountOptions:
-    - gid: 70
-    - uid: 70
