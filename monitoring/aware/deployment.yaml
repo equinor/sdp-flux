@@ -30,7 +30,7 @@ spec:
         - name: PROMETHEUS_API
           value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
         - name: IGNORE_ALERTS
-          value: "TargetDown,DeadMansSwitch,KubeAPIDown,CoreDNSDown,KubeControllerManagerDown,KubeSchedulerDown"
+          value: ""
         resources:
           requests:
             cpu: 100m
