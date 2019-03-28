@@ -10,15 +10,16 @@ spec:
   chart:
     name: elasticsearch-curator
     repository: https://kubernetes-charts.storage.googleapis.com/
-    version: 1.0.1
+    version: 1.2.1
   releaseName: elasticsearch-curator
   values:
-    config:
-      elasticsearch:
-        hosts:
-          - elasticsearch-client
-        port: 9200
     configMaps:
+      config_yml: |-
+        ---
+        client:
+          hosts:
+            - elasticsearch-client
+          port: 9200
       action_file_yml: |-
         ---
         actions:
@@ -72,7 +73,7 @@ spec:
                 direction: older
                 timestring: '%Y.%m.%d'
                 unit: days
-                unit_count: 7
+                unit_count: 3
               - filtertype: pattern
                 kind: suffix
                 value: '-shrink'
