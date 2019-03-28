@@ -10,12 +10,12 @@ spec:
   chart:
     name: kibana
     repository: https://kubernetes-charts.storage.googleapis.com/
-    version: 1.0.2
+    version: 2.0.0
   releaseName: kibana
   values:
     image:
       repository: docker.elastic.co/kibana/kibana
-      tag: 6.5.4
+      tag: 6.7.0
     files:
       kibana.yml:
         elasticsearch.url: http://elasticsearch-client:9200

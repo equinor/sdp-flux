@@ -10,12 +10,12 @@ spec:
   chart:
     name: filebeat
     repository: https://kubernetes-charts.storage.googleapis.com/
-    version: 1.0.5
+    version: 1.4.4
   releaseName: filebeat
   values:
     image:
       repository: docker.elastic.co/beats/filebeat
-      tag: 6.5.4
+      tag: 6.7.0
     config:
       setup.dashboards.enabled: true
       setup.kibana:
@@ -25,6 +25,9 @@ spec:
         providers:
         - type: kubernetes
           hints.enabled: true
+      filebeat.modules:
+      - module: system
+      - module: auditd
       processors:
       - add_kubernetes_metadata:
           in_cluster: true
@@ -38,8 +41,6 @@ spec:
               - equals:
                   kubernetes.container.name: filebeat
               - equals:
-                  kubernetes.container.name: metricbeat
-              - equals:
                   kubernetes.container.name: kube-proxy
               - equals:
                   kubernetes.container.name: kube-svc-redirect
@@ -48,9 +49,9 @@ spec:
               - equals:
                   kubernetes.container.name: heapster
               - equals:
-                  kubernetes.container.name: main
+                  kubernetes.container.name: heapster-nanny
               - equals:
-                  kubernetes.container.name: kubernetes-dashboard
+                  auditd.log.exe: /opt/microsoft/omsagent/ruby/bin/ruby
       output.file: nil
       output.elasticsearch:
           hosts: ["elasticsearch-client:9200"]
