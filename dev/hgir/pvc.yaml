@@ -6,8 +6,12 @@ metadata:
   name: hgir-db
   namespace: dev
 spec:
+  storageClassName: azure-disk-uid-70
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 8Gi
+  mountOptions:
+    - gid: 70
+    - uid: 70
