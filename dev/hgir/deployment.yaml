@@ -16,14 +16,12 @@ spec:
       labels:
         app: hgir
         tier: frontend
-      annotations:
-        flux.weave.works/automated: 'true'
     spec:
       imagePullSecrets:
       - name: registry-sdpakscr
       containers:
       - name: hgir
-        image: sdpakscr.azurecr.io/hgir
+        image: sdpakscr.azurecr.io/hgir:v0.0.1
         imagePullPolicy: Always
         env:
         - name: DATABASE_HOST
