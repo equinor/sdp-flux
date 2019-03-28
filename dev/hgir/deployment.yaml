@@ -69,6 +69,8 @@ spec:
               value: api
             - name: POSTGRES_DB
               value: api
+            - name: PGDATA 
+              value: /var/lib/postgresql/data/postgres
             - name:  POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -86,6 +88,7 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: db
+              subPath: postgres
       volumes:
       - name: db
         persistentVolumeClaim:

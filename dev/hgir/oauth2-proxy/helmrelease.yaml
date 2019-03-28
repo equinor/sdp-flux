@@ -5,6 +5,8 @@ kind: HelmRelease
 metadata:
   name: oauth2-proxy-hgir
   namespace: dev
+  label:
+    app: hgir
 spec:
   releaseName: oauth2-proxy-hgir
   chart:
