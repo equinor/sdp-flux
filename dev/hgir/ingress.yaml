@@ -22,7 +22,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: hgir-service
+              serviceName: hgir-frontend
               servicePort: 80
 ---
 apiVersion: extensions/v1beta1

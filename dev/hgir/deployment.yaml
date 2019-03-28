@@ -3,7 +3,8 @@ kind: Deployment
 metadata:
   labels:
     app: hgir
-  name: hgir-deployment
+    tier: frontend
+  name: hgir
   namespace: dev
 spec:
   replicas: 1
@@ -11,21 +12,82 @@ spec:
     metadata:
       labels:
         app: hgir
+        tier: frontend
     spec:
+      imagePullSecrets:
+          - name: registry-sdpakscr
       containers:
         - name: hgir
           image: sdpakscr.azurecr.io/hgir
           imagePullPolicy: Always
+          env:
+            - name: DATABASE_HOST
+              value: hgir-database
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: api
+            - name:  DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name:  hgir-secrets
+                  key:  DATABASE_PASSWORD
           ports:
             - containerPort: 80
               name: http
-          volumeMounts:
-            - mountPath: /data
-              name: storage
-              readOnly: false
+          resources:
+            requests:
+              cpu: 50m
+              memory: "100Mi"
+            limits:
+              cpu: 100m
+              memory: "200Mi"
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: hgir
+    tier: database
+  name: hgir-db
+  namespace: dev
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hgir
+        tier: database
+    spec:
       imagePullSecrets:
           - name: registry-sdpakscr
+      containers:
+        - name: hgir-db
+          image: postgres:10.2-alpine
+          env:
+            - name: POSTGRES_USER
+              value: api
+            - name: POSTGRES_DB
+              value: api
+            - name:  POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name:  hgir-secrets
+                  key:  DATABASE_PASSWORD
+          ports:
+            - containerPort: 5432
+          resources:
+            requests:
+              cpu: 50m
+              memory: "100Mi"
+            limits:
+              cpu: 100m
+              memory: "200Mi"
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: db
       volumes:
-      - name: storage
+      - name: db
         persistentVolumeClaim:
-          claimName: hgir-pvc
+          claimName: hgir-db
+

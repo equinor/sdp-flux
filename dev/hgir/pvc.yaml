@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   labels:
     app: hgir
-  name: hgir-pvc
+  name: hgir-db
   namespace: dev
 spec:
   accessModes:

@@ -1,9 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hgir-service
+  name: hgir-frontend
   labels:
     app: hgir
+    tier: frontend  
   namespace: dev
 spec:
   ports:
@@ -12,4 +13,23 @@ spec:
       protocol: TCP
   selector:
     app: hgir
+    tier: frontend
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hgir-database
+  labels:
+    app: hgir
+    tier: database
+  namespace: dev
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+  selector:
+    app: hgir
+    tier: database
   type: ClusterIP
