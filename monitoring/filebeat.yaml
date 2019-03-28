@@ -15,7 +15,7 @@ spec:
   values:
     image:
       repository: docker.elastic.co/beats/filebeat
-      tag: 6.6.1
+      tag: 6.7.0
     config:
       setup.dashboards.enabled: true
       setup.kibana:
