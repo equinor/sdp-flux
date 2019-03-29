@@ -1,0 +1,1 @@
+{"jobID":"ee440bc6-fb7b-800d-e5bb-eea357aa0ac1","spec":{"type":"policy","cause":{"Message":"","User":"soofstad \u003cstigofstad@gmail.com\u003e"},"spec":{"dev:deployment/hgir":{"add":{"tag_all":"glob:latest"},"remove":{}}}},"result":null}
