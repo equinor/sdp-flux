@@ -9,7 +9,7 @@ metadata:
   namespace: dev
   annotations:
     flux.weave.works/automated: 'true'
-    flux.weave.works/tag.hgir: glob:latest
+    flux.weave.works/tag.hgir: glob:v0.*
 spec:
   replicas: 1
   template:
