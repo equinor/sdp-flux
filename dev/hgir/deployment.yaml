@@ -25,6 +25,8 @@ spec:
         image: sdpakscr.azurecr.io/hgir:v0.2.0.1
         imagePullPolicy: Always
         env:
+        - name: HOST
+          value: https://hgir.dev.sdpaks.equinor.com
         - name: DATABASE_HOST
           value: hgir-database
         - name: DATABASE_PORT
