@@ -31,11 +31,20 @@ spec:
           value: "5432"
         - name: DATABASE_NAME
           value: api
+        - name: TENANT
+          value: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+        - name: APP_ID
+          value: c94a37c8-efb9-4f69-bc25-bcee90f4df72
         - name: DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
               name: hgir-secrets
               key: DATABASE_PASSWORD
+        - name: APP_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: APP_SECRET
         ports:
         - containerPort: 80
           name: http
