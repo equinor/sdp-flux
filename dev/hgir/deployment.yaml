@@ -26,7 +26,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: REPLY_HOST
-          value: https://hgir.dev.sdpaks.equinor.com
+          value: http://hgir.dev.sdpaks.equinor.com
         - name: DATABASE_HOST
           value: hgir-database
         - name: DATABASE_PORT
