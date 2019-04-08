@@ -6,6 +6,8 @@ metadata:
     app: aware
   name: aware
   namespace: monitoring
+  annotations:
+    flux.weave.works/tag.aware: glob:1.*
 spec:
   replicas: 2
   template:
