@@ -1,0 +1,1 @@
+{"jobID":"46d1f9ca-7c0f-6aba-e4af-6c84b9a64ef9","spec":{"type":"policy","cause":{"Message":"","User":"soofstad \u003cstigofstad@gmail.com\u003e"},"spec":{"monitoring:deployment/aware":{"add":{"tag_all":"glob:latest"},"remove":{}}}},"result":null}
