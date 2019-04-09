@@ -12,7 +12,6 @@ metadata:
 spec:
   tls:
   - hosts:
-    - sdp.equinor.com
     - sdp-web.sdpaks.equinor.com
     secretName: sdp-web-tls
   rules:
