@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hgir-ingress
+  namespace: prod
+  labels:
+    app: hgir
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname:  hgir.sdpaks.equinor.com.
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - hgir.sdpaks.equinor.com
+    secretName: hgir-tls
+  rules:
+    - host: hgir.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: hgir-frontend
+              servicePort: 80
+
