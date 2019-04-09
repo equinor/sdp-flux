@@ -1,0 +1,114 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: hgir
+    tier: frontend
+  name: hgir
+  namespace: prod
+  annotations:
+    flux.weave.works/automated: 'true'
+    flux.weave.works/tag.hgir: semver:~1.0
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hgir
+        tier: frontend
+    spec:
+      imagePullSecrets:
+      - name: registry-sdpakscr
+      containers:
+      - name: hgir
+        image: sdpakscr.azurecr.io/hgir:v1.0
+        imagePullPolicy: Always
+        env:
+        - name: REPLY_HOST
+          value: https://hgir.sdpaks.equinor.com
+        - name: DATABASE_HOST
+          value: hgir-database
+        - name: DATABASE_PORT
+          value: "5432"
+        - name: DATABASE_NAME
+          value: api
+        - name: TENANT
+          value: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+        - name: APP_ID
+          value: c94a37c8-efb9-4f69-bc25-bcee90f4df72
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: DATABASE_PASSWORD
+        - name: APP_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: APP_SECRET
+        ports:
+        - containerPort: 80
+          name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: hgir
+    tier: database
+  name: hgir-db
+  namespace: prod
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hgir
+        tier: database
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      imagePullSecrets:
+      - name: registry-sdpakscr
+      containers:
+      - name: hgir-db
+        image: postgres:10.2-alpine
+        env:
+        - name: POSTGRES_USER
+          value: api
+        - name: POSTGRES_DB
+          value: api
+        - name: PGDATA
+          value: /var/lib/postgresql/data/postgres
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hgir-secrets
+              key: DATABASE_PASSWORD
+        ports:
+        - containerPort: 5432
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: db
+          subPath: postgres
+      volumes:
+      - name: db
+        persistentVolumeClaim:
+          claimName: hgir-db
+
