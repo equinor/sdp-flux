@@ -15,13 +15,6 @@ spec:
     - sdp-web.sdpaks.equinor.com
     secretName: sdp-web-tls
   rules:
-    - host: sdp.equinor.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: sdp-web
-              servicePort: 80
     - host: sdp-web.sdpaks.equinor.com
       http:
         paths:
