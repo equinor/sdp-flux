@@ -26,7 +26,7 @@ spec:
       updateStrategy:
         type: RollingUpdate
       persistence:
-        size: 30Gi
+        size: 100Gi
         storageClass: managed-premium
     master:
       updateStrategy:
