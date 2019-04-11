@@ -27,3 +27,5 @@ spec:
             key: domain-filter
     rbac:
       create: true
+    sources:
+    - ingress
