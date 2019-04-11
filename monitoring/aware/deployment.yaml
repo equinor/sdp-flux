@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: aware
-        image: sdpequinor/aware:latest
+        image: sdpequinor/aware:1.1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
