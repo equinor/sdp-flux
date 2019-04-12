@@ -27,7 +27,7 @@ spec:
         - name: REFRESH_INTERVAL
           value: "15"
         - name: DASHBOARD_HEADER
-          value: "SDP AKS Alerts"
+          value: "SDP AKS Development"
         - name: PROMETHEUS_API
           value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
         - name: IGNORE_ALERTS
