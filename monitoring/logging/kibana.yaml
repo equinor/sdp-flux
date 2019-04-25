@@ -1,0 +1,54 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  annotations:
+    flux.weave.works/automated: false
+  name: kibana
+  namespace: monitoring
+spec:
+  chart:
+    name: kibana
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    version: 2.0.0
+  releaseName: kibana
+  values:
+    image:
+      repository: docker.elastic.co/kibana/kibana
+      tag: 6.7.0
+    files:
+      kibana.yml:
+        elasticsearch.url: http://elasticsearch-client:9200
+    ingress:
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: kibana.dev.sdpaks.equinor.com.
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+      enabled: true
+      hosts:
+      - kibana.dev.sdpaks.equinor.com
+      tls:
+      - hosts:
+        - kibana.dev.sdpaks.equinor.com
+        secretName: kibana-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kibana-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: kibana.dev.sdpaks.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: oauth2-proxy-sdp
+          servicePort: 4180
+        path: /oauth2
+  tls:
+  - hosts:
+    - kibana.dev.sdpaks.equinor.com
+    secretName: kibana-tls
