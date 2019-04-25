@@ -21,17 +21,17 @@ spec:
         elasticsearch.url: http://elasticsearch-client:9200
     ingress:
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: kibana.dev.sdpaks.equinor.com.
+        external-dns.alpha.kubernetes.io/hostname: kibana.sdpaks.equinor.com.
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
         nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
         nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
       enabled: true
       hosts:
-      - kibana.dev.sdpaks.equinor.com
+      - kibana.sdpaks.equinor.com
       tls:
       - hosts:
-        - kibana.dev.sdpaks.equinor.com
+        - kibana.sdpaks.equinor.com
         secretName: kibana-tls
 ---
 apiVersion: extensions/v1beta1
@@ -41,7 +41,7 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: kibana.dev.sdpaks.equinor.com
+  - host: kibana.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -50,5 +50,5 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - kibana.dev.sdpaks.equinor.com
+    - kibana.sdpaks.equinor.com
     secretName: kibana-tls
