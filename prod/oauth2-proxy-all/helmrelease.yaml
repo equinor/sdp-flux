@@ -8,12 +8,14 @@ metadata:
 spec:
   releaseName: oauth2-proxy-all
   chart:
-    git: ssh://git@github.com/equinor/sdp-flux.git
-    ref: master
-    path: custom-charts/sdp-oauth2-proxy
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: oauth2-proxy
+    version: 0.11.0
   values:
     replicaCount: 1
-    container:
-      args:
-        azure_tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
-    envFromSecret: oauth2-proxy-all
+    extraArgs:
+      provider: azure
+      azure-tenant: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+    config:
+      existingSecret: oauth2-proxy-all
+      
