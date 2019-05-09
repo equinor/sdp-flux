@@ -57,6 +57,13 @@ spec:
           limits:
             cpu: 100m
             memory: "200Mi"
+        volumeMounts:
+        - mountPath: /data
+          name: sqlite
+      volumes:
+      - name: sqlite
+        persistentVolumeClaim:
+          claimName: hgir-sqlite
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
