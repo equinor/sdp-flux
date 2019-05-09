@@ -22,7 +22,7 @@ spec:
       - name: registry-sdpakscr
       containers:
       - name: hgir
-        image: sdpakscr.azurecr.io/hgir:1.0.7
+        image: sdpakscr.azurecr.io/hgir:1.0.8
         imagePullPolicy: Always
         env:
         - name: REPLY_HOST
