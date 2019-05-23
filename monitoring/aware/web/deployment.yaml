@@ -22,8 +22,10 @@ spec:
     spec:
       containers:
       - name: aware-web
-        image: sdpequinor/aware-web:1.0
+        image: sdpequinor/aware-web:1.1
         imagePullPolicy: Always
+        command: ["serve"]
+        args: ["serve", "--single", "build", "--listen", "3000"]
         ports:
         - containerPort: 3000
           name: http
