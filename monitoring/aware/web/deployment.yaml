@@ -4,36 +4,31 @@ kind: Deployment
 metadata:
   labels:
     app: aware
-  name: aware
+    tier: web
+  name: aware-web
   namespace: monitoring
   annotations:
     flux.weave.works/automated: 'true'
-    flux.weave.works/tag.aware: glob:1.*
+    flux.weave.works/tag.aware-web: glob:1.*
 spec:
   replicas: 1
   template:
     metadata:
       labels:
         app: aware
+        tier: web
       annotations:
         flux.weave.works/automated: 'true'
     spec:
       containers:
-      - name: aware
-        image: sdpequinor/aware:1.1.2
+      - name: aware-web
+        image: sdpequinor/aware-web:1.1
         imagePullPolicy: Always
+        command: ["serve"]
+        args: ["--single", "build", "--listen", "3000"]
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
           name: http
-        env:
-        - name: REFRESH_INTERVAL
-          value: "15"
-        - name: DASHBOARD_HEADER
-          value: "SDP AKS Development"
-        - name: PROMETHEUS_API
-          value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
-        - name: IGNORE_ALERTS
-          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown"
         resources:
           requests:
             cpu: 100m
@@ -41,3 +36,4 @@ spec:
           limits:
             cpu: 500m
             memory: "1Gi"
+

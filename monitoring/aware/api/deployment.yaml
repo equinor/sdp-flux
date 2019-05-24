@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: aware
+    tier: api
+  name: aware-api
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: 'true'
+    flux.weave.works/tag.aware: glob:2.*
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: aware
+        tier: api
+      annotations:
+        flux.weave.works/automated: 'true'
+    spec:
+      containers:
+      - name: aware-api
+        image: sdpequinor/aware:2.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: PROMETHEUS_API
+          value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+        - name: IGNORE_ALERTS
+          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown"
+        resources:
+          requests:
+            cpu: 100m
+            memory: "100Mi"
+          limits:
+            cpu: 500m
+            memory: "1Gi"

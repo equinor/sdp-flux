@@ -20,9 +20,13 @@ spec:
     - host: aware.dev.sdpaks.equinor.com
       http:
         paths:
+          - path: /api
+            backend:
+              serviceName: aware-api
+              servicePort: 80
           - path: /
             backend:
-              serviceName: aware
+              serviceName: aware-web
               servicePort: 80
 ---
 apiVersion: extensions/v1beta1
