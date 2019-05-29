@@ -6,6 +6,8 @@ metadata:
   namespace: monitoring
   annotations:
     flux.weave.works/automated: false
+    flux.weave.works/locked: 'true'
+    flux.weave.works/locked_user: soofstad <stigofstad@gmail.com>
 spec:
   chart:
     name: elasticsearch
