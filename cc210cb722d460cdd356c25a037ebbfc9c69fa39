@@ -1,0 +1,1 @@
+{"jobID":"ed6ac776-cf9e-a2fd-e01d-e9bef62cfa3e","spec":{"type":"policy","cause":{"Message":"","User":"soofstad \u003cstigofstad@gmail.com\u003e"},"spec":{"monitoring:helmrelease/elasticsearch":{"add":{"locked":"true","locked_msg":"","locked_user":"soofstad \u003cstigofstad@gmail.com\u003e"},"remove":{}}}},"result":null}
