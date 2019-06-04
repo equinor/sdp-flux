@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: release-aware-web
-        image: sdpequinor/release-aware-web:1.1
+        image: sdpequinor/release-aware-web:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
