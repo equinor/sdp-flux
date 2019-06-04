@@ -24,6 +24,8 @@ spec:
       - name: release-aware-web
         image: sdpequinor/release-aware-web:1.0
         imagePullPolicy: Always
+        command: ["serve"]
+        args: ["--single", "build", "--listen", "3000"]
         ports:
         - containerPort: 3000
           name: http
