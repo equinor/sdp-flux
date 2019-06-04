@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: release-aware
+    tier: web
+  name: release-aware-web
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: 'true'
+    flux.weave.works/tag.aware-web: glob:1.*
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: release-aware
+        tier: web
+      annotations:
+        flux.weave.works/automated: 'true'
+    spec:
+      containers:
+      - name: release-aware-web
+        image: sdpequinor/release-aware-web:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+        resources:
+          requests:
+            cpu: 100m
+            memory: "100Mi"
+          limits:
+            cpu: 500m
+            memory: "1Gi"
+
