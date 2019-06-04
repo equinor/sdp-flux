@@ -25,7 +25,7 @@ spec:
         image: sdpequinor/release-aware-api:1.0
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 8080
           name: http
         env:
         - name: REPOSITORIES
