@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: release-aware
+    tier: api
+  name: release-aware-api
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: 'true'
+    flux.weave.works/tag.aware: glob:1.*
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: release-aware
+        tier: api
+      annotations:
+        flux.weave.works/automated: 'true'
+    spec:
+      containers:
+      - name: release-aware-api
+        image: sdpequinor/release-aware-api:1.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: REPOSITORIES
+          value: |
+            golang/go,
+            nodejs/node,
+            Leaflet/Leaflet,
+            containous/traefik,
+            grafana/grafana,
+            axios/axios,
+            vuejs/vue,
+            d3/d3,
+            torvalds/linux,
+            Microsoft/vscode,
+            git/git,
+            tmux/tmux, 
+            jenkinsci/jenkins, 
+            weaveworks/flux, 
+            facebook/create-react-app, 
+            facebook/react, 
+            pallets/flask, 
+            styled-components/styled-components, 
+            graphql/graphql-js, 
+            ReactTraining/react-router, 
+            docker/docker-ce, 
+            docker/compose, 
+            Azure/AKS, 
+            Azure/aks-engine, 
+            derailed/k9s, 
+            kubernetes/kubernetes, 
+            graphql-python/flask-graphql, 
+            graphql-python/graphene, 
+            behave/behave,
+            sqlalchemy/sqlalchemy
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: release-aware-secrets
+              key: GITHUB_TOKEN
+        resources:
+          requests:
+            cpu: 100m
+            memory: "100Mi"
+          limits:
+            cpu: 500m
+            memory: "1Gi"
