@@ -59,7 +59,14 @@ spec:
             graphql-python/flask-graphql,
             graphql-python/graphene,
             behave/behave,
-            sqlalchemy/sqlalchemy
+            sqlalchemy/sqlalchemy,
+            rust-lang/rust,
+            elastic/elasticsearch,
+            elastic/kibana,
+            Microsoft/TypeScript,
+            Homebrew/homebrew-cask,
+            gatsbyjs/gatsby,
+            python/cpython
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
