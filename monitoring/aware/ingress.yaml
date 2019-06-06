@@ -13,9 +13,9 @@ metadata:
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
-  - hosts:
-    - aware.sdpaks.equinor.com
-    secretName: aware-tls
+    - hosts:
+        - aware.sdpaks.equinor.com
+      secretName: aware-tls
   rules:
     - host: aware.sdpaks.equinor.com
       http:
@@ -38,14 +38,14 @@ metadata:
     app: aware
 spec:
   tls:
-  - hosts:
-    - aware.sdpaks.equinor.com
-    secretName: aware-tls
+    - hosts:
+        - aware.sdpaks.equinor.com
+      secretName: aware-tls
   rules:
     - host: aware.sdpaks.equinor.com
       http:
         paths:
-          - path: /oauth2 
+          - path: /oauth2
             backend:
               serviceName: oauth2-proxy-sdp
               servicePort: 4180
