@@ -26,8 +26,8 @@ spec:
       updateStrategy:
         type: RollingUpdate
       persistence:
-        size: 100Gi
-        storageClass: managed-premium
+        size: 300Gi
+        storageClass: expand-azurefile-premium
     master:
       updateStrategy:
         type: RollingUpdate

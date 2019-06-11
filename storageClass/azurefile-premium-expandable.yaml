@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: expand-azurefile-premium
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+parameters:
+  skuName: Premium_LRS
+provisioner: kubernetes.io/azure-file
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
