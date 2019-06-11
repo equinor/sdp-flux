@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: release-aware-web
-        image: sdpequinor/release-aware-web:1.5
+        image: sdpequinor/release-aware-web:1.6
         imagePullPolicy: Always
         command: ["serve"]
         args: ["--single", "build", "--listen", "3000"]
