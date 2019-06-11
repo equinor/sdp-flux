@@ -18,3 +18,5 @@ spec:
     env:
       GIT_REPO: http://github.com/equinor/sdp-aks-puppet.git
       GIT_BRANCH: develop
+    image:
+      tag: "1.0"
