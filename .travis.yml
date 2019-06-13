@@ -5,8 +5,12 @@ env:
   global:
     - HELM_URL=https://storage.googleapis.com/kubernetes-helm
     - HELM_TAR=helm-v2.12.3-linux-amd64.tar.gz
+    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.10.0/
+    - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
 
 install:
+  - wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
+  - tar xzfv ${KUBEVAL_TAR}
   - wget -q ${HELM_URL}/${HELM_TAR}
   - tar xzfv ${HELM_TAR}
   - PATH=`pwd`/linux-amd64/:$PATH
@@ -14,6 +18,12 @@ install:
 
 script:
   - >
+    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f -name *.yaml -exec grep -l -H -L 'flux.weave.works\|bitnami.com\|certmanager' {} \;)
+    kubeval $fileList
+      if [ $? != 0 ]; then
+       travis_terminate 1
+      fi
+
      for chart in `ls ./custom-charts`; do
       helm lint ./custom-charts/${chart}
       if [ $? != 0 ]; then
