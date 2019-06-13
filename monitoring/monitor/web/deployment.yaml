@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: monitor
-        image: sdpequinor/monitor:1.0
+        image: sdpequinor/monitor:1.2
         imagePullPolicy: Always
         command: ["serve"]
         args: ["--single", "build", "--listen", "3000"]
