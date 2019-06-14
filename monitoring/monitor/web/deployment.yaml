@@ -31,8 +31,8 @@ spec:
           name: http
         resources:
           requests:
-            cpu: 100m
-            memory: "100Mi"
+            cpu: 200m
+            memory: "300Mi"
           limits:
             cpu: 500m
             memory: "1Gi"
