@@ -13,17 +13,13 @@ install:
   - tar xzfv ${KUBEVAL_TAR}
   - wget -q ${HELM_URL}/${HELM_TAR}
   - tar xzfv ${HELM_TAR}
-  - PATH=`pwd`/linux-amd64/:$PATH
+  - PATH=`pwd`/linux-amd64/:`pwd`/kubeval:$PATH
   - helm init --client-only
 
 script:
   - >
     fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f -name *.yaml -exec grep -l -H -L \
-    'apiVersion: flux.weave.works\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io' {} \;) \
-    && ./kubeval $fileList
-      if [ $? != 0 ]; then
-       travis_terminate 1
-      fi
+    'apiVersion: flux.weave.works\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io' {} \;) 
 
      for chart in `ls ./custom-charts`; do
       helm lint ./custom-charts/${chart}
@@ -31,3 +27,8 @@ script:
        travis_terminate 1
       fi
      done
+
+      kubeval $fileList
+      if [ $? != 0 ]; then
+       travis_terminate 1
+      fi
