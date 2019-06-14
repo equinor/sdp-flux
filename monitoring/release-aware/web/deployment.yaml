@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: release-aware-web
-        image: sdpequinor/release-aware-web:1.6
+        image: sdpequinor/release-aware-web:1.6.1
         imagePullPolicy: Always
         command: ["serve"]
         args: ["--single", "build", "--listen", "3000"]
@@ -36,4 +36,3 @@ spec:
           limits:
             cpu: 500m
             memory: "1Gi"
-

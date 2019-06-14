@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: release-aware-api
-        image: sdpequinor/release-aware-api:1.6.1
+        image: sdpequinor/release-aware-api:1.6
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
