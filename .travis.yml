@@ -18,7 +18,12 @@ install:
 
 script:
   - >
-    pwd && ls
+    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f -name *.yaml -exec grep -l -H -L \
+    'apiVersion: flux.weave.works\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io' {} \;) \
+    && ./kubeval $fileList
+      if [ $? != 0 ]; then
+       travis_terminate 1
+      fi
 
      for chart in `ls ./custom-charts`; do
       helm lint ./custom-charts/${chart}
