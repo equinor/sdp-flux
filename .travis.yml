@@ -18,8 +18,9 @@ install:
 
 script:
   - >
-    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f -name *.yaml -exec grep -l -H -L 'flux.weave.works\|bitnami.com\|certmanager' {} \;)
-    kubeval $fileList
+    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f -name *.yaml -exec grep -l -H -L \
+    'apiVersion: flux.weave.works\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io' {} \;)
+    ./kubeval $fileList
       if [ $? != 0 ]; then
        travis_terminate 1
       fi
