@@ -10,13 +10,13 @@ metadata:
 spec:
   releaseName: verdaccio
   chart:
-    git: ssh://git@github.com/soofstad/charts.git
-    ref: master
-    path: stable/verdaccio
+    git: git@github.com:equinor/sdp-flux.git
+    ref: develop
+    path: custom-charts/verdaccio
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
-      tag: latest
+      tag: 4.0.3
     environmentsFromSecrets:
       enabled: true
     env:
