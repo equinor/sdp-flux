@@ -1,4 +1,3 @@
-# Private NPM repository for internal use, uses Oath2 authentication
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
@@ -16,7 +15,7 @@ spec:
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
-      tag: latest
+      tag: 4.0.3
     environmentsFromSecrets:
       enabled: true
     env:
@@ -34,7 +33,7 @@ spec:
       - secretName: npm-equinor-com-tls
         hosts:
         - npm.equinor.com
-    configMap: |
+    configMap: |-
       storage: /verdaccio/storage
 
       middlewares:
