@@ -4,14 +4,12 @@ kind: HelmRelease
 metadata:
   name: verdaccio
   namespace: prod
-  annotations:
-    flux.weave.works/automated: "true"
 spec:
   releaseName: verdaccio
   chart:
-    git: ssh://git@github.com/soofstad/charts.git
+    git: git@github.com:equinor/sdp-flux.git
     ref: master
-    path: stable/verdaccio
+    path: custom-charts/verdaccio
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
