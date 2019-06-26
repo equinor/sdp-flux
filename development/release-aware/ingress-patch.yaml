@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: release-aware
+  namespace: monitoring
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: release-aware.dev.sdpaks.equinor.com.
+spec:
+  tls:
+  - hosts:
+    - release-aware.dev.sdpaks.equinor.com
+  rules:
+    - host: release-aware.dev.sdpaks.equinor.com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: release-aware-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: release-aware.dev.sdpaks.equinor.com
+  tls:
+  - hosts:
+    - release-aware.dev.sdpaks.equinor.com

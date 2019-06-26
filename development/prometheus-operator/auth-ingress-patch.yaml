@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: alertmanager-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: alertmanager.dev.sdpaks.equinor.com
+  tls:
+  - hosts:
+    - alertmanager.dev.sdpaks.equinor.com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus-auth
+  namespace: monitoring
+spec:
+  rules:
+  - host: prometheus.dev.sdpaks.equinor.com
+  tls:
+  - hosts:
+    - prometheus.dev.sdpaks.equinor.com

@@ -1,0 +1,19 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: verdaccio
+  namespace: prod
+spec:
+  values:
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        external-dns.alpha.kubernetes.io/hostname: npm.dev.sdpaks.equinor.com.
+        kubernetes.io/tls-acme: "true"
+      hosts:
+      - npm.dev.sdpaks.equinor.com
+      tls:
+      - secretName: npm-equinor-com-tls
+        hosts:
+        - npm.dev.sdpaks.equinor.com
