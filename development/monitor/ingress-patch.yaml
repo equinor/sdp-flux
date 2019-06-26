@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitor
+  namespace: monitoring
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: monitor.dev.sdpaks.equinor.com.
+spec:
+  tls:
+  - hosts:
+    - monitor.dev.sdpaks.equinor.com
+  rules:
+    - host: monitor.dev.sdpaks.equinor.com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitor-auth
+  namespace: monitoring
+spec:
+  tls:
+  - hosts:
+    - monitor.dev.sdpaks.equinor.com
+  rules:
+    - host: monitor.dev.sdpaks.equinor.com

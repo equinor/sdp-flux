@@ -20,6 +20,8 @@ spec:
       secret:
         name: verdaccio-client-secret
         key: OAUTH_CLIENT_SECRET
+    persistence:
+      size: 15Gi
     ingress:
       enabled: true
       annotations:
@@ -43,7 +45,7 @@ spec:
 
       auth:
         github-oauth:
-          org: equinor 
+          org: equinor
           cache-ttl-ms: 60000
       security:
         api:

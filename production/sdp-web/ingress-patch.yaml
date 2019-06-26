@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdp-web
+  namespace: prod
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: sdp-web.sdpaks.equinor.com.
+spec:
+  tls:
+  - hosts:
+    - sdp-web.sdpaks.equinor.com
+  rules:
+    - host: sdp-web.sdpaks.equinor.com
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdp-web-auth
+  namespace: prod
+spec:
+  rules:
+  - host: sdp-web.sdpaks.equinor.com
+  tls:
+  - hosts:
+    - sdp-web.sdpaks.equinor.com
