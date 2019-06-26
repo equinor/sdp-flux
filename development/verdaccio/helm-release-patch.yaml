@@ -9,11 +9,11 @@ spec:
     ingress:
       annotations:
         kubernetes.io/ingress.class: nginx
-        external-dns.alpha.kubernetes.io/hostname: npm.dev.sdpaks.equinor.com.
+        external-dns.alpha.kubernetes.io/hostname: jwt.dev.sdpaks.equinor.com.
         kubernetes.io/tls-acme: "true"
       hosts:
-      - npm.dev.sdpaks.equinor.com
+      - jwt.dev.sdpaks.equinor.com
       tls:
-      - secretName: npm-equinor-com-tls
+      - secretName: jwt-equinor-com-tls
         hosts:
-        - npm.dev.sdpaks.equinor.com
+        - jwt.dev.sdpaks.equinor.com
