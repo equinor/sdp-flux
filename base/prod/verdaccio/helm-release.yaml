@@ -21,7 +21,6 @@ spec:
         name: verdaccio-client-secret
         key: OAUTH_CLIENT_SECRET
     persistence:
-      storageClass: expand-azurefile-premium
       size: 15Gi
     ingress:
       enabled: true
