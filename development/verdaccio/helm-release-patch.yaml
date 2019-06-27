@@ -6,11 +6,11 @@ metadata:
   namespace: prod
 spec:
   values:
+    persistence:
+        size: 2Gi
     ingress:
       annotations:
-        kubernetes.io/ingress.class: nginx
         external-dns.alpha.kubernetes.io/hostname: jwt.dev.sdpaks.equinor.com.
-        kubernetes.io/tls-acme: "true"
       hosts:
       - jwt.dev.sdpaks.equinor.com
       tls:

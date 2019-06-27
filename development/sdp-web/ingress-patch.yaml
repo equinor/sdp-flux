@@ -11,4 +11,3 @@ spec:
     - sdp-web.dev.sdpaks.equinor.com
   rules:
     - host: sdp-web.dev.sdpaks.equinor.com
-    - host: sdp-web.dev.sdpaks.equinor.com
