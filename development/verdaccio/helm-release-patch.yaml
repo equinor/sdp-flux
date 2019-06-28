@@ -8,6 +8,7 @@ spec:
   values:
     persistence:
         size: 2Gi
+        storageClass: "expand-azurefile-premium"
     ingress:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: jwt.dev.sdpaks.equinor.com.
