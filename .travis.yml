@@ -17,10 +17,12 @@ install:
   - helm init --client-only
 
 script:
-  - >
-    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f \( ! -iname ".flux.yaml" \) -name *.yaml -exec grep -L -H 'apiVersion: flux.weave.works/v1beta1\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io\|apiVersion: kustomize.config.k8s.io/v1beta1' {} \;) 
-
-     echo $fileList
+  - |
+    fileList=$(find "$(pwd -P)" 
+    -not -path "*/custom-charts*" 
+    -type f \( ! -iname ".flux.yaml" \) 
+    -name *.yaml
+    -exec grep -L -H 'apiVersion: flux.weave.works/v1beta1\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io\|apiVersion: kustomize.config.k8s.io/v1beta1' {} \;) 
 
      for chart in `ls ./custom-charts`; do
       helm lint ./custom-charts/${chart}
