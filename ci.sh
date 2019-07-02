@@ -1,6 +1,7 @@
+#! /bin/bash
+
 if [ "$1" = "charts" ]; then
     echo "Linting custom charts"
-    ls -lah
     for chart in $(ls ./custom-charts); do
       helm lint ./custom-charts/${chart}
       if [ $? != 0 ]; then
