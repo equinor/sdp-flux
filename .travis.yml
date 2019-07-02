@@ -8,6 +8,9 @@ env:
     - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.10.0/
     - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
 
+stages:
+  - lint
+
 install:
   - wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
   - tar xzfv ${KUBEVAL_TAR}
@@ -15,19 +18,18 @@ install:
   - tar xzfv ${HELM_TAR}
   - PATH=`pwd`/linux-amd64/:$PATH
   - helm init --client-only
+  # Kubectl
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+  - chmod +x ./kubectl
 
-script:
-  - >
-    fileList=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f \( ! -iname ".flux.yaml" \) -name *.yaml -exec grep -L -H 'apiVersion: flux.weave.works/v1beta1\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io\|apiVersion: kustomize.config.k8s.io/v1beta1' {} \;) 
-    
-     for chart in `ls ./custom-charts`; do
-      helm lint ./custom-charts/${chart}
-      if [ $? != 0 ]; then
-       travis_terminate 1
-      fi
-     done
-
-      ./kubeval $fileList
-      if [ $? != 0 ]; then
-       travis_terminate 1
-      fi
+jobs:
+  include:
+    - stage: lint
+      name: "Custom Charts"
+      script: ./ci.sh charts
+    - stage: lint
+      name: "Kustomize"
+      script: ./ci.sh kustomize
+    - stage: lint
+      name: "Native K8s Manifests"
+      script: ./ci.sh manifests
