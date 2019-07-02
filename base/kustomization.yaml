@@ -18,7 +18,7 @@ resources:
 #- ./monitoring/logging/elasticsearch.yaml
 #- ./monitoring/logging/filebeat.yaml
 #- ./monitoring/logging/kibana.yaml
-#- ./monitoring/monitor/ingress.yaml
+- ./monitoring/monitor/ingress.yaml
 - ./monitoring/monitor/web/deployment.yaml
 - ./monitoring/monitor/web/service.yaml
 - ./monitoring/oauth2-proxy/sdp/helmrelease.yaml
