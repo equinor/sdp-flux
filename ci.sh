@@ -1,5 +1,3 @@
-#! /bin/bash
-
 if [ "$1" = "charts" ]; then
     echo "Linting custom charts"
     ls -lah
