@@ -22,4 +22,4 @@ spec:
     - hosts:
         - aware.sdpaks.equinor.com
   rules:
-    - host:aware.sdpaks.equinor.com
+    - host: aware.sdpaks.equinor.com
