@@ -4,13 +4,13 @@ metadata:
   name: aware
   namespace: monitoring
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: aware.dev.sdpaks.equinor.com.
+    external-dns.alpha.kubernetes.io/hostname: aware.sdpaks.equinor.com.
 spec:
   tls:
     - hosts:
-        - aware.dev.sdpaks.equinor.com
+        - aware.sdpaks.equinor.com
   rules:
-    - host: aware.dev.sdpaks.equinor.com
+    - host: aware.sdpaks.equinor.com
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -20,6 +20,6 @@ metadata:
 spec:
   tls:
     - hosts:
-        - aware.dev.sdpaks.equinor.com
+        - aware.sdpaks.equinor.com
   rules:
-    - host: aware.dev.sdpaks.equinor.com
+    - host:aware.sdpaks.equinor.com
