@@ -7,8 +7,6 @@ metadata:
 spec:
   values:
     persistence:
-        size: 5Gi
-        storageClass: "expand-azurefile-premium"
     ingress:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com
