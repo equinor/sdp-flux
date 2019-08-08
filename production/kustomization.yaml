@@ -4,4 +4,10 @@ kind: Kustomization
 bases:
   - ../base/
 patchesStrategicMerge:
-- ./sdp-web/ingress-patch.yaml
+  - ./sdp-web/ingress-patch.yaml
+  - ./aware/ingress-patch.yaml
+  - ./monitor/ingress-patch.yaml
+  - ./prometheus-operator/auth-ingress-patch.yaml
+  - ./prometheus-operator/helm-release-patch.yaml
+  - ./release-aware/ingress-patch.yaml
+  - ./verdaccio/helm-release-patch.yaml

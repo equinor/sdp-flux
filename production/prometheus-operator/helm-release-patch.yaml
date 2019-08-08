@@ -1,0 +1,43 @@
+# Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+spec:
+  values:
+    alertmanager:
+      ingress:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: alertmanager.sdpaks.equinor.com.
+        hosts:
+        - alertmanager.sdpaks.equinor.com.
+        tls:
+        - secretName: alertmanager-tls
+          hosts:
+          - alertmanager.sdpaks.equinor.com.
+
+    grafana:
+      env:
+        GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
+      ingress:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: grafana.sdpaks.equinor.com.
+        hosts:
+        - grafana.sdpaks.equinor.com.
+        tls:
+        - secretName: grafana-tls
+          hosts:
+          - grafana.sdpaks.equinor.com.
+
+    prometheus:
+      ingress:
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: prometheus.sdpaks.equinor.com
+        hosts:
+        - prometheus.sdpaks.equinor.com
+        tls:
+        - secretName: prometheus-tls
+          hosts:
+          - prometheus.sdpaks.equinor.com
