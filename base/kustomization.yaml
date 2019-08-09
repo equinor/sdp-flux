@@ -53,4 +53,3 @@ resources:
 - ./prod/verdaccio/helm-release.yaml
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
-- ./storageClass/azurefile-premium-expandable.yaml
