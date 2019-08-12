@@ -3,23 +3,49 @@ kind: Ingress
 metadata:
   name: release-aware
   namespace: monitoring
+  labels:
+    app: release-aware
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: release-aware.sdpaks.equinor.com
+    external-dns.alpha.kubernetes.io/hostname: release-aware.sdpaks.equinor.com.
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
     - release-aware.sdpaks.equinor.com
+    secretName: release-aware-tls
   rules:
     - host: release-aware.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: release-aware-api
+              servicePort: 80
+          - path: /
+            backend:
+              serviceName: release-aware-web
+              servicePort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: release-aware-auth
   namespace: monitoring
+  labels:
+    app: release-aware
 spec:
-  rules:
-  - host: release-aware.sdpaks.equinor.com
   tls:
   - hosts:
     - release-aware.sdpaks.equinor.com
+    secretName: release-aware-tls
+  rules:
+    - host: release-aware.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180
