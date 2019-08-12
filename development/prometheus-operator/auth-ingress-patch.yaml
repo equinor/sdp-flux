@@ -25,7 +25,7 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: prometheus.sdpaks.equinor.com
+  - host: prometheus.dev.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -34,5 +34,5 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - prometheus.sdpaks.equinor.com
+    - prometheus.dev.sdpaks.equinor.com
     secretName: prometheus-tls
