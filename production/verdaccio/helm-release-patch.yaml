@@ -5,11 +5,13 @@ metadata:
   name: verdaccio
   namespace: prod
 spec:
+  releaseName: verdaccio
+  chart:
+    git: git@github.com:equinor/sdp-flux.git
+    ref: master
+    path: custom-charts/verdaccio
   values:
-    persistence:
     ingress:
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com
       hosts:
       - npm.equinor.com
       tls:

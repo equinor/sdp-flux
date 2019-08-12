@@ -3,14 +3,23 @@ kind: Ingress
 metadata:
   name: release-aware
   namespace: monitoring
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: release-aware.sdpaks.equinor.com
 spec:
   tls:
   - hosts:
     - release-aware.sdpaks.equinor.com
+    secretName: release-aware-tls
   rules:
     - host: release-aware.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: release-aware-api
+              servicePort: 80
+          - path: /
+            backend:
+              serviceName: release-aware-web
+              servicePort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -18,8 +27,15 @@ metadata:
   name: release-aware-auth
   namespace: monitoring
 spec:
-  rules:
-  - host: release-aware.sdpaks.equinor.com
   tls:
   - hosts:
     - release-aware.sdpaks.equinor.com
+    secretName: release-aware-tls
+  rules:
+    - host: release-aware.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

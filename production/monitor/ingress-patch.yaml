@@ -3,14 +3,19 @@ kind: Ingress
 metadata:
   name: monitor
   namespace: monitoring
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: monitor.sdpaks.equinor.com.
 spec:
   tls:
   - hosts:
     - monitor.sdpaks.equinor.com
+    secretName: monitor-tls
   rules:
     - host: monitor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: monitor
+              servicePort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -21,5 +26,12 @@ spec:
   tls:
   - hosts:
     - monitor.sdpaks.equinor.com
+    secretName: monitor-tls
   rules:
     - host: monitor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

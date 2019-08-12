@@ -9,8 +9,6 @@ spec:
   values:
     alertmanager:
       ingress:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: alertmanager.dev.sdpaks.equinor.com.
         hosts:
         - alertmanager.dev.sdpaks.equinor.com
         tls:
@@ -22,8 +20,6 @@ spec:
       env:
         GF_SERVER_ROOT_URL: https://grafana.dev.sdpaks.equinor.com
       ingress:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: grafana.dev.sdpaks.equinor.com.
         hosts:
         - grafana.dev.sdpaks.equinor.com
         tls:
@@ -33,8 +29,7 @@ spec:
 
     prometheus:
       ingress:
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: prometheus.dev.sdpaks.equinor.com.
+        enabled: true
         hosts:
         - prometheus.dev.sdpaks.equinor.com
         tls:

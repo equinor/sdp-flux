@@ -5,6 +5,7 @@ This is the repository where we define the manifest to be run in Kubernetes. We 
 
 ## How it works
 In essence we create manifests to be run on the Kubernetes cluster, commit them to this repository and then the Flux controller notices the new commit and applies all the YAML files (can be simplified down to `kubectl apply -f FILENAME`).
+We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/development](/development) and [/production](/production) folders. Your cluster's Flux operator is configured to listen to a specific repo, branch and path for an effective GitOps workflow. 
 
 ## How we use it
 In production we never commit straight to the repository, always create a new branch (or use your existing) (`git branch -b new_branch_name`) modify what you want changed or implement your new feature, commit (`git add . && git commit -m 'commit message'`) and then push to remote (`git push -u origin new_branch_name`). After all this editing, commit and pushing you need to create a pull-request so that you, but preferably another on your team can see review the changes and merge the files.
@@ -14,7 +15,8 @@ __TODO__: Find a procedure for testing the code before commiting and running on 
 ## Naming conventions
 This readme should always be called README.md and be placed on the root. In addition to this readme we have docs in the `docs` folder. The `custom-charts` folder contains the charts we have created ourselves and and is needed for our cluster. The creation of new namespaces is done by creating a new file with the same name as the namespace(.yaml) and place it under the folder `namespaces`.
 
-The different applications and workloads we run is placed in the folder with the same name as their namespace. E.g. sdp-demo should be run in staging namespace and is therefore placed `staging/sdp-demo.yaml`. For all services that can be described and run from one manifest should have the same name as the workload(.yaml) under namespace folder. If multiple manifests is needed a directory should be created and files placed inside. Preferably the manifest should be named as per the kind, e.g. helmrelease.yaml if only one resource of this kind is created.
+The different applications and workloads we run are placed in the folder with the same name as their namespace. E.g. sdp-demo should be run in staging namespace and is therefore placed `staging/sdp-demo.yaml`. For all services that can be described and run from one manifest should have the same name as the workload(.yaml) under namespace folder. If multiple manifests is needed a directory should be created and files placed inside. Preferably the manifest should be named as per the kind, e.g. helmrelease.yaml if only one resource of this kind is created.
+For now, the /production and /development branches do not contain a folder structure based on namespaces
 
 ## Using Sealed Secrets
 Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a system called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this system we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster
