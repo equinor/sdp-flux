@@ -9,8 +9,8 @@ spec:
     persistence:
         size: 5Gi
     ingress:
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: npm.dev.sdpaks.equinor.com.
+    #  annotations:
+     #   external-dns.alpha.kubernetes.io/hostname: npm.dev.sdpaks.equinor.com.
       hosts:
       - npm.dev.sdpaks.equinor.com
       tls:
