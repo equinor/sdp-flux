@@ -3,14 +3,6 @@ kind: Ingress
 metadata:
   name: monitor
   namespace: monitoring
-  labels:
-    app: monitor
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: monitor.dev.sdpaks.equinor.com.
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
@@ -30,8 +22,6 @@ kind: Ingress
 metadata:
   name: monitor-auth
   namespace: monitoring
-  labels:
-    app: monitor
 spec:
   tls:
   - hosts:
