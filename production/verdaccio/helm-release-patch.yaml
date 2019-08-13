@@ -26,7 +26,6 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
-        external-dns.alpha.kubernetes.io/hostname: npm.sdpaks.equinor.com.
       hosts:
       - npm.equinor.com
       tls:
