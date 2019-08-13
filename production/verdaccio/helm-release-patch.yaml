@@ -5,13 +5,16 @@ metadata:
   name: verdaccio
   namespace: prod
 spec:
+  releaseName: verdaccio
+  chart:
+    git: git@github.com:equinor/sdp-flux.git
+    ref: master
+    path: custom-charts/verdaccio
   values:
-    persistence:
-        size: 5Gi
     ingress:
       hosts:
-      - npm.dev.sdpaks.equinor.com
+      - npm.equinor.com
       tls:
       - secretName: npm-equinor-com-tls
         hosts:
-        - npm.dev.sdpaks.equinor.com
+        - npm.equinor.com

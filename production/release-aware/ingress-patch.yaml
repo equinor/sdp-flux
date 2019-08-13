@@ -6,10 +6,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - release-aware.dev.sdpaks.equinor.com
+    - release-aware.sdpaks.equinor.com
     secretName: release-aware-tls
   rules:
-    - host: release-aware.dev.sdpaks.equinor.com
+    - host: release-aware.sdpaks.equinor.com
       http:
         paths:
           - path: /api
@@ -29,10 +29,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - release-aware.dev.sdpaks.equinor.com
+    - release-aware.sdpaks.equinor.com
     secretName: release-aware-tls
   rules:
-    - host: release-aware.dev.sdpaks.equinor.com
+    - host: release-aware.sdpaks.equinor.com
       http:
         paths:
           - path: /oauth2 

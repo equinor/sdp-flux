@@ -10,29 +10,29 @@ spec:
     alertmanager:
       ingress:
         hosts:
-        - alertmanager.dev.sdpaks.equinor.com
+        - alertmanager.sdpaks.equinor.com
         tls:
         - secretName: alertmanager-tls
           hosts:
-          - alertmanager.dev.sdpaks.equinor.com
+          - alertmanager.sdpaks.equinor.com
 
     grafana:
       env:
-        GF_SERVER_ROOT_URL: https://grafana.dev.sdpaks.equinor.com
+        GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
       ingress:
         hosts:
-        - grafana.dev.sdpaks.equinor.com
+        - grafana.sdpaks.equinor.com
         tls:
         - secretName: grafana-tls
           hosts:
-          - grafana.dev.sdpaks.equinor.com
+          - grafana.sdpaks.equinor.com
 
     prometheus:
       ingress:
         enabled: true
         hosts:
-        - prometheus.dev.sdpaks.equinor.com
+        - prometheus.sdpaks.equinor.com
         tls:
         - secretName: prometheus-tls
           hosts:
-          - prometheus.dev.sdpaks.equinor.com
+          - prometheus.sdpaks.equinor.com

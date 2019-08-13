@@ -1,38 +1,34 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: release-aware
+  name: monitor
   namespace: monitoring
 spec:
   tls:
   - hosts:
-    - release-aware.dev.sdpaks.equinor.com
-    secretName: release-aware-tls
+    - monitor.sdpaks.equinor.com
+    secretName: monitor-tls
   rules:
-    - host: release-aware.dev.sdpaks.equinor.com
+    - host: monitor.sdpaks.equinor.com
       http:
         paths:
-          - path: /api
-            backend:
-              serviceName: release-aware-api
-              servicePort: 80
           - path: /
             backend:
-              serviceName: release-aware-web
+              serviceName: monitor
               servicePort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: release-aware-auth
+  name: monitor-auth
   namespace: monitoring
 spec:
   tls:
   - hosts:
-    - release-aware.dev.sdpaks.equinor.com
-    secretName: release-aware-tls
+    - monitor.sdpaks.equinor.com
+    secretName: monitor-tls
   rules:
-    - host: release-aware.dev.sdpaks.equinor.com
+    - host: monitor.sdpaks.equinor.com
       http:
         paths:
           - path: /oauth2 

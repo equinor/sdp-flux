@@ -3,11 +3,23 @@ kind: Ingress
 metadata:
   name: sdp-web
   namespace: prod
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: sdp-web.dev.sdpaks.equinor.com.
 spec:
   tls:
   - hosts:
     - sdp-web.dev.sdpaks.equinor.com
+    secretName: sdp-web-tls
   rules:
+    - host: sdp.dev.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sdp-web
+              servicePort: 80
     - host: sdp-web.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sdp-web
+              servicePort: 80

@@ -6,7 +6,7 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: alertmanager.dev.sdpaks.equinor.com
+  - host: alertmanager.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -15,7 +15,7 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - alertmanager.dev.sdpaks.equinor.com
+    - alertmanager.sdpaks.equinor.com
     secretName: alertmanager-tls
 ---
 apiVersion: extensions/v1beta1
@@ -25,7 +25,7 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: prometheus.dev.sdpaks.equinor.com
+  - host: prometheus.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -34,5 +34,5 @@ spec:
         path: /oauth2
   tls:
   - hosts:
-    - prometheus.dev.sdpaks.equinor.com
+    - prometheus.sdpaks.equinor.com
     secretName: prometheus-tls

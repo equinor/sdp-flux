@@ -3,11 +3,6 @@ kind: Ingress
 metadata:
   name: hgir-ingress
   namespace: prod
-  labels:
-    app: hgir
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
