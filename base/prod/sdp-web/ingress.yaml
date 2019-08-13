@@ -6,7 +6,6 @@ metadata:
   labels:
     app: sdp-web
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: sdp-web.sdpaks.equinor.com.
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
 spec:

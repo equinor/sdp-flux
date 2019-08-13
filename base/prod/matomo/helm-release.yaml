@@ -21,7 +21,6 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
-        external-dns.alpha.kubernetes.io/hostname: matomo.sdpaks.equinor.com.
         kubernetes.io/tls-acme: "true"
       hosts:
       - matomo.sdpaks.equinor.com
