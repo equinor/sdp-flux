@@ -9,7 +9,6 @@ spec:
   values:
     alertmanager:
       ingress:
-        enabled: true
         hosts:
         - alertmanager.sdpaks.equinor.com
         tls:
@@ -20,11 +19,7 @@ spec:
     grafana:
       env:
         GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
-
-      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
-
       ingress:
-        enabled: true
         hosts:
         - grafana.sdpaks.equinor.com
         tls:
@@ -32,54 +27,12 @@ spec:
           hosts:
           - grafana.sdpaks.equinor.com
 
-    kubeApiServer:
-      tlsConfig:
-        insecureSkipVerify: true
-
     prometheus:
-      prometheusSpec:
-        storageSpec:
-          volumeClaimTemplate:
-            spec:
-              accessModes:
-                - ReadWriteOnce
-              storageClassName: managed-premium
-              resources:
-                requests:
-                  storage: 30Gi # Storage size calculation: https://prometheus.io/docs/prometheus/latest/storage/#operational-aspects
-        serviceMonitorSelector:
-          matchLabels:
-            release: prometheus-operator
-        serviceMonitorNamespaceSelector: {}
       ingress:
         enabled: true
-        annotations:
-          kubernetes.io/ingress.class: nginx
-          kubernetes.io/tls-acme: "true"
-          nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-          nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - prometheus.sdpaks.equinor.com
         tls:
         - secretName: prometheus-tls
           hosts:
           - prometheus.sdpaks.equinor.com
-
-    coreDns:
-      enabled: true
-
-    kubeDns:
-      enabled: true
-    
-    defaultRules:
-      rules:
-        kubeApiServer: false
-        kubeScheduler: false
-    
-    resources:
-      requests:
-        cpu: 250m
-        memory: "2Gi"
-      limits:
-        cpu: 1000m
-        memory: "10Gi"

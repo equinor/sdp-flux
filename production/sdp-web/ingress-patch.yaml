@@ -3,11 +3,6 @@ kind: Ingress
 metadata:
   name: sdp-web
   namespace: prod
-  labels:
-    app: sdp-web
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:

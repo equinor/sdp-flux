@@ -3,13 +3,6 @@ kind: Ingress
 metadata:
   name: release-aware
   namespace: monitoring
-  labels:
-    app: release-aware
-  annotations:
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
@@ -33,8 +26,6 @@ kind: Ingress
 metadata:
   name: release-aware-auth
   namespace: monitoring
-  labels:
-    app: release-aware
 spec:
   tls:
   - hosts:
