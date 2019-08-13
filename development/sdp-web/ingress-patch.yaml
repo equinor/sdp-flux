@@ -23,4 +23,3 @@ spec:
             backend:
               serviceName: sdp-web
               servicePort: 80
-

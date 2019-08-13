@@ -9,8 +9,6 @@ spec:
     persistence:
         size: 5Gi
     ingress:
-    #  annotations:
-     #    npm.dev.sdpaks.equinor.com.
       hosts:
       - npm.dev.sdpaks.equinor.com
       tls:

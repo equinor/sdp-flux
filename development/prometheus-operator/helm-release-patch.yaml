@@ -30,8 +30,6 @@ spec:
     prometheus:
       ingress:
         enabled: true
-        annotations:
-           prometheus.dev.sdpaks.equinor.com.
         hosts:
         - prometheus.dev.sdpaks.equinor.com
         tls:
