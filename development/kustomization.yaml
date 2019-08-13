@@ -12,3 +12,4 @@ patchesStrategicMerge:
   - ./release-aware/ingress-patch.yaml
   - ./verdaccio/helm-release-patch.yaml
   - ./hgir/ingress-patch.yaml
+  - ./namespaces/backup-sandbox.yaml
