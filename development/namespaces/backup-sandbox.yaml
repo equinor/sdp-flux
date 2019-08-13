@@ -3,5 +3,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: backup-sandbox
-  annotations:
-    flux.weave.works/automated: "true"
