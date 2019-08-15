@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - ./infrastructure/aks-node-puppet.yaml
 - ./infrastructure/cert-manager.yaml
+- ./infrastructure/cluster-issuer.yaml
 - ./infrastructure/external-dns.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/letsencrypt.yaml
