@@ -1,6 +1,10 @@
 # Update with `kustomize edit add resource ./**/*.yaml`
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+#- ./monitoring/logging/elasticsearch-curator.yaml
+#- ./monitoring/logging/elasticsearch.yaml
+#- ./monitoring/logging/filebeat.yaml
+#- ./monitoring/logging/kibana.yaml
 resources:
 - ./infrastructure/aks-node-puppet.yaml
 - ./infrastructure/cert-manager.yaml
@@ -15,10 +19,6 @@ resources:
 - ./monitoring/aware/ingress.yaml
 - ./monitoring/aware/web/deployment.yaml
 - ./monitoring/aware/web/service.yaml
-#- ./monitoring/logging/elasticsearch-curator.yaml
-#- ./monitoring/logging/elasticsearch.yaml
-#- ./monitoring/logging/filebeat.yaml
-#- ./monitoring/logging/kibana.yaml
 - ./monitoring/monitor/ingress.yaml
 - ./monitoring/monitor/web/deployment.yaml
 - ./monitoring/monitor/web/service.yaml
@@ -35,6 +35,7 @@ resources:
 - ./monitoring/release-aware/web/deployment.yaml
 - ./monitoring/release-aware/web/service.yaml
 - ./namespaces/dev.yaml
+- ./namespaces/gitlab.yaml
 - ./namespaces/infrastructure.yaml
 - ./namespaces/monitoring.yaml
 - ./namespaces/prod.yaml
@@ -54,3 +55,8 @@ resources:
 - ./prod/verdaccio/helm-release.yaml
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
+- ./gitlab/backup-storage-config.yaml
+- ./gitlab/gitlab-postgres-secret.yaml
+- ./gitlab/gitlab-rails-storage.yaml
+- ./gitlab/helm-release.yaml
+- ./gitlab/registry-storage.yaml
