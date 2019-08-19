@@ -1,0 +1,88 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  releaseName: gitlab
+  chart:
+    repository: https://charts.gitlab.io/
+    name: gitlab
+    version: 2.1.7
+  values:
+    certmanager:
+      install: false
+    certmanager-issuer:
+      email: gm_sds_rdi@statoil.com
+    gitlab:
+      task-runner:
+        backups:
+          objectStorage:
+            config:
+              key: config
+              secret: backup-storage-config
+      unicorn:
+        ingress:
+          tls:
+            secretName: gitlab-unicorn-tls
+    global:
+      appConfig:
+        artifacts:
+          bucket: gitlab-artifacts-storage
+          connection:
+            key: connection
+            secret: gitlab-rails-storage
+        backups:
+          bucket: gitlab-backup-storage
+          tmpBucket: gitlab-tmp-storage
+        lfs:
+          bucket: gitlab-lfs-storage
+          connection:
+            key: connection
+            secret: gitlab-rails-storage
+        packages:
+          bucket: gitlab-packages-storage
+          connection:
+            key: connection
+            secret: gitlab-rails-storage
+        uploads:
+          bucket: gitlab-uploads-storage
+          connection:
+            key: connection
+            secret: gitlab-rails-storage
+        pseudonymizer:
+          bucket: gitlab-pseudonymizer-storage
+          connection:
+            key: connection
+            secret: gitlab-rails-storage
+      edition: ce
+      hosts:
+        domain: dev.sdpaks.equinor.com
+        externalIP: ""
+        https: true
+      ingress:
+        annotations:
+          kubernetes.io/tls-acme: true
+        configureCertmanager: false
+      minio:
+        enabled: false
+      psql:
+        database: postgres
+        host: gitlab-postgressql.postgres.database.azure.com
+        password:
+          key: password
+          secret: gitlab-postgres-secret
+        username: gitlab@gitlab-postgressql
+    nginx-ingress:
+      install: false
+    postgresql:
+      install: false
+    registry:
+      bucket: gitlab-registry-storage
+      ingress:
+        tls:
+          secretName: gitlab-registry-tls
+      storage:
+        key: config
+        secret: registry-storage
