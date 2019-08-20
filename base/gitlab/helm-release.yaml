@@ -25,10 +25,6 @@ spec:
           tls:
             secretName: gitlab-unicorn-tls
     global:
-      runner:
-        envVars:
-          - name: LISTEN_ADDRESS
-            value: :9252
       appConfig:
         omniauth:
           enabled: true
@@ -100,4 +96,8 @@ spec:
       storage:
         key: config
         secret: registry-storage
+    gitlab-runner:
+      envVars:
+        - name: LISTEN_ADDRESS
+          value: :9252
 
