@@ -30,6 +30,18 @@ spec:
           - name: LISTEN_ADDRESS
             value: :9252
       appConfig:
+        omniauth:
+          enabled: true
+          allowSingleSignOn:
+          - azure_oauth2
+          autoLinkLdapUser: true
+          autoLinkSamlUser: false
+          autoSignInWithProvider: null
+          blockAutoCreatedUsers: true
+          externalProviders:
+          - azure_oauth2
+          providers:
+          - secret: gitlab-azure-oauth2
         artifacts:
           bucket: gitlab-artifacts-storage
           connection:
@@ -88,3 +100,4 @@ spec:
       storage:
         key: config
         secret: registry-storage
+

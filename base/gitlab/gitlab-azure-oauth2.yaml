@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: gitlab-azure-oauth2
+  namespace: infrastructure
+spec:
+  encryptedData:
+    provider: AgB0+tfXst+MpPViynf2Mo1bobDt75lZF2Q4VNrhPKReHW+/EIq+JqLdKWNg+R6tXN8sCphh7Wlj7Xe9CBIWqlQp7cluXuBs62XpDVnkt6gLTtYJHzHEL23wmvNTv9QAQg12wMIWVwAk8BylIUvpY0G8vUAHlFDl/EK7uUVjRUmhp3NDh0GxyH40ytpLkx32NaNNnfRj5CGB6pDx6MXS4H9I/tmGtcWJZnNLlBF0YE7a5b7pKJz6DXkSH/GAN+LBQKJ543eOZzdI/2KPU3TwmXZyC0gfHfXQ3Uq3mQkPgKDQBBNy2bgpsSOUgZ5VSHaF1xVcP8KHGijl4utu44yxJHxmgH2kn9mTJWa/P5bcocv0Eq81akFQmMNb8X1ipjhLzM4Sw4gZzsWnL2vR+isZwxCMYszuoOaLdq9DVB8S6BHHql1azMKUwaWNXwU7LoyXA4Sa6WjR1mdlDlqr2KIipp0GHaNSbh3Xg5vVctA0sOrLyPKE7NehsuhsYoKM5wFOlOwC1VML6HX8DXchcR4Y7tadwUYrKpxrRWIoQp8aAGE0PULbyd+WixVlSasBz6iT/7t2jOOczRDDmw3kXbH3wdoL65mYbIYnLI7P1fQr8cY1RCO7dhxDRuzxgbaMeCcvRJ0fq4u5lcQkbocGxKcEOo0VGLyu8Xyw77QQ6BwE3NAmb6rtVHvL8HGQUsIFuvNWhcyjBTWfpJLGoeNTlYDOnLHDygoHMJKFjuIAFdiXnwFC/LrZWPebkd9EDgOIww4fDM4Y3oic24xJw4QpZrvSFJF5fzFFcbxIHW2h7tWnUaAn/kqNvnyzse61B/HCmeDkhiymCFMLI/1q36GDPrA/O09LUJSkbzgK2faebcJFnzgjU4wN2y7I15a/wYqbg17ysG/7Wu/NmsCuiMUD33l1WDytB7d0pica9sccnRhO8T+Ifript2EW
+  template:
+    metadata:
+      creationTimestamp: null
+      name: gitlab-azure-oauth2
+      namespace: infrastructure
+status: {}
+
