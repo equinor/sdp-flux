@@ -33,7 +33,7 @@ spec:
           autoLinkLdapUser: true
           autoLinkSamlUser: false
           autoSignInWithProvider: null
-          blockAutoCreatedUsers: true
+          blockAutoCreatedUsers: false
           externalProviders:
           - azure_oauth2
           providers:
@@ -78,6 +78,11 @@ spec:
       minio:
         enabled: false
       psql:
+        # ssl:
+        #   secret:
+        #   serverCA:
+        #   clientCertificate:
+        #   clientKey:
         database: postgres
         host: gitlab-postgressql.postgres.database.azure.com
         password:
@@ -85,7 +90,7 @@ spec:
           secret: gitlab-postgres-secret
         username: gitlab@gitlab-postgressql
     nginx-ingress:
-      install: false
+      enabled: false
     postgresql:
       install: false
     registry:
@@ -100,4 +105,3 @@ spec:
       envVars:
         - name: LISTEN_ADDRESS
           value: :9252
-
