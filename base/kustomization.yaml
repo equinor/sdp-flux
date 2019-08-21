@@ -60,3 +60,4 @@ resources:
 - ./gitlab/gitlab-rails-storage.yaml
 - ./gitlab/helm-release.yaml
 - ./gitlab/registry-storage.yaml
+- ./gitlab/gitlab-azure-oauth2.yaml
