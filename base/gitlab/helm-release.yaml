@@ -34,8 +34,6 @@ spec:
           autoLinkSamlUser: false
           autoSignInWithProvider: null
           blockAutoCreatedUsers: false
-          externalProviders:
-          - azure_oauth2
           providers:
           - secret: gitlab-azure-oauth2
         artifacts:
