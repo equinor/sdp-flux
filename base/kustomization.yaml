@@ -1,10 +1,6 @@
 # Update with `kustomize edit add resource ./**/*.yaml`
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-#- ./monitoring/logging/elasticsearch-curator.yaml
-#- ./monitoring/logging/elasticsearch.yaml
-#- ./monitoring/logging/filebeat.yaml
-#- ./monitoring/logging/kibana.yaml
 resources:
 - ./infrastructure/aks-node-puppet.yaml
 - ./infrastructure/cert-manager.yaml
@@ -62,8 +58,4 @@ resources:
 - ./gitlab/registry-storage.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab-minio/helm-release.yaml
-- ./kustomization.yaml
-- ./monitoring/logging/elasticsearch-curator.yaml
-- ./monitoring/logging/elasticsearch.yaml
-- ./monitoring/logging/filebeat.yaml
-- ./monitoring/logging/kibana.yaml
+
