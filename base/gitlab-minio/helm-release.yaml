@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitlab-minio
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab-minio
+spec:
+  releaseName: gitlab
+  chart:
+    repository: https://charts.gitlab.io/
+    name: gitlab
+    version: 2.1.7
+  values:
+    certmanager:
+      install: false
+    gitlab:
+      unicorn:
+        ingress:
+          tls:
+            secretName: gitlab-unicorn-tls
+    global:
+      edition: ce
+      hosts:
+        domain: gitlab-minio.dev.sdpaks.equinor.com
+        externalIP: ""
+        https: true
+      ingress:
+        class: nginx
+        annotations:
+          kubernetes.io/tls-acme: true
+        configureCertmanager: false
+      minio:
+        enabled: true
+    nginx-ingress:
+      enabled: false
+    postgresql:
+      install: true
+    registry:
+      ingress:
+        tls:
+          secretName: gitlab-registry-tls
+    gitlab-runner:
+      envVars:
+        - name: LISTEN_ADDRESS
+          value: :9252
