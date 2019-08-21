@@ -79,11 +79,9 @@ spec:
       minio:
         enabled: false
       psql:
-        # ssl:
-        #   secret:
-        #   serverCA:
-        #   clientCertificate:
-        #   clientKey:
+        ssl:
+          secret: gitlab-postgres-ssl
+          serverCA: ca.crt
         database: postgres
         host: gitlab-postgressql.postgres.database.azure.com
         password:

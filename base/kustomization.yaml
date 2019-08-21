@@ -58,4 +58,4 @@ resources:
 - ./gitlab/registry-storage.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab-minio/helm-release.yaml
-
+- ./gitlab/gitlab-postgres-tls.yaml
