@@ -7,10 +7,10 @@ metadata:
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: gitlab
+  name: gitlab-minio
   namespace: gitlab-minio
 spec:
-  releaseName: gitlab
+  releaseName: gitlab-minio
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
