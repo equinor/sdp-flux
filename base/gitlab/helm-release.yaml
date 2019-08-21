@@ -80,8 +80,9 @@ spec:
         ssl:
           secret: gitlab-postgres-ssl
           serverCA: ca.crt
-	  clientCertificate: clientCert	
+          clientCertificate: clientCert
           clientKey: clientKey
+
         database: postgres
         host: gitlab-postgressql.postgres.database.azure.com
         password:
