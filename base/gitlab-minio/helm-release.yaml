@@ -19,6 +19,10 @@ spec:
     certmanager:
       install: false
     gitlab:
+      gitaly:
+        persistence:
+          storageClass: azurefile-premium
+          size: 50Gi
       unicorn:
         ingress:
           tls:
@@ -37,13 +41,23 @@ spec:
       minio:
         enabled: true
     minio:
+      persistence:
+        storageClass: managed-premium
+        size: 10Gi
       ingress:
         tls:
           secretName: gitlab-minio-tls
     nginx-ingress:
       enabled: false
+    redis:
+      persistence:
+        storageClass: managed-premium
+        size: 5Gi
     postgresql:
       install: true
+      persistence:
+        storageClass: managed-premium
+        size: 8Gi
     registry:
       ingress:
         tls:
