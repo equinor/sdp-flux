@@ -22,7 +22,7 @@ spec:
       gitaly:
         persistence:
           storageClass: azurefile-premium
-          size: 50Gi
+          size: 100Gi
       unicorn:
         ingress:
           tls:
