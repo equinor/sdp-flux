@@ -7,7 +7,6 @@ resources:
 - ./infrastructure/cluster-issuer.yaml
 - ./infrastructure/external-dns.yaml
 - ./infrastructure/kured.yaml
-- ./infrastructure/letsencrypt.yaml
 - ./infrastructure/nginx-ingress.yaml
 - ./infrastructure/sealed-secrets.yaml
 - ./monitoring/aware/api/deployment.yaml
