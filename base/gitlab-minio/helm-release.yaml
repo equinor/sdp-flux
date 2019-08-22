@@ -21,7 +21,7 @@ spec:
     gitlab:
       gitaly:
         persistence:
-          storageClass: azurefile-premium
+          storageClass: expand-azurefile-premium
           size: 100Gi
       unicorn:
         ingress:
