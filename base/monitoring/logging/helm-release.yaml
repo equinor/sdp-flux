@@ -1,0 +1,23 @@
+
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: elk
+  namespace: monitoring
+spec:
+  releaseName: elk
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: elastic-stack
+    version: 1.1.0
+  values:
+    kibana:
+      ingress:
+        enabled: true
+        hosts:
+          - kibana.dev.sdpaks.equinor.com
+        tls:
+          - secretName: elk-kibana-tls
+            hosts:
+              - kibana.dev.sdpaks.equinor.com
