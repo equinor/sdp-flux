@@ -36,9 +36,10 @@ spec:
         configureCertmanager: false
       minio:
         enabled: true
-        ingress:
-          tls:
-            secretName: gitlab-minio-tls
+    minio:
+      ingress:
+        tls:
+          secretName: gitlab-minio-tls
     nginx-ingress:
       enabled: false
     postgresql:
