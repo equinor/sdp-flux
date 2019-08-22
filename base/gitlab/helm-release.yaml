@@ -78,11 +78,10 @@ spec:
         enabled: false
       psql:
         ssl:
-          secret: gitlab-postgres-ssl
+          secret: gitlab-postgres-tls
           serverCA: ca.crt
           clientCertificate: clientCert
           clientKey: clientKey
-
         database: postgres
         host: gitlab-postgressql.postgres.database.azure.com
         password:
