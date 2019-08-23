@@ -42,8 +42,8 @@ spec:
         enabled: true
     minio:
       persistence:
-        storageClass: managed-premium
-        size: 10Gi
+        storageClass: expand-azurefile-premium
+        size: 100Gi
       ingress:
         tls:
           secretName: gitlab-minio-tls
@@ -51,13 +51,13 @@ spec:
       enabled: false
     redis:
       persistence:
-        storageClass: managed-premium
-        size: 5Gi
+        storageClass: expand-azurefile-premium
+        size: 100Gi
     postgresql:
       install: true
       persistence:
-        storageClass: managed-premium
-        size: 8Gi
+        storageClass: expand-azurefile-premium
+        size: 100Gi
     registry:
       ingress:
         tls:
