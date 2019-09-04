@@ -50,6 +50,7 @@ resources:
 - ./prod/verdaccio/helm-release.yaml
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
+- ./prod/aks-registry-prod.yaml
 - ./gitlab/backup-storage-config.yaml
 - ./gitlab/gitlab-postgres-secret.yaml
 - ./gitlab/gitlab-rails-storage.yaml
