@@ -14,6 +14,7 @@ Solution: `kubectl exec -it <task-runner-pod-name> /srv/gitlab/bin/rails console
 
 [And follow these steps](https://gitlab.com/gitlab-org/gitlab-ce/issues/56403#note_136382583)
 
+There have been some occurences where running the above step still give http 500 on the /admin/runners page. In test environments you can delete the contents of the table. `DELETE FROM ci_runners;`, and you should get access. __BE careful__ attempting this in production environments without backups of both kubernetes secrets and the Postgres database.
 
 ## Unable to register Gitlab runners
 
@@ -23,6 +24,7 @@ Solution:
 Reset token. Find new token from [/admin/runners page](https://gitlab.dev.sdpaks.equinor.com/admin/runners)
 Create new "gitlab-gitlab-runner-secret" containing the token:
 `kubectl create secret generic gitlab-gitlab-runner-secret --from-literal=runner-registration-token=<new-token> --from-literal=runner-token=""`
+
 
 ### Gitlab runners not supported on IPV6
 IPV6 is not supported by our aks-network for some reason
