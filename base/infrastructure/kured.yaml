@@ -19,5 +19,5 @@ spec:
     extraArgs:
       period: 10m0s
       reboot-sentinel: "/var/run/reboot-required-night"
-      slack-username: production
-      slack-hook-url: https://hooks.slack.com/services/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
+      slack-username: "SDPTeam Kured"
+      slack-hook-url: https://hooks.slack.com/services/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
