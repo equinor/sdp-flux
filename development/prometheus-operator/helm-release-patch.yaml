@@ -18,6 +18,7 @@ spec:
 
     grafana:
       env:
+        GF_USERS_AUTO_ASSIGN_ORG_ROLE: Admin
         GF_SERVER_ROOT_URL: https://grafana.dev.sdpaks.equinor.com
       ingress:
         hosts:
