@@ -14,3 +14,4 @@ patchesStrategicMerge:
   - ./hgir/ingress-patch.yaml
   - ./cert-manager.yaml
   - ./matomo/helm-release-patch.yaml
+  - ./nginx-ingress.yaml
