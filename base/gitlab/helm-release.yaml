@@ -103,9 +103,9 @@ spec:
     #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/command-line-options.md#outgoing-email-configuration
     smtp:
       enabled: true
-      address: smtp.TODO.org
+      address: mrrr.statoil.com
       port: 2525
-      user_name: "TODO"
+      user_name: gm_sds_rdi@equinor.com
       ## doc/installation/secrets.md#smtp-password
       password:
         secret: gitlab-smtp-tls
