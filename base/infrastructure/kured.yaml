@@ -20,4 +20,5 @@ spec:
       period: 10m0s
       reboot-sentinel: "/var/run/reboot-required-night"
       slack-username: "SDPTeam Kured"
-      slack-hook-url: https://hooks.slack.com/services/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
+      slack-hook-url: secrets.kured-webhook.token
+	#how to get secret?
