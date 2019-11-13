@@ -21,4 +21,4 @@ spec:
       reboot-sentinel: "/var/run/reboot-required-night"
       slack-username: "SDPTeam Kured"
       slack-hook-url: secrets.kured-webhook.token
-	#how to get secret?
+#how to get secret?
