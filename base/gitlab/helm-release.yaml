@@ -108,7 +108,7 @@ spec:
       user_name: gm_sds_rdi@equinor.com
       ## doc/installation/secrets.md#smtp-password
       password:
-        secret: gitlab-smtp-tls
+        secret: gitlab-smtp-secret
         key: password
       # domain:
       authentication: "plain"
