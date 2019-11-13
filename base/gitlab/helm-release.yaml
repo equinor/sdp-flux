@@ -83,6 +83,30 @@ spec:
           key: password
           secret: gitlab-postgres-secret
         username: gitlab@gitlab-postgressql
+      #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/deployment.md#outgoing-email
+      #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/command-line-options.md#outgoing-email-configuration
+      smtp:
+        enabled: true
+        address: mrrr.statoil.com
+        port: 2525
+        user_name: gm_sds_rdi@equinor.com
+        ## doc/installation/secrets.md#smtp-password
+        password:
+          secret: gitlab-smtp-secret
+          key: password
+        authentication: "plain"
+        starttls_auto: false
+        openssl_verify_mode: "peer"
+      email:
+        from: 'gm_sds_rdi@equinor.com'
+        display_name: "Gitlab Equinor"
+        reply_to: ''
+        subject_suffix: ''
+        smime:
+          enabled: false
+          secretName: gitlab-email-tls
+          keyName: "tls.key"
+          certName: "tls.crt"
     nginx-ingress:
       enabled: false
     postgresql:
@@ -99,28 +123,3 @@ spec:
       envVars:
         - name: LISTEN_ADDRESS
           value: :9252
-    #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/deployment.md#outgoing-email
-    #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/command-line-options.md#outgoing-email-configuration
-    smtp:
-      enabled: true
-      address: mrrr.statoil.com
-      port: 2525
-      user_name: gm_sds_rdi@equinor.com
-      ## doc/installation/secrets.md#smtp-password
-      password:
-        secret: gitlab-smtp-secret
-        key: password
-      # domain:
-      authentication: "plain"
-      starttls_auto: false
-      openssl_verify_mode: "peer"
-    email:
-      from: 'gm_sds_rdi@equinor.com'
-      display_name: "Gitlab Equinor"
-      reply_to: ''
-      subject_suffix: ''
-      smime:
-        enabled: false
-        secretName: gitlab-email-tls
-        keyName: "tls.key"
-        certName: "tls.crt"
