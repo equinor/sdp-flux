@@ -11,6 +11,5 @@ patchesStrategicMerge:
   - ./prometheus-operator/helm-release-patch.yaml
   - ./release-aware/ingress-patch.yaml
   - ./verdaccio/helm-release-patch.yaml
-  - ./hgir/ingress-patch.yaml
   - ./cert-manager.yaml
   - ./matomo/helm-release-patch.yaml
