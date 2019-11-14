@@ -94,9 +94,9 @@ spec:
         password:
           secret: gitlab-smtp-secret
           key: password
-        authentication: "plain"
+        authentication: "login"
         starttls_auto: true
-        openssl_verify_mode: "ssl/tls"
+        openssl_verify_mode: "peer"
       email:
         from: 'gm_sds_rdi@equinor.com'
         display_name: "Gitlab Equinor"
