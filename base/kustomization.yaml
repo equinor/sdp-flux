@@ -57,7 +57,6 @@ resources:
 - ./gitlab/helm-release.yaml
 - ./gitlab/registry-storage.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
-- ./gitlab-minio/helm-release.yaml
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./monitoring/logging/helm-release.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
