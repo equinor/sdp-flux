@@ -88,14 +88,15 @@ spec:
       smtp:
         enabled: true
         address: mrrr.statoil.com
-        port: 2525
+        port: 25
         user_name: gm_sds_rdi@equinor.com
         ## doc/installation/secrets.md#smtp-password
         password:
           secret: gitlab-smtp-secret
           key: password
         authentication: "plain"
-        starttls_auto: false
+        tls: true
+        starttls_auto: true
         openssl_verify_mode: "peer"
       email:
         from: 'gm_sds_rdi@equinor.com'
