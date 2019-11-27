@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitor
+  namespace: monitoring
+spec:
+  tls:
+  - hosts:
+    - monitor.nor.sdpaks.equinor.com
+    secretName: monitor-tls
+  rules:
+    - host: monitor.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: monitor
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: monitor-auth
+  namespace: monitoring
+spec:
+  tls:
+  - hosts:
+    - monitor.nor.sdpaks.equinor.com
+    secretName: monitor-tls
+  rules:
+    - host: monitor.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

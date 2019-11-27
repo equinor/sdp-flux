@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: aware
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - aware.nor.sdpaks.equinor.com
+      secretName: aware-tls
+  rules:
+    - host: aware.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: aware-api
+              servicePort: 80
+          - path: /
+            backend:
+              serviceName: aware-web
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: aware-auth
+  namespace: monitoring
+spec:
+  tls:
+    - hosts:
+        - aware.nor.sdpaks.equinor.com
+      secretName: aware-tls
+  rules:
+    - host: aware.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

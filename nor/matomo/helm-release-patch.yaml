@@ -1,0 +1,16 @@
+# Private web analytics solution
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: matomo
+  namespace: prod
+spec:
+  values:
+    ingress:
+      hosts:
+      - matomo.nor.sdpaks.equinor.com
+      tls:
+      - secretName: matomo-tls
+        hosts:
+        - matomo.nor.sdpaks.equinor.com

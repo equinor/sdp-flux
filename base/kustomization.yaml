@@ -5,10 +5,10 @@ resources:
 - ./infrastructure/aks-node-puppet.yaml
 - ./infrastructure/cert-manager.yaml
 - ./infrastructure/cluster-issuer.yaml
-- ./infrastructure/external-dns.yaml
+- external-dns/external-dns.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/nginx-ingress.yaml
-- ./infrastructure/sealed-secrets.yaml
+- sealed-secrets/sealed-secrets.yaml
 - ./monitoring/aware/api/deployment.yaml
 - ./monitoring/aware/api/service.yaml
 - ./monitoring/aware/ingress.yaml

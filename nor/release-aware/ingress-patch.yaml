@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: release-aware
+  namespace: monitoring
+spec:
+  tls:
+  - hosts:
+    - release-aware.nor.sdpaks.equinor.com
+    secretName: release-aware-tls
+  rules:
+    - host: release-aware.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: release-aware-api
+              servicePort: 80
+          - path: /
+            backend:
+              serviceName: release-aware-web
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: release-aware-auth
+  namespace: monitoring
+spec:
+  tls:
+  - hosts:
+    - release-aware.nor.sdpaks.equinor.com
+    secretName: release-aware-tls
+  rules:
+    - host: release-aware.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sdp-web
+  namespace: prod
+spec:
+  tls:
+  - hosts:
+    - sdp-web.nor.sdpaks.equinor.com
+    secretName: sdp-web-tls
+  rules:
+    - host: sdp.dev.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sdp-web
+              servicePort: 80
+    - host: sdp-web.nor.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sdp-web
+              servicePort: 80
