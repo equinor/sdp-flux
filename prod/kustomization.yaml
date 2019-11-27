@@ -11,6 +11,6 @@ patchesStrategicMerge:
 - ./verdaccio/helm-release-patch.yaml
 - ./hgir/ingress-patch.yaml
 - ./matomo/helm-release-patch.yaml
-- external-dns/helm-release-patch.yaml
+- ./external-dns/helm-release-patch.yaml
 resources:
 - ../base/
