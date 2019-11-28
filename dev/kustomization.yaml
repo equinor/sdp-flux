@@ -12,7 +12,6 @@ patchesStrategicMerge:
 - ./matomo/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
 resources:
-- ../base/
 - ./gitlab/backup-storage-config.yaml
 - ./gitlab/gitlab-postgres-secret.yaml
 - ./gitlab/gitlab-rails-storage.yaml
@@ -22,3 +21,5 @@ resources:
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
 - ./namespaces/gitlab.yaml
+bases:
+- ../base/
