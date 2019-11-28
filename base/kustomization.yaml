@@ -5,10 +5,10 @@ resources:
 - ./infrastructure/aks-node-puppet.yaml
 - ./infrastructure/cert-manager.yaml
 - ./infrastructure/cluster-issuer.yaml
-- external-dns/external-dns.yaml
+- ./external-dns/external-dns.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/nginx-ingress.yaml
-- sealed-secrets/sealed-secrets.yaml
+- ./sealed-secrets/sealed-secrets.yaml
 - ./monitoring/aware/api/deployment.yaml
 - ./monitoring/aware/api/service.yaml
 - ./monitoring/aware/ingress.yaml
@@ -30,7 +30,6 @@ resources:
 - ./monitoring/release-aware/web/deployment.yaml
 - ./monitoring/release-aware/web/service.yaml
 - ./namespaces/dev.yaml
-- ./namespaces/gitlab.yaml
 - ./namespaces/infrastructure.yaml
 - ./namespaces/monitoring.yaml
 - ./namespaces/prod.yaml
@@ -51,12 +50,4 @@ resources:
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
 - ./prod/aks-registry-prod.yaml
-- ./gitlab/backup-storage-config.yaml
-- ./gitlab/gitlab-postgres-secret.yaml
-- ./gitlab/gitlab-rails-storage.yaml
-- ./gitlab/helm-release.yaml
-- ./gitlab/registry-storage.yaml
-- ./gitlab/gitlab-azure-oauth2.yaml
-- ./gitlab/gitlab-postgres-tls.yaml
 - ./monitoring/logging/helm-release.yaml
-- ./gitlab/gitlab-smtp-secret.yaml
