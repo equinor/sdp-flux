@@ -24,12 +24,13 @@ spec:
     configuration:
       provider: azure
       backupStorageLocation: 
-        name: velero
+        name: azure
         config:
           resourceGroup: sdpaks-backup
           storageAccount: sdpaksbackup
+        bucket: velero
       volumeSnapshotLocation:
-        name: velero
+        name: azure
         config:
           resourceGroup: sdpaks-backup
           apiTimeout: 2m
