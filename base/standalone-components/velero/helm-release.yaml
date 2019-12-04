@@ -38,7 +38,7 @@ spec:
       restoreOnlyMode: false
     credentials:
       existingSecret:
-        velerocreds
+        velero-credentials
     schedules:
       prod-ns:
         schedule: "0 1 * * *"
