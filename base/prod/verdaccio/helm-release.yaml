@@ -22,6 +22,7 @@ spec:
         key: OAUTH_CLIENT_SECRET
     persistence:
       size: 8Gi
+      existingClaim: verdaccio-pvc
     ingress:
       enabled: true
       annotations:
