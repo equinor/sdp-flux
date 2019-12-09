@@ -22,13 +22,13 @@ spec:
       tag: v1.2.0
       pullPolicy: IfNotPresent
     configuration:
-      provider: azure
+      provider: velero.io/azure
       backupStorageLocation: 
-        name: azure
+      objectStorage:
+        bucket: velero
         config:
           resourceGroup: sdpaks-backup
           storageAccount: sdpaksbackup
-        bucket: velero
       volumeSnapshotLocation:
         name: azure
         config:
