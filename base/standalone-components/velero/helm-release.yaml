@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: velero
-    version: 2.5.0
+    version: 2.6.0
   values:
     image:
       repository: velero/velero
