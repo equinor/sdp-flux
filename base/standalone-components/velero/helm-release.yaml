@@ -21,10 +21,16 @@ spec:
       repository: velero/velero
       tag: v1.2.0
       pullPolicy: IfNotPresent
+    initContainers:
+      - name: velero-plugin-for-microsoft-azure
+        image: velero/velero-plugin-for-microsoft-azure:v1.0.0
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
     configuration:
-      provider: velero.io/azure
+      provider: azure
       backupStorageLocation: 
-      objectStorage:
+        name: azure
         bucket: velero
         config:
           resourceGroup: sdpaks-backup
