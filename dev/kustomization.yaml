@@ -23,3 +23,4 @@ patchesStrategicMerge:
 - ./verdaccio/helm-release-patch.yaml
 - ./matomo/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
+- ./velero/helm-release-patch.yaml

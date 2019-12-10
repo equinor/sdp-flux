@@ -31,14 +31,14 @@ spec:
       provider: azure
       backupStorageLocation: 
         name: azure
-        bucket: velero
+        bucket: velero-prod
         config:
-          resourceGroup: sdpaks-backup
-          storageAccount: sdpaksbackup
+          resourceGroup: sdpaks-common-backup
+          storageAccount: sdpakscommonbackup
       volumeSnapshotLocation:
         name: azure
         config:
-          resourceGroup: sdpaks-backup
+          resourceGroup: sdpaks-common-backup
           apiTimeout: 2m
       backupSyncPeriod: 10m
       restoreOnlyMode: false

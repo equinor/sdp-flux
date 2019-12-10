@@ -1,0 +1,34 @@
+# Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+spec:
+  values:
+    configuration:
+      provider: azure
+      backupStorageLocation: 
+        name: azure
+        bucket: velero-dev
+        config:
+          resourceGroup: sdpaks-common-backup
+          storageAccount: sdpakscommonbackup
+      volumeSnapshotLocation:
+        name: azure
+        config:
+          resourceGroup: sdpaks-common-backup
+          apiTimeout: 2m
+      backupSyncPeriod: 10m
+      restoreOnlyMode: false
+      schedules:
+        sdpaksdev-longlived:
+          schedule: "0 1 1 * *"
+          template:
+            ttl: "4400h"
+            includedNamespaces:
+              - infrastructure
+              - gitlab
+              - sealed-secrets
+              - velero
