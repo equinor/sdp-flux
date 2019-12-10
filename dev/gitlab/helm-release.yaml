@@ -78,11 +78,11 @@ spec:
         enabled: false
       psql:
         database: postgres
-        host: gitlab-postgressql.postgres.database.azure.com
+        host: sdpaks-dev-gitlab-psql.postgres.database.azure.com
         password:
           key: password
           secret: gitlab-postgres-secret
-        username: gitlab@gitlab-postgressql
+        username: gitlab@sdpaks-dev-gitlab-psql
       #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/deployment.md#outgoing-email
       #https://gitlab.com/gitlab-org/charts/gitlab/blob/master/doc/installation/command-line-options.md#outgoing-email-configuration
       smtp:
