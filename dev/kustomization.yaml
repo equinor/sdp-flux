@@ -4,11 +4,7 @@ kind: Kustomization
 bases:
 - ../base/
 resources:
-- ./gitlab/backup-storage-config.yaml
-- ./gitlab/gitlab-postgres-secret.yaml
-- ./gitlab/gitlab-rails-storage.yaml
 - ./gitlab/helm-release.yaml
-- ./gitlab/registry-storage.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
