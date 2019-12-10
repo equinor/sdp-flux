@@ -4,7 +4,7 @@ metadata:
   name: gitlab-minio
   namespace: gitlab
 spec:
-  releaseName: gitlab
+  releaseName: gitlab-minio
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: minio
