@@ -11,7 +11,7 @@ spec:
       provider: azure
       backupStorageLocation: 
         name: azure
-        bucket: velero-dev
+        bucket: velero-dev-storage
         config:
           resourceGroup: sdpaks-common-backup
           storageAccount: sdpakscommonbackup
