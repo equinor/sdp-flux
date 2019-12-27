@@ -45,31 +45,3 @@ spec:
     credentials:
       existingSecret:
         velero-credentials
-    schedules:
-      prod-ns:
-        schedule: "0 1 * * *"
-        template:
-          ttl: "360h"
-          includedNamespaces:
-            - prod
-      prod-ns-longlived:
-        schedule: "0 1 1 * *"
-        template:
-          ttl: "4400h"
-          includedNamespaces:
-            - prod
-      monitoring-ns:
-        schedule: "0 1 * * *"
-        template:
-          ttl: "360h"
-          includedNamespaces:
-            - monitoring
-      infrastructure-backup:
-        schedule: "0 1 * * *"
-        template:
-          ttl: "240h"
-          includedNamespaces:
-            - infrastructure
-            - external-dns
-            - sealed-secrets
-            - velero
