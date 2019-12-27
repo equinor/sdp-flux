@@ -22,13 +22,13 @@ spec:
           apiTimeout: 2m
       backupSyncPeriod: 10m
       restoreOnlyMode: false
-      schedules:
-        sdpaksdev-longlived:
-          schedule: "0 1 1 * *"
-          template:
-            ttl: "4400h"
-            includedNamespaces:
-              - infrastructure
-              - gitlab
-              - sealed-secrets
-              - velero
+    schedules:
+      sdpaksdev-longlived:
+        schedule: "0 1 1 * *"
+        template:
+          ttl: "4400h"
+          includedNamespaces:
+            - infrastructure
+            - gitlab
+            - sealed-secrets
+            - velero
