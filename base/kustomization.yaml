@@ -10,6 +10,7 @@ resources:
 - ./standalone-components/external-dns/external-dns.yaml
 - ./standalone-components/sealed-secrets/sealed-secrets.yaml
 - ./standalone-components/velero/helm-release.yaml
+- ./standalone-components/minio/helm-release-minio.yaml
 - ./monitoring/aware/api/deployment.yaml
 - ./monitoring/aware/api/service.yaml
 - ./monitoring/aware/ingress.yaml

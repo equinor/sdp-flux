@@ -8,7 +8,6 @@ resources:
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
-- ./gitlab/helm-release-minio.yaml
 - ./namespaces/gitlab.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
