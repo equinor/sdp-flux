@@ -3,15 +3,15 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: prometheus-operator
-  namespace: monitoring
+  name: velero
+  namespace: velero
 spec:
   values:
     configuration:
       provider: azure
       backupStorageLocation: 
         name: azure
-        bucket: velero-dev
+        bucket: velero-dev-storage
         config:
           resourceGroup: sdpaks-common-backup
           storageAccount: sdpakscommonbackup
