@@ -14,5 +14,3 @@ spec:
     azuregateway:
       enabled: true
       replicas: 2
-    extraArgs: 
-    - "--compat"
