@@ -8,7 +8,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: minio
-    version: 3.0.2
+    version: 2.4.14
   values:
     existingSecret: gitlab-minio-secret
     azuregateway:
