@@ -1,0 +1,10 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: infrastructure
+spec:
+  releaseName: external-dns
+  values:
+    domainFilters: ["sdpaks.equinor.com"]

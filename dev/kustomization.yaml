@@ -1,6 +1,14 @@
 # Update with `kustomize edit add patch ./**/*.yaml`
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+bases:
+- ../base/
+resources:
+- ./gitlab/helm-release.yaml
+- ./gitlab/gitlab-azure-oauth2.yaml
+- ./gitlab/gitlab-postgres-tls.yaml
+- ./gitlab/gitlab-smtp-secret.yaml
+- ./namespaces/gitlab.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
@@ -9,8 +17,6 @@ patchesStrategicMerge:
 - ./prometheus-operator/helm-release-patch.yaml
 - ./release-aware/ingress-patch.yaml
 - ./verdaccio/helm-release-patch.yaml
-- ./hgir/ingress-patch.yaml
 - ./matomo/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
-bases:
-- ../base/
+- ./velero/helm-release-patch.yaml

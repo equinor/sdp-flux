@@ -5,7 +5,7 @@ This is the repository where we define the manifest to be run in Kubernetes. We 
 
 ## How it works
 In essence we create manifests to be run on the Kubernetes cluster, commit them to this repository and then the Flux controller notices the new commit and applies all the YAML files (can be simplified down to `kubectl apply -f FILENAME`).
-We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/development](/development) and [/production](/production) folders. Your cluster's Flux operator is configured to listen to a specific repo, branch and path for an effective GitOps workflow. 
+We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/development](/dev) and [/production](/prod) folders. Your cluster's Flux operator is configured to listen to a specific repo, branch and path for an effective GitOps workflow. 
 
 ## How we use it
 In production we never commit straight to the repository, always create a new branch (or use your existing) (`git branch -b new_branch_name`) modify what you want changed or implement your new feature, commit (`git add . && git commit -m 'commit message'`) and then push to remote (`git push -u origin new_branch_name`). After all this editing, commit and pushing you need to create a pull-request so that you, but preferably another on your team can see review the changes and merge the files.

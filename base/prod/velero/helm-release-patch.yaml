@@ -1,0 +1,39 @@
+# Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  values:
+    schedules:
+      sdpaksdev-longlived:
+    schedules:
+      prod-ns:
+        schedule: "0 1 * * *"
+        template:
+          ttl: "360h"
+          includedNamespaces:
+            - prod
+      prod-ns-longlived:
+        schedule: "0 1 1 * *"
+        template:
+          ttl: "4400h"
+          includedNamespaces:
+            - prod
+      monitoring-ns:
+        schedule: "0 1 * * *"
+        template:
+          ttl: "360h"
+          includedNamespaces:
+            - monitoring
+      infrastructure-backup:
+        schedule: "0 1 * * *"
+        template:
+          ttl: "240h"
+          includedNamespaces:
+            - infrastructure
+            - external-dns
+            - sealed-secrets
+            - velero

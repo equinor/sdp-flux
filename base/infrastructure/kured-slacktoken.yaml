@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: kured-webhook
+  namespace: infrastructure
+spec:
+  encryptedData:
+    token: AgDLlfA+IP00rpHgfGkInJzVDa82qH8Tmvhzn8mVv995XOHvLuviVXHsx7iUY++BTCysm640knZd8i5rJ5QTZejKiX4z4CIss/poTzh4Tf4tWnAUReE951HCistDNIrm2WvhsLjWo2YpeU+6gilNcUlMoSRtJ+gpMkGmiBiAm3ZEsLLJV1x1f595q7kHZI+Rbovcu2hvWsU7ZV3K/qCJtPhZ34E0UKk1RPM7l/BfRuUmOZ9xMT4Kqb4anZAlr9vU+W5M3HLM25+nQl58rL/iNJT8SB4WUf/rKsD9nSL29ySljcYqa2OT6BQ1dbubM6Pyfe0iosp6L237kR6nFN78rHcTmjyvEokeRB/t78PaSQNg3ydLNGvZoTzODDT1gGvOa3IBWnEO4Q/r/YXxMN81vR/goK1zPTIk/fqj0fpVGtbR1esKR/3ROZsMe3W7JzqwpIea/sSvNh7aHduN8t3d1ELhtRGe4qyWHJlHEypPLn+laGzRTLg+vSuKzFPa+c0lDA2Uz44swcUgrf/rypx+oo63ll+e/DmZDZX8haqUVrCtpM9w7i2kB5UGSCFVlMiXY6l81J6U9tVsURbacl6pTG8LwpUHDgLrWY8uYxV7zjlssfIGCSjGKYuUb4Kle8Q45KWtVxoVWjgRvirK50Iy2gW82VD0U7WmALahFgtoIwWmt4MhMxR9YZaNdp9TUI7xsIRqjzIxX/BMWljKeIoPRhAw87wLFoHRnfe8loAf//mMhhkv1lWRmfKZfCnvzspANw3j2er2xZST71yzJ50wklo1Dq2e8tYHv6TcnJ55sg==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: kured-webhook
+      namespace: infrastructure
+status: {}
+
