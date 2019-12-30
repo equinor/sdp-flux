@@ -14,4 +14,3 @@ patchesStrategicMerge:
 - ./external-dns/helm-release-patch.yaml
 bases:
 - ../base/
-
