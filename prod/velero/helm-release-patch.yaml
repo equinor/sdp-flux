@@ -7,6 +7,21 @@ metadata:
   namespace: velero
 spec:
   values:
+    configuration:
+      provider: azure
+      backupStorageLocation: 
+        name: azure
+        bucket: velero-prod-storage
+        config:
+          resourceGroup: sdpaks-common-backup
+          storageAccount: sdpakscommonbackup
+      volumeSnapshotLocation:
+        name: azure
+        config:
+          resourceGroup: sdpaks-common-backup
+          apiTimeout: 2m
+      backupSyncPeriod: 10m
+      restoreOnlyMode: false
     schedules:
       prod-ns:
         schedule: "0 1 * * *"
