@@ -1,0 +1,47 @@
+# Private web analytics solution
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+  labels:
+    app: velero
+    service: backup
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: velero
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: velero
+    version: 2.6.0
+  values:
+    image:
+      repository: velero/velero
+      tag: v1.2.0
+      pullPolicy: IfNotPresent
+    initContainers:
+      - name: velero-plugin-for-microsoft-azure
+        image: velero/velero-plugin-for-microsoft-azure:v1.0.0
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+    configuration:
+      provider: azure
+      backupStorageLocation: 
+        name: azure
+        bucket: velero-prod-storage
+        config:
+          resourceGroup: sdpaks-common-backup
+          storageAccount: sdpakscommonbackup
+      volumeSnapshotLocation:
+        name: azure
+        config:
+          resourceGroup: sdpaks-common-backup
+          apiTimeout: 2m
+      backupSyncPeriod: 10m
+      restoreOnlyMode: false
+    credentials:
+      existingSecret:
+        velero-credentials

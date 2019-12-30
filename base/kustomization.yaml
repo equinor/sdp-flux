@@ -8,7 +8,8 @@ resources:
 - ./infrastructure/external-dns.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/nginx-ingress.yaml
-- ./infrastructure/sealed-secrets.yaml
+- ./standalone-components/sealed-secrets/sealed-secrets.yaml
+- ./standalone-components/velero/helm-release.yaml
 - ./monitoring/aware/api/deployment.yaml
 - ./monitoring/aware/api/service.yaml
 - ./monitoring/aware/ingress.yaml
