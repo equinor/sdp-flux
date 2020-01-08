@@ -14,3 +14,10 @@ spec:
     azuregateway:
       enabled: true
       replicas: 2
+    ingress:
+      annotations:
+        kubernetes.io/tls-acme: true
+      enabled: true
+    tls:
+      enabled: true
+      certSecret: gitlab-minio-tls
