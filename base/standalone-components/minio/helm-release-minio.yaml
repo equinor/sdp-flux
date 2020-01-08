@@ -14,3 +14,15 @@ spec:
     azuregateway:
       enabled: true
       replicas: 2
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+      path: /
+      hosts:
+        - gitlab-minio.sdpaks.equinor.com
+      tls: 
+      - secretName: gitlab-minio-tls
+        hosts:
+          - gitlab-minio.sdpaks.equinor.com

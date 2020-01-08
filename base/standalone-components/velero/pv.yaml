@@ -1,0 +1,116 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: verdaccio-pv
+  labels:
+    app: verdaccio
+spec:
+  accessModes:
+  - ReadWriteOnce
+  azureDisk:
+    cachingMode: None
+    diskName: verdaccio-pv
+    diskURI: /subscriptions/b18da12e-efa1-4642-8fec-b6580b00212c/resourceGroups/MC_sdpaks-prod_sdpaks-prod-k8s_norwayeast/providers/Microsoft.Compute/disks/verdaccio-pv
+    fsType: ""
+    kind: Managed
+    readOnly: false
+  capacity:
+    storage: 8Gi
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    namespace: prod
+    name: verdaccio-verdaccio
+  storageClassName: default
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hgir-db-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  azureDisk:
+    cachingMode: ReadOnly
+    diskName: hgir-db-pv
+    diskURI: /subscriptions/b18da12e-efa1-4642-8fec-b6580b00212c/resourceGroups/MC_sdpaks-prod_sdpaks-prod-k8s_norwayeast/providers/Microsoft.Compute/disks/hgir-db-pv
+    fsType: ""
+    kind: Managed
+    readOnly: false
+  capacity:
+    storage: 5Gi
+  claimRef:
+    name: hgir-db
+    namespace: prod
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-premium
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hgir-sqlite-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  azureDisk:
+    cachingMode: ReadOnly
+    diskName: hgir-sqlite-pv
+    diskURI: /subscriptions/b18da12e-efa1-4642-8fec-b6580b00212c/resourceGroups/MC_sdpaks-prod_sdpaks-prod-k8s_norwayeast/providers/Microsoft.Compute/disks/hgir-sqlite-pv
+    fsType: ""
+    kind: Managed
+    readOnly: false
+  capacity:
+    storage: 5Gi
+  claimRef:
+    name: hgir-sqlite
+    namespace: prod
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-premium
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-matomo-mariadb-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  azureDisk:
+    cachingMode: ReadOnly
+    diskName: data-matomo-mariadb-pv
+    diskURI: /subscriptions/b18da12e-efa1-4642-8fec-b6580b00212c/resourceGroups/MC_sdpaks-prod_sdpaks-prod-k8s_norwayeast/providers/Microsoft.Compute/disks/data-matomo-mariadb-pv
+    fsType: ""
+    kind: Managed
+    readOnly: false
+  capacity:
+    storage: 2Gi
+  claimRef:
+    name: data-matomo-mariadb-0
+    namespace: prod
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: default
+  volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: volume-matomo-pv
+spec:
+  accessModes:
+  - ReadWriteOnce
+  azureDisk:
+    cachingMode: ReadOnly
+    diskName: volume-matomo-pv
+    diskURI: /subscriptions/b18da12e-efa1-4642-8fec-b6580b00212c/resourceGroups/MC_sdpaks-prod_sdpaks-prod-k8s_norwayeast/providers/Microsoft.Compute/disks/volume-matomo-pv
+    fsType: ""
+    kind: Managed
+    readOnly: false
+  capacity:
+    storage: 1Gi
+  claimRef:
+    name: volume-matomo-0
+    namespace: prod
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: default
+  volumeMode: Filesystem
