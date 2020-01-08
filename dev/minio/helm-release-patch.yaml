@@ -1,0 +1,16 @@
+# Private web analytics solution
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab-minio
+  namespace: gitlab
+spec:
+  values:
+    ingress:
+      hosts:
+      - gitlab-minio.dev.sdpaks.equinor.com
+      tls:
+      - secretName: gitlab-minio-tls
+        hosts:
+        - gitlab-minio.dev.sdpaks.equinor.com
