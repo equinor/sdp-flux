@@ -19,6 +19,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/proxy-body-size: 16m
       path: /
       hosts:
         - gitlab-minio.sdpaks.equinor.com
