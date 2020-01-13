@@ -21,3 +21,4 @@ patchesStrategicMerge:
 - ./external-dns/helm-release-patch.yaml
 - ./velero/helm-release-patch.yaml
 - ./minio/helm-release-patch.yaml
+- ./hgir/ingress-patch.yaml
