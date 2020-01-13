@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gitlab-unicorn-custom-ingress
+  namespace: gitlab
+  labels:
+    app: gitlab
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - gitlab.dev.sdpaks.equinor.com
+    secretName: gitlab-unicorn-tls
+  rules:
+    - host: gitlab.sdp.equinor.com
+      http:
+        paths:
+        - backend:
+            serviceName: gitlab-unicorn
+            servicePort: 8181
+          path: /
+        - backend:
+            serviceName: gitlab-unicorn
+            servicePort: 8080
+          path: /admin/sidekiq
