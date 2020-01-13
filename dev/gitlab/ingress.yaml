@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hgir-ingress
+  namespace: prod
+  labels:
+    app: hgir
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - hgir.sdpaks.equinor.com
+    secretName: hgir-tls
+  rules:
+    - host: gitlab.sdp.equinor.com
+      http:
+        paths:
+        - backend:
+            serviceName: gitlab-unicorn
+            servicePort: 8181
+          path: /
+        - backend:
+            serviceName: gitlab-unicorn
+            servicePort: 8080
+          path: /admin/sidekiq
