@@ -23,7 +23,28 @@ spec:
       unicorn:
         ingress:
           tls:
+          - hosts:
+            - gitlab.dev.sdpaks.equinor.com
             secretName: gitlab-unicorn-tls
+          rules:
+            - host: gitlab.sdp.equinor.com
+              http:
+                paths:
+                - backend:
+                    serviceName: gitlab-unicorn
+                    servicePort: 8181
+                  path: /
+            - host: gitlab.dev.sdpaks.equinor.com
+              http:
+                paths:
+                - backend:
+                    serviceName: gitlab-unicorn
+                    servicePort: 8181
+                  path: /
+                - backend:
+                    serviceName: gitlab-unicorn
+                    servicePort: 8080
+                  path: /admin/sidekiq
     global:
       appConfig:
         omniauth:
