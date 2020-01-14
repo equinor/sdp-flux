@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gitlab-unicorn-custom-ingress
+  name: gitlab-sdp-ingress
   namespace: gitlab
   labels:
     app: gitlab
@@ -12,7 +12,7 @@ spec:
   tls:
   - hosts:
     - gitlab.dev.sdpaks.equinor.com
-    secretName: gitlab-unicorn-tls
+    secretName: gitlab-sdp-tls
   rules:
     - host: gitlab.sdp.equinor.com
       http:
