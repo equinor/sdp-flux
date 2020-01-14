@@ -13,5 +13,6 @@ patchesStrategicMerge:
 - ./matomo/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
 - ./velero/helm-release-patch.yaml
+- ./nginx-ingress/helm-release-patch.yaml
 bases:
 - ../base/

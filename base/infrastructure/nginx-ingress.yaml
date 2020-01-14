@@ -17,6 +17,7 @@ spec:
     tcp:
       22: "gitlab/gitlab-gitlab-shell:22"
     controller:
+      replicaCount: 2
       ingressClass: nginx
       publishService:
         enabled: true # Ref: https://github.com/kubernetes-incubator/external-dns/blob/master/docs/faq.md#why-is-externaldns-only-adding-a-single-ip-address-in-route-53-on-aws-when-using-the-nginx-ingress-controller-how-do-i-get-it-to-use-the-fqdn-of-the-elb-assigned-to-my-nginx-ingress-controller-service-instead
@@ -26,6 +27,8 @@ spec:
         enabled: true
       service:
         enableHttp: true # Turn off?
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-resource-group: k8s-infrastructure
       externalTrafficPolicy: "Local"
 
 # Define a servicemonitor for the nginx-ingress so that Prometheus can scrape metrics
