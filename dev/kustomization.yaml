@@ -22,3 +22,4 @@ patchesStrategicMerge:
 - ./velero/helm-release-patch.yaml
 - ./minio/helm-release-patch.yaml
 - ./hgir/ingress-patch.yaml
+- ./nginx-ingress/helm-release-patch.yaml

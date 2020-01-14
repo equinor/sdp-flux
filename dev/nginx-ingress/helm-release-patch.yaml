@@ -1,0 +1,13 @@
+# To route traffic (HTTP and the like) to services in Kubernetes you usually need a Ingress controller. We choose you Nginx!
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: infrastructure
+spec:
+  values:
+    controller:
+      replicaCount: 2
+      service:
+        loadBalancerIP: 51.120.76.221
