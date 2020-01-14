@@ -11,3 +11,5 @@ spec:
       replicaCount: 2
       service:
         loadBalancerIP: 51.120.76.221
+      annotations:
+        service.beta.kubernetes.io/azure-load-balancer-resource-group: k8s-infrastructure
