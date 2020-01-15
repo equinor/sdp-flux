@@ -9,6 +9,8 @@ resources:
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
 - ./namespaces/gitlab.yaml
+- ./gitlab/gitlab-sdp-tls.yaml
+- ./gitlab/ingress.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
