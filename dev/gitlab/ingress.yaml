@@ -10,7 +10,7 @@ metadata:
 spec:
   tls:
   - hosts:
-    - gitlab.dev.sdpaks.equinor.com
+    - gitlab.sdp.equinor.com
     secretName: gitlab-sdp-tls
   rules:
     - host: gitlab.sdp.equinor.com
