@@ -40,3 +40,25 @@ https://gitlab.com/gitlab-org/gitlab-runner/issues/4131
             value: :9252
 ```
 
+### gitlab secret resetting
+
+Before we have a permanent token, you may experience that the gitlab-rails-secret resets.
+
+Create a file looking like this:
+
+```
+production:
+  secret_key_base: xxxxxx...
+  db_key_base: xxxxxx...
+  otp_key_base: xxxxxx...
+  openid_connect_signing_key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    xxxx-.....
+
+```
+
+`k create secret generic gitlab-rails-secret -n gitlab --from-file="C:\secrets.yaml"`
+
+If lost, It can be found in the `/etc/gitlab/gitlab-secrets.json` file in the Omnibus container on-prem.
+You may face http 500 when accessing /admin pages if this key is not set correctly.
+
