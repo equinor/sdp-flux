@@ -62,3 +62,23 @@ production:
 If lost, It can be found in the `/etc/gitlab/gitlab-secrets.json` file in the Omnibus container on-prem.
 You may face http 500 when accessing /admin pages if this key is not set correctly.
 
+
+## Migrate and Restore
+
+First ensure that your gitlab-rails-secret in AKS has the important lines from  `/etc/gitlab/gitlab-secrets.json` file in the Omnibus container on-prem.
+
+Next, follow this:
+
+https://docs.gitlab.com/charts/installation/migration/
+
+stop after you have successfully completed `gitlab-rake gitlab:backup:create`
+
+- kubectl exec into your gitlab task runner in AKS.
+- Run the command `gitlab-rake cache:clear`
+
+And then follow this guide
+
+https://docs.gitlab.com/charts/backup-restore/restore.html
+
+You will probably also have to reset the runner registration token as described in your guide.
+Verify that you can git clone, runners work etc.
