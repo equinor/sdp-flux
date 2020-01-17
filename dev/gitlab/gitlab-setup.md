@@ -57,7 +57,7 @@ production:
 
 ```
 
-`k create secret generic gitlab-rails-secret -n gitlab --from-file="C:\secrets.yaml"`
+`k create secret generic gitlab-rails-secret -n gitlab --from-file="C:\secrets.yml"`
 
 If lost, It can be found in the `/etc/gitlab/gitlab-secrets.json` file in the Omnibus container on-prem.
 You may face http 500 when accessing /admin pages if this key is not set correctly.
