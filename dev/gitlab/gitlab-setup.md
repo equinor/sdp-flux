@@ -80,5 +80,19 @@ And then follow this guide
 
 https://docs.gitlab.com/charts/backup-restore/restore.html
 
+E.g. `backup-utility --restore -t  1579256668_2020_01_17_12.1.6`
+
 You will probably also have to reset the runner registration token as described in your guide.
 Verify that you can git clone, runners work etc.
+
+Fixed this issue, seems after you copy over the new repositories into the new git-data/repositories folder, you also need to tell gitlab to import those repos:
+
+sudo gitlab-rake gitlab:import:repos
+
+Then, after I did sudo gitlab-rake gitlab:check I see that there are “wrong or missing hooks” errors.
+To fix these I simply ran
+sudo -u git -H /opt/gitlab/embedded/service/gitlab-shell/bin/create-hooks
+
+Now after reconfigure (sudo gitlab-ctl reconfigure )
+and restart (sudo gitlab-ctl restart)
+I see that my repositories show up on my site 
