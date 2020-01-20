@@ -23,7 +23,7 @@ spec:
       unicorn:
         ingress:
           tls:
-            secretName: gitlab-unicorn-tls
+            secretName: gitlab-sdp-tls
     global:
       appConfig:
         omniauth:

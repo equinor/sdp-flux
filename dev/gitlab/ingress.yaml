@@ -48,4 +48,4 @@ spec:
   tls:
   - hosts:
     - gitlab.dev.sdpaks.equinor.com
-    secretName: gitlab-sdp-tls
+    secretName: gitlab-unicorn-tls
