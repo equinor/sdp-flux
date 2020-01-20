@@ -1,28 +1,3 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: gitlab-sdp-ingress
-  namespace: gitlab
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: gitlab.sdp.equinor.com
-    http:
-      paths:
-      - backend:
-          serviceName: gitlab-unicorn
-          servicePort: 8181
-        path: /
-      - backend:
-          serviceName: gitlab-unicorn
-          servicePort: 8080
-        path: /admin/sidekiq
-  tls:
-  - hosts:
-    - gitlab.sdp.equinor.com
-    secretName: gitlab-sdp-tls
-
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress

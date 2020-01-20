@@ -72,7 +72,7 @@ spec:
       ingress:
         class: nginx
         annotations:
-          kubernetes.io/tls-acme: true
+        kubernetes.io/tls-acme: false
         configureCertmanager: false
       minio:
         enabled: false
