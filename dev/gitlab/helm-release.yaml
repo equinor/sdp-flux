@@ -123,3 +123,7 @@ spec:
       envVars:
         - name: LISTEN_ADDRESS
           value: :9252
+    gitlab-shell:
+      hostKeys:
+        secret: gitlab-ssh-keys
+
