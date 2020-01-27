@@ -64,6 +64,9 @@ spec:
           connection:
             key: connection
             secret: gitlab-rails-storage
+      shell:
+        hostKeys:
+          secret: gitlab-ssh-keys
       edition: ce
       hosts:
         domain: sdp.equinor.com
