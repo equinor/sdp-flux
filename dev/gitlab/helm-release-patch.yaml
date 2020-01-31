@@ -1,0 +1,19 @@
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  values:
+    global:
+      psql:
+        database: postgres
+        host: sdpaks-dev-gitlab-psql.postgres.database.azure.com
+        password:
+          key: password
+          secret: gitlab-postgres-secret
+        username: gitlab@sdpaks-dev-gitlab-psql
+      appConfig:
+        hosts:
+          domain: sdp.equinor.com

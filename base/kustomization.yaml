@@ -10,7 +10,6 @@ resources:
 - ./standalone-components/external-dns/external-dns.yaml
 - ./standalone-components/sealed-secrets/sealed-secrets.yaml
 - ./standalone-components/velero/helm-release.yaml
-- ./standalone-components/minio/helm-release-minio.yaml
 - ./monitoring/aware/api/deployment.yaml
 - ./monitoring/aware/api/service.yaml
 - ./monitoring/aware/ingress.yaml
@@ -52,3 +51,9 @@ resources:
 - ./prod/verdaccio/sealed-secret-tls.yaml
 - ./prod/aks-registry-prod.yaml
 - ./monitoring/logging/helm-release.yaml
+- ./gitlab/gitlab-azure-oauth2.yaml
+- ./gitlab/gitlab-common-postgres-tls.yaml
+- ./gitlab/gitlab-smtp-secret.yaml
+- ./gitlab/gitlab-ssh-keys.yaml
+- ./gitlab/helm-release.yaml
+- ./gitlab/minio-helm-release.yaml

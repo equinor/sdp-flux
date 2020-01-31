@@ -10,7 +10,9 @@ resources:
 - ./gitlab/gitlab-smtp-secret.yaml
 - ./namespaces/gitlab.yaml
 - ./gitlab/gitlab-sdp-tls.yaml
+- ./gitlab/gitlab-sdp-dev-tls.yaml #unsure which of this or the above is in use, verify before removing.
 - ./gitlab/ingress.yaml
+- ./namespaces/backup-sandbox.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
@@ -25,3 +27,5 @@ patchesStrategicMerge:
 - ./minio/helm-release-patch.yaml
 - ./hgir/ingress-patch.yaml
 - ./nginx-ingress/helm-release-patch.yaml
+- ./gitlab/helm-release-patch.yaml
+- ./gitlab/minio-helm-release-patch.yaml

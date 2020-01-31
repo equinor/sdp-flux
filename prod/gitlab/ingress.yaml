@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
 spec:
   rules:
-  - host: gitlab.dev.sdpaks.equinor.com
+  - host: gitlab.sdpaks.equinor.com
     http:
       paths:
       - backend:
@@ -22,9 +22,9 @@ spec:
         path: /admin/sidekiq
   tls:
   - hosts:
-    - gitlab.dev.sdpaks.equinor.com
+    - gitlab.sdpaks.equinor.com
     secretName: gitlab-unicorn-tls
-
+    
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -35,7 +35,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: gitlab.sdp.equinor.com
+  - host: git.equinor.com
     http:
       paths:
       - backend:
@@ -48,7 +48,7 @@ spec:
         path: /admin/sidekiq
   tls:
   - hosts:
-    - gitlab.sdp.equinor.com
+    - git.equinor.com
     secretName: gitlab-sdp-tls
 ---
 apiVersion: extensions/v1beta1
@@ -60,7 +60,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: gitlab-minio.dev.sdpaks.equinor.com 
+  - host: gitlab-minio.sdpaks.equinor.com 
     http:
       paths:
       - backend:
@@ -69,5 +69,5 @@ spec:
         path: /
   tls:
   - hosts:
-    - gitlab-minio.dev.sdpaks.equinor.com 
+    - gitlab-minio.sdpaks.equinor.com 
     secretName: gitlab-sdp-tls

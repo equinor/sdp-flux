@@ -16,3 +16,6 @@ patchesStrategicMerge:
 - ./nginx-ingress/helm-release-patch.yaml
 bases:
 - ../base/
+resources:
+- ./gitlab/gitlab-sdp-tls.yaml
+- ./gitlab/ingress.yaml
