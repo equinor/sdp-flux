@@ -4,10 +4,6 @@ kind: Kustomization
 bases:
 - ../base/
 resources:
-- ./gitlab/gitlab-azure-oauth2.yaml
-- ./gitlab/gitlab-postgres-tls.yaml
-- ./gitlab/gitlab-smtp-secret.yaml
-- ./namespaces/gitlab.yaml
 - ./gitlab/gitlab-sdp-tls.yaml
 - ./gitlab/gitlab-sdp-dev-tls.yaml #unsure which of this or the above is in use, verify before removing.
 - ./gitlab/ingress.yaml
