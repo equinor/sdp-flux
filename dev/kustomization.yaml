@@ -4,7 +4,6 @@ kind: Kustomization
 bases:
 - ../base/
 resources:
-- ./gitlab/helm-release.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
