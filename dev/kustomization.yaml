@@ -5,7 +5,6 @@ bases:
 - ../base/
 resources:
 - ./gitlab/gitlab-sdp-tls.yaml
-- ./gitlab/gitlab-sdp-dev-tls.yaml #unsure which of this or the above is in use, verify before removing.
 - ./gitlab/ingress.yaml
 - ./namespaces/backup-sandbox.yaml
 patchesStrategicMerge:
