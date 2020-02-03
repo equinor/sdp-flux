@@ -17,3 +17,8 @@ spec:
       appConfig:
         hosts:
           domain: sdp.equinor.com
+      ingress:
+        class: nginx
+        annotations:
+        configureCertmanager: false
+        kubernetes.io/tls-acme: false
