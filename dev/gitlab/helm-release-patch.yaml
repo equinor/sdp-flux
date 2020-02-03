@@ -2,7 +2,7 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: gitlab
+  name: git
   namespace: gitlab
 spec:
   values:

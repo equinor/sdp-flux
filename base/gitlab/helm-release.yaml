@@ -2,7 +2,7 @@
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
-  name: gitlab
+  name: git
   namespace: gitlab
 spec:
   releaseName: gitlab
@@ -69,7 +69,7 @@ spec:
           secret: gitlab-ssh-keys
       edition: ce
       hosts:
-        domain: sdp.equinor.com
+        domain: equinor.com
         externalIP: ""
         https: true
       ingress:
