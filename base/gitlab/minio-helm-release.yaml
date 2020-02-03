@@ -13,7 +13,7 @@ spec:
     existingSecret: gitlab-minio-secret
     azuregateway:
       enabled: true
-      replicas: 2
+      replicas: 1
     ingress:
       enabled: true
       annotations:
