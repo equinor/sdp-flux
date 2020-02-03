@@ -14,7 +14,6 @@ spec:
     certmanager:
       install: false
     gitlab:
-      name: git.equinor.com
       task-runner:
         backups:
           objectStorage:
@@ -73,6 +72,11 @@ spec:
         domain: equinor.com
         externalIP: ""
         https: true
+        gitlab:
+          name: git.equinor.com
+        registry:
+          name: git.equinor.com
+          servicePort: 4567
       ingress:
         class: nginx
         annotations:
@@ -116,8 +120,6 @@ spec:
     postgresql:
       install: false
     registry:
-      name: git.equinor.com
-      servicePort: 4567
       bucket: gitlab-registry-storage
       ingress:
         tls:

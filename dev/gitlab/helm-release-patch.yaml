@@ -17,12 +17,12 @@ spec:
       appConfig:
         hosts:
           domain: sdp.equinor.com
+          registry:
+            name: registry.dev.sdpaks.equinor.com
+          gitlab:
+            name: gitlab.sdp.equinor.com
       ingress:
         class: nginx
         annotations:
         configureCertmanager: false
         kubernetes.io/tls-acme: false
-    registry:
-      name: registry.dev.sdpaks.equinor.com
-    gitlab:
-      name: gitlab.sdp.equinor.com
