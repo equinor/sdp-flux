@@ -5,7 +5,7 @@ metadata:
   name: git
   namespace: gitlab
 spec:
-  releaseName: gitlab
+  releaseName: git
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
