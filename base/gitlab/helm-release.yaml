@@ -14,6 +14,7 @@ spec:
     certmanager:
       install: false
     gitlab:
+      name: git.equinor.com
       task-runner:
         backups:
           objectStorage:
@@ -115,6 +116,8 @@ spec:
     postgresql:
       install: false
     registry:
+      name: git.equinor.com
+      servicePort: 4567
       bucket: gitlab-registry-storage
       ingress:
         tls:
