@@ -14,13 +14,12 @@ spec:
           key: password
           secret: gitlab-postgres-secret
         username: gitlab@sdpaks-dev-gitlab-psql
-      appConfig:
-        hosts:
-          domain: sdp.equinor.com
-          registry:
-            name: registry.dev.sdpaks.equinor.com
-          gitlab:
-            name: gitlab.sdp.equinor.com
+      hosts:
+        domain: sdp.equinor.com
+        registry:
+          name: registry.dev.sdpaks.equinor.com
+        gitlab:
+          name: gitlab.sdp.equinor.com
       ingress:
         class: nginx
         annotations:
