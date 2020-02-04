@@ -69,13 +69,13 @@ spec:
           secret: gitlab-ssh-keys
       edition: ce
       hosts:
-        domain: equinor.com
+        domain: sdpaks.equinor.com
         externalIP: ""
         https: true
         gitlab:
-          name: git.equinor.com
+          name: gitlab.sdpaks.equinor.com
         registry:
-          name: git.equinor.com
+          name: gitlab.sdpaks.equinor.com
           servicePort: 4567
       ingress:
         class: nginx
