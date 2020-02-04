@@ -19,3 +19,4 @@ bases:
 resources:
 - ./gitlab/gitlab-sdp-tls.yaml
 - ./gitlab/ingress.yaml
+- ./gitlab/gitlab-rails-secret.yaml
