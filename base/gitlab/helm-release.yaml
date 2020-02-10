@@ -17,6 +17,8 @@ spec:
       task-runner:
         persistence:
           enabled: true
+          storageClass: managed-premium
+          size: 512
         backups:
           objectStorage:
             config:
