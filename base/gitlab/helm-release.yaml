@@ -18,7 +18,7 @@ spec:
         persistence:
           enabled: true
           storageClass: managed-premium
-          size: 512
+          size: 512Gi
         backups:
           objectStorage:
             config:
