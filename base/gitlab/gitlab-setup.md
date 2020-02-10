@@ -82,6 +82,9 @@ https://docs.gitlab.com/charts/backup-restore/restore.html
 
 E.g. `backup-utility --restore -t  1579256668_2020_01_17_12.1.6`
 
+If it fails due to "connection refused" - try opening a firewall entry in the storage account.
+You need to ensure that the task runner has enough temporary disk space to extract the tarball. Ensure this is set in the helm chart, and modify the storage class or PVC to have a larger than default size.
+
 You will probably also have to reset the runner registration token as described in your guide.
 Verify that you can git clone, runners work etc.
 
