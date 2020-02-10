@@ -17,6 +17,7 @@ spec:
       task-runner:
         persistence:
           enabled: true
+          storageClass: managed-premium
         backups:
           objectStorage:
             config:
