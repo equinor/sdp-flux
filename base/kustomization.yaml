@@ -57,3 +57,4 @@ resources:
 - ./gitlab/gitlab-ssh-keys.yaml
 - ./gitlab/helm-release.yaml
 - ./gitlab/minio-helm-release.yaml
+- ./gitlab/gitlab-rails-secret.yaml
