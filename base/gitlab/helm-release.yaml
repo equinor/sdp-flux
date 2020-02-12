@@ -16,8 +16,10 @@ spec:
       install: false
     gitlab:
       gitaly:
+        persistence:
+          enabled: true
           storageClass: managed-premium-retain-nocache
-          size: "900Gi"
+          size: "1Ti"
       task-runner:
         persistence:
           enabled: true
