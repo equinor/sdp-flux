@@ -1,3 +1,4 @@
+# Beware that some values are to be set under "global.subchart" while others are set under "gitlab.subchartname"
 ---
 apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
@@ -16,7 +17,7 @@ spec:
     gitlab:
       gitaly:
           storageClass: managed-premium-retain-nocache
-          size: "1Ti"
+          size: "900Gi"
       task-runner:
         persistence:
           enabled: true
