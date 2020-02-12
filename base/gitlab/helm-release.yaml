@@ -17,8 +17,8 @@ spec:
       task-runner:
         persistence:
           enabled: true
-          storageClass: managed-premium
-          size: 512Gi
+          storageClass: managed-premium-retain-nocache
+          size: "1Ti"
         backups:
           objectStorage:
             config:
