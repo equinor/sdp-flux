@@ -21,4 +21,5 @@ spec:
       reboot-sentinel: "/var/run/reboot-required-night"
       slack-username: "SDPTeam Kured"
       slack-hook-url: secrets.kured-webhook.token
+      blocking-pod-selector: app=task-runner,release=gitlab
 #how to get secret?
