@@ -97,6 +97,14 @@ spec:
           hosts:
           - prometheus.sdpaks.equinor.com
 
+    prometheusOperator:
+      admissionWebhooks:
+        enabled: false
+        patch:
+          enabled: false
+      tlsProxy:
+        enabled: false
+
     coreDns:
       enabled: true
 
