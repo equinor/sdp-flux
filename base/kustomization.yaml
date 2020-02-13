@@ -10,11 +10,6 @@ resources:
 - ./standalone-components/external-dns/external-dns.yaml
 - ./standalone-components/sealed-secrets/sealed-secrets.yaml
 - ./standalone-components/velero/helm-release.yaml
-- ./monitoring/aware/api/deployment.yaml
-- ./monitoring/aware/api/service.yaml
-- ./monitoring/aware/ingress.yaml
-- ./monitoring/aware/web/deployment.yaml
-- ./monitoring/aware/web/service.yaml
 - ./monitoring/monitor/ingress.yaml
 - ./monitoring/monitor/web/deployment.yaml
 - ./monitoring/monitor/web/service.yaml
@@ -58,3 +53,8 @@ resources:
 - ./gitlab/helm-release.yaml
 - ./gitlab/minio-helm-release.yaml
 - ./gitlab/gitlab-rails-secret.yaml
+- ./infrastructure/kured-slacktoken.yaml
+- ./monitoring/aware/deployment.yaml
+- ./monitoring/aware/ingress.yaml
+- ./monitoring/aware/sealedsecret.yaml
+- ./monitoring/aware/service.yaml
