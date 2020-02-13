@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: aware-api
-        image: sdpequinor/aware:3.1.0
+        image: sdpequinor/aware:3.1.1
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -33,7 +33,7 @@ spec:
         - name: EXPORT_SECRET
           valueFrom:
             secretKeyRef:
-              name: aware_export_secret
+              name: aware-export-secret
               key: EXPORT_SECRET
         resources:
           requests:
