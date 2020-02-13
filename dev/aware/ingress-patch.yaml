@@ -20,22 +20,4 @@ spec:
             backend:
               serviceName: aware-web
               servicePort: 80
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: aware-auth
-  namespace: monitoring
-spec:
-  tls:
-    - hosts:
-        - aware.dev.sdpaks.equinor.com
-      secretName: aware-tls
-  rules:
-    - host: aware.dev.sdpaks.equinor.com
-      http:
-        paths:
-          - path: /oauth2
-            backend:
-              serviceName: oauth2-proxy-sdp
-              servicePort: 4180
+

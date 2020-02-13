@@ -9,7 +9,7 @@ metadata:
   namespace: monitoring
   annotations:
     flux.weave.works/automated: 'true'
-    flux.weave.works/tag.aware: glob:2.*
+    flux.weave.works/tag.aware-api: semver:~3.*
 spec:
   replicas: 1
   template:
@@ -17,8 +17,6 @@ spec:
       labels:
         app: aware
         tier: api
-      annotations:
-        flux.weave.works/automated: 'true'
     spec:
       containers:
       - name: aware-api
