@@ -24,10 +24,6 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - alertmanager.sdpaks.equinor.com
-        tls:
-        - secretName: alertmanager-tls
-          hosts:
-          - alertmanager.sdpaks.equinor.com
 
     grafana:
       sidecar:
@@ -59,10 +55,6 @@ spec:
           kubernetes.io/tls-acme: "true"
         hosts:
         - grafana.sdpaks.equinor.com
-        tls:
-        - secretName: grafana-tls
-          hosts:
-          - grafana.sdpaks.equinor.com
 
     kubeApiServer:
       tlsConfig:
@@ -92,10 +84,6 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - prometheus.sdpaks.equinor.com
-        tls:
-        - secretName: prometheus-tls
-          hosts:
-          - prometheus.sdpaks.equinor.com
 
     prometheusOperator:
       admissionWebhooks:
