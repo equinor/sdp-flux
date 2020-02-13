@@ -11,6 +11,10 @@ spec:
       ingress:
         hosts:
         - alertmanager.dev.sdpaks.equinor.com
+        tls:
+        - secretName: alertmanager-tls
+          hosts:
+          - alertmanager.dev.sdpaks.equinor.com
 
     grafana:
       env:
@@ -19,9 +23,17 @@ spec:
       ingress:
         hosts:
         - grafana.dev.sdpaks.equinor.com
+        tls:
+        - secretName: grafana-tls
+          hosts:
+          - grafana.dev.sdpaks.equinor.com
 
     prometheus:
       ingress:
         enabled: true
         hosts:
         - prometheus.dev.sdpaks.equinor.com
+        tls:
+        - secretName: prometheus-tls
+          hosts:
+          - prometheus.dev.sdpaks.equinor.com
