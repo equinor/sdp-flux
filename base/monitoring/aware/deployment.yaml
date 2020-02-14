@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: aware-api
-        image: sdpequinor/aware-api:3.1.5
+        image: sdpequinor/aware-api:3.1.8
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -28,6 +28,8 @@ spec:
         env:
         - name: PROMETHEUS_API
           value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+        - name: DEPLOYMENT_NAME
+          value: "SDP-AKS Dev"
         - name: IGNORE_PROMETHEUS_ALERTS
           value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog"
         - name: EXPORT_SECRET
