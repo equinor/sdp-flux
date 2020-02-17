@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -12,6 +12,10 @@ metadata:
     flux.weave.works/tag.aware: glob:1.*
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: release-aware
+      tier: api
   template:
     metadata:
       labels:
