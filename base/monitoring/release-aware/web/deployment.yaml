@@ -11,6 +11,10 @@ metadata:
     flux.weave.works/automated: 'true'
     flux.weave.works/tag.aware-web: glob:1.*
 spec:
+  selector:
+    matchLabels:
+      app: release-aware
+      tier: web
   replicas: 1
   template:
     metadata:
