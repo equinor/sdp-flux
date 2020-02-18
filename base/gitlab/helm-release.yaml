@@ -134,6 +134,9 @@ spec:
         tls:
           enabled: true
           secretName: gitlab-registry-tls
+      service:
+        externalPort: 4567
+        internalPort: 4567
       storage:
         key: config
         secret: registry-storage
