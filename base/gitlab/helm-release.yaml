@@ -133,6 +133,7 @@ spec:
       bucket: gitlab-registry-storage
       ingress:
         tls:
+          enabled: true
           secretName: gitlab-registry-tls
       storage:
         key: config
@@ -144,4 +145,7 @@ spec:
     gitlab-shell:
       hostKeys:
         secret: gitlab-ssh-keys
+  registry:
+    storage:
+      secret: registry-storage
 
