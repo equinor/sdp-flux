@@ -86,7 +86,6 @@ spec:
           name: gitlab.sdpaks.equinor.com
         registry:
           name: gitlab.sdpaks.equinor.com
-          servicePort: 4567
       ingress:
         class: nginx
         annotations:
@@ -148,4 +147,6 @@ spec:
   registry:
     storage:
       secret: registry-storage
-
+    service:
+      externalPort: 4567
+      internalPort: 4567
