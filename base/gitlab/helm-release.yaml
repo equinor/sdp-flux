@@ -84,7 +84,10 @@ spec:
         https: true
         gitlab:
           name: gitlab.sdpaks.equinor.com
+        registry:
+          name: registry.sdpaks.equinor.com
       ingress:
+        enabled: true
         class: nginx
         annotations:
         kubernetes.io/tls-acme: true

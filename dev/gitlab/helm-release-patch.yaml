@@ -18,6 +18,8 @@ spec:
         domain: sdp.equinor.com
         gitlab:
           name: gitlab.sdp.equinor.com
+        registry:
+          name: registry.dev.sdpaks.equinor.com
       ingress:
         class: nginx
         annotations:
