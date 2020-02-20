@@ -84,8 +84,6 @@ spec:
         https: true
         gitlab:
           name: gitlab.sdpaks.equinor.com
-        registry:
-          name: gitlab.sdpaks.equinor.com
       ingress:
         class: nginx
         annotations:
