@@ -14,7 +14,11 @@ Solution: `kubectl exec -it <task-runner-pod-name> /srv/gitlab/bin/rails console
 
 [And follow these steps](https://gitlab.com/gitlab-org/gitlab-ce/issues/56403#note_136382583)
 
+**If this fails, likely you do not have the correct content in gitlab-rails-secret** this might have changed between gitlab versions (upgrading). Will need to double check on this.
+
 There have been some occurences where running the above step still give http 500 on the /admin/runners page. In test environments you can delete the contents of the table. `DELETE FROM ci_runners;`, and you should get access. __BE careful__ attempting this in production environments without backups of both kubernetes secrets and the Postgres database.
+
+
 
 ## Unable to register Gitlab runners
 
@@ -31,7 +35,6 @@ IPV6 is not supported by our aks-network for some reason
 Set these settings:
 
 https://gitlab.com/gitlab-org/gitlab-runner/issues/4131
-
 ```envVars:
     global:
       runner:
@@ -57,10 +60,14 @@ production:
 
 ```
 
+
+
 `k create secret generic gitlab-rails-secret -n gitlab --from-file="C:\secrets.yml"`
 
 If lost, It can be found in the `/etc/gitlab/gitlab-secrets.json` file in the Omnibus container on-prem.
-You may face http 500 when accessing /admin pages if this key is not set correctly.
+**You may face http 500 when accessing /admin pages if this key is not set correctly.**
+
+This is created as a sealed-secret per 19.02.2020.
 
 
 ## Migrate and Restore
