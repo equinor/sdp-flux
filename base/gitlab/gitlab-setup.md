@@ -83,11 +83,24 @@ stop after you have successfully completed `gitlab-rake gitlab:backup:create`
 - kubectl exec into your gitlab task runner in AKS.
 - Run the command `gitlab-rake cache:clear`
 
-And then follow this guide
+And then follow this guide, with modifications
 
 https://docs.gitlab.com/charts/backup-restore/restore.html
 
+
+First: 
 E.g. `backup-utility --restore -t  1579256668_2020_01_17_12.1.6`
+
+This will extract repos, move them to gitaly PV, dump db into postgres and extract container registry tarball. The container registry tarball is useless in this setting.
+To copy over the registry, use this command
+
+azcopy copy "/data/docker/dockerfiles/gitlab/data/gitlab/data/gitlab-rails/shared/registry/docker" "https://sdpaksdevminio.blob.core.windows.net/gitlab-registry-storage\/?"SAS-token-pointing-to-bucketname/" --recursive=true 
+
+
+
+^ Syntax on this is CRITICAL. You need a \/ after the bucketname, and the path must match exactly. otherwise you will have very strange issues.
+
+
 
 If it fails due to "connection refused" - try opening a firewall entry in the storage account.
 You need to ensure that the task runner has enough temporary disk space to extract the tarball. Ensure this is set in the helm chart, and modify the storage class or PVC to have a larger than default size.
