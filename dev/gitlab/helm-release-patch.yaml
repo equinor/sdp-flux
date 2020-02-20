@@ -16,6 +16,8 @@ spec:
         username: gitlab@sdpaks-dev-gitlab-psql
       hosts:
         domain: sdp.equinor.com
+        registry:
+          name: gitlab.sdpaks.equinor.com
         gitlab:
           name: gitlab.sdp.equinor.com
       ingress:
