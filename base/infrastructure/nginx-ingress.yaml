@@ -16,7 +16,6 @@ spec:
   values:
     tcp:
       22: "gitlab/gitlab-gitlab-shell:22"
-      4567: "gitlab/gitlab-registry:5000"
     controller:
       replicaCount: 2
       ingressClass: nginx

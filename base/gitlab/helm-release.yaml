@@ -133,7 +133,7 @@ spec:
       ingress:
         tls:
           enabled: true
-          secretName: gitlab-sdp-tls
+          secretName: gitlab-registry-tls
       storage:
         key: config
         secret: registry-storage
