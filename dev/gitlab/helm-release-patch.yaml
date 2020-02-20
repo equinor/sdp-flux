@@ -17,7 +17,7 @@ spec:
       hosts:
         domain: sdp.equinor.com
         registry:
-          name: registry.dev.sdpaks.equinor.com
+          name: gitlab.sdp.equinor.com
         gitlab:
           name: gitlab.sdp.equinor.com
       ingress:

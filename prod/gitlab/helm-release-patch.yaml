@@ -1,0 +1,31 @@
+# Beware that some values are to be set under "global.subchart" while others are set under "gitlab.subchartname"
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  releaseName: gitlab
+  chart:
+    repository: https://charts.gitlab.io/
+    name: gitlab
+    version: 3.0.4
+  values:
+    certmanager:
+      install: false
+    gitlab:
+      task-runner:
+        persistence:
+          enabled: true
+          storageClass: managed-premium-retain-nocache
+          size: "1Ti"
+        backups:
+          objectStorage:
+            config:
+              key: config
+              secret: backup-storage-config
+          cron:
+            enabled: true
+            schedule: 45 1 * * *
+            extraArgs: ""

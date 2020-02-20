@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: oauth2-proxy
-    version: 0.11.0
+    version: 2.2.2
   values:
     replicaCount: 1
     extraArgs:

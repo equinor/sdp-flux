@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 2.4.6
+    version: 3.0.4
   values:
     certmanager:
       install: false
@@ -86,7 +86,6 @@ spec:
           name: gitlab.sdpaks.equinor.com
         registry:
           name: gitlab.sdpaks.equinor.com
-          servicePort: 4567
       ingress:
         class: nginx
         annotations:
@@ -133,7 +132,8 @@ spec:
       bucket: gitlab-registry-storage
       ingress:
         tls:
-          secretName: gitlab-registry-tls
+          enabled: true
+          secretName: gitlab-sdp-tls
       storage:
         key: config
         secret: registry-storage
@@ -144,4 +144,6 @@ spec:
     gitlab-shell:
       hostKeys:
         secret: gitlab-ssh-keys
-
+  registry:
+    storage:
+      secret: registry-storage
