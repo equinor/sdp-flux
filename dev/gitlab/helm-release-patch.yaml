@@ -24,4 +24,4 @@ spec:
         class: nginx
         annotations:
         configureCertmanager: false
-        kubernetes.io/tls-acme: false
+        kubernetes.io/tls-acme: true
