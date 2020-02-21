@@ -11,7 +11,7 @@ spec:
     path: custom-charts/minio
   values:
     existingSecret: gitlab-minio-secret
-    extraArgs: "--compat"
+    extraArgs: ["--compat"]
     azuregateway:
       enabled: true
       replicas: 1
