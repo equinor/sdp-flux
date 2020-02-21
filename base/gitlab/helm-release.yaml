@@ -19,12 +19,12 @@ spec:
         persistence:
           enabled: true
           storageClass: managed-premium-retain-nocache
-          size: "1Ti"
+          size: "200Gi"
       task-runner:
         persistence:
           enabled: true
-          storageClass: managed-premium-retain-nocache
-          size: "1Ti"
+          storageClass: managed-premium
+          size: "600Gi"
         backups:
           objectStorage:
             config:
@@ -56,7 +56,6 @@ spec:
           tmpBucket: gitlab-tmp-storage
         lfs:
           bucket: gitlab-lfs-storage
-          backgroundUpload: true
           connection:
             key: connection
             secret: gitlab-rails-storage
