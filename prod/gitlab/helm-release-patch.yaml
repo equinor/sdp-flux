@@ -7,8 +7,6 @@ metadata:
   namespace: gitlab
 spec:
   values:
-    certmanager:
-      install: false
     gitlab:
       task-runner:
         backups:
