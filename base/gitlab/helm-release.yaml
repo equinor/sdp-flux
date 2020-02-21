@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 2.4.6
+    version: 3.0.4
   values:
     certmanager:
       install: false
@@ -19,12 +19,12 @@ spec:
         persistence:
           enabled: true
           storageClass: managed-premium-retain-nocache
-          size: "1Ti"
+          size: "256Gi"
       task-runner:
         persistence:
           enabled: true
-          storageClass: managed-premium-retain-nocache
-          size: "1Ti"
+          storageClass: managed-premium
+          size: "600Gi"
         backups:
           objectStorage:
             config:
@@ -85,12 +85,12 @@ spec:
         gitlab:
           name: gitlab.sdpaks.equinor.com
         registry:
-          name: gitlab.sdpaks.equinor.com
-          servicePort: 4567
+          name: registry.sdpaks.equinor.com
       ingress:
+        enabled: true
         class: nginx
         annotations:
-        kubernetes.io/tls-acme: false
+        kubernetes.io/tls-acme: true
         configureCertmanager: false
       minio:
         enabled: false
@@ -133,6 +133,7 @@ spec:
       bucket: gitlab-registry-storage
       ingress:
         tls:
+          enabled: true
           secretName: gitlab-registry-tls
       storage:
         key: config
@@ -144,4 +145,6 @@ spec:
     gitlab-shell:
       hostKeys:
         secret: gitlab-ssh-keys
-
+  registry:
+    storage:
+      secret: registry-storage

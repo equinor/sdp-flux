@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: nginx-ingress
-    version: 0.31.0
+    version: 1.29.6
   values:
     tcp:
       22: "gitlab/gitlab-gitlab-shell:22"

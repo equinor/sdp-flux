@@ -1,0 +1,16 @@
+# Beware that some values are to be set under "global.subchart" while others are set under "gitlab.subchartname"
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  values:
+    gitlab:
+      task-runner:
+        backups:
+          cron:
+            enabled: true
+            schedule: 45 1 * * *
+            extraArgs: ""

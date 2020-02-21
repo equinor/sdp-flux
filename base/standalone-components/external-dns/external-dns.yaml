@@ -13,7 +13,8 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: external-dns
-    version: 1.7.0
+    resourceGroup: k8s-infrastructure
+    version: 2.16.1
   values:
     provider: azure
     azure: 

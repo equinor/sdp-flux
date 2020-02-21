@@ -16,12 +16,12 @@ spec:
         username: gitlab@sdpaks-dev-gitlab-psql
       hosts:
         domain: sdp.equinor.com
-        registry:
-          name: registry.dev.sdpaks.equinor.com
         gitlab:
           name: gitlab.sdp.equinor.com
+        registry:
+          name: registry.dev.sdpaks.equinor.com
       ingress:
         class: nginx
         annotations:
         configureCertmanager: false
-        kubernetes.io/tls-acme: false
+        kubernetes.io/tls-acme: true
