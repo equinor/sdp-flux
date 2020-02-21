@@ -5,7 +5,10 @@ kind: HelmRelease
 metadata:
   name: gitlab
   namespace: gitlab
+spec:
   values:
+    certmanager:
+      install: false
     gitlab:
       task-runner:
         backups:
