@@ -56,7 +56,7 @@ spec:
           tmpBucket: gitlab-tmp-storage
         lfs:
           bucket: gitlab-lfs-storage
-          backgroundUpload: false
+          backgroundUpload: true
           connection:
             key: connection
             secret: gitlab-rails-storage
