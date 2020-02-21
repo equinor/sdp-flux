@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
   labels:
@@ -9,12 +9,6 @@ metadata:
   name: {{ template "verdaccio.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
-  selector:
-    matchLabels:
-      app: {{ template "verdaccio.name" . }}
-      chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-      heritage: {{ .Release.Service }}
-      release: {{ .Release.Name }}
   strategy:
     {{- if .Values.persistence.enabled }}
     type: Recreate
