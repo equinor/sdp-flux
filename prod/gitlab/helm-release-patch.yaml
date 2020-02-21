@@ -16,15 +16,7 @@ spec:
       install: false
     gitlab:
       task-runner:
-        persistence:
-          enabled: true
-          storageClass: managed-premium-retain-nocache
-          size: "1Ti"
         backups:
-          objectStorage:
-            config:
-              key: config
-              secret: backup-storage-config
           cron:
             enabled: true
             schedule: 45 1 * * *
