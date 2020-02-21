@@ -5,15 +5,7 @@ kind: HelmRelease
 metadata:
   name: gitlab
   namespace: gitlab
-spec:
-  releaseName: gitlab
-  chart:
-    repository: https://charts.gitlab.io/
-    name: gitlab
-    version: 3.0.4
   values:
-    certmanager:
-      install: false
     gitlab:
       task-runner:
         backups:
