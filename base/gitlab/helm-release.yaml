@@ -19,7 +19,7 @@ spec:
         persistence:
           enabled: true
           storageClass: managed-premium-retain-nocache
-          size: "200Gi"
+          size: "256Gi"
       task-runner:
         persistence:
           enabled: true
