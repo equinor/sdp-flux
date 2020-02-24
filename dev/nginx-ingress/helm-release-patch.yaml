@@ -7,6 +7,9 @@ metadata:
   namespace: infrastructure
 spec:
   values:
+    tcp:
+      22: "gitlab/gitlab-gitlab-shell:22"
+      4567: "gitlab/gitlab-registry:5000"
     controller:
       service:
         loadBalancerIP: 51.120.76.221
