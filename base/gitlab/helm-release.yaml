@@ -40,12 +40,14 @@ spec:
           enabled: true
           allowSingleSignOn:
           - azure_oauth2
+          - saml
           autoLinkLdapUser: true
-          autoLinkSamlUser: false
+          autoLinkSamlUser: true
           autoSignInWithProvider: null
           blockAutoCreatedUsers: false
           providers:
           - secret: gitlab-azure-oauth2
+          - secret: gitlab-azure-saml
         artifacts:
           bucket: gitlab-artifacts-storage
           connection:
