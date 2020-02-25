@@ -10,4 +10,4 @@ spec:
     domainFilters: ["dev.sdpaks.equinor.com"]
     azure: 
       secretName: azure-dns-config-file
-      resourceGroup: k8s-infrastructure
+      resourceGroup: sdpaks-dev-dns

@@ -13,12 +13,9 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: external-dns
-    resourceGroup: k8s-infrastructure
     version: 2.16.1
   values:
     provider: azure
-    azure: 
-      secretName: azure-dns-config-file
     rbac:
       create: true
     sources:

@@ -8,3 +8,6 @@ spec:
   releaseName: external-dns
   values:
     domainFilters: ["sdpaks.equinor.com"]
+    azure: 
+      secretName: azure-dns-config-file
+      resourceGroup: k8s-infrastructure
