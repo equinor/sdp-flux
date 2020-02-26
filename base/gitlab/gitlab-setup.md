@@ -97,9 +97,9 @@ To copy over the registry, use this command
 azcopy copy "/data/docker/dockerfiles/gitlab/data/gitlab/data/gitlab-rails/shared/registry/docker" "https://sdpaksdevminio.blob.core.windows.net/gitlab-registry-storage\/?"SAS-token-pointing-to-bucketname/" --recursive=true 
 
 
-
 ^ Syntax on this is CRITICAL. You need a \/ after the bucketname, and the path must match exactly. otherwise you will have very strange issues.
 
+In s3cmd this will look like a directory named "/", while in azure portal it looks like a bucket named '<no name>'. For some reason this is where the Gitlab registry is able to write and fetch registry images from. 
 
 
 If it fails due to "connection refused" - try opening a firewall entry in the storage account.
