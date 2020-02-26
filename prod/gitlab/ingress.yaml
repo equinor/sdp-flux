@@ -50,3 +50,24 @@ spec:
   - hosts:
     - git.equinor.com
     secretName: gitlab-sdp-tls
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gitlab-registry-ingress
+  namespace: gitlab
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: registry.sdpaks.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: gitlab-registry
+          servicePort: 5000
+        path: /
+  tls:
+  - hosts:
+    - registry.sdpaks.equinor.com
+    secretName: gitlab-registry-tls

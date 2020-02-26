@@ -147,6 +147,3 @@ spec:
     gitlab-shell:
       hostKeys:
         secret: gitlab-ssh-keys
-  registry:
-    storage:
-      secret: registry-storage

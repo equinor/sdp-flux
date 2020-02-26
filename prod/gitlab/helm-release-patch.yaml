@@ -7,9 +7,18 @@ metadata:
   namespace: gitlab
 spec:
   values:
+    global:
+      hosts:
+        registry:
+           name: registry.git.equinor.com 
+    registry: # custom certificate only in prod cluster
+      ingress:
+        tls:
+          enabled: true
+      secretName: gitlab-registry-custom-tls
     gitlab:
       task-runner:
-        backups:
+        backups: # Backup only required for prod cluster
           cron:
             enabled: true
             schedule: 45 1 * * *
