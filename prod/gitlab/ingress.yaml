@@ -58,6 +58,7 @@ metadata:
   namespace: gitlab
   annotations:
     kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
 spec:
   rules:
   - host: registry.sdpaks.equinor.com
