@@ -23,5 +23,5 @@ spec:
       ingress:
         class: nginx
         annotations:
+          kubernetes.io/tls-acme: true
         configureCertmanager: false
-        kubernetes.io/tls-acme: true

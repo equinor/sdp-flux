@@ -94,7 +94,7 @@ spec:
         enabled: true
         class: nginx
         annotations:
-        kubernetes.io/tls-acme: true
+          kubernetes.io/tls-acme: true
         configureCertmanager: false
       minio:
         enabled: false
