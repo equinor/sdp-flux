@@ -76,6 +76,8 @@ spec:
           connection:
             key: connection
             secret: gitlab-rails-storage
+      registry:
+        bucket: gitlab-registry-storage
       shell:
         hostKeys:
           secret: gitlab-ssh-keys
