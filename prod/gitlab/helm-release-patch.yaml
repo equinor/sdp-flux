@@ -15,7 +15,7 @@ spec:
       ingress:
         tls:
           enabled: true
-      secretName: gitlab-registry-custom-tls
+          secretName: gitlab-registry-custom-tls
     gitlab:
       task-runner:
         backups: # Backup only required for prod cluster
