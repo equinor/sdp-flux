@@ -20,4 +20,4 @@ spec:
       create: true
     sources:
     - ingress
-    annotationFilter: "kubernetes.io/tls-acme=true"
+    annotationFilter: "!custom-annotation/externaldns-ignore, kubernetes.io/tls-acme=true"
