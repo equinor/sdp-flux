@@ -16,6 +16,8 @@ spec:
         tls:
           enabled: true
           secretName: gitlab-registry-custom-tls
+        annotations: 
+          kubernetes.io/tls-acme: "false"
     gitlab:
       task-runner:
         backups: # Backup only required for prod cluster

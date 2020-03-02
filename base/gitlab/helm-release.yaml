@@ -34,6 +34,8 @@ spec:
         ingress:
           tls:
             secretName: gitlab-sdp-tls
+          annotations: 
+            kubernetes.io/tls-acme: "false"
     global:
       appConfig:
         omniauth:
@@ -139,8 +141,6 @@ spec:
         tls:
           enabled: true
           secretName: gitlab-registry-tls
-        annotations: 
-          kubernetes.io/tls-acme: "false"
       storage:
         key: config
         secret: registry-storage
