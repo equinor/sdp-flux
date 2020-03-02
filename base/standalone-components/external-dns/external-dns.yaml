@@ -20,4 +20,4 @@ spec:
       create: true
     sources:
     - ingress
-    annotationFilter: "tls-acme=true"
+    annotationFilter: "kubernetes.io/tls-acme=true"
