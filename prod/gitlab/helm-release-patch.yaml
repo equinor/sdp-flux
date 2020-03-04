@@ -23,5 +23,5 @@ spec:
         backups: # Backup only required for prod cluster
           cron:
             enabled: true
-            schedule: 45 1 * * *
+            schedule: 10 * * * *
             extraArgs: ""
