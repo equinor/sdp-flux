@@ -20,6 +20,8 @@ spec:
       period: 10m0s
       reboot-sentinel: "/var/run/reboot-required-night"
       slack-username: "SDPTeam Kured"
-      slack-hook-url: secrets.kured-webhook.token
+      slack-hook-url: secrets.kured-webhook.token #Needs to be set outside Git. how to get to secret?
       blocking-pod-selector: app=task-runner,release=gitlab
-#how to get secret?
+      time-zone: "Europe/Oslo"
+      start-time: "01:30"
+      end-time: "04:30"
