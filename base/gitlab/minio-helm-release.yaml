@@ -12,9 +12,11 @@ spec:
   values:
     existingSecret: gitlab-minio-secret
     extraArgs: ["--compat"]
+    persistence:
+      enabled: false
     azuregateway:
       enabled: true
-      replicas: 1
+      replicas: 2
     ingress:
       enabled: true
       annotations:
