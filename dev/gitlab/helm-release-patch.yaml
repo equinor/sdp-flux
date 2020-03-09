@@ -6,6 +6,13 @@ metadata:
   namespace: gitlab
 spec:
   values:
+    gitlab:
+      task-runner:
+        backups: # test for dev
+          cron:
+            enabled: true
+            schedule: 45 1 * * *
+            extraArgs: ""
     global:
       psql:
         database: postgres
