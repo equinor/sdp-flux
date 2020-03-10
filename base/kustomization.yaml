@@ -42,7 +42,6 @@ resources:
 - ./prod/sdp-web/ingress.yaml
 - ./prod/sdp-web/service.yaml
 - ./prod/verdaccio/helm-release.yaml
-- ./prod/verdaccio/helm-release-new.yaml
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
 - ./prod/aks-registry-prod.yaml
