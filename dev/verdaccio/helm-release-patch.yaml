@@ -5,6 +5,8 @@ metadata:
   name: verdaccio
   namespace: prod
 spec:
+  chart:
+    ref: dev # Dev should listen to dev branch
   values:
     ingress:
       enabled: true

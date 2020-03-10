@@ -5,11 +5,6 @@ metadata:
   name: verdaccio
   namespace: prod
 spec:
-  releaseName: verdaccio
-  chart:
-    git: git@github.com:equinor/sdp-flux.git
-    ref: master
-    path: custom-charts/verdaccio
   values:
     ingress:
       hosts:
