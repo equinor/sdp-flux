@@ -5,11 +5,16 @@ metadata:
   name: verdaccio
   namespace: prod
 spec:
+  chart:
+    ref: dev # Dev should listen to dev branch
   values:
     ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: true
       hosts:
       - npm.dev.sdpaks.equinor.com
       tls:
-      - secretName: npm-equinor-com-tls
+      - secretName: npm-dev-tls
         hosts:
         - npm.dev.sdpaks.equinor.com

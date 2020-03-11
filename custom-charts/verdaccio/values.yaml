@@ -3,16 +3,6 @@ image:
   tag: 4.0.3
   pullPolicy: IfNotPresent
 
-environmentsFromSecrets:
-  enabled: false
-
-# Set 'envrionmentsFromSecrets' to 'true' and uncomment and add your secret name and
-# key to load a secret as an environment variable in the container
-# env:
-#   secret:
-#       name: verdaccio-client-secret
-#       key: OAUTH_CLIENT_SECRET
-
 service:
   annotations: {}
   clusterIP: ""
@@ -26,11 +16,15 @@ service:
   loadBalancerSourceRanges: []
   port: 4873
   type: ClusterIP
+  # nodePort: 31873
 
 ## Node labels for pod assignment
 ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
 nodeSelector: {}
+
+## Tolerations for nodes
+tolerations: []
 
 podAnnotations: {}
 replicaCount: 1
@@ -53,6 +47,16 @@ ingress:
 #   - secretName: secret
 #     hosts:
 #       - npm.blah.com
+
+# Extra Environment Values - allows yaml definitions
+extraEnvVars:
+#  - name: VALUE_FROM_SECRET
+#    valueFrom:
+#      secretKeyRef:
+#        name: secret_name
+#        key: secret_key
+#  - name: REGULAR_VAR
+#    value: ABC
 
 configMap: |
   # This is the config file used for the docker images.
