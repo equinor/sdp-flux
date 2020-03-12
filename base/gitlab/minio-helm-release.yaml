@@ -11,14 +11,14 @@ spec:
     path: custom-charts/minio
   values:
     existingSecret: gitlab-minio-secret
-    extraArgs: ["--compat"]
+    extraArgs: [""]
     persistence:
       enabled: false
     azuregateway:
       enabled: true
       replicas: 2
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         kubernetes.io/ingress.class: nginx
         kubernetes.io/tls-acme: "true"
