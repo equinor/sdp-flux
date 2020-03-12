@@ -7,10 +7,6 @@ metadata:
   namespace: gitlab
 spec:
   values:
-    global:
-      hosts:
-        registry:
-           name: registry.git.equinor.com 
     registry: # custom certificate only in prod cluster
       ingress:
         tls:

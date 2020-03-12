@@ -1,3 +1,5 @@
+
+# This ingress is needed as gitlab.sdp.equinor.com is a CNAME pointing to this address.
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -24,30 +26,3 @@ spec:
   - hosts:
     - gitlab.dev.sdpaks.equinor.com
     secretName: gitlab-unicorn-tls
-
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: gitlab-sdp-ingress
-  namespace: gitlab
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    custom-annotation/externaldns-ignore: ignore # Only for testing in dev, can remove if confirmed working
-spec:
-  rules:
-  - host: gitlab.sdp.equinor.com
-    http:
-      paths:
-      - backend:
-          serviceName: gitlab-unicorn
-          servicePort: 8181
-        path: /
-      - backend:
-          serviceName: gitlab-unicorn
-          servicePort: 8080
-        path: /admin/sidekiq
-  tls:
-  - hosts:
-    - gitlab.sdp.equinor.com
-    secretName: gitlab-sdp-tls
