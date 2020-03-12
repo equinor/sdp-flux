@@ -12,7 +12,8 @@ spec:
           cron:
             enabled: true
             schedule: 45 1 * * *
-            extraArgs: ""
+            extraArgs: 
+              "--skip artifacts --skip registry --skip uploads --skip lfs"
     global:
       psql:
         database: postgres
