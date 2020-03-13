@@ -7,6 +7,14 @@ metadata:
   namespace: gitlab
 spec:
   values:
+    global:
+      appconfig:
+        cron_jobs:
+          personal_access_tokens_expiring_worker: # (prod only) Send emails for personal tokens which are about to expire 
+            cron: "0 0 * * *,1,4" 
+          admin_email_worker: # Send admin emails once a week
+            cron: "0 0 * * 0"
+
     registry: # custom certificate only in prod cluster
       ingress:
         tls:
