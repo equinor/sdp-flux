@@ -6,6 +6,8 @@ metadata:
   name: matomo
   namespace: prod
 spec:
+  chart:
+    ref: dev # Dev cluster should follow dev branch 
   values:
     ingress:
       hosts:

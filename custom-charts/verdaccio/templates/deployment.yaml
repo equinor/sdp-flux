@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -9,6 +9,10 @@ metadata:
   name: {{ template "verdaccio.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "verdaccio.name" . }}
+      release: {{ .Release.Name }}
   strategy:
     {{- if .Values.persistence.enabled }}
     type: Recreate
@@ -31,14 +35,6 @@ spec:
         - name: {{ template "verdaccio.name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.environmentsFromSecrets.enabled }}
-          env:
-          - name: OAUTH_CLIENT_SECRET
-            valueFrom:
-              secretKeyRef:
-                name: {{ .Values.env.secret.name }}
-                key: {{ .Values.env.secret.key }}
-          {{- end }}
           ports:
             - containerPort: 4873
               name: http
@@ -64,6 +60,10 @@ spec:
             - mountPath: /verdaccio/conf
               name: config
               readOnly: true
+          env:
+{{- if .Values.extraEnvVars }}
+{{ toYaml .Values.extraEnvVars | indent 12 }}
+{{- end }}
       {{- if .Values.securityContext.enabled }}
       # Allow non-root user to access PersistentVolume
       securityContext:
@@ -87,4 +87,8 @@ spec:
     {{- if .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
+    {{- end }}
+    {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
     {{- end }}

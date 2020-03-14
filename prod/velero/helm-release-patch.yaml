@@ -23,6 +23,12 @@ spec:
       backupSyncPeriod: 10m
       restoreOnlyMode: false
     schedules:
+      gitlab-ns:
+        schedule: "0 0 * * *"
+        template:
+          ttl: "720h"
+          includedNamespaces:
+            - gitlab
       prod-ns:
         schedule: "0 1 * * *"
         template:

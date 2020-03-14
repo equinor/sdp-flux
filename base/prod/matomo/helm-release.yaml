@@ -14,7 +14,7 @@ spec:
   releaseName: matomo
   chart:
     git: ssh://git@github.com/equinor/sdp-flux.git
-    ref: master
+    ref: prod
     path: custom-charts/matomo
   values:
     ingress:

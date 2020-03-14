@@ -8,7 +8,7 @@ spec:
   releaseName: verdaccio
   chart:
     git: git@github.com:equinor/sdp-flux.git
-    ref: master
+    ref: prod
     path: custom-charts/verdaccio
   values:
     image:

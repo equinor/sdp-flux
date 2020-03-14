@@ -38,6 +38,26 @@ spec:
             kubernetes.io/tls-acme: "false"
     global:
       appConfig:
+        cron_jobs:
+          # Flag stuck CI jobs as failed
+          stuck_ci_jobs_worker:
+            cron: "15 */2 * * *"
+          # Execute scheduled triggers
+          pipeline_schedule_worker:
+            cron: "19 */2 * * *"
+          # Remove expired build artifacts
+          expire_build_artifacts_worker:
+            cron: "50 */2 * * *"
+          # Stop expired environments
+          environments_auto_stop_cron_worker:
+            cron: "24 */2 * * *"
+          # Periodically run 'git fsck' on all repositories. If started more than
+          # once per hour you will have concurrent 'git fsck' jobs.
+          repository_check_worker:
+            cron: "20 */4 * * *"
+          # Archive live traces which have not been archived yet
+          ci_archive_traces_cron_worker:
+            cron: "17 */2 * * *"
         omniauth:
           enabled: true
           allowSingleSignOn:
@@ -89,14 +109,14 @@ spec:
         externalIP: ""
         https: true
         gitlab:
-          name: gitlab.sdpaks.equinor.com
+          name: git.equinor.com
         registry:
-          name: registry.sdpaks.equinor.com
+          name: registry.git.equinor.com
       ingress:
         enabled: true
         class: nginx
         annotations:
-          kubernetes.io/tls-acme: true
+          kubernetes.io/tls-acme: false
         configureCertmanager: false
       minio:
         enabled: false
