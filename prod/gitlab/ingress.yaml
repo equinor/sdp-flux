@@ -8,7 +8,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    custom-annotation/externaldns-ignore: ignore # Remove after migration is completed
 spec:
   rules:
   - host: gitlab.sdpaks.equinor.com
@@ -36,7 +35,6 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    custom-annotation/externaldns-ignore: ignore # Remove after migration is completed
 spec:
   rules:
   - host: registry.sdpaks.equinor.com

@@ -103,7 +103,7 @@ spec:
           secret: gitlab-ssh-keys
       edition: ce
       hosts:
-        domain: sdpaks.equinor.com
+        domain: equinor.com
         externalIP: ""
         https: true
         gitlab:
