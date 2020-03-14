@@ -61,14 +61,12 @@ spec:
         omniauth:
           enabled: true
           allowSingleSignOn:
-          - azure_oauth2
           - saml
           autoLinkLdapUser: true
           autoLinkSamlUser: true
           autoSignInWithProvider: null
           blockAutoCreatedUsers: false
           providers:
-          - secret: gitlab-azure-oauth2
           - secret: gitlab-azure-saml
         artifacts:
           bucket: gitlab-artifacts-storage
