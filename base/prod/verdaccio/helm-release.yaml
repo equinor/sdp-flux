@@ -21,7 +21,6 @@ spec:
         name: verdaccio-client-secret
         key: OAUTH_CLIENT_SECRET
     persistence:
-      existingClaim: verdaccio-verdaccio
       size: 8Gi
     ingress:
       enabled: true
