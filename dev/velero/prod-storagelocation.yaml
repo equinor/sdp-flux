@@ -1,0 +1,19 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  generation: 2110
+  labels:
+    app.kubernetes.io/instance: velero
+    app.kubernetes.io/name: velero
+    helm.sh/chart: velero-2.6.0
+  name: velero-prod-storage
+  namespace: velero
+  resourceVersion: "6160390"
+  selfLink: /apis/velero.io/v1/namespaces/velero/backupstoragelocations/velero-prod-storage
+spec:
+  config:
+    resourceGroup: sdpaks-common-backup
+    storageAccount: sdpakscommonbackup
+  objectStorage:
+    bucket: velero-prod-storage
+  provider: azure

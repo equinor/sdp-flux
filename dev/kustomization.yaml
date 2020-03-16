@@ -7,6 +7,7 @@ resources:
 - ./gitlab/gitlab-sdp-tls.yaml
 - ./gitlab/ingress.yaml
 - ./gitlab/gitlab-azure-saml.yaml
+- ./velero/prod-storagelocation.yaml
 - ./namespaces/backup-sandbox.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
