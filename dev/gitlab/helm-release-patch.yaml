@@ -10,7 +10,7 @@ spec:
       task-runner:
         backups: # test for dev
           cron:
-            enabled: true
+            enabled: false
             schedule: 45 1 * * *
             extraArgs: 
               "--skip artifacts --skip registry --skip uploads --skip lfs"
