@@ -16,7 +16,7 @@ elif [ "$1" = "manifests" ]; then
     echo "Linting K8s manifests"
     STANDARD_MANIFESTS=$(find "$(pwd -P)" -not -path "*/custom-charts*" -type f \( ! -iname ".flux.yaml" \) -name *.yaml -exec grep -L -H 'apiVersion: flux.weave.works/v1beta1\|apiVersion: bitnami.com\|apiVersion: certmanager.k8s.io\|apiVersion: kustomize.config.k8s.io/v1beta1\|apiVersion: ceph.rook.io/v1' {} \;)
 
-    ./kubeval $STANDARD_MANIFESTS
+    ./kubeval --ignore-missing-schemas $STANDARD_MANIFESTS
       if [ $? != 0 ]; then
        travis_terminate 1
       fi
