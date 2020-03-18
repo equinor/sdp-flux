@@ -158,7 +158,7 @@ spec:
   releaseName: sdp-demo
   chart:
     git: ssh://git@github.com/equinor/sdp-flux.git
-    ref: master
+    ref: prod
     path: charts/sdp-demo
   values:
     ingress:

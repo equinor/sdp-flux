@@ -113,7 +113,7 @@ metadata:
 spec:
   chart:
     git: git@github.com:equinor/sdp-flux.git # This must be the sdp-flux repo
-    ref: master
+    ref: prod
     path: custom-charts/nginx-hello-world # Change this path if apropriate
   values:
     image: 
@@ -159,7 +159,7 @@ metadata:
 spec:
   chart:
     git: git@github.com:equinor/sdp-flux.git # This must be the sdp-flux repo
-    ref: master
+    ref: prod
     path: custom-charts/nginx-hello-world # Change this path if apropriate
   values:
     image: 

@@ -11,7 +11,7 @@ spec:
   releaseName: sdp-demo
   chart:
     git: git@github.com:equinor/sdp-flux.git
-    ref: master
+    ref: prod
     path: custom-charts/sdp-demo
   values:
     image: 
