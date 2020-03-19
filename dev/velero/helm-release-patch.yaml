@@ -1,6 +1,6 @@
 # Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: velero
@@ -9,7 +9,7 @@ spec:
   values:
     configuration:
       provider: azure
-      backupStorageLocation: 
+      backupStorageLocation:
         name: azure
         bucket: velero-dev-storage
         config:

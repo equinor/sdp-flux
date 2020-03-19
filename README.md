@@ -159,7 +159,7 @@ for the Helm chart, but you could use a Helm repository.
 
 ```yaml
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1 
 kind: HelmRelease
 metadata:
   name: sdp-demo
