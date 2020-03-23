@@ -19,8 +19,8 @@ spec:
         app: gitlabstats
     spec:
       containers:
-      - name: aware-api
-        image: docker.pkg.github.com/equinor/gitlabstats/gitlabstats
+      - name: gitlabstats
+        image: sdpequinor/gitlabstats
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
