@@ -29,7 +29,7 @@ spec:
         - name: GIT_URL
           value: "https://git.equinor.com"
         - name: GRAFANA_FREQ
-          value: "60"
+          value: "3600"
         - name: GIT_PRIVATE_TOKEN
           valueFrom:
             secretKeyRef:

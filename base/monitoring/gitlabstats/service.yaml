@@ -3,12 +3,13 @@ kind: Service
 metadata:
   name: gitlabstats
   namespace: monitoring
-  annotations:
-    prometheus.io/scrape: 'true'
+  labels:
+    metric-scrape: prometheus
 spec:
   selector:
     app: gitlabstats
   type: ClusterIP
   ports:
-  - port: 80
+  - name: web
+    port: 80
     targetPort: 5000
