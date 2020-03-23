@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitlabstats
+  name: gitlabstats
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlabstats
+  template:
+    metadata:
+      labels:
+        app: gitlabstats
+    spec:
+      containers:
+      - name: aware-api
+        image: docker.pkg.github.com/equinor/gitlabstats/gitlabstats
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: GIT_URL
+          value: "https://git.equinor.com"
+        - name: GRAFANA_FREQ
+          value: "60"
+        - name: GIT_PRIVATE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: gitlabstats-git-key
+              key: GIT_PRIVATE_TOKEN
+        resources:
+          requests:
+            cpu: 100m
+            memory: "100Mi"
+          limits:
+            cpu: 500m
+            memory: "200Mi"

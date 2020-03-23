@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitlabstats
+  namespace: monitoring
+spec:
+  selector:
+    app: gitlabstats
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
