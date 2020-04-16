@@ -59,7 +59,8 @@ resources:
 - ./gitlab/minio-helm-release.yaml
 - ./gitlab/gitlab-rails-secret.yaml
 - ./infrastructure/kured-slacktoken.yaml
-- ./monitoring/aware/deployment.yaml
-- ./monitoring/aware/ingress.yaml
-- ./monitoring/aware/sealedsecret.yaml
-- ./monitoring/aware/service.yaml
+- ./aware/api-deployment.yaml
+- ./aware/web-deployment.yaml
+- ./aware/ingress.yaml
+- ./aware/sealedsecret.yaml
+- ./aware/service.yaml

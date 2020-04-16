@@ -6,7 +6,7 @@ metadata:
     app: aware
     tier: api
   name: aware-api
-  namespace: monitoring
+  namespace: aware
   annotations:
     flux.weave.works/automated: 'true'
     flux.weave.works/tag.aware-api: semver:~3.*
@@ -24,23 +24,24 @@ spec:
     spec:
       containers:
       - name: aware-api
-        image: sdpequinor/aware-api:3.1.8
-        imagePullPolicy: Always
+        image: sdpequinor/aware-api
         ports:
         - containerPort: 5000
           name: http
         env:
         - name: PROMETHEUS_API
           value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+        - name: SENSU_API
+          value: "http://sensu-svc.sensu:8080/api/core/v2/namespaces/default/events"
         - name: DEPLOYMENT_NAME
-          value: "SDP-AKS Dev"
+          value: "SDP-AKS"
         - name: IGNORE_PROMETHEUS_ALERTS
           value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog"
-        - name: EXPORT_SECRET
+        - name: SENSU_KEY
           valueFrom:
             secretKeyRef:
-              name: aware-export-secret
-              key: EXPORT_SECRET
+              name: aware-sensu-key
+              key: SENSU_KEY
         resources:
           requests:
             cpu: 100m

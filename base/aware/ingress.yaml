@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: aware
-  namespace: monitoring
+  namespace: aware
   labels:
     app: aware
   annotations:
@@ -17,7 +17,11 @@ spec:
     - host: aware.sdpaks.equinor.com
       http:
         paths:
-          - path: /api/exports
+          - path: /
+            backend:
+              serviceName: aware-web
+              servicePort: 80
+          - path: /api
             backend:
               serviceName: aware-api
               servicePort: 80
