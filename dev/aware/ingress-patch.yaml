@@ -2,7 +2,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: aware
-  namespace: monitoring
+  namespace: aware
+  labels:
+    app: aware
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
 spec:
   tls:
     - hosts:
@@ -12,7 +17,11 @@ spec:
     - host: aware.dev.sdpaks.equinor.com
       http:
         paths:
-          - path: /api/exports
+          - path: /
+            backend:
+              serviceName: aware-web
+              servicePort: 80
+          - path: /api
             backend:
               serviceName: aware-api
               servicePort: 80

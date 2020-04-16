@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: aware-api
+  name: gitlabstats
   namespace: monitoring
+  labels:
+    metric-scrape: prometheus
 spec:
   selector:
-    app: aware
-    tier: api
+    app: gitlabstats
   type: ClusterIP
   ports:
-  - port: 80
+  - name: web
+    port: 80
     targetPort: 5000

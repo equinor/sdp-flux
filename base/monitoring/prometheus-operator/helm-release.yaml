@@ -36,7 +36,7 @@ spec:
           label: grafana_dashboard
       adminPassword: false
       env:
-        GF_USERS_AUTO_ASSIGN_ORG_ROLE: Viewer
+        GF_USERS_AUTO_ASSIGN_ORG_ROLE: Admin
         GF_USERS_AUTO_ASSIGN_ORG: true
         GF_AUTH_BASIC_ENABLED: false
         GF_AUTH_DISABLE_LOGIN_FORM: false
@@ -110,12 +110,12 @@ spec:
 
     kubeDns:
       enabled: true
-    
+
     defaultRules:
       rules:
         kubeApiServer: false
         kubeScheduler: false
-    
+
     resources:
       requests:
         cpu: 250m

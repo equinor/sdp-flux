@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+# As long as the Prometheus operator's "prometheus" resource has set the
+# ServiceMonitorSelector set to;
+# ---
+# ServiceMonitorSelector:
+#   matchLabels:
+#     release: prometheus-operator
+# ---
+# this ServiceMonitor will get picked up, and scrape '/metrics'-endpoint
+# of any Service with label=metric-scrape=prometheus
+kind: ServiceMonitor
+metadata:
+  name: additional-services
+  labels:
+    release: prometheus-operator
+spec:
+  jobLabel: additional-services
+  selector:
+    matchLabels:
+      metric-scrape: prometheus
+  endpoints:
+  - port: web
+    interval: 60s
