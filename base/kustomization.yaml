@@ -7,10 +7,15 @@ resources:
 - ./infrastructure/cluster-issuer.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/nginx-ingress.yaml
-- ./standalone-components/external-dns/external-dns.yaml
-- ./standalone-components/sealed-secrets/sealed-secrets.yaml
+- ./standalone-components/external-dns/helm-release.yaml
+- ./standalone-components/sealed-secrets/helm-release.yaml
 - ./standalone-components/velero/helm-release.yaml
 - ./monitoring/monitor/ingress.yaml
+- ./sensu/ingress.yaml
+- ./sensu/deployment.yaml
+- ./sensu/pvc.yaml
+- ./sensu/sealed-secret.yaml
+- ./sensu/service.yaml
 - ./monitoring/monitor/web/deployment.yaml
 - ./monitoring/monitor/web/service.yaml
 - ./monitoring/oauth2-proxy/sdp/helmrelease.yaml

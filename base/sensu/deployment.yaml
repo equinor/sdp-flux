@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sensu
+  name: sensu
+  namespace: sensu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sensu
+  template:
+    metadata:
+      labels:
+        app: sensu
+    spec:
+      containers:
+      - name: sensu-backend
+        image: sensu/sensu:5.19.0
+        imagePullPolicy: IfNotPresent
+        command: ["sensu-backend", "start", "--state-dir", "/var/lib/sensu/sensu-backend"]
+        ports:
+        - containerPort: 3000
+          name: web-ui
+        - containerPort: 8080
+          name: sensu-api
+        - containerPort: 8081
+          name: agent-api
+        env:
+        - name: SENSU_BACKEND_CLUSTER_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: sensu-backend-secret
+              key: ADMIN_USERNAME
+        - name: SENSU_BACKEND_CLUSTER_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: sensu-backend-secret
+              key: ADMIN_PASSWORD
+        resources:
+          requests:
+            cpu: 100m
+            memory: "100Mi"
+          limits:
+            cpu: 500m
+            memory: "1Gi"
+        volumeMounts:
+        - mountPath: /var/lib/sensu/sensu-backend/etcd
+          name: sensu-data
+      volumes:
+      - name: sensu-data
+        persistentVolumeClaim:
+          claimName: sensu-data
