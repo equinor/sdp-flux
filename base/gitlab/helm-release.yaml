@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 3.2.1
+    version: 3.2.3
   values:
     certmanager:
       install: false
@@ -34,7 +34,7 @@ spec:
         ingress:
           tls:
             secretName: gitlab-sdp-tls
-          annotations: 
+          annotations:
             kubernetes.io/tls-acme: "false"
     global:
       appConfig:
