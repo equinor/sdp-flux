@@ -25,8 +25,7 @@ spec:
          "start",
          "--state-dir",
          "/var/lib/sensu/sensu-backend",
-         "--log-level=debug",
-         "--insecure-skip-tls-verify=true"
+         "--log-level=debug"
         ]
         ports:
         - containerPort: 3000
