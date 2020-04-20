@@ -20,7 +20,14 @@ spec:
       - name: sensu-backend
         image: sensu/sensu:5.19.0
         imagePullPolicy: IfNotPresent
-        command: ["sensu-backend", "start", "--state-dir", "/var/lib/sensu/sensu-backend"]
+        command: [
+         "sensu-backend",
+         "start",
+         "--state-dir",
+         "/var/lib/sensu/sensu-backend",
+         "--log-level=debug",
+         "--insecure-skip-tls-verify=true"
+        ]
         ports:
         - containerPort: 3000
           name: web-ui
