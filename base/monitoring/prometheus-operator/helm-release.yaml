@@ -30,6 +30,9 @@ spec:
           - alertmanager.sdpaks.equinor.com
 
     grafana:
+      persistence:
+        enabled: true
+        size: 10Gi
       sidecar:
         dashboards:
           enabled: true
