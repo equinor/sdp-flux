@@ -14,6 +14,6 @@ spec:
     version: 0.28.1
   values:
     fluent-bit:
-      enabled: true
-    promtail:
       enabled: false
+    promtail:
+      enabled: true
