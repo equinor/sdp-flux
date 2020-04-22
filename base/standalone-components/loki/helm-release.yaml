@@ -13,6 +13,14 @@ spec:
     name: loki-stack
     version: 0.36.0
   values:
+    config:
+      table_manager:
+        retention_deletes_enabled: true
+        retention_period: 720h
+    loki:
+      persistence:
+        enabled: true
+        size: 100Gi
     fluent-bit:
       enabled: false
     promtail:
