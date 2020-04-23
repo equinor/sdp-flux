@@ -1,0 +1,27 @@
+# How to manage secrets in a GitOps environment? Use one of the big Vault providers, or use asyncron encrypted secrets with
+# Sealed Secrets. The latter is our choice until we need the complexity from the big ones.
+---
+apiVersion: flux.weave.works/v1beta1
+kind: HelmRelease
+metadata:
+  name: loki-stack
+  namespace: loki
+spec:
+  releaseName: loki-stack
+  chart:
+    repository: https://grafana.github.io/loki/charts
+    name: loki-stack
+    version: 0.36.0
+  values:
+    config:
+      table_manager:
+        retention_deletes_enabled: true
+        retention_period: 720h
+    loki:
+      persistence:
+        enabled: true
+        size: 100Gi
+    fluent-bit:
+      enabled: false
+    promtail:
+      enabled: true

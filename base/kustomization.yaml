@@ -64,3 +64,4 @@ resources:
 - ./aware/ingress.yaml
 - ./aware/sealedsecret.yaml
 - ./aware/service.yaml
+- ./standalone-components/loki/helm-release.yaml
