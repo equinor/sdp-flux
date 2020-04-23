@@ -11,6 +11,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: additional-services
+  namespace: monitoring
   labels:
     release: prometheus-operator
 spec:
