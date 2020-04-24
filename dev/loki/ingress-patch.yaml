@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: loki
+  namespace: loki
+spec:
+  tls:
+    - hosts:
+        - loki.dev.sdpaks.equinor.com
+      secretName: loki-tls
+  rules:
+    - host: loki.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: loki-stack
+              servicePort: 3100

@@ -25,3 +25,4 @@ patchesStrategicMerge:
 - ./hgir/ingress-patch.yaml
 - ./nginx-ingress/helm-release-patch.yaml
 - ./gitlab/helm-release-patch.yaml
+- ./loki/ingress-patch.yaml
