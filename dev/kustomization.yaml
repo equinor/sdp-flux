@@ -11,6 +11,7 @@ resources:
 - ./namespaces/backup-sandbox.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
+- ./gitlabstats/deployment-patch.yaml
 - ./sensu/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
 - ./monitor/ingress-patch.yaml

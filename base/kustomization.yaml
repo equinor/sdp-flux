@@ -55,7 +55,6 @@ resources:
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
 - ./prod/aks-registry-prod.yaml
-- ./monitoring/logging/helm-release.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-common-postgres-tls.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
@@ -69,4 +68,5 @@ resources:
 - ./aware/ingress.yaml
 - ./aware/sealedsecret.yaml
 - ./aware/service.yaml
+- ./aware/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/helm-release.yaml

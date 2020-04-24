@@ -1,0 +1,12 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitlabstats
+  name: gitlabstats
+  namespace: monitoring
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 0

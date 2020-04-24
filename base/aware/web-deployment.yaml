@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
       - name: aware-web
-        image: sdpequinor/aware-web
+        image: sdpequinor/aware-web:3.2.0
         ports:
         - containerPort: 5000
           name: http
