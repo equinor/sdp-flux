@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: aware-api
-        image: sdpequinor/aware-api:4.0.0
+        image: sdpequinor/aware-api:4.0.1
         ports:
         - containerPort: 5000
           name: http
