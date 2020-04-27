@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aware-api
+  namespace: aware
+spec:
+  template:
+    spec:
+      containers:
+      - name: aware-api
+        env:
+        - name: PROMETHEUS_API
+          value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+        - name: SENSU_API
+          value: "http://sensu-svc.sensu:8080/api/core/v2/namespaces/default/events"
+        - name: DEPLOYMENT_NAME
+          value: "SDP-AKS"
+        - name: IGNORE_PROMETHEUS_ALERTS
+          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog"
+        - name: SENSU_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aware-sensu-key
+              key: SENSU_KEY

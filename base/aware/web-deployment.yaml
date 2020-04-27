@@ -9,7 +9,6 @@ metadata:
   namespace: aware
   annotations:
     flux.weave.works/automated: 'true'
-    flux.weave.works/tag.aware-web: semver:~3.*
 spec:
   replicas: 1
   selector:
@@ -24,7 +23,7 @@ spec:
     spec:
       containers:
       - name: aware-web
-        image: sdpequinor/aware-web:3.2.0
+        image: sdpequinor/aware-web:4.0.0
         ports:
         - containerPort: 5000
           name: http
