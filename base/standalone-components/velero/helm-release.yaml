@@ -13,9 +13,9 @@ metadata:
 spec:
   releaseName: velero
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://vmware-tanzu.github.io/helm-charts/
     name: velero
-    version: 2.6.0
+    version: 2.9.15
   values:
     image:
       repository: velero/velero
