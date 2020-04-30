@@ -10,8 +10,10 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: oauth2-proxy
-    version: 2.2.2
+    version: 3.0.0
   values:
+    serviceAccount:
+      enabled: false
     replicaCount: 1
     extraArgs:
       provider: azure
