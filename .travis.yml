@@ -4,8 +4,8 @@ language: C
 env:
   global:
     - HELM_URL=https://storage.googleapis.com/kubernetes-helm
-    - HELM_TAR=helm-v2.12.3-linux-amd64.tar.gz
-    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.14.0/
+    - HELM_TAR=helm-v2.16.3-linux-amd64.tar.gz
+    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.15.0/
     - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
 
 stages:
