@@ -3,6 +3,3 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: infrastructure
-  labels:
-    # https://cert-manager.readthedocs.io/en/latest/getting-started/webhook.html#disabling-validation-on-the-cert-manager-namespace
-    certmanager.k8s.io/disable-validation: "true"

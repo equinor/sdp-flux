@@ -1,27 +1,33 @@
 # Definition of Lets Encrypt certificate issuers to be used for dynamic certificates
 ---
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-staging
-  namespace: infrastructure
+  namespace: cert-manager
 spec:
   acme:
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: gm_sds_rdi@equinor.com
     privateKeySecretRef:
       name: letsencrypt-staging-secret
-    http01: {}
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
 ---
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
-  namespace: infrastructure
+  namespace: cert-manager
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: gm_sds_rdi@equinor.com
     privateKeySecretRef:
       name: letsencrypt-prod-secret
-    http01: {}
+    solvers:
+    - http01:
+        ingress:
+          class: nginx

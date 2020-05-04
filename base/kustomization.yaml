@@ -3,8 +3,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ./infrastructure/aks-node-puppet.yaml
-- ./infrastructure/cert-manager.yaml
-- ./infrastructure/cluster-issuer.yaml
 - ./infrastructure/kured.yaml
 - ./infrastructure/nginx-ingress.yaml
 - ./standalone-components/external-dns/helm-release.yaml
@@ -72,3 +70,5 @@ resources:
 - ./standalone-components/loki/helm-release.yaml
 - ./standalone-components/loki/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/ingress.yaml
+- ./standalone-components/cert-manager/helm-release.yaml
+- ./standalone-components/cert-manager/cluster-issuer.yaml
