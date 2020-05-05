@@ -34,7 +34,7 @@ spec:
         env:
         - name: REPOSITORIES
           value: |
-            sensu/sensu-go
+            sensu/sensu-go,
             grafana/grafana,
             torvalds/linux,
             jenkinsci/jenkins,
