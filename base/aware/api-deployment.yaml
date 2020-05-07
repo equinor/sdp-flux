@@ -24,6 +24,14 @@ spec:
       containers:
       - name: aware-api
         image: sdpequinor/aware-api:4.0.1
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsUser: 1000
+          runAsGroup: 3000
+          fsGroup: 2000
+          capabilities:
+            drop:
+            - all
         ports:
         - containerPort: 5000
           name: http

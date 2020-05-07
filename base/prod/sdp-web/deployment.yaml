@@ -22,6 +22,14 @@ spec:
       - name: sdp-web
         image: sdpequinor/sdp-web:latest
         imagePullPolicy: Always
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsUser: 1000
+          runAsGroup: 3000
+          fsGroup: 2000
+          capabilities:
+            drop:
+            - all
         ports:
         - containerPort: 80
           name: http
