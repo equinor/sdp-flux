@@ -28,6 +28,14 @@ spec:
       - name: monitor
         image: sdpequinor/monitor:1.4
         imagePullPolicy: Always
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsUser: 1000
+          runAsGroup: 3000
+          fsGroup: 2000
+          capabilities:
+            drop:
+            - all
         command: ["serve"]
         args: ["--single", "build", "--listen", "3000"]
         ports:
