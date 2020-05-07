@@ -21,6 +21,7 @@ spec:
       persistence:
         enabled: true
         size: 100Gi
+        storageClassName: managed-premium-retain-nocache
     fluent-bit:
       enabled: false
     promtail:
