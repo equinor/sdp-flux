@@ -22,3 +22,4 @@ resources:
 - ./gitlab/ingress.yaml
 - ./gitlab/gitlab-registry-custom-tls.yaml
 - ./gitlab/gitlab-azure-saml.yaml
+- ./velero/default-storagelocation.yaml
