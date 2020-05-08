@@ -103,8 +103,8 @@ spec:
         image: postgres:10.2-alpine
         securityContext:
           readOnlyRootFilesystem: false # hgir-db writes to file-system currently
-          runAsUser: 65534
-          runAsGroup: 65534
+          runAsUser: 70 # 70 = postgres user and group
+          runAsGroup: 70
           capabilities:
             drop:
             - all
