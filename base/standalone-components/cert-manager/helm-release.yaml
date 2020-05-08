@@ -16,7 +16,6 @@ spec:
     name: cert-manager
     version: 0.14.3
   values:
-    installCRDs: true
     ingressShim:
       defaultIssuerName: letsencrypt-prod
       defaultIssuerKind: ClusterIssuer
