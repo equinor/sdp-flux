@@ -102,7 +102,12 @@ spec:
       - name: hgir-db
         image: postgres:10.2-alpine
         securityContext:
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false # hgir-db writes to file-system currently
+          runAsUser: 1000
+          runAsGroup: 3000
+          capabilities:
+            drop:
+            - all
         env:
         - name: POSTGRES_USER
           value: api
