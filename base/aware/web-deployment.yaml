@@ -24,6 +24,13 @@ spec:
       containers:
       - name: aware-web
         image: sdpequinor/aware-web:4.0.0
+        securityContext:
+          readOnlyRootFilesystem: true
+          runAsUser: 1000
+          runAsGroup: 3000
+          capabilities:
+            drop:
+            - all
         ports:
         - containerPort: 5000
           name: http

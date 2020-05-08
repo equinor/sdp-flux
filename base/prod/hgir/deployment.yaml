@@ -28,6 +28,9 @@ spec:
       - name: hgir
         image: sdpakscr.azurecr.io/hgir:1.0.35
         imagePullPolicy: Always
+        securityContext: # Seems to need root user
+          readOnlyRootFilesystem: true
+            
         env:
         - name: REPLY_HOST
           value: https://hgir.sdpaks.equinor.com
@@ -89,14 +92,18 @@ spec:
         app: hgir
         tier: database
     spec:
-      securityContext:
-        runAsUser: 0
-        fsGroup: 0
       imagePullSecrets:
       - name: registry-sdpakscr
       containers:
       - name: hgir-db
         image: postgres:10.2-alpine
+        securityContext:
+          readOnlyRootFilesystem: false # hgir-db writes to file-system currently
+          runAsUser: 70 # 70 = postgres user and group
+          runAsGroup: 70
+          capabilities:
+            drop:
+            - all
         env:
         - name: POSTGRES_USER
           value: api
