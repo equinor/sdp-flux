@@ -24,10 +24,6 @@ spec:
       annotations:
         flux.weave.works/automated: 'true'
     spec:
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 3000
-        fsGroup: 2000
       containers:
       - name: release-aware-api
         image: sdpequinor/release-aware-api:1.7
