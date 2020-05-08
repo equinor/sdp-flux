@@ -23,7 +23,7 @@ spec:
         image: sdpequinor/sdp-web:latest
         imagePullPolicy: Always
         securityContext:
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           runAsUser: 1000
           runAsGroup: 3000
           capabilities:
