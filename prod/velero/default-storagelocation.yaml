@@ -6,10 +6,10 @@ metadata:
     app.kubernetes.io/instance: velero
     app.kubernetes.io/name: velero
     helm.sh/chart: velero-2.9.15
-  name: velero-prod-storage
+  name: default
   namespace: velero
   resourceVersion: "6160390"
-  selfLink: /apis/velero.io/v1/namespaces/velero/backupstoragelocations/velero-prod-storage
+  selfLink: /apis/velero.io/v1/namespaces/velero/backupstoragelocations/default
 spec:
   config:
     resourceGroup: sdpaks-common-backup

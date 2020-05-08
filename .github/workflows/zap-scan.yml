@@ -1,0 +1,24 @@
+name: ZAP website nightly scan
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '5 2 * * *'
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan the webapplication
+    steps:
+      - name: ZAP Scan1
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://sdp-web.sdpaks.equinor.com/'
+      - name: ZAP Scan2
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://npm.dev.sdpaks.equinor.com'
+      - name: ZAP Scan3
+        uses: zaproxy/action-baseline@v0.3.0
+        with:
+          target: 'https://gitlab.dev.sdpaks.equinor.com'
