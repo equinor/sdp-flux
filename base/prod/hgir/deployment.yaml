@@ -30,8 +30,8 @@ spec:
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
-          runAsUser: 1000
-          runAsGroup: 3000
+          runAsUser: 70 # 70 = postgres user and group
+          runAsGroup: 70
           capabilities:
             drop:
             - all
