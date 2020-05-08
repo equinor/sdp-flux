@@ -30,10 +30,6 @@ spec:
         imagePullPolicy: Always
         securityContext: # Seems to need root user
           readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - all
-           # add: ["NET_BIND_SERVICE"]
             
         env:
         - name: REPLY_HOST
