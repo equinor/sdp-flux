@@ -25,7 +25,6 @@ spec:
         flux.weave.works/automated: 'true'
     spec:
       securityContext:
-        readOnlyRootFilesystem: true
         runAsUser: 1000
         runAsGroup: 3000
         fsGroup: 2000
