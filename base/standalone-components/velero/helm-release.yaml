@@ -1,6 +1,6 @@
 # Private web analytics solution
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: velero
@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: velero/velero
-      tag: v1.3.1
+      tag: v1.2.0
       pullPolicy: IfNotPresent
     initContainers:
       - name: velero-plugin-for-microsoft-azure
@@ -29,7 +29,7 @@ spec:
             mountPath: /target
     configuration:
       provider: azure
-      backupStorageLocation:
+      backupStorageLocation: 
         name: azure
         bucket: velero-prod-storage
         config:

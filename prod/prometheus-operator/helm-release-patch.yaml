@@ -1,6 +1,6 @@
 # Performance metrics to get insight in the clusterstatus. Supports alerts to get notified if something goes avry.
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: prometheus-operator

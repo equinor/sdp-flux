@@ -1,6 +1,6 @@
 # Beware that some values are to be set under "global.subchart" while others are set under "gitlab.subchartname"
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: gitlab
@@ -10,8 +10,8 @@ spec:
     global:
       appconfig:
         cron_jobs:
-          personal_access_tokens_expiring_worker: # (prod only) Send emails for personal tokens which are about to expire
-            cron: "0 0 * * *,1,4"
+          personal_access_tokens_expiring_worker: # (prod only) Send emails for personal tokens which are about to expire 
+            cron: "0 0 * * *,1,4" 
           admin_email_worker: # Send admin emails once a week
             cron: "0 0 * * 0"
 
@@ -20,7 +20,7 @@ spec:
         tls:
           enabled: true
           secretName: gitlab-registry-custom-tls
-        annotations:
+        annotations: 
           kubernetes.io/tls-acme: "false"
     gitlab:
       task-runner:

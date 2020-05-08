@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: sdp-demo
@@ -14,11 +14,11 @@ spec:
     ref: prod
     path: custom-charts/sdp-demo
   values:
-    image:
+    image: 
       repository: sdpacr.azurecr.io/nginx-hello-world
       tag: dev-3df9d9b
       pullSecret: registry-sdpacr
-
+    
     ingress:
       enabled: true
       annotations:
@@ -30,4 +30,4 @@ spec:
       tls:
       - secretName: demo2-tls
         hosts:
-        - demo2.sdpaks.equinor.com
+        - demo2.sdpaks.equinor.com 

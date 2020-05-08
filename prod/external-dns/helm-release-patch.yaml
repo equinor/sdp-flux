@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: external-dns
@@ -8,6 +8,6 @@ spec:
   releaseName: external-dns
   values:
     domainFilters: ["sdpaks.equinor.com"]
-    azure:
+    azure: 
       secretName: azure-dns-config-file
       resourceGroup: k8s-infrastructure

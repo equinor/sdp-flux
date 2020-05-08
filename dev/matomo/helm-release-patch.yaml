@@ -1,13 +1,13 @@
 # Private web analytics solution
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: matomo
   namespace: prod
 spec:
   chart:
-    ref: dev # Dev cluster should follow dev branch
+    ref: dev # Dev cluster should follow dev branch 
   values:
     ingress:
       hosts:

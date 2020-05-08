@@ -1,6 +1,6 @@
 # Beware that some values are to be set under "global.subchart" while others are set under "gitlab.subchartname"
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: flux.weave.works/v1beta1
 kind: HelmRelease
 metadata:
   name: gitlab
