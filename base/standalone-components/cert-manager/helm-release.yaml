@@ -2,7 +2,7 @@
 # CertManager to create Lets Encrypt certificates. For the most part we use HTTP01 as our validation.
 
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: cert-manager
@@ -15,7 +15,8 @@ spec:
     repository: https://charts.jetstack.io
     name: cert-manager
     version: 0.14.3
-  values: 
+  values:
+    installCRDs: true
     ingressShim:
       defaultIssuerName: letsencrypt-prod
       defaultIssuerKind: ClusterIssuer

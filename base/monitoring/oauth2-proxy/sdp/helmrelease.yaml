@@ -1,6 +1,6 @@
 # Some applications do not have proper authentication in themselves, for these we can use oath2-proxy with Azure AD to authenticate.
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: oauth2-proxy-sdp

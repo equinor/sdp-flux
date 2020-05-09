@@ -1,5 +1,9 @@
-apiVersion: v1
+apiVersion: v2
 appVersion: "1.0"
 description: Example matomo helm chart
 name: matomo
 version: 0.1.0
+dependencies:
+  - name: mariadb
+    version: 5.5.2
+    repository: https://kubernetes-charts.storage.googleapis.com

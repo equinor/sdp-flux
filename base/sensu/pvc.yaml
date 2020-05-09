@@ -6,6 +6,7 @@ metadata:
   name: sensu-data
   namespace: sensu
 spec:
+  storageClassName: managed-premium-retain-nocache
   accessModes:
     - ReadWriteOnce
   resources:
