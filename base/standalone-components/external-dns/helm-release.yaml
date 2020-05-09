@@ -1,7 +1,7 @@
 # For our services we need DNS as we share one public IP. This is not static and guaranteed and we need to dynamically assign
 # and update DNS records. This can be done manually or with External DNS that supports Azure DNS, where we have our DNS Zone.
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: external-dns

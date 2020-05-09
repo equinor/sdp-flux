@@ -1,7 +1,7 @@
 # How to manage secrets in a GitOps environment? Use one of the big Vault providers, or use asyncron encrypted secrets with
 # Sealed Secrets. The latter is our choice until we need the complexity from the big ones.
 ---
-apiVersion: flux.weave.works/v1beta1
+apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: loki-stack
@@ -21,6 +21,7 @@ spec:
       persistence:
         enabled: true
         size: 100Gi
+        storageClassName: managed-premium-retain-nocache
     fluent-bit:
       enabled: false
     promtail:
