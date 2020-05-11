@@ -16,8 +16,8 @@ metadata:
   namespace: gitlab
 spec:
   hard:
-    limits.cpu: "2"
-    limits.memory: 8Gi
+    limits.cpu: "4"
+    limits.memory: 12Gi
 ---
 apiVersion: v1
 kind: ResourceQuota
