@@ -36,8 +36,8 @@ metadata:
   namespace: monitoring
 spec:
   hard:
-    limits.cpu: "500m"
-    limits.memory: 2500Mi
+    limits.cpu: "2000m"
+    limits.memory: 3500Mi
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -66,8 +66,8 @@ metadata:
   namespace: aware
 spec:
   hard:
-    limits.cpu: "400m"
-    limits.memory: 350Mi
+    limits.cpu: "500m"
+    limits.memory: 500Mi
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -116,5 +116,5 @@ metadata:
   namespace: sensu
 spec:
   hard:
-    limits.cpu: "400m"
-    limits.memory: 350Mi
+    limits.cpu: "600m"
+    limits.memory: 1200Mi
