@@ -1,0 +1,120 @@
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: prod
+spec:
+  hard:
+    limits.cpu: "1"
+    limits.memory: 2Gi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: gitlab
+spec:
+  hard:
+    limits.cpu: "2"
+    limits.memory: 8Gi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: infrastructure
+spec:
+  hard:
+    limits.cpu: "1"
+    limits.memory: 2Gi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: monitoring
+spec:
+  hard:
+    limits.cpu: "500m"
+    limits.memory: 2500Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: flux
+spec:
+  hard:
+    limits.cpu: "1500m"
+    limits.memory: 1500Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: velero
+spec:
+  hard:
+    limits.cpu: "1500m"
+    limits.memory: 2500Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: aware
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: cert-manager
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: external-dns
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: loki
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: sealed-secrets
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: compute-quota
+  namespace: sensu
+spec:
+  hard:
+    limits.cpu: "400m"
+    limits.memory: 350Mi

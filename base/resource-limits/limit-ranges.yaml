@@ -1,0 +1,169 @@
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: prod
+spec:
+  limits:
+  - default:
+      cpu: 200m # This limit is used Unless a pod explicitly has set it's limits. Without this the default is infinite.
+    defaultRequest:
+      cpu: 20m # If this is not set, pods without explicit limits will request the limit set in this file.
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: gitlab
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: infrastructure
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: monitoring
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: aware
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: cert-manager
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: external-dns
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: flux
+spec:
+  limits:
+  - default:
+      cpu: 500m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: flux
+metadata:
+  name: cpu-limit-range
+  namespace: prod
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: loki
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: sealed-secrets
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: sensu
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+  namespace: velero
+spec:
+  limits:
+  - default:
+      cpu: 200m
+    defaultRequest:
+      cpu: 20m
+    type: Container

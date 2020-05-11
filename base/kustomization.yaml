@@ -73,3 +73,5 @@ resources:
 - ./standalone-components/loki/ingress.yaml
 - ./standalone-components/cert-manager/helm-release.yaml
 - ./standalone-components/cert-manager/cluster-issuer.yaml
+- ./resource-limits/limit-ranges.yaml
+- ./resource-limits/resource-quotas.yaml
