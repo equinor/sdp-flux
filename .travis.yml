@@ -3,8 +3,8 @@ language: C
 
 env:
   global:
-    - HELM_URL=https://storage.googleapis.com/kubernetes-helm
-    - HELM_TAR=helm-v2.16.3-linux-amd64.tar.gz
+    - HELM_URL=https://get.helm.sh
+    - HELM_TAR=helm-v3.2.1-linux-amd64.tar.gz
     - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.15.0/
     - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
 
