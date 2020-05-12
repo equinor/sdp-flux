@@ -6,8 +6,8 @@ metadata:
   namespace: prod
 spec:
   hard:
-    limits.cpu: "4000"
-    limits.memory: 10Gi
+    limits.cpu: "4000m"
+    limits.memory: "10Gi"
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -16,8 +16,8 @@ metadata:
   namespace: infrastructure
 spec:
   hard:
-    limits.cpu: "4000"
-    limits.memory: 12Gi
+    limits.cpu: "4000m"
+    limits.memory: "12Gi"
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -26,5 +26,5 @@ metadata:
   namespace: monitoring
 spec:
   hard:
-    limits.cpu: "4000"
-    limits.memory: 12Gi
+    limits.cpu: "4000m"
+    limits.memory: "12Gi"

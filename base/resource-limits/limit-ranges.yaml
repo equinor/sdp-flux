@@ -11,10 +11,10 @@ spec:
   limits:
   - default:
       cpu: 400m # This limit is used Unless a container explicitly has set it's limits.
-      memory: 400m # Same as above
+      memory: 400Mi # Same as above
     defaultRequest:
       cpu: 200m
-      memory: 150m
+      memory: 150Mi
     type: Container
 ---
 apiVersion: v1
@@ -26,10 +26,10 @@ spec:
   limits:
   - default:
       cpu: 400m # This limit is used Unless a container explicitly has set it's limits.
-      memory: 400m # Same as above
+      memory: 400Mi # Same as above
     defaultRequest:
       cpu: 200m
-      memory: 150m
+      memory: 150Mi
     type: Container
 ---
 apiVersion: v1
@@ -41,8 +41,8 @@ spec:
   limits:
   - default:
       cpu: 400m
-      memory: 400m 
+      memory: 400Mi 
     defaultRequest:
       cpu: 150m
-      memory: 150m
+      memory: 150Mi
     type: Container
