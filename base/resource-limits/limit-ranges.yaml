@@ -14,7 +14,7 @@ spec:
       memory: 400m # Same as above
     defaultRequest:
       cpu: 200m
-      memory: 1500m
+      memory: 150m
     type: Container
 ---
 apiVersion: v1
@@ -29,7 +29,7 @@ spec:
       memory: 400m # Same as above
     defaultRequest:
       cpu: 200m
-      memory: 1500m
+      memory: 150m
     type: Container
 ---
 apiVersion: v1
@@ -40,9 +40,9 @@ metadata:
 spec:
   limits:
   - default:
-      cpu: 200m
-      memory: 200m 
+      cpu: 400m
+      memory: 400m 
     defaultRequest:
-      cpu: 50m
-      memory: 50m
+      cpu: 150m
+      memory: 150m
     type: Container
