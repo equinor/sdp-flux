@@ -20,7 +20,7 @@ metadata:
 spec:
   limits:
   - default:
-      cpu: 200m
+      cpu: 600m # Gitlab-unicorn pods do not start unless this is higher than in other namespaces
     defaultRequest:
       cpu: 20m
     type: Container
