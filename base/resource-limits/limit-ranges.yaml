@@ -29,7 +29,7 @@ spec:
       memory: 200m
     defaultRequest:
       cpu: 50m
-      memory: 50m
+      memory: 100m
     type: Container
 ---
 apiVersion: v1
