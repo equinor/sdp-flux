@@ -10,7 +10,11 @@ metadata:
 spec:
   limits:
   - default:
-      cpu: 400m # This limit is used Unless a container explicitly has set it's limits.
+      cpu: 200m # This limit is used Unless a container explicitly has set it's limits.
+      memory: 200m # Same as above
+    defaultRequest:
+      cpu: 100m
+      memory: 50m
     type: Container
 ---
 apiVersion: v1
@@ -22,8 +26,10 @@ spec:
   limits:
   - default:
       cpu: 200m
+      memory: 200m
     defaultRequest:
       cpu: 50m
+      memory: 50m
     type: Container
 ---
 apiVersion: v1
@@ -35,6 +41,8 @@ spec:
   limits:
   - default:
       cpu: 200m
+      memory: 200m 
     defaultRequest:
       cpu: 50m
+      memory: 50m
     type: Container

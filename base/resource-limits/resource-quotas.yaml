@@ -6,7 +6,7 @@ metadata:
   namespace: prod
 spec:
   hard:
-    limits.cpu: "1000"
+    limits.cpu: "1500"
     limits.memory: 2Gi
 ---
 apiVersion: v1
@@ -16,7 +16,7 @@ metadata:
   namespace: infrastructure
 spec:
   hard:
-    limits.cpu: "500"
+    limits.cpu: "1000"
     limits.memory: 4Gi
 ---
 apiVersion: v1
@@ -26,5 +26,5 @@ metadata:
   namespace: monitoring
 spec:
   hard:
-    limits.cpu: "1000"
-    limits.memory: 3500Mi
+    limits.cpu: "1500"
+    limits.memory: 5Gi
