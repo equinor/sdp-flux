@@ -6,7 +6,7 @@ metadata:
   namespace: prod
 spec:
   hard:
-    limits.cpu: "1"
+    limits.cpu: "1000"
     limits.memory: 2Gi
 ---
 apiVersion: v1
@@ -16,7 +16,7 @@ metadata:
   namespace: gitlab
 spec:
   hard:
-    limits.cpu: "4"
+    limits.cpu: "2000"
     limits.memory: 12Gi
 ---
 apiVersion: v1
@@ -26,8 +26,8 @@ metadata:
   namespace: infrastructure
 spec:
   hard:
-    limits.cpu: "1"
-    limits.memory: 2Gi
+    limits.cpu: "500"
+    limits.memory: 4Gi
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -36,7 +36,7 @@ metadata:
   namespace: monitoring
 spec:
   hard:
-    limits.cpu: "2000m"
+    limits.cpu: "1000"
     limits.memory: 3500Mi
 ---
 apiVersion: v1
@@ -46,7 +46,7 @@ metadata:
   namespace: flux
 spec:
   hard:
-    limits.cpu: "1500m"
+    limits.cpu: "1500"
     limits.memory: 1500Mi
 ---
 apiVersion: v1
@@ -56,7 +56,7 @@ metadata:
   namespace: velero
 spec:
   hard:
-    limits.cpu: "1500m"
+    limits.cpu: "1000"
     limits.memory: 2500Mi
 ---
 apiVersion: v1
@@ -66,7 +66,7 @@ metadata:
   namespace: aware
 spec:
   hard:
-    limits.cpu: "500m"
+    limits.cpu: "500"
     limits.memory: 500Mi
 ---
 apiVersion: v1
@@ -76,7 +76,7 @@ metadata:
   namespace: cert-manager
 spec:
   hard:
-    limits.cpu: "400m"
+    limits.cpu: "400"
     limits.memory: 350Mi
 ---
 apiVersion: v1
@@ -86,8 +86,8 @@ metadata:
   namespace: external-dns
 spec:
   hard:
-    limits.cpu: "400m"
-    limits.memory: 350Mi
+    limits.cpu: "900"
+    limits.memory: 2Gi
 ---
 apiVersion: v1
 kind: ResourceQuota
@@ -96,7 +96,7 @@ metadata:
   namespace: loki
 spec:
   hard:
-    limits.cpu: "400m"
+    limits.cpu: "400"
     limits.memory: 350Mi
 ---
 apiVersion: v1
@@ -106,7 +106,7 @@ metadata:
   namespace: sealed-secrets
 spec:
   hard:
-    limits.cpu: "400m"
+    limits.cpu: "400"
     limits.memory: 350Mi
 ---
 apiVersion: v1
@@ -116,5 +116,5 @@ metadata:
   namespace: sensu
 spec:
   hard:
-    limits.cpu: "600m"
+    limits.cpu: "600"
     limits.memory: 1200Mi
