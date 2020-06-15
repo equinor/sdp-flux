@@ -46,6 +46,21 @@ spec:
           type: prometheus
           access: proxy
           url: http://loki-stack.loki.svc.cluster.local:3100/loki
+
+      notifiers:
+        - name: sdp-team
+          type: slack
+          uid: notifier1
+          org_name: sdp-team
+          is_default: true
+          send_reminder: true
+          frequency: 1h
+          disable_resolve_message: false
+          # See `Supported Settings` section for settings supporter for each
+          # alert notification type.
+          settings:
+            uploadImage: true
+            url: $GF_SLACK_TOKEN # from k8s secret
         
       adminPassword: false
       env:
@@ -63,7 +78,7 @@ spec:
         GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
         GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
 
-      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET and GF_SLACK_TOKEN
 
       ingress:
         enabled: true
