@@ -30,11 +30,23 @@ spec:
           - alertmanager.sdpaks.equinor.com
 
     grafana:
-      default:
-        dashboards:
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+          - name: 'extra'
+            orgId: 1
+            folder: 'Extra'
+            type: file
+            disableDeletion: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/extra
+      dashboards:
+        extra:
           SDP-Tools-Classic-VMs:
             gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
-            datasource: SDP-Tools-Classic
+            datasource: grafana-azure-monitor-datasource
       persistence:
         enabled: true
         size: 10Gi
