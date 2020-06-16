@@ -51,7 +51,7 @@ spec:
         - name: sdp-team
           type: slack
           uid: notifier1
-          org_name: sdp-team
+          org_id: 2
           is_default: true
           send_reminder: true
           frequency: 1h
@@ -59,8 +59,10 @@ spec:
           # See `Supported Settings` section for settings supporter for each
           # alert notification type.
           settings:
-            uploadImage: true
+            uploadImage: false
             url: $GF_SLACK_TOKEN # from k8s secret
+            icon_url: https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/8135670941548141941-512.png
+            mentionChannel: "Disabled"
         
       adminPassword: false
       env:
