@@ -30,6 +30,10 @@ spec:
           - alertmanager.sdpaks.equinor.com
 
     grafana:
+      dashboards:
+        SDP-Tools-Classic-VMs:
+          gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
+          datasource: SDP-Tools-Classic
       persistence:
         enabled: true
         size: 10Gi
@@ -116,6 +120,8 @@ spec:
         GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/authorize
         GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
         GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
+
+
 
       envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET and GF_SLACK_TOKEN
 
