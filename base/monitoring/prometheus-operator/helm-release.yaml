@@ -30,10 +30,11 @@ spec:
           - alertmanager.sdpaks.equinor.com
 
     grafana:
-      dashboards:
-        SDP-Tools-Classic-VMs:
-          gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
-          datasource: SDP-Tools-Classic
+      default:
+        dashboards:
+          SDP-Tools-Classic-VMs:
+            gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
+            datasource: SDP-Tools-Classic
       persistence:
         enabled: true
         size: 10Gi
