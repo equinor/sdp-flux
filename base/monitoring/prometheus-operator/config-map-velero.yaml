@@ -61,7 +61,7 @@ data:
             "handler": 1,
             "message": "Warning i velero-loggene. Kan være tegn på at backup har mislykket.",
             "name": "Velero warning (potential backup issue)",
-            "noDataState": "no_data",
+            "noDataState": "ok",
             "notifications": []
           },
           "aliasColors": {},
