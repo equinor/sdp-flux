@@ -46,7 +46,7 @@ spec:
         extra:
           SDP-Tools-Classic-VMs:
             gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
-            datasource: grafana-azure-monitor-datasource
+            datasource: SDP-Tools-Classic
       persistence:
         enabled: true
         size: 10Gi
