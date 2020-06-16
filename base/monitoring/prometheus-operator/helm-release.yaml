@@ -61,7 +61,7 @@ spec:
           type: grafana-azure-monitor-datasource
           access: proxy
           jsonData:
-            clientId: 68216403-05f8-4567-88cf-706d26a29cdd # sdp-common-grafana-sp
+            clientId: 62c0d660-b27d-4095-874b-4b298984a537 # sdp-common-grafana-sp
             cloudName: azuremonitor
             subscriptionId: 47dd9472-aaea-401b-add5-55fccfe63434
             tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
