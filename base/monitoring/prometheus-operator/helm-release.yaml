@@ -52,7 +52,7 @@ spec:
             - name: sdp-team-slack
               type: slack
               uid: notifier1
-              org_id: 2
+              org_id: 1
               is_default: false
               send_reminder: true
               frequency: 1h
@@ -66,7 +66,7 @@ spec:
             - name: sdp-team-sensu
               type: sensu
               uid: notifier2
-              org_id: 2
+              org_id: 1
               is_default: true
               send_reminder: true
               frequency: 1h
