@@ -63,6 +63,11 @@ spec:
             url: $GF_SLACK_TOKEN # from k8s secret
             icon_url: https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/8135670941548141941-512.png
             mentionChannel: "Disabled"
+
+      delete_notifiers:
+        - name: sdp-team
+          uid: notifier1
+          org_id: 2
         
       adminPassword: false
       env:
