@@ -49,11 +49,11 @@ spec:
       notifiers:
         notifiers.yaml:
           notifiers:
-            - name: sdp-team
+            - name: sdp-team-slack
               type: slack
               uid: notifier1
               org_id: 2
-              is_default: true
+              is_default: false
               send_reminder: true
               frequency: 1h
               disable_resolve_message: false
@@ -63,7 +63,21 @@ spec:
                 uploadImage: false
                 url: $GF_SLACK_TOKEN # from k8s secret
                 icon_url: https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/8135670941548141941-512.png
-        
+            - name: sdp-team-sensu
+              type: sensu
+              uid: notifier2
+              org_id: 2
+              is_default: true
+              send_reminder: true
+              frequency: 1h
+              disable_resolve_message: false
+              # See `Supported Settings` section for settings supporter for each
+              # alert notification type.
+              settings:
+                url: http://sensu-svc.sensu.svc.cluster.local:8080
+                source: grafana-custom-metrics
+          #      username: agent
+         #       password: $GF_SENSU_PASSWORD
       adminPassword: false
       env:
         GF_USERS_AUTO_ASSIGN_ORG_ROLE: Admin
