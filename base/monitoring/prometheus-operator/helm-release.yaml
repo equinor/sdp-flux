@@ -53,7 +53,7 @@ spec:
               type: slack
               uid: notifier1
               org_id: 1
-              is_default: false
+              is_default: true
               send_reminder: true
               frequency: 1h
               disable_resolve_message: false
@@ -63,11 +63,11 @@ spec:
                 uploadImage: false
                 url: $GF_SLACK_TOKEN # from k8s secret
                 icon_url: https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/8135670941548141941-512.png
-            - name: sdp-team-sensu
+            - name: sdp-team-sensu # NOT YET SUPPORTED FOR SENSU-GO https://github.com/grafana/grafana/issues/19908
               type: sensu
               uid: notifier2
               org_id: 1
-              is_default: true
+              is_default: false
               send_reminder: true
               frequency: 1h
               disable_resolve_message: false
