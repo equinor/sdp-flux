@@ -54,7 +54,7 @@ spec:
             helm/helm,
             containerd/containerd,
             postgres/postgres,
-            azure/aks,
+            azure/aks
         - name: HELM_REPOS
           value: |
             gitlab/gitlab,
