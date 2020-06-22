@@ -62,7 +62,7 @@ spec:
             jetstack/cert-manager,
             loki/loki-stack,
             stable/oauth2-proxy,
-            stable/external-dns,
+            bitnami/external-dns,
             stable/kured,
             stable/nginx-ingress,
             stable/prometheus-operator,
