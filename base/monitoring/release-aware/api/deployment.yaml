@@ -42,32 +42,32 @@ spec:
         - name: REPOSITORIES
           value: |
             sensu/sensu-go,
-            grafana/grafana,
             torvalds/linux,
             jenkinsci/jenkins,
-            fluxcd/flux,
             docker/docker-ce,
             docker/compose,
             derailed/k9s,
             kubernetes/kubernetes,
-            elastic/elasticsearch,
-            elastic/kibana,
             gatsbyjs/gatsby,
-            gitlabhq/gitlabhq,
             puppetlabs/puppet,
             verdaccio/verdaccio,
             helm/helm,
             containerd/containerd,
             postgres/postgres,
-            vmware-tanzu/velero,
             azure/aks,
-            jetstack/cert-manager
         - name: HELM_REPOS
           value: |
             gitlab/gitlab,
             fluxcd/flux,
             jetstack/cert-manager,
-            stable/oauth2-proxy
+            loki/loki-stack,
+            stable/oauth2-proxy,
+            stable/external-dns,
+            stable/kured,
+            stable/nginx-ingress,
+            stable/prometheus-operator,
+            stable/sealed-secrets,
+            vmware-tanzu/velero
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
