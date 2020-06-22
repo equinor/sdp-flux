@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: release-aware-api
-        image: sdpequinor/release-aware-api:1.7
+        image: sdpequinor/release-aware-api:1.8
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
@@ -62,6 +62,12 @@ spec:
             vmware-tanzu/velero,
             azure/aks,
             jetstack/cert-manager
+        - name: HELM_REPOS
+          value: |
+            gitlab/gitlab,
+            fluxcd/flux,
+            jetstack/cert-manager,
+            stable/oauth2-proxy
         - name: GITHUB_TOKEN
           valueFrom:
             secretKeyRef:
