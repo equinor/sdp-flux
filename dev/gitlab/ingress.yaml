@@ -15,14 +15,14 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: gitlab-webservice
+          serviceName: gitlab-unicorn
           servicePort: 8181
         path: /
       - backend:
-          serviceName: gitlab-webservice
+          serviceName: gitlab-unicorn
           servicePort: 8080
         path: /admin/sidekiq
   tls:
   - hosts:
     - gitlab.dev.sdpaks.equinor.com
-    secretName: gitlab-webservice-tls
+    secretName: gitlab-unicorn-tls

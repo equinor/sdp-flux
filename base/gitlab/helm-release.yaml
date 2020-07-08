@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 4.0.4
+    version: 3.3.5
   values:
     certmanager:
       install: false
@@ -30,7 +30,7 @@ spec:
             config:
               key: config
               secret: backup-storage-config
-      webservice:
+      unicorn:
         ingress:
           tls:
             secretName: gitlab-sdp-tls
