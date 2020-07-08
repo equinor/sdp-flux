@@ -1,0 +1,262 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: monitoring
+  name: velero-grafana-dashboard
+  labels:
+    grafana_dashboard: "1"
+data:
+  veleroi-grafana-dashboard.json: |-
+    {
+      "annotations": {
+        "list": [
+          {
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+          }
+        ]
+      },
+      "editable": true,
+      "gnetId": null,
+      "graphTooltip": 0,
+      "id": 31,
+      "links": [],
+      "panels": [
+        {
+          "alert": {
+            "alertRuleTags": {},
+            "conditions": [
+              {
+                "evaluator": {
+                  "params": [
+                    0.99
+                  ],
+                  "type": "gt"
+                },
+                "operator": {
+                  "type": "and"
+                },
+                "query": {
+                  "params": [
+                    "A",
+                    "5m",
+                    "now"
+                  ]
+                },
+                "reducer": {
+                  "params": [],
+                  "type": "max"
+                },
+                "type": "query"
+              }
+            ],
+            "executionErrorState": "keep_state",
+            "for": "180m",
+            "frequency": "15m",
+            "handler": 1,
+            "message": "Warning i velero-loggene. Kan være tegn på at backup har mislykket.",
+            "name": "Velero warning (potential backup issue)",
+            "noDataState": "ok",
+            "notifications": []
+          },
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "lokiPromQL",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 0
+          },
+          "hiddenSeries": false,
+          "id": 4,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "dataLinks": []
+          },
+          "percentage": false,
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "count_over_time({namespace=\"velero\"}[5m] |~ \"warning\" )",
+              "interval": "",
+              "legendFormat": "",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [
+            {
+              "colorMode": "critical",
+              "fill": true,
+              "line": true,
+              "op": "gt",
+              "value": 0.99
+            }
+          ],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Velero warning (potential backup issue)",
+          "tooltip": {
+            "shared": true,
+            "sort": 0,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "datasource": "loki",
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "align": null
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "line {app_kubernetes_io_instance=\"velero\", app_kubernetes_io_managed_by=\"Helm\", app_kubernetes_io_name=\"velero\", container_name=\"velero\", filename=\"/var/log/pods/velero_velero-5dc7f75f4d-kfpsf_b971aa0a-cef3-4f9f-80f2-465a55662bde/velero/0.log\", helm_sh_chart=\"velero-2.9.15\", instance=\"velero-5dc7f75f4d-kfpsf\", job=\"velero/velero\", name=\"velero\", namespace=\"velero\", pod_template_hash=\"5dc7f75f4d\", stream=\"stdout\"}"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 625
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "id": 2,
+          "options": {
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "line {app_kubernetes_io_instance=\"velero\", app_kubernetes_io_managed_by=\"Helm\", app_kubernetes_io_name=\"velero\", container_name=\"velero\", filename=\"/var/log/pods/velero_velero-5dc7f75f4d-kfpsf_b971aa0a-cef3-4f9f-80f2-465a55662bde/velero/0.log\", helm_sh_chart=\"velero-2.9.15\", instance=\"velero-5dc7f75f4d-kfpsf\", job=\"velero/velero\", name=\"velero\", namespace=\"velero\", pod_template_hash=\"5dc7f75f4d\", stream=\"stdout\"}"
+              }
+            ]
+          },
+          "pluginVersion": "7.0.3",
+          "targets": [
+            {
+              "expr": "{job=\"velero/velero\"} |~ \"level=warning\" ",
+              "refId": "A"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "velero warnings",
+          "type": "table"
+        }
+      ],
+      "schemaVersion": 25,
+      "style": "dark",
+      "tags": [],
+      "templating": {
+        "list": []
+      },
+      "time": {
+        "from": "now-6h",
+        "to": "now"
+      },
+      "timepicker": {
+        "refresh_intervals": [
+          "10s",
+          "30s",
+          "1m",
+          "5m",
+          "15m",
+          "30m",
+          "1h",
+          "2h",
+          "1d"
+        ]
+      },
+      "timezone": "",
+      "title": "velero errors and warnings",
+      "uid": "PnhsAPmMz",
+      "version": 12
+    }

@@ -27,6 +27,8 @@ resources:
 - ./monitoring/prometheus-operator/helm-release.yaml
 - ./monitoring/prometheus-operator/sealed-secret-grafana.yaml
 - ./monitoring/prometheus-operator/config-map-gitlabstats.yaml
+- ./monitoring/prometheus-operator/config-map-loki.yaml
+- ./monitoring/prometheus-operator/config-map-velero.yaml
 - ./monitoring/release-aware/api/deployment.yaml
 - ./monitoring/release-aware/api/sealedsecret.yaml
 - ./monitoring/release-aware/api/service.yaml

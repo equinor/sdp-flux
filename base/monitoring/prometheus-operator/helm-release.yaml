@@ -30,6 +30,29 @@ spec:
           - alertmanager.sdpaks.equinor.com
 
     grafana:
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+          - name: 'azure'
+            orgId: 1
+            folder: 'Azure'
+            type: file
+            disableDeletion: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/azure
+      dashboards:
+        azure:
+          SDP-Tools-Classic-VMs:
+            gnetId: 10532 # https://grafana.com/grafana/dashboards/10532
+            datasource: SDP-Tools-Classic
+          SDP-Tools-Azure-PostgresSQL:
+            gnetId: 10535
+            datasource: SDP-Tools
+          SDP-Tools-Azure-Storage-Accounts:
+            gnetId: 9962
+            datasource: SDP-Tools
       persistence:
         enabled: true
         size: 10Gi
@@ -46,7 +69,61 @@ spec:
           type: prometheus
           access: proxy
           url: http://loki-stack.loki.svc.cluster.local:3100/loki
-        
+        - name: SDP-Tools
+          type: grafana-azure-monitor-datasource
+          access: proxy
+          jsonData:
+            clientId: e620bc5e-7b76-4bfe-b813-a33b5da3dcda # sdpaks-common-grafana-sp
+            cloudName: azuremonitor
+            subscriptionId: b18da12e-efa1-4642-8fec-b6580b00212c
+            tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+          secureJsonData:
+            clientSecret: $GF_SDP_TOOLS_CLIENT_SECRET
+          version: 1
+        - name: SDP-Tools-Classic
+          type: grafana-azure-monitor-datasource
+          access: proxy
+          jsonData:
+            clientId: 62c0d660-b27d-4095-874b-4b298984a537 # sdp-common-grafana-sp
+            cloudName: azuremonitor
+            subscriptionId: 47dd9472-aaea-401b-add5-55fccfe63434
+            tenantId: 3aa4a235-b6e2-48d5-9195-7fcf05b459b0
+          secureJsonData:
+            clientSecret: $GF_SDP_TOOLS_CLASSIC_CLIENT_SECRET
+          version: 1
+
+      notifiers:
+        notifiers.yaml:
+          notifiers:
+            - name: sdp-team-slack
+              type: slack
+              uid: notifier1
+              org_id: 1
+              is_default: true
+              send_reminder: true
+              frequency: 1h
+              disable_resolve_message: false
+              # See `Supported Settings` section for settings supporter for each
+              # alert notification type.
+              settings:
+                uploadImage: false
+                url: $GF_SLACK_TOKEN # from k8s secret
+                icon_url: https://upload-icon.s3.us-east-2.amazonaws.com/uploads/icons/png/8135670941548141941-512.png
+            - name: sdp-team-sensu # NOT YET SUPPORTED FOR SENSU-GO https://github.com/grafana/grafana/issues/19908
+              type: sensu
+              uid: notifier2
+              org_id: 1
+              is_default: false
+              send_reminder: true
+              frequency: 1h
+              disable_resolve_message: false
+              # See `Supported Settings` section for settings supporter for each
+              # alert notification type.
+              settings:
+                url: http://sensu-svc.sensu.svc.cluster.local:8080
+                source: grafana-custom-metrics
+          #      username: agent
+         #       password: $GF_SENSU_PASSWORD
       adminPassword: false
       env:
         GF_USERS_AUTO_ASSIGN_ORG_ROLE: Admin
@@ -63,7 +140,9 @@ spec:
         GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://login.microsoftonline.com/3aa4a235-b6e2-48d5-9195-7fcf05b459b0/oauth2/token
         GF_SERVER_ROOT_URL: https://grafana.sdpaks.equinor.com
 
-      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+
+
+      envFromSecret: grafana-secret-envs # Secret with GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET and GF_SLACK_TOKEN
 
       ingress:
         enabled: true
