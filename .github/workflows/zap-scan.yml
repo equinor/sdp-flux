@@ -1,9 +1,7 @@
-name: ZAP website nightly scan
+name: ZAP website manual scan
 
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '5 2 * * *'
+  workflow_dispatch:
 
 jobs:
   zap_scan:
