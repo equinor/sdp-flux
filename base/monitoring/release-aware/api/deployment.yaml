@@ -63,7 +63,7 @@ spec:
             loki/loki-stack,
             stable/oauth2-proxy,
             bitnami/external-dns,
-            stable/kured,
+            kured/kured,
             stable/nginx-ingress,
             stable/prometheus-operator,
             stable/sealed-secrets,
