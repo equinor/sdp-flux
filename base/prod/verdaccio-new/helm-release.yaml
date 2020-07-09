@@ -17,7 +17,11 @@ spec:
     environmentsFromSecrets:
       enabled: true
     extraEnvVars:
-    - secret: "verdaccio-client-secret"
+    - name: OAUTH_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: verdaccio-client-secret
+        key: OAUTH_CLIENT_SECRET
     existingConfigMap: verdaccio-configmap
     persistence:
       existingClaim: verdaccio-verdaccio
