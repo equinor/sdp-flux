@@ -5,7 +5,7 @@ metadata:
   name: verdaccio-new
   namespace: prod
 spec:
-  releaseName: verdaccio
+  releaseName: verdaccio-new
   chart:
     repository: https://charts.verdaccio.org
     name: verdaccio
