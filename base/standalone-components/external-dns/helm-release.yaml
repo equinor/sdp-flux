@@ -11,9 +11,9 @@ metadata:
 spec:
   releaseName: external-dns
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://charts.bitnami.com/bitnami
     name: external-dns
-    version: 2.16.1
+    version: 3.2.3
   values:
     provider: azure
     rbac:
