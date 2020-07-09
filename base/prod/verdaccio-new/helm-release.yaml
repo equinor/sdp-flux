@@ -25,3 +25,9 @@ spec:
     existingConfigMap: verdaccio-configmap
     persistence:
       existingClaim: verdaccio-verdaccio
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      hosts:
+      - npm-new.dev.sdpaks.equinor.com
