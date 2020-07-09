@@ -30,7 +30,7 @@ spec:
             config:
               key: config
               secret: backup-storage-config
-      webservice:
+      unicorn:
         ingress:
           tls:
             secretName: gitlab-sdp-tls
