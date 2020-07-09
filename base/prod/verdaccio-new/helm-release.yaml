@@ -1,0 +1,23 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: verdaccio-new
+  namespace: prod
+spec:
+  releaseName: verdaccio
+  chart:
+    repository: https://charts.verdaccio.org
+    name: verdaccio
+    version: 0.16.2
+  values:
+    image:
+      repository: sdpequinor/verdaccio-github-auth
+      tag: 4.6.2
+    environmentsFromSecrets:
+      enabled: true
+    extraEnvVars:
+      verdaccio-client-secret: "OAUTH_CLIENT_SECRET"
+    existingConfigMap: verdaccio-configmap
+    persistence:
+      existingClaim: verdaccio-verdaccio
