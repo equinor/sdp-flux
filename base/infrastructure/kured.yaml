@@ -11,17 +11,18 @@ metadata:
 spec:
   releaseName: kured
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://weaveworks.github.io/kured
     name: kured
-    version: 1.5.0
+    version: 2.0.3
   values:
     updateStrategy: RollingUpdate
-    extraArgs:
+    configuration:
       period: 10m0s
-      reboot-sentinel: "/var/run/reboot-required-night"
-      slack-username: "SDPTeam Kured"
-      slack-hook-url: secrets.kured-webhook.token #Needs to be set outside Git. how to get to secret?
-      # blocking-pod-selector: "app=example,release=myreleasename" - ',' means 'AND'
-      time-zone: "Europe/Oslo"
-      start-time: "01:30"
-      end-time: "04:30"
+      rebootSentinel: "/var/run/reboot-required-night"
+      slackUsername: "SDPTeam Kured"
+      slackChannel: "sdpteam-team"
+      slackHookUrl: secrets.kured-webhook.token #Needs to be set outside Git. how to get to secret?
+      # blockingPodSelector: "app=example,release=myreleasename" - ',' means 'AND'
+      timeZone: "Europe/Oslo"
+      startTime: "01:30"
+      endTime: "04:30"
