@@ -59,6 +59,7 @@ spec:
           value: |
             gitlab/gitlab,
             fluxcd/flux,
+            fluxcd/helm-operator,
             jetstack/cert-manager,
             loki/loki-stack,
             stable/oauth2-proxy,
