@@ -54,8 +54,7 @@ resources:
 - ./prod/verdaccio/helm-release.yaml
 - ./prod/verdaccio/oauth-client-secret.yaml
 - ./prod/verdaccio/sealed-secret-tls.yaml
-- ./prod/verdaccio-new/helm-release.yaml
-- ./prod/verdaccio-new/verdaccio-configmap.yaml
+- ./prod/verdaccio/verdaccio-configmap.yaml
 - ./prod/aks-registry-prod.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-common-postgres-tls.yaml
