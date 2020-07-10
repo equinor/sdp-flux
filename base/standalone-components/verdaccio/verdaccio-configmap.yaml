@@ -4,7 +4,7 @@ metadata:
   labels:
     app: verdaccio
   name: verdaccio-configmap
-  namespace: prod
+  namespace: verdaccio
 data:
   config.yaml: |-
     storage: /verdaccio/storage

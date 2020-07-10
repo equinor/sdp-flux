@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: verdaccio
-  namespace: prod
+  namespace: verdaccio
 spec:
   releaseName: verdaccio
   chart:
@@ -23,8 +23,6 @@ spec:
         name: verdaccio-client-secret
         key: OAUTH_CLIENT_SECRET
     existingConfigMap: verdaccio-configmap
-    persistence:
-      existingClaim: verdaccio-verdaccio
     ingress:
       enabled: true
       annotations:
