@@ -18,10 +18,10 @@ spec:
       enabled: true
     extraEnvVars:
     - name: OAUTH_CLIENT_SECRET
-    valueFrom:
-      secretKeyRef:
-        name: verdaccio-client-secret
-        key: OAUTH_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: verdaccio-client-secret
+          key: OAUTH_CLIENT_SECRET
     existingConfigMap: verdaccio-configmap
     ingress:
       enabled: true
