@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: verdaccio
-  namespace: prod
+  namespace: verdaccio
 spec:
   values:
     ingress:

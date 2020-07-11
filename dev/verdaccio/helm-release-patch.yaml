@@ -3,10 +3,8 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: verdaccio
-  namespace: prod
+  namespace: verdaccio
 spec:
-  chart:
-    ref: dev # Dev should listen to dev branch
   values:
     ingress:
       enabled: true

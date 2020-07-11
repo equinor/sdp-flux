@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: verdaccio
+  name: verdaccio-configmap
+  namespace: verdaccio
+data:
+  config.yaml: |-
+    storage: /verdaccio/storage
+
+    middlewares:
+      github-oauth:
+        client-id: 9167dfca2cef9d1f7373
+        client-secret: $OAUTH_CLIENT_SECRET
+      audit:
+        enabled: true
+
+    auth:
+      github-oauth:
+        org: equinor
+        cache-ttl-ms: 60000
+    security:
+      api:
+        jwt:
+          sign:
+            expiresIn: 60d
+            notBefore: 1
+      web:
+        sign:
+          expiresIn: 7d
+
+    uplinks:
+      npmjs:
+        url: https://registry.npmjs.org/
+
+    packages:
+      '@equinor-internal/*':
+        access: $authenticated
+        publish: $authenticated
+        proxy: npmjs
+
+      '**':
+        access: $all
+        publish: $authenticated
+        proxy: npmjs
+
+    web:
+      enable: true
+      title: Equinor NPM-registry
+
+    logs:
+      - {type: stdout, format: pretty-timestamped, level: http}
