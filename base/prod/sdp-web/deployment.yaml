@@ -20,16 +20,16 @@ spec:
     spec:
       containers:
       - name: sdp-web
-        image: sdpequinor/sdp-web:latest
+        image: sdpequinor/sdpweb-gatsby
         imagePullPolicy: Always
         securityContext:
-          readOnlyRootFilesystem: false 
+          readOnlyRootFilesystem: false
           capabilities: # This currently seems to need root user
             # drop:
             #- all
             # add: ["DAC_OVERRIDE", "CHOWN", "NET_BIND_SERVICE"]
         ports:
-        - containerPort: 80
+        - containerPort: 9000
           name: http
         resources:
           requests:
