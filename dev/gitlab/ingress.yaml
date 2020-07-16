@@ -4,7 +4,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: gitlab-unicorn-ingress
+  name: gitlab-webservice-ingress
   namespace: gitlab
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -15,14 +15,14 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: gitlab-unicorn
+          serviceName: gitlab-webservice
           servicePort: 8181
         path: /
       - backend:
-          serviceName: gitlab-unicorn
+          serviceName: gitlab-webservice
           servicePort: 8080
         path: /admin/sidekiq
   tls:
   - hosts:
     - gitlab.dev.sdpaks.equinor.com
-    secretName: gitlab-unicorn-tls
+    secretName: gitlab-webservice-tls
