@@ -48,12 +48,9 @@ spec:
             docker/compose,
             derailed/k9s,
             kubernetes/kubernetes,
-            gatsbyjs/gatsby,
             puppetlabs/puppet,
             verdaccio/verdaccio,
             helm/helm,
-            containerd/containerd,
-            postgres/postgres,
             azure/aks
         - name: HELM_REPOS
           value: |
