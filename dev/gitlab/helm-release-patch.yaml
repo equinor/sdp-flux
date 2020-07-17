@@ -17,11 +17,11 @@ spec:
     global:
       psql:
         database: postgres
-        host: sdpaks-dev-gitlab-psql.postgres.database.azure.com
+        host: sdpaks-dev-gitlab-psql11.postgres.database.azure.com
         password:
           key: password
           secret: gitlab-postgres-secret
-        username: gitlab@sdpaks-dev-gitlab-psql
+        username: gitlab@sdpaks-dev-gitlab-psql11
       hosts:
         domain: sdp.equinor.com
         gitlab:
