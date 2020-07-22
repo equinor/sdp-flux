@@ -10,7 +10,7 @@ spec:
     configuration:
       provider: azure
       backupStorageLocation:
-        name: azure
+        name: default
         bucket: velero-dev-storage
         config:
           resourceGroup: sdpaks-common-backup

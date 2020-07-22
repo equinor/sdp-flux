@@ -8,6 +8,7 @@ resources:
 - ./gitlab/ingress.yaml
 - ./gitlab/gitlab-azure-saml.yaml
 - ./velero/prod-storagelocation.yaml
+- ./velero/default-storagelocation.yaml
 - ./namespaces/backup-sandbox.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
