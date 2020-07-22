@@ -12,5 +12,3 @@ spec:
       creationTimestamp: null
       name: kured-webhook
       namespace: infrastructure
-status: {}
-

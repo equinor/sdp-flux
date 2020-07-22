@@ -17,5 +17,3 @@ spec:
       creationTimestamp: null
       name: gitlab-ssh-keys
       namespace: gitlab
-status: {}
-

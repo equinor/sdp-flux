@@ -12,5 +12,3 @@ spec:
       creationTimestamp: null
       name: gitlab-azure-oauth2
       namespace: gitlab
-status: {}
-

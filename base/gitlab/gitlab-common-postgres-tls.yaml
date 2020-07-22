@@ -14,5 +14,3 @@ spec:
       creationTimestamp: null
       name: gitlab-postgres-tls
       namespace: gitlab
-status: {}
-
