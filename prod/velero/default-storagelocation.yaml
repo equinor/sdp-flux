@@ -1,14 +1,12 @@
 apiVersion: velero.io/v1
 kind: BackupStorageLocation
 metadata:
-  generation: 2110
   labels:
     app.kubernetes.io/instance: velero
     app.kubernetes.io/name: velero
     helm.sh/chart: velero-2.9.15
   name: default
   namespace: velero
-  resourceVersion: "6160390"
   selfLink: /apis/velero.io/v1/namespaces/velero/backupstoragelocations/default
 spec:
   config:
