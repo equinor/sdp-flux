@@ -18,7 +18,7 @@ spec:
         # wrt private repos.  Also git-sync is a pain to integrate with our
         # build (uses godeps etc).  So for not, use a pinned custom built
         # version.
-        image: tomwilkie/git-sync:f6165715ce9d
+        image: k8s.gcr.io/git-sync:v3.1.6
         args:
           - -repo=https://github.com/equinor/sdp-flux
           - -branch=prod
