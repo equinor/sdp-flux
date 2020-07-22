@@ -13,5 +13,3 @@ spec:
       name: registry-sdpakscr
       namespace: prod
     type: kubernetes.io/dockerconfigjson
-status: {}
-

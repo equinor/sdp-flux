@@ -14,5 +14,3 @@ spec:
       name: gitlab-registry-custom-tls
       namespace: gitlab
     type: kubernetes.io/tls
-status: {}
-

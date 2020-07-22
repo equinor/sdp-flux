@@ -14,5 +14,3 @@ spec:
       name: gitlab-sdp-tls
       namespace: gitlab
     type: kubernetes.io/tls
-status: {}
-
