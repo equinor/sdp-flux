@@ -27,4 +27,4 @@ patchesStrategicMerge:
 - ./nginx-ingress/helm-release-patch.yaml
 - ./gitlab/helm-release-patch.yaml
 - ./loki/ingress-patch.yaml
-- ./standalone-components/kubediff/kubediff-rc.yaml
+- ./kubediff/kubediff-rc.yaml
