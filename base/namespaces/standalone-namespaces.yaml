@@ -47,3 +47,8 @@ kind: Namespace
 metadata:
   name: verdaccio
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kubediff
+---
