@@ -76,3 +76,7 @@ resources:
 - ./standalone-components/loki/ingress.yaml
 - ./standalone-components/cert-manager/helm-release.yaml
 - ./standalone-components/cert-manager/cluster-issuer.yaml
+- ./standalone-components/kubediff/clusterrole.yaml
+- ./standalone-components/kubediff/crb.yaml
+- ./standalone-components/kubediff/kubediff-rc.yaml
+- ./standalone-components/kubediff/kubediff-svc.yaml
