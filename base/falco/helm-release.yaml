@@ -14,3 +14,5 @@ spec:
     falco:
       grpc:
         enabled: true
+      grpcOutput:
+        enabled: true
