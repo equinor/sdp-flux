@@ -42,6 +42,17 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/azure
+        dashboardproviders2.yaml:
+          apiVersion: 1
+          providers:
+          - name: 'falco'
+            orgId: 1
+            folder: 'Falco'
+            type: file
+            disableDeletion: true
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/falco
       dashboards:
         azure:
           SDP-Tools-Classic-VMs:
