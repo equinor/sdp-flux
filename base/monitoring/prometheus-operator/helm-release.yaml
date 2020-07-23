@@ -42,17 +42,6 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/azure
-        dashboardproviders2.yaml:
-          apiVersion: 1
-          providers:
-          - name: 'falco'
-            orgId: 1
-            folder: 'Falco'
-            type: file
-            disableDeletion: true
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/falco
       dashboards:
         azure:
           SDP-Tools-Classic-VMs:
@@ -64,7 +53,6 @@ spec:
           SDP-Tools-Azure-Storage-Accounts:
             gnetId: 9962
             datasource: SDP-Tools
-        falco:
           Falco-prometheus-data:
             gnetId: 11914
             datasource: Prometheus
