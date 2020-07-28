@@ -29,6 +29,7 @@ resources:
 - ./monitoring/prometheus-operator/config-map-gitlabstats.yaml
 - ./monitoring/prometheus-operator/config-map-loki.yaml
 - ./monitoring/prometheus-operator/config-map-velero.yaml
+- ./monitoring/prometheus-operator/config-map-falco.yaml
 - ./monitoring/release-aware/api/deployment.yaml
 - ./monitoring/release-aware/api/sealedsecret.yaml
 - ./monitoring/release-aware/api/service.yaml

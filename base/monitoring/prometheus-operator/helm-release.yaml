@@ -53,9 +53,6 @@ spec:
           SDP-Tools-Azure-Storage-Accounts:
             gnetId: 9962
             datasource: SDP-Tools
-          Falco-prometheus-data:
-            gnetId: 11914
-            datasource: Prometheus
       persistence:
         enabled: true
         size: 10Gi
