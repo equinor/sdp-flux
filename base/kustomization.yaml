@@ -83,6 +83,6 @@ resources:
 - ./standalone-components/kubediff/kubediff-svc.yaml
 - ./falco/helm-release.yaml
 - ./falco/exporter-helm-release.yaml
-- ./falco/sysdig-inspect/deployment.yaml
-- ./falco/sysdig-inspect/pvc.yaml
-- ./falco/sysdig-inspect/service.yaml
+- ./falco/sysdig-inspect-deployment.yaml
+- ./falco/sysdig-inspect-pvc.yaml
+- ./falco/sysdig-inspect-service.yaml
