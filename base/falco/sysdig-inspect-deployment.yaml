@@ -34,3 +34,10 @@ spec:
           limits:
             cpu: 100m
             memory: "200Mi"
+        volumeMounts:
+        - mountPath: /captures
+          name: captures
+      volumes:
+      - name: captures
+        persistentVolumeClaim:
+          claimName: sysdig-inspect
