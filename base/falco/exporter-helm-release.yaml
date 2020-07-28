@@ -1,0 +1,12 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: falco-exporter
+  namespace: falco
+spec:
+  releaseName: falco-exporter
+  chart:
+    repository: https://falcosecurity.github.io/charts
+    name: falco-exporter
+    version: 0.3.0

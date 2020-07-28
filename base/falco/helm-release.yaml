@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: falco
+  namespace: falco
+spec:
+  releaseName: falco
+  chart:
+    repository: https://falcosecurity.github.io/charts
+    name: falco
+    version: 1.2.1
+  values:
+    falco:
+      jsonOutput: true
+      grpc:
+        enabled: true
+      grpcOutput:
+        enabled: true

@@ -53,6 +53,9 @@ spec:
           SDP-Tools-Azure-Storage-Accounts:
             gnetId: 9962
             datasource: SDP-Tools
+          Falco-prometheus-data:
+            gnetId: 11914
+            datasource: Prometheus
       persistence:
         enabled: true
         size: 10Gi
@@ -175,6 +178,17 @@ spec:
           matchLabels:
             release: prometheus-operator
         serviceMonitorNamespaceSelector: {}
+      additionalServiceMonitors:
+        - name: falco-scrape
+          selector:
+            matchLabels:
+              app.kubernetes.io/name: falco-exporter
+          namespaceSelector:
+              matchNames:
+              - falco
+          endpoints:
+          - path: /metrics
+            port: metrics
       ingress:
         enabled: true
         annotations:
