@@ -179,12 +179,15 @@ spec:
             release: prometheus-operator
         serviceMonitorNamespaceSelector: {}
       additionalServiceMonitors:
-        serviceMonitorSpec:
+        - name: falco-scrape
+          selector:
+            matchLabels:
+              app.kubernetes.io/name: falco-exporter
           namespaceSelector:
               matchNames:
               - falco
           endpoints:
-            path: /metrics
+          - path: /metrics
             port: metrics
       ingress:
         enabled: true
