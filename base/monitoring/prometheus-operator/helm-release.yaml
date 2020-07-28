@@ -179,12 +179,13 @@ spec:
             release: prometheus-operator
         serviceMonitorNamespaceSelector: {}
       additionalServiceMonitors:
-        namespaceSelector:
-            matchNames:
-            - falco
-        endpoints:
-          path: /metrics
-          port: metrics
+        serviceMonitorSpec:
+          namespaceSelector:
+              matchNames:
+              - falco
+          endpoints:
+            path: /metrics
+            port: metrics
       ingress:
         enabled: true
         annotations:
