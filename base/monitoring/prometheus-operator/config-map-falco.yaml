@@ -287,5 +287,5 @@ data: # from: https://github.com/falcosecurity/falco-exporter/blob/master/grafan
       "timepicker": {},
       "timezone": "",
       "title": "Falco Dashboard",
-      "uid": "FvUFlfuZz"
+      "uid": "FvUFlfuZzGG"
     }
