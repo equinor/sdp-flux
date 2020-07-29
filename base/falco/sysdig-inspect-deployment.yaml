@@ -32,8 +32,8 @@ spec:
             cpu: 50m
             memory: "100Mi"
           limits:
-            cpu: 100m
-            memory: "200Mi"
+            cpu: 250m
+            memory: "400Mi"
         volumeMounts:
         - mountPath: /captures
           name: captures
