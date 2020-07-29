@@ -47,8 +47,6 @@ resources:
 - ./prod/hgir/service.yaml
 - ./prod/matomo/helm-release.yaml
 - ./prod/matomo/matomo-mariadb-secret.yaml
-- ./prod/oauth2-proxy-all/helmrelease.yaml
-- ./prod/oauth2-proxy-all/sealedsecret.yaml
 - ./prod/sdp-web/deployment.yaml
 - ./prod/sdp-web/ingress.yaml
 - ./prod/sdp-web/service.yaml
