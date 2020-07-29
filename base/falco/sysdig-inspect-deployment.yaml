@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sysdig-inspect
+  name: sysdig-inspect
+  namespace: falco
+  annotations:
+    flux.weave.works/automated: 'true'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sysdig-inspect
+  template:
+    metadata:
+      labels:
+        app: sysdig-inspect
+    spec:
+      containers:
+      - name: sysdig-inspect
+        image: sysdig/sysdig-inspect:latest
+        imagePullPolicy: Always
+        securityContext:
+          readOnlyRootFilesystem: false
+        ports:
+        - containerPort: 3000
+          name: http
+        resources:
+          requests:
+            cpu: 50m
+            memory: "100Mi"
+          limits:
+            cpu: 100m
+            memory: "200Mi"
+        volumeMounts:
+        - mountPath: /captures
+          name: captures
+      volumes:
+      - name: captures
+        persistentVolumeClaim:
+          claimName: sysdig-inspect

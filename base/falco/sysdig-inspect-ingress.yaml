@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sysdig-inspect
+  namespace: falco
+  labels:
+    app: sysdig-inspect
+  annotations:
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - sysdig-inspect.sdpaks.equinor.com
+    secretName: sysdig-inspect-tls
+  rules:
+    - host: sysdig-inspect.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sysdig-inspect
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sysdig-inspect-auth
+  namespace: falco
+  labels:
+    app: sysdig-inspect
+spec:
+  tls:
+  - hosts:
+    - sysdig-inspect.sdpaks.equinor.com
+    secretName: sysdig-inspect-tls
+  rules:
+    - host: sysdig-inspect.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180
+---
