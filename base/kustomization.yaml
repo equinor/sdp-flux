@@ -86,3 +86,6 @@ resources:
 - ./falco/sysdig-inspect-deployment.yaml
 - ./falco/sysdig-inspect-pvc.yaml
 - ./falco/sysdig-inspect-service.yaml
+- ./falco/externaloauth-svc.yaml
+- ./oauth2-proxy-sdp/helmrelease.yaml
+- ./oauth2-proxy-sdp/sealedsecret.yaml
