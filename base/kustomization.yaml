@@ -70,7 +70,6 @@ resources:
 - ./aware/sealedsecret.yaml
 - ./aware/service.yaml
 - ./aware/external-oauth2-svc.yaml
-- ./aware/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/helm-release.yaml
 - ./standalone-components/loki/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/ingress.yaml
