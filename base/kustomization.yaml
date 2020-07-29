@@ -20,8 +20,6 @@ resources:
 - ./monitoring/gitlabstats/service.yaml
 - ./monitoring/monitor/web/deployment.yaml
 - ./monitoring/monitor/web/service.yaml
-- ./monitoring/oauth2-proxy/sdp/helmrelease.yaml
-- ./monitoring/oauth2-proxy/sdp/sealedsecret.yaml
 - ./monitoring/prometheus-operator/auth-ingress.yaml
 - ./monitoring/prometheus-operator/config-map.yaml
 - ./monitoring/prometheus-operator/helm-release.yaml

@@ -33,5 +33,5 @@ spec:
         paths:
           - path: /oauth2 
             backend:
-              serviceName: oauth2-proxy-sdp
+              serviceName: oauth2-sdp
               servicePort: 4180
