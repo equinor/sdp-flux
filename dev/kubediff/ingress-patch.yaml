@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubediff
+  namespace: kubediff
+spec:
+  tls:
+  - hosts:
+    - kubediff.dev.sdpaks.equinor.com
+    secretName: kubediff-tls
+  rules:
+    - host: kubediff.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: kubediff
+              servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubediff-auth
+  namespace: falco
+  labels:
+    app: kubediff
+spec:
+  tls:
+  - hosts:
+    - kubediff.dev.sdpaks.equinor.com
+    secretName: kubediff-tls
+  rules:
+    - host: kubediff.dev.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180
+---

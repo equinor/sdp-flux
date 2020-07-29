@@ -47,8 +47,6 @@ resources:
 - ./prod/hgir/service.yaml
 - ./prod/matomo/helm-release.yaml
 - ./prod/matomo/matomo-mariadb-secret.yaml
-- ./prod/oauth2-proxy-all/helmrelease.yaml
-- ./prod/oauth2-proxy-all/sealedsecret.yaml
 - ./prod/sdp-web/deployment.yaml
 - ./prod/sdp-web/ingress.yaml
 - ./prod/sdp-web/service.yaml
@@ -72,7 +70,6 @@ resources:
 - ./aware/sealedsecret.yaml
 - ./aware/service.yaml
 - ./aware/external-oauth2-svc.yaml
-- ./aware/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/helm-release.yaml
 - ./standalone-components/loki/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/ingress.yaml
@@ -82,6 +79,8 @@ resources:
 - ./standalone-components/kubediff/crb.yaml
 - ./standalone-components/kubediff/kubediff-rc.yaml
 - ./standalone-components/kubediff/kubediff-svc.yaml
+- ./standalone-components/kubediff/ingress.yaml
+- ./standalone-components/kubediff/external-oauth2-svc.yaml
 - ./falco/helm-release.yaml
 - ./falco/exporter-helm-release.yaml
 - ./falco/sysdig-inspect-deployment.yaml

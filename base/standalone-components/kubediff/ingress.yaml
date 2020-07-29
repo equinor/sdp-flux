@@ -1,10 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: aware
-  namespace: aware
+  name: kubediff
+  namespace: kubediff
   labels:
-    app: aware
+    app: kubediff
   annotations:
     nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
     nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
@@ -12,39 +12,36 @@ metadata:
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
-    - hosts:
-        - aware.sdpaks.equinor.com
-      secretName: aware-tls
+  - hosts:
+    - kubediff.sdpaks.equinor.com
+    secretName: kubediff-tls
   rules:
-    - host: aware.sdpaks.equinor.com
+    - host: kubediff.sdpaks.equinor.com
       http:
         paths:
           - path: /
             backend:
-              serviceName: aware-web
-              servicePort: 80
-          - path: /api
-            backend:
-              serviceName: aware-api
+              serviceName: kubediff
               servicePort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: aware-auth
-  namespace: aware
+  name: kubediff-auth
+  namespace: falco
   labels:
-    app: aware
+    app: kubediff
 spec:
   tls:
   - hosts:
-    - aware.sdpaks.equinor.com
-    secretName: aware-tls
+    - kubediff.sdpaks.equinor.com
+    secretName: kubediff-tls
   rules:
-    - host: aware.sdpaks.equinor.com
+    - host: kubediff.sdpaks.equinor.com
       http:
         paths:
           - path: /oauth2 
             backend:
               serviceName: oauth2-proxy-sdp
               servicePort: 4180
+---
