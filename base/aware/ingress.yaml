@@ -6,15 +6,10 @@ metadata:
   labels:
     app: aware
   annotations:
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    # Basic-auth from guide; 
-    # type of authentication
-    nginx.ingress.kubernetes.io/auth-type: basic
-    # name of the secret that contains the user/password definitions
-    nginx.ingress.kubernetes.io/auth-secret: aware-basic-auth
-    # message to display with an appropriate context why the authentication is required
-    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - sdpteam'
 spec:
   tls:
     - hosts:
@@ -32,3 +27,24 @@ spec:
             backend:
               serviceName: aware-api
               servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: aware-auth
+  namespace: aware
+  labels:
+    app: aware
+spec:
+  tls:
+  - hosts:
+    - aware.sdpaks.equinor.com
+    secretName: aware-tls
+  rules:
+    - host: aware.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180
