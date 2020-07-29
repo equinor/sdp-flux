@@ -21,7 +21,7 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: sysdig-inspect-web
+              serviceName: sysdig-inspect
               servicePort: 80
 ---
 apiVersion: extensions/v1beta1
