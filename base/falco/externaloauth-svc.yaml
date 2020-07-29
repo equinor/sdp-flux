@@ -6,3 +6,5 @@ metadata:
 spec:
   type: ExternalName
   externalName: oauth2-proxy-sdp.oauth2-proxy-sdp.svc.cluster.local
+  ports:
+  - port: 4180

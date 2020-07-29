@@ -19,10 +19,6 @@ spec:
     - host: sysdig-inspect.dev.sdpaks.equinor.com
       http:
         paths:
-          - path: /api
-            backend:
-              serviceName: sysdig-inspect-api
-              servicePort: 80
           - path: /
             backend:
               serviceName: sysdig-inspect-web
@@ -46,5 +42,5 @@ spec:
         paths:
           - path: /oauth2 
             backend:
-              serviceName: oauth2-proxy-sdp
-              servicePort: 4180
+              serviceName: oauth2-sdp
+---
