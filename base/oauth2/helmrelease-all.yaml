@@ -4,7 +4,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: oauth2-proxy-all
-  namespace: oauth2-proxy-all
+  namespace: oauth2
 spec:
   releaseName: oauth2-proxy-all
   chart:
