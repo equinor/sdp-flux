@@ -36,6 +36,7 @@ resources:
 - ./monitoring/release-aware/ingress.yaml
 - ./monitoring/release-aware/web/deployment.yaml
 - ./monitoring/release-aware/web/service.yaml
+- ./monitoring/release-aware/web/externaloauth-svc.yaml
 - ./namespaces/infrastructure.yaml
 - ./namespaces/monitoring.yaml
 - ./namespaces/prod.yaml
