@@ -79,6 +79,8 @@ resources:
 - ./standalone-components/kubediff/crb.yaml
 - ./standalone-components/kubediff/kubediff-rc.yaml
 - ./standalone-components/kubediff/kubediff-svc.yaml
+- ./standalone-components/kubediff/kubediff-ingress.yaml
+- ./standalone-components/kubediff/external-oauth2-svc.yaml
 - ./falco/helm-release.yaml
 - ./falco/exporter-helm-release.yaml
 - ./falco/sysdig-inspect-deployment.yaml
