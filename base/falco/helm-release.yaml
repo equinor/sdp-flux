@@ -61,7 +61,7 @@ spec:
         - rule: Detect New File
           desc: detect new file created
           condition: >
-            evt.type = chmod or evt.type = fchmod
+            evt.type = chmod or evt.type = fchmod and kubernetes.namespace.name != falco
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
@@ -70,7 +70,7 @@ spec:
         - rule: Detect New Directory
           desc: detect new directory created
           condition: >
-            mkdir
+            mkdir and kubernetes.namespace.name != falco
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
@@ -88,7 +88,7 @@ spec:
         - rule: Detect Directory Change
           desc: detect directories change
           condition: >
-            spawned_process and proc.name in (mkdir, rmdir, mvdir, mv)
+            spawned_process and proc.name in (mkdir, rmdir, mvdir, mv) and kubernetes.namespace.name != falco
           output: >
             Directory Change in Filesystem (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
@@ -97,7 +97,7 @@ spec:
         - rule: Kernel Module Modification
           desc: detect kernel module change
           condition: >
-            spawned_process and proc.name in (insmod, modprobe)
+            spawned_process and proc.name in (insmod, modprobe) and kubernetes.namespace.name != falco
           output: >
             Kernel Module Change (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2] result=%evt.res)
@@ -115,7 +115,7 @@ spec:
         - rule: Listen on New Port
           desc: Detection a new port is listening
           condition:
-            evt.type = listen
+            evt.type = listen and kubernetes.namespace.name != falco
           output: >
             A new port is open to listen (port=%fd.sport ip=%fd.sip)
           priority: WARNING
