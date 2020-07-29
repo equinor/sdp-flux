@@ -3,20 +3,13 @@ kind: Ingress
 metadata:
   name: sysdig-inspect
   namespace: falco
-  labels:
-    app: sysdig-inspect
-  annotations:
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
 spec:
   tls:
   - hosts:
-    - sysdig-inspect.sdpaks.equinor.com
+    - sysdig-inspect.dev.sdpaks.equinor.com
     secretName: sysdig-inspect-tls
   rules:
-    - host: sysdig-inspect.sdpaks.equinor.com
+    - host: sysdig-inspect.dev.sdpaks.equinor.com
       http:
         paths:
           - path: /
@@ -34,10 +27,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - sysdig-inspect.sdpaks.equinor.com
+    - sysdig-inspect.dev.sdpaks.equinor.com
     secretName: sysdig-inspect-tls
   rules:
-    - host: sysdig-inspect.sdpaks.equinor.com
+    - host: sysdig-inspect.dev.sdpaks.equinor.com
       http:
         paths:
           - path: /oauth2 
