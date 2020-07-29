@@ -10,7 +10,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: oauth2-sdp
+          serviceName: oauth2-proxy-sdp
           servicePort: 4180
         path: /oauth2
   tls:
@@ -29,7 +29,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: oauth2-sdp
+          serviceName: oauth2-proxy-sdp
           servicePort: 4180
         path: /oauth2
   tls:

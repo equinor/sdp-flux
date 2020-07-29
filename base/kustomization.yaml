@@ -34,10 +34,11 @@ resources:
 - ./monitoring/release-aware/ingress.yaml
 - ./monitoring/release-aware/web/deployment.yaml
 - ./monitoring/release-aware/web/service.yaml
-- ./monitoring/externaloauth-svc.yaml
+- ./monitoring/external-oauth2-svc.yaml
 - ./namespaces/infrastructure.yaml
 - ./namespaces/monitoring.yaml
 - ./namespaces/prod.yaml
+- ./namespaces/oauth2.yaml
 - ./namespaces/standalone-namespaces.yaml
 - ./prod/hgir/deployment.yaml
 - ./prod/hgir/ingress.yaml
@@ -70,6 +71,7 @@ resources:
 - ./aware/ingress.yaml
 - ./aware/sealedsecret.yaml
 - ./aware/service.yaml
+- ./aware/external-oauth2-svc.yaml
 - ./aware/basic-auth-sealed-secret.yaml
 - ./standalone-components/loki/helm-release.yaml
 - ./standalone-components/loki/basic-auth-sealed-secret.yaml
@@ -86,6 +88,8 @@ resources:
 - ./falco/sysdig-inspect-pvc.yaml
 - ./falco/sysdig-inspect-service.yaml
 - ./falco/sysdig-inspect-ingress.yaml
-- ./falco/externaloauth-svc.yaml
-- ./oauth2-proxy-sdp/helmrelease.yaml
-- ./oauth2-proxy-sdp/sealed-secret.yaml
+- ./falco/external-oauth2-svc.yaml
+- ./oauth2/helmrelease-sdp.yaml
+- ./oauth2/helmrelease-all.yaml
+- ./oauth2/sealed-secret-sdp.yaml
+- ./oauth2/sealed-secret-all.yaml
