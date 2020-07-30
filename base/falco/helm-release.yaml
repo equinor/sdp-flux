@@ -139,7 +139,7 @@ spec:
           tags: [process, mitre_privilege_escalation, mitre_lateral_movement]
         - rule: Write below etc
           desc: an attempt to write to any file below /etc
-          condition: write_etc_common and proc.pcmdline !startswith "python3 -u /usr/sbin/waagent"
+          condition: write_etc_common and proc.pcmdline != "python3 -u /usr/sbin/waagent -daemon"
           output: "File below /etc opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname pcmdline=%proc.pcmdline file=%fd.name program=%proc.name gparent=%proc.aname[2] ggparent=%proc.aname[3] gggparent=%proc.aname[4] container_id=%container.id image=%container.image.repository)"
           priority: ERROR
           tags: [filesystem, mitre_persistence]
@@ -188,7 +188,7 @@ spec:
         - rule: Detect New File
           desc: detect new file created
           condition: >
-            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and proc.pcmdline !startswith "python3 -u /usr/sbin/waagent"
+            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and proc.pcmdline != "python3 -u /usr/sbin/waagent -daemon"
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
