@@ -61,6 +61,21 @@ spec:
           output: Unexpected connection to K8s API Server from container (command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag connection=%fd.name)
           priority: NOTICE
           tags: [network, k8s, container, mitre_discovery]
+        - rule: Launch Sensitive Mount Container
+          desc: >
+            Detect the initial process started by a container that has a mount from a sensitive host directory
+            (i.e. /proc). Exceptions are made for known trusted images.
+          condition: >
+            container_started and container
+            and sensitive_mount
+            and not falco_sensitive_mount_containers
+            and not user_sensitive_mount_containers
+            and not k8s.ns.name = falco
+            and not k8s.ns.name = kube-system
+            and k8s.pod.labels != app:prometheus-node-exporter
+          output: Container with sensitive mount started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag mounts=%container.mounts)
+          priority: INFO
+          tags: [container, cis, mitre_lateral_movement]
 
       rules-admin-activities.yaml: |
         - rule: Detect su or sudo
@@ -82,15 +97,6 @@ spec:
           tags: [process]
       
       rules-ssh-connections.yaml: |
-        - rule: Inbound SSH Connection
-          desc: Detect Inbound SSH Connection
-          condition: >
-            ((evt.type in (accept,listen) and evt.dir=<) or
-              (evt.type in (recvfrom,recvmsg))) and ssh_port
-          output: >
-            Inbound SSH connection (user=%user.name client_ip=%fd.cip client_port=%fd.cport server_ip=%fd.sip)
-          priority: WARNING
-          tags: [network]
         - rule: Outbound SSH Connection
           desc: Detect Outbound SSH Connection
           condition: >
