@@ -18,6 +18,50 @@ spec:
       grpcOutput:
         enabled: true
     customRules: # From https://github.com/falcosecurity/cloud-native-security-hub/tree/master/resources/falco
+      falco_rules.local.yaml: | # Override default rules
+        - rule: Launch Suspicious Network Tool in Container
+          desc: Detect network tools launched inside container
+          condition: >
+            spawned_process and container and network_tool_procs and not user_known_network_tool_activities
+          output: >
+            Network tool launched in container (user=%user.name command=%proc.cmdline parent_process=%proc.pname
+            container_id=%container.id container_name=%container.name image=%container.image.repository:%container.image.tag)
+          priority: NOTICE
+          tags: [network, process, mitre_discovery, mitre_exfiltration]
+        - rule: Launch Privileged Container
+          desc: Detect the initial process started in a privileged container. Exceptions are made for known trusted images.
+          condition: >
+            container_started and container
+            and container.privileged=true
+            and not falco_privileged_containers
+            and not user_privileged_containers
+            and k8s.pod.labels != app:kured
+            and k8s.ns.name != kube-system
+            and k8s.ns.name != falco
+          output: Privileged container started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag)
+          priority: INFO
+          tags: [container, cis, mitre_privilege_escalation, mitre_lateral_movement]
+        - rule: Redirect STDOUT/STDIN to Network Connection in Container
+          desc: Detect redirecting stdout/stdin to network connection in container (potential reverse shell).
+          condition: evt.type=dup and evt.dir=> and container and fd.num in (0, 1, 2) and fd.type in ("ipv4", "ipv6") and not user_known_stand_streams_redirect_activities and k8s.deployment.name != gitlab-gitlab-shell
+          output: >
+            Redirect stdout/stdin to network connection (user=%user.name %container.info process=%proc.name parent=%proc.pname cmdline=%proc.cmdline terminal=%proc.tty container_id=%container.id image=%container.image.repository fd.name=%fd.name fd.num=%fd.num fd.type=%fd.type fd.sip=%fd.sip)
+          priority: WARNING
+        - rule: Contact K8S API Server From Container
+          desc: Detect attempts to contact the K8S API Server from a container
+          condition: >
+            evt.type=connect and evt.dir=< and
+            (fd.typechar=4 or fd.typechar=6) and
+            container and
+            not k8s_containers and
+            k8s_api_server and
+            not user_known_contact_k8s_api_server_activities
+            and k8s.pod.labels != app:kured
+            and k8s.ns.name != flux
+          output: Unexpected connection to K8s API Server from container (command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag connection=%fd.name)
+          priority: NOTICE
+          tags: [network, k8s, container, mitre_discovery]
+
       rules-admin-activities.yaml: |
         - rule: Detect su or sudo
           desc: detect sudo activities
@@ -70,7 +114,7 @@ spec:
         - rule: Detect New Directory
           desc: detect new directory created
           condition: >
-            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront
+            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront and k8s.deployment.name != gitlab-sidekiq-all-in-1-v1 and k8s.deployment.name != gitlab-webservice
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
@@ -115,7 +159,7 @@ spec:
         - rule: Listen on New Port
           desc: Detection a new port is listening
           condition:
-            evt.type = listen and k8s.ns.name != falco
+            evt.type = listen and k8s.ns.name != falco and k8s.pod.labels != k8s-app:azure-ip-masq-agent and k8s.deployment.name != gitlab-gitlab-shell and k8s.pod.labels != app:kured and k8s.ns.name != kube-system and k8s.ns.name != velero
           output: >
             A new port is open to listen (port=%fd.sport ip=%fd.sip)
           priority: WARNING
@@ -399,7 +443,7 @@ spec:
         # Restricting listening ports to selected set
 
         - list: nginx_allowed_inbound_ports_tcp
-          items: [80, 443, 8080, 8443]
+          items: [80, 22, 443]
 
         - rule: Unexpected inbound tcp connection nginx
           desc: Detect inbound traffic to nginx using tcp on a port outside of expected set
