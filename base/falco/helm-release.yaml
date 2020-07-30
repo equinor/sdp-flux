@@ -35,7 +35,7 @@ spec:
             and container.privileged=true
             and not falco_privileged_containers
             and not user_privileged_containers
-            and k8s.pod.label != app:kured
+            and k8s.pod.labels != app:kured
             and k8s.ns.name != kube-system
             and k8s.ns.name != falco
           output: Privileged container started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag)
