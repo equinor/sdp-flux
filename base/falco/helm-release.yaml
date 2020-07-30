@@ -111,6 +111,32 @@ spec:
           output: "File below / or /root opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname file=%fd.name program=%proc.name container_id=%container.id image=%container.image.repository)"
           priority: ERROR
           tags: [filesystem, mitre_persistence]
+        - rule: Change thread namespace
+          desc: >
+            an attempt to change a program/thread\'s namespace (commonly done
+            as a part of creating a container) by calling setns.
+          condition: >
+            evt.type=setns and evt.dir=<
+            and not (container.id=host and proc.name in (docker_binaries, k8s_binaries, lxd_binaries, nsenter))
+            and not proc.name in (sysdigcloud_binaries, sysdig, calico, oci-umount, cilium-cni, network_plugin_binaries)
+            and not proc.name in (user_known_change_thread_namespace_binaries)
+            and not proc.name startswith "runc"
+            and not proc.cmdline startswith "containerd"
+            and not proc.pname in (sysdigcloud_binaries, hyperkube, kubelet, protokube, dockerd, tini, aws)
+            and not python_running_sdchecks
+            and not java_running_sdjagent
+            and not kubelet_running_loopback
+            and not rancher_agent
+            and not rancher_network_manager
+            and not calico_node
+            and not weaveworks_scope
+            and not user_known_change_thread_namespace_activities
+            and not k8s.pod.labels = app:kured
+          output: >
+            Namespace change (setns) by unexpected program (user=%user.name command=%proc.cmdline
+            parent=%proc.pname %container.info container_id=%container.id image=%container.image.repository:%container.image.tag)
+          priority: NOTICE
+          tags: [process, mitre_privilege_escalation, mitre_lateral_movement]
 
       rules-admin-activities.yaml: |
         - rule: Detect su or sudo
@@ -494,7 +520,7 @@ spec:
         # Restricting listening ports to selected set
 
         - list: nginx_allowed_inbound_ports_tcp
-          items: [80, 22, 443]
+          items: [80, 22, 443, 10254]
 
         - rule: Unexpected inbound tcp connection nginx
           desc: Detect inbound traffic to nginx using tcp on a port outside of expected set
