@@ -132,6 +132,16 @@ spec:
           tags: [process]
       
       rules-ssh-connections.yaml: |
+        - rule: Inbound SSH Connection	
+          desc: Detect Inbound SSH Connection	
+          condition: >	
+            ((evt.type in (accept,listen) and evt.dir=<) or	
+              (evt.type in (recvfrom,recvmsg))) and ssh_port and k8s.deployment.name != nginx-ingress-controller
+          output: >	
+            Inbound SSH connection (user=%user.name client_ip=%fd.cip client_port=%fd.cport server_ip=%fd.sip)	
+          priority: WARNING	
+          tags: [network]
+
         - rule: Outbound SSH Connection
           desc: Detect Outbound SSH Connection
           condition: >
