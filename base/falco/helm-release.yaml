@@ -35,12 +35,32 @@ spec:
             and container.privileged=true
             and not falco_privileged_containers
             and not user_privileged_containers
-            and k8s.pod.labels != app:kured
+            and container.image.repository != weaveworks/kured
             and k8s.ns.name != kube-system
             and k8s.ns.name != falco
+            and k8s.ns.name != prod
+            and k8s.ns.name != sensu
           output: Privileged container started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag)
           priority: INFO
           tags: [container, cis, mitre_privilege_escalation, mitre_lateral_movement]
+        - rule: Write below monitored dir
+          desc: an attempt to write to any file below a set of binary directories
+          condition: >
+            evt.dir = < and open_write and monitored_dir
+            and not package_mgmt_procs
+            and not coreos_write_ssh_dir
+            and not exe_running_docker_save
+            and not python_running_get_pip
+            and not python_running_ms_oms
+            and not google_accounts_daemon_writing_ssh
+            and not cloud_init_writing_ssh
+            and not user_known_write_monitored_dir_conditions
+            and k8s.deployment.name != tunnelfront
+          output: >
+            File below a monitored directory opened for writing (user=%user.name
+            command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2] container_id=%container.id image=%container.image.repository)
+          priority: ERROR
+          tags: [filesystem, mitre_persistence]
         - rule: Redirect STDOUT/STDIN to Network Connection in Container
           desc: Detect redirecting stdout/stdin to network connection in container (potential reverse shell).
           condition: evt.type=dup and evt.dir=> and container and fd.num in (0, 1, 2) and fd.type in ("ipv4", "ipv6") and not user_known_stand_streams_redirect_activities and k8s.deployment.name != gitlab-gitlab-shell
@@ -56,7 +76,7 @@ spec:
             not k8s_containers and
             k8s_api_server and
             not user_known_contact_k8s_api_server_activities
-            and k8s.pod.labels != app:kured
+            and container.image.repository != weaveworks/kured
             and k8s.ns.name != flux
             and k8s.ns.name != kubediff
           output: Unexpected connection to K8s API Server from container (command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag connection=%fd.name)
@@ -131,7 +151,7 @@ spec:
             and not calico_node
             and not weaveworks_scope
             and not user_known_change_thread_namespace_activities
-            and not k8s.pod.labels = app:kured
+            and container.image.repository != weaveworks/kured
           output: >
             Namespace change (setns) by unexpected program (user=%user.name command=%proc.cmdline
             parent=%proc.pname %container.info container_id=%container.id image=%container.image.repository:%container.image.tag)
@@ -139,7 +159,7 @@ spec:
           tags: [process, mitre_privilege_escalation, mitre_lateral_movement]
         - rule: Write below etc
           desc: an attempt to write to any file below /etc
-          condition: write_etc_common and container.name != host
+          condition: write_etc_common and k8s.pod.name != null and k8s.deployment.name != tunnelfront
           output: "File below /etc opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname pcmdline=%proc.pcmdline file=%fd.name program=%proc.name gparent=%proc.aname[2] ggparent=%proc.aname[3] gggparent=%proc.aname[4] container_id=%container.id image=%container.image.repository)"
           priority: ERROR
           tags: [filesystem, mitre_persistence]
@@ -188,7 +208,7 @@ spec:
         - rule: Detect New File
           desc: detect new file created
           condition: >
-            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and container.name != host
+            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and k8s.pod.name != null and k8s.ns.name != gitlab
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
@@ -242,7 +262,7 @@ spec:
         - rule: Listen on New Port
           desc: Detection a new port is listening
           condition:
-            evt.type = listen and k8s.ns.name != falco and k8s.pod.labels != k8s-app:azure-ip-masq-agent and k8s.deployment.name != gitlab-gitlab-shell and k8s.pod.labels != app:kured and k8s.ns.name != kube-system and k8s.ns.name != velero
+            evt.type = listen and k8s.ns.name != falco and k8s.pod.labels != k8s-app:azure-ip-masq-agent and k8s.deployment.name != gitlab-gitlab-shell and container.image.repository != weaveworks/kured and k8s.ns.name != kube-system and k8s.ns.name != velero
           output: >
             A new port is open to listen (port=%fd.sport ip=%fd.sip)
           priority: WARNING
