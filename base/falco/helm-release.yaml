@@ -93,7 +93,7 @@ spec:
             and not user_sensitive_mount_containers
             and not k8s.ns.name = falco
             and not k8s.ns.name = kube-system
-            and k8s.pod.labels != app:prometheus-node-exporter
+            and container.image.repository != quay.io/prometheus/node-exporter
           output: Container with sensitive mount started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag mounts=%container.mounts)
           priority: INFO
           tags: [container, cis, mitre_lateral_movement]
@@ -217,7 +217,7 @@ spec:
         - rule: Detect New Directory
           desc: detect new directory created
           condition: >
-            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront and k8s.deployment.name != gitlab-sidekiq-all-in-1-v1 and k8s.deployment.name != gitlab-webservice
+            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront and k8s.deployment.name != gitlab-sidekiq-all-in-1-v1 and k8s.deployment.name != gitlab-webservice and k8s.pod.name != null
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
