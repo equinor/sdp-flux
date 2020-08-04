@@ -217,7 +217,7 @@ spec:
         - rule: Detect New Directory
           desc: detect new directory created
           condition: >
-            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront and k8s.deployment.name != gitlab-sidekiq-all-in-1-v1 and k8s.deployment.name != gitlab-webservice and k8s.pod.name != null and not proc.cmdline startswith python3 -u bin/WALinuxAgent-
+            mkdir and k8s.ns.name != falco and k8s.ns.name != flux and k8s.ns.name != kubediff and k8s.deployment.name != tunnelfront and k8s.deployment.name != gitlab-sidekiq-all-in-1-v1 and k8s.deployment.name != gitlab-webservice and k8s.pod.name != null and not proc.cmdline startswith python3
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
