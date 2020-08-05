@@ -208,7 +208,7 @@ spec:
         - rule: Detect New File
           desc: detect new file created
           condition: >
-            evt.type = container.id != host and (chmod or evt.type = fchmod) and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator
+            container.id != host and (chmod or evt.type = fchmod) and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator
             and k8s.deployment.name != tunnelfront and k8s.pod.name != null and k8s.ns.name != gitlab 
             and fd.name != null and k8s.ns.name != null
           output: >
