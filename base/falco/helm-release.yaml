@@ -208,7 +208,7 @@ spec:
         - rule: Detect New File
           desc: detect new file created
           condition: >
-            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and k8s.pod.name != null and k8s.ns.name != gitlab
+            evt.type = chmod or evt.type = fchmod and k8s.ns.name != flux and k8s.ns.name != falco and k8s.deployment.name != helm-operator and k8s.deployment.name != tunnelfront and k8s.pod.name != null and k8s.ns.name != gitlab and container.id != host
           output: >
             File below a known directory opened for writing (user=%user.name
             command=%proc.cmdline file=%fd.name parent=%proc.pname pcmdline=%proc.pcmdline gparent=%proc.aname[2])
