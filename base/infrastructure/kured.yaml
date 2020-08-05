@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://weaveworks.github.io/kured
     name: kured
-    version: 2.0.3
+    version: 2.1.1
   values:
     updateStrategy: RollingUpdate
     configuration:
@@ -21,8 +21,14 @@ spec:
       rebootSentinel: "/var/run/reboot-required-night"
       slackUsername: "SDPTeam Kured"
       slackChannel: "sdpteam-team"
-      slackHookUrl: secrets.kured-webhook.token #Needs to be set outside Git. how to get to secret?
+      slackHookUrl: $SLACK_WEBHOOK
       # blockingPodSelector: "app=example,release=myreleasename" - ',' means 'AND'
       timeZone: "Europe/Oslo"
       startTime: "01:30"
       endTime: "04:30"
+    extraEnvVars:
+    - name: SLACK_WEBHOOK
+      valueFrom:
+          secretKeyRef:
+            name: kured-webhook
+            key: token
