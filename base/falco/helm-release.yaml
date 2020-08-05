@@ -81,6 +81,7 @@ spec:
             and container.image.repository != weaveworks/kured
             and k8s.ns.name != flux
             and k8s.ns.name != kubediff
+            and container.image.repository != grafana/grafana
           output: Unexpected connection to K8s API Server from container (command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag connection=%fd.name)
           priority: NOTICE
           tags: [network, k8s, container, mitre_discovery]
