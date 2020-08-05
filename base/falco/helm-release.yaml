@@ -39,6 +39,7 @@ spec:
             and k8s.ns.name != kube-system
             and k8s.ns.name != falco
             and k8s.ns.name != prod
+            and k8s.deployment.name != hgir
             and k8s.ns.name != sensu
           output: Privileged container started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag)
           priority: INFO
@@ -128,6 +129,7 @@ spec:
             and not user_known_write_below_root_activities
             and not user_known_write_below_root_activities
             and not k8s.deployment.name = helm-operator
+            and not k8s.ns.name = flux
           output: "File below / or /root opened for writing (user=%user.name command=%proc.cmdline parent=%proc.pname file=%fd.name program=%proc.name container_id=%container.id image=%container.image.repository)"
           priority: ERROR
           tags: [filesystem, mitre_persistence]
