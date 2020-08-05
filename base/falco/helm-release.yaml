@@ -40,6 +40,7 @@ spec:
             and k8s.ns.name != falco
             and k8s.ns.name != prod
             and k8s.deployment.name != hgir
+            and container.image.repository != sdpakscr.azurecr.io/hgir
             and k8s.ns.name != sensu
           output: Privileged container started (user=%user.name command=%proc.cmdline %container.info image=%container.image.repository:%container.image.tag)
           priority: INFO
