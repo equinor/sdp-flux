@@ -57,7 +57,6 @@ resources:
 - ./prod/aks-registry-prod.yaml
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-common-postgres-tls.yaml
-- ./gitlab/gitlab-smtp-secret.yaml
 - ./gitlab/gitlab-ssh-keys.yaml
 - ./gitlab/helm-release.yaml
 - ./gitlab/minio-helm-release.yaml
