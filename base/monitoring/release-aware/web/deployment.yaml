@@ -8,8 +8,8 @@ metadata:
   name: release-aware-web
   namespace: monitoring
   annotations:
-    flux.weave.works/automated: 'true'
-    flux.weave.works/tag.aware-web: glob:1.*
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.release-aware-web: semver:~1
 spec:
   selector:
     matchLabels:
@@ -21,8 +21,6 @@ spec:
       labels:
         app: release-aware
         tier: web
-      annotations:
-        flux.weave.works/automated: 'true'
     spec:
       containers:
       - name: release-aware-web
