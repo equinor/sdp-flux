@@ -141,6 +141,7 @@ spec:
         key: config
         secret: registry-storage
     gitlab-runner:
+      install: false
       envVars:
         - name: LISTEN_ADDRESS
           value: :9252

@@ -7,16 +7,29 @@ We use [Flux](https://github.com/weaveworks/flux) as the basis for our GitOps wo
 
 ## Related Repositories
 
-IaC and Bootstrap - https://github.com/equinor/sdp-aks
+IaC and Bootstrap - https://github.com/equinor/sdp-omnia
 
 ## How it works
 
-In essence we create manifests to be run on the Kubernetes cluster, commit them to this repository and then the Flux controller notices the new commit and applies all the YAML files (can be simplified down to `kubectl apply -f FILENAME`).  
-We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/development](/dev) and [/production](/prod) folders. Different cluster's Flux operator are subscribed to a specific repo, branch, and kustomize-path-path for an effective GitOps workflow.
+In essence we create manifests to be run on the Kubernetes cluster, commit them to this repository and then the Flux controller notices the new commit and applies all the YAML files (can be simplified down to `kubectl apply -f FILENAME`).
 
+We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/dev](/dev) and [/prod](/prod) folders. Different cluster's Flux operator are subscribed to a specific repo, branch, and kustomize-path-path for an effective GitOps workflow.
+
+Typically we set base equals to the values of prod, and patches in dev are mostly used for overwriting ingresses.
 ## How we use it
 
-By utilizing Kustomize, we are able to use the same manifests in different clusters, with context aware patches. The biggest benefit of this is that we can use a standard git branch strategy, which involves pushing changes to a _development_ branch, and merging into a _production_ branch when it's testet OK in dev. For optimal GitOps workflow! :+1
+By utilizing Kustomize, we are able to use the same manifests in different clusters, with context aware patches. The biggest benefit of this is that we can use a standard git branch strategy, which involves pushing changes to a _dev_ branch, and merging into a _prod_ branch when it's tested OK in dev. For optimal GitOps workflow! :+1
+
+This simplistic branching model will likely not work in the same way for larger teams, but for our use case it works well. Usually the flow is
+
+- Make changes to dev
+- Test
+- PR from dev branch to prod branch
+- Squash and merge if latest dev commits are messy, or add merge commit if history is somewhat clean
+- Rebase dev branch on prod branch to keep commits in sync for optimal overview.
+
+Sometimes you make changes to the dev branch, but are not ready to merge into prod yet, but your team member wants to merge something else in.
+In these cases, either move your unready changes to a separate branch, and let the other team member merge dev into prod. Alternatively you can keep the changes, intermix commits to dev with your team member, before making a PR, your team member should now take his changes to a separate branch (which has now been tested through the dev branch), and be ready to merge from the feature branch into prod.
 
 ## Naming conventions
 
@@ -29,7 +42,9 @@ We keep one k8s resource in each file, and name the file the type of k8s resourc
 
 ## Using SealedSecrets
 
-Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a tool called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster
+Sometimes we need to store secrets in the Git repository to make sure our repository is the primary source of truth. In these cases we use a tool called [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets). With this we can store secrets enrypted in the repository and be sure that Flux manages and puts them in the Kubernetes cluster.
+
+Note that some secrets must be in place before deployments such as flux are in place. These are created in the sdp-omnia repo, with secrets stored to Azure Keyvault.
 
 ### Install client
 
