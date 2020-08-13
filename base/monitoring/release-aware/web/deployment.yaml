@@ -7,9 +7,6 @@ metadata:
     tier: web
   name: release-aware-web
   namespace: monitoring
-  annotations:
-    fluxcd.io/automated: "true"
-    fluxcd.io/tag.release-aware-web: semver:~1
 spec:
   selector:
     matchLabels:
@@ -24,7 +21,7 @@ spec:
     spec:
       containers:
       - name: release-aware-web
-        image: sdpequinor/release-aware-web:1.9.1
+        image: sdpequinor/release-aware-web:1.9.2
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
