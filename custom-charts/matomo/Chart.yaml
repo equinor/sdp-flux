@@ -6,4 +6,4 @@ version: 0.2.0
 dependencies:
   - name: mariadb
     version: 7.7.2
-    repository: https://kubernetes-charts.storage.googleapis.com
+    repository: https://charts.bitnami.com/bitnami
