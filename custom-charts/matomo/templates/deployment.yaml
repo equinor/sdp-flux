@@ -13,7 +13,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: {{ include "matomo.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
-    serviceName: {{ include "matomo.name" . }}
+  serviceName: {{ include "matomo.name" . }}
   template:
     metadata:
       labels:
