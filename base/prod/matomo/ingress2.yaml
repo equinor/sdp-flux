@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /index.php?module=LoginOIDC&action=callback&provider=oidc
+  labels:
+    app.kubernetes.io/instance: matomo
+    app.kubernetes.io/name: matomo
+  name: matomo2
+  namespace: prod
+spec:
+  rules:
+  - host: matomo.sdpaks.equinor.com
+    http:
+      paths:
+      - backend:
+          serviceName: matomo
+          servicePort: http
+        path: /oidc/callback  
+  tls:
+  - hosts:
+    - matomo.sdpaks.equinor.com
+    secretName: matomo-tls
