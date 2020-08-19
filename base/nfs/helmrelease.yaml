@@ -1,0 +1,23 @@
+# Some applications do not have proper authentication in themselves, for these we can use oath2-proxy with Azure AD to authenticate.
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nfs-client-provisioner
+  namespace: nfs-provisioner
+spec:
+  releaseName: nfs-client-provisioner
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: nfs-client-provisioner
+    version: 1.2.8
+  values:
+    nfs:
+      server: nfs-aks
+      path: /data
+      mountOptions:
+        - nolock
+    storageClass:
+      defaultClass: true
+      allowVolumeExpansion: true
+      reclaimPolicy: Retain

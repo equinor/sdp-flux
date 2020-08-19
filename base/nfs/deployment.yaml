@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nfs-test
+  name: disk-test
+  namespace: nfs-provisioner
+spec:
+  selector:
+    matchLabels:
+      app: nfs-test
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nfs-test
+    spec:
+      containers:
+      - name: disk-test
+        image: ubuntu
+        command:
+          - sleep
+          - "36000"
+        volumeMounts:
+        - mountPath: /data
+          name: sqlite
+      volumes:
+      - name: sqlite
+        persistentVolumeClaim:
+          claimName: test-nfs
