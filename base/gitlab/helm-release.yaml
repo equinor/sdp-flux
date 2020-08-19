@@ -10,7 +10,7 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 4.2.3
+    version: 4.2.6
   values:
     certmanager:
       install: false
