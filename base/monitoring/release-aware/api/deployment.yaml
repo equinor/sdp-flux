@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: release-aware-api
-        image: sdpequinor/release-aware-api:1.9.1
+        image: sdpequinor/release-aware-api:1.10.0
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
@@ -62,7 +62,7 @@ spec:
             stable/oauth2-proxy,
             bitnami/external-dns,
             kured/kured,
-            stable/nginx-ingress,
+            nginx/nginx-ingress,
             stable/prometheus-operator,
             stable/sealed-secrets,
             vmware-tanzu/velero
