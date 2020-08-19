@@ -21,7 +21,7 @@ spec:
       rebootSentinel: "/var/run/reboot-required-night"
       slackUsername: "SDPTeam Kured"
       slackChannel: "sdpteam-team"
-      slackHookUrl: ${SLACK_WEBHOOK}
+      slackHookUrl: $(SLACK_WEBHOOK)
       # blockingPodSelector: "app=example,release=myreleasename" - ',' means 'AND'
       timeZone: "Europe/Oslo"
       startTime: "01:30"
