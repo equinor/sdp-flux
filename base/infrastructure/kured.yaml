@@ -18,7 +18,6 @@ spec:
     updateStrategy: RollingUpdate
     configuration:
       period: 10m0s
-      rebootSentinel: "/var/run/reboot-required-night"
       slackUsername: "SDPTeam Kured"
       slackChannel: "sdpteam-team"
       slackHookUrl: $(SLACK_WEBHOOK)
