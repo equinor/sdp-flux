@@ -11,8 +11,8 @@ spec:
   releaseName: nginx-ingress
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
-    name: nginx-ingress
-    version: 1.40.3
+    name: ingress-nginx
+    version: 2.12.1
   values:
     tcp:
       22: "gitlab/gitlab-gitlab-shell:22"
