@@ -62,7 +62,7 @@ spec:
             stable/oauth2-proxy,
             bitnami/external-dns,
             kured/kured,
-            nginx/ingress-nginx,
+            ingress-nginx/ingress-nginx,
             stable/prometheus-operator,
             stable/sealed-secrets,
             vmware-tanzu/velero
