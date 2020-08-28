@@ -7,7 +7,7 @@ metadata:
   name: sysdig-inspect
   namespace: falco
 spec:
-  storageClassName: default
+  storageClassName: managed-csi
   accessModes:
     - ReadWriteOnce
   resources:
