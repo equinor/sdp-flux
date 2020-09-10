@@ -13,7 +13,7 @@ spec:
         - name: LOKI_API
           value: "http://loki-stack.loki.svc.cluster.local:3100/loki/api/v1/query_range"
         - name: PROMETHEUS_API
-          value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+          value: "http://prometheus-operator-kube-p-prometheus.monitoring:9090/api/v1/alerts"
         - name: DEPLOYMENT_NAME
           value: "SDPAKS-Development"
         - name: IGNORE_PROMETHEUS_ALERTS
