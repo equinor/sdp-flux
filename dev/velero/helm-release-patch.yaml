@@ -28,7 +28,7 @@ spec:
         template:
           ttl: "4400h"
           includedNamespaces:
-            - infrastructure
             - gitlab
             - sealed-secrets
             - velero
+            - prod
