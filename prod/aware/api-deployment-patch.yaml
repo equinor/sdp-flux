@@ -13,7 +13,7 @@ spec:
         - name: LOKI_API
           value: "http://loki-stack.loki.svc.cluster.local:3100/loki/api/v1/query_range"
         - name: PROMETHEUS_API
-          value: "http://prometheus-operator-prometheus.monitoring:9090/api/v1/alerts"
+          value: "http://prometheus-operator-kube-p-prometheus.monitoring:9090/api/v1/alerts"
         - name: SENSU_API
           value: "http://sensu-svc.sensu:8080/api/core/v2/namespaces/default/events"
         - name: DEPLOYMENT_NAME
