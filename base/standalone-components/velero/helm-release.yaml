@@ -15,15 +15,14 @@ spec:
   chart:
     repository: https://vmware-tanzu.github.io/helm-charts/
     name: velero
-    version: 2.12.15
+    version: 2.12.17
   values:
     image:
       repository: velero/velero
-      tag: v1.3.1
       pullPolicy: IfNotPresent
     initContainers:
       - name: velero-plugin-for-microsoft-azure
-        image: velero/velero-plugin-for-microsoft-azure:v1.0.0
+        image: velero/velero-plugin-for-microsoft-azure:v1.1.0
         volumeMounts:
           - name: plugins
             mountPath: /target
