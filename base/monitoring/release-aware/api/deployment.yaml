@@ -63,7 +63,7 @@ spec:
             bitnami/external-dns,
             kured/kured,
             ingress-nginx/ingress-nginx,
-            stable/prometheus-operator,
+            prometheus-com/kube-prometheus-stack,
             stable/sealed-secrets,
             vmware-tanzu/velero
         - name: GITHUB_TOKEN
