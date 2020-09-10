@@ -29,30 +29,29 @@ spec:
           ttl: "720h"
           includedNamespaces:
             - gitlab
-      prod-ns:
+      prod-backup:
         schedule: "0 1 * * *"
         template:
           ttl: "360h"
           includedNamespaces:
             - prod
-      prod-ns-longlived:
+            - verdaccio
+      pvs-longlived:
         schedule: "0 1 1 * *"
         template:
           ttl: "4400h"
           includedNamespaces:
             - prod
-      monitoring-ns:
-        schedule: "0 1 * * *"
+            - verdaccio
+            - gitlab
+      infrastructure-backup-longlived:
+        schedule: "0 1 1 * *"
         template:
-          ttl: "360h"
-          includedNamespaces:
-            - monitoring
-      infrastructure-backup:
-        schedule: "0 1 * * *"
-        template:
-          ttl: "240h"
+          ttl: "2000h"
           includedNamespaces:
             - infrastructure
             - external-dns
             - sealed-secrets
             - velero
+            - nginx-ingress
+            - oauth2
