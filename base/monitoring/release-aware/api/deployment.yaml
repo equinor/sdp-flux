@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: release-aware-api
-        image: sdpequinor/release-aware-api:1.9.1
+        image: sdpequinor/release-aware-api:1.11.0
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
@@ -63,7 +63,7 @@ spec:
             bitnami/external-dns,
             kured/kured,
             ingress-nginx/ingress-nginx,
-            prometheus-com/kube-prometheus-stack,
+            stable/prometheus-operator,
             stable/sealed-secrets,
             vmware-tanzu/velero
         - name: GITHUB_TOKEN
