@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: release-aware-api
-        image: sdpequinor/release-aware-api:1.11.0
+        image: sdpequinor/release-aware-api:1.12.1
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
@@ -55,16 +55,16 @@ spec:
         - name: HELM_REPOS
           value: |
             gitlab/gitlab,
-            fluxcd/flux,
-            fluxcd/helm-operator,
+            flux/flux,
+            flux/helm-operator,
             jetstack/cert-manager,
             loki/loki-stack,
-            stable/oauth2-proxy,
+            helm-stable/oauth2-proxy,
             bitnami/external-dns,
             kured/kured,
             ingress-nginx/ingress-nginx,
-            stable/prometheus-operator,
-            stable/sealed-secrets,
+            prometheus-community/kube-prometheus-stack,
+            helm-stable/sealed-secrets,
             vmware-tanzu/velero
         - name: GITHUB_TOKEN
           valueFrom:
