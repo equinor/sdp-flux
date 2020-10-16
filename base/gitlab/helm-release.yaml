@@ -22,7 +22,7 @@ spec:
           size: "256Gi"
       task-runner:
         persistence:
-          enabled: true
+          enabled: false
           storageClass: managed-premium
           size: "600Gi"
         backups:
