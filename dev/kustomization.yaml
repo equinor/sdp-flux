@@ -9,7 +9,7 @@ resources:
 - ./gitlab/gitlab-azure-saml.yaml
 - ./velero/prod-storagelocation.yaml
 - ./velero/default-storagelocation.yaml
-- ./namespaces/backup-sandbox.yaml
+- ./namespaces/dev-only-namespaces.yaml
 - ./falco/helm-release.yaml
 - ./falco/exporter-helm-release.yaml
 - ./falco/sysdig-inspect-deployment.yaml
