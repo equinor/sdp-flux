@@ -30,4 +30,10 @@ patchesStrategicMerge:
 - ./loki/ingress-patch.yaml
 - ./kubediff/kubediff-rc.yaml
 - ./kubediff/ingress-patch.yaml
-- ./sysdig-inspect/ingress-patch.yaml
+- ./falco/helm-release.yaml
+- ./falco/exporter-helm-release.yaml
+- ./falco/sysdig-inspect-deployment.yaml
+- ./falco/sysdig-inspect-pvc.yaml
+- ./falco/sysdig-inspect-service.yaml
+- ./falco/sysdig-inspect-ingress.yaml
+- ./falco/external-oauth2-svc.yaml
