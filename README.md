@@ -16,6 +16,12 @@ In essence we create manifests to be run on the Kubernetes cluster, commit them 
 We have integrated [Kustomize](https://kustomize.io/) support with Flux. This means that the [/base](/base) folder contains common configuration for all our clusters. Any changes between the clusters (mostly DNS config), are made in "patches" to the base file found in the [/dev](/dev) and [/prod](/prod) folders. Different cluster's Flux operator are subscribed to a specific repo, branch, and kustomize-path-path for an effective GitOps workflow.
 
 Typically we set base equals to the values of prod, and patches in dev are mostly used for overwriting ingresses.
+
+Deleting helm releases is currently not done through Flux.
+
+1) Firstly, remove references of the chart from the Git repo. Remember to update the kustomization.yaml files.
+2) Then eiher delete the entire namespace of the helm release you wish to remove `kubectl delete helmrelease xxx -n yyy`
+
 ## How we use it
 
 By utilizing Kustomize, we are able to use the same manifests in different clusters, with context aware patches. The biggest benefit of this is that we can use a standard git branch strategy, which involves pushing changes to a _dev_ branch, and merging into a _prod_ branch when it's tested OK in dev. For optimal GitOps workflow! :+1

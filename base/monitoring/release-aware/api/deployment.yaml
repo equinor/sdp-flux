@@ -41,6 +41,7 @@ spec:
         env:
         - name: REPOSITORIES
           value: |
+            fluxcd/toolkit,
             sensu/sensu-go,
             torvalds/linux,
             jenkinsci/jenkins,

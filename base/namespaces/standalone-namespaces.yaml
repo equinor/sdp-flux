@@ -52,8 +52,3 @@ kind: Namespace
 metadata:
   name: kubediff
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: falco
----
