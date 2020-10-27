@@ -17,9 +17,9 @@ spec:
         - name: SENSU_API
           value: "http://sensu-svc.sensu:8080/api/core/v2/namespaces/default/events"
         - name: DEPLOYMENT_NAME
-          value: "SDP-AKS"
+          value: "SDPAKS-PROD"
         - name: IGNORE_PROMETHEUS_ALERTS
-          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog"
+          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog,PrometheusRuleFailures"
         - name: SENSU_KEY
           valueFrom:
             secretKeyRef:

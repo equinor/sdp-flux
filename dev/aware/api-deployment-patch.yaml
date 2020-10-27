@@ -15,6 +15,6 @@ spec:
         - name: PROMETHEUS_API
           value: "http://prometheus-operator-kube-p-prometheus.monitoring:9090/api/v1/alerts"
         - name: DEPLOYMENT_NAME
-          value: "SDPAKS-Development"
+          value: "SDPAKS-DEV"
         - name: IGNORE_PROMETHEUS_ALERTS
-          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog"
+          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog,PrometheusRuleFailures"
