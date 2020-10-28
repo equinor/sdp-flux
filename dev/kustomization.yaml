@@ -32,6 +32,7 @@ patchesStrategicMerge:
 - ./external-dns/helm-release-patch.yaml
 - ./velero/helm-release-patch.yaml
 - ./hgir/ingress-patch.yaml
+- ./hgir/deployment-patch.yaml
 - ./nginx-ingress/helm-release-patch.yaml
 - ./gitlab/helm-release-patch.yaml
 - ./loki/ingress-patch.yaml

@@ -1,0 +1,17 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hgir
+    tier: frontend
+  name: hgir
+  namespace: prod
+spec:
+  template:
+    spec:
+      containers:
+      - name: hgir  
+        env:
+        - name: REPLY_HOST
+          value: https://hgir.dev.sdpaks.equinor.com  
