@@ -15,17 +15,6 @@ spec:
             extraArgs:
               "--skip artifacts --skip registry --skip uploads --skip lfs"
     global:
-      praefect:
-        enabled: true
-        gitalyReplicas: 3
-        dbSecret:
-          secret: gitlab-postgres-secret
-          key: password
-        psql:
-          host: sdpaks-dev-gitlab-psql11.postgres.database.azure.com
-          user: gitlab@sdpaks-dev-gitlab-psql11
-          dbName: postgres
-
       psql:
         database: postgres
         host: sdpaks-dev-gitlab-psql11.postgres.database.azure.com
