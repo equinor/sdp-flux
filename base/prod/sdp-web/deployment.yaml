@@ -31,10 +31,3 @@ spec:
         ports:
         - containerPort: 9000
           name: http
-        resources:
-          requests:
-            cpu: 50m
-            memory: "100Mi"
-          limits:
-            cpu: 100m
-            memory: "200Mi"
