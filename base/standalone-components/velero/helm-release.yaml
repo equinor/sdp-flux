@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://vmware-tanzu.github.io/helm-charts/
     name: velero
-    version: 2.12.17
+    version: 2.13.6
   values:
     image:
       repository: velero/velero
