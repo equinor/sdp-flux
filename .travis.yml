@@ -17,6 +17,7 @@ install:
   - wget -q ${HELM_URL}/${HELM_TAR}
   - tar xzfv ${HELM_TAR}
   - PATH=`pwd`/linux-amd64/:$PATH
+  - PATH=`pwd`:$PATH
   # Kubectl
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
