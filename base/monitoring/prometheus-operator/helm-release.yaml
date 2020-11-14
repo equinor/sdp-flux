@@ -201,6 +201,8 @@ spec:
           - prometheus.sdpaks.equinor.com
 
     prometheusOperator:
+      tls:
+        enabled: false
       admissionWebhooks:
         enabled: false
         patch:
