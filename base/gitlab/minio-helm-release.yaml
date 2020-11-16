@@ -6,7 +6,7 @@ metadata:
 spec:
   releaseName: gitlab-minio
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://helm.min.io/
     name: minio
     version: 5.0.31
   values:
