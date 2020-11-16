@@ -56,6 +56,7 @@ spec:
         - name: HELM_REPOS
           value: |
             gitlab/gitlab,
+            minio/minio,
             flux/flux,
             flux/helm-operator,
             jetstack/cert-manager,
