@@ -1,0 +1,17 @@
+# To eliminate the bureaucracy and manual labour of getting and maintaining official DigiCert Equinor SSL certificates we use
+# CertManager to create Lets Encrypt certificates. For the most part we use HTTP01 as our validation.
+
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: keda
+  namespace: keda
+  annotations:
+    flux.weave.works/automated: "true"
+spec:
+  releaseName: keda
+  chart:
+    repository: https://kedacore.github.io/charts
+    name: keda
+    version: 1.4.2
