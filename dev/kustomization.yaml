@@ -17,6 +17,7 @@ resources:
 - ./falco/sysdig-inspect-service.yaml
 - ./falco/sysdig-inspect-ingress.yaml
 - ./falco/external-oauth2-svc.yaml
+- ./keda/helm-release.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
 - ./gitlabstats/deployment-patch.yaml
