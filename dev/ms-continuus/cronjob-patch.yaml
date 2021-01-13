@@ -1,0 +1,10 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ms-continuus
+  namespace: ms-continuus
+spec:
+  # Disble this cronjob in dev
+  suspend: true
+  jobTemplate:
+    spec:

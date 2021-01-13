@@ -83,3 +83,6 @@ resources:
 - ./oauth2/helmrelease-all.yaml
 - ./oauth2/sealed-secret-sdp.yaml
 - ./oauth2/sealed-secret-all.yaml
+- ./ms-continuus/namespace.yaml
+- ./ms-continuus/cronjob.yaml
+- ./ms-continuus/sealed-secret.yaml

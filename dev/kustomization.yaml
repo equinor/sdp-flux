@@ -39,3 +39,4 @@ patchesStrategicMerge:
 - ./loki/ingress-patch.yaml
 - ./kubediff/kubediff-rc.yaml
 - ./kubediff/ingress-patch.yaml
+- ./ms-continuus/cronjob-patch.yaml
