@@ -22,7 +22,7 @@ spec:
               imagePullPolicy: Always
               env:
                 - name: BLOB_CONTAINER
-                  value: github-archivese
+                  value: github-archives
                 - name: BLOB_TAG
                   value: weekly
                 - name: GITHUB_ORG
