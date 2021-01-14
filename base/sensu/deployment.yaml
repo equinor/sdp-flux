@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: sensu-backend
-        image: sensu/sensu:6.1.2
+        image: sensu/sensu:6.2.1
         imagePullPolicy: IfNotPresent
         command: [
          "sensu-backend",
