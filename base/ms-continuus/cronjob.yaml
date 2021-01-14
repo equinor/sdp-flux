@@ -1,0 +1,40 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: ms-continuus
+  namespace: ms-continuus
+  labels:
+    app: ms-continuus
+spec:
+  # Every sunday at 21:15
+  schedule: '15 21 * * 6'
+  # No parallel jobs
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      # Dont restart if failed
+      backoffLimit: 0
+      template:
+        spec:
+          containers:
+            - name: ms-continuus
+              image: ghcr.io/equinor/ms-continuus:main
+              imagePullPolicy: Always
+              env:
+                - name: BLOB_CONTAINER
+                  value: github-archives
+                - name: BLOB_TAG
+                  value: weekly
+                - name: GITHUB_ORG
+                  value: equinor
+                - name: STORAGE_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: ms-continuus
+                      key: STORAGE_KEY
+                - name: GITHUB_TOKEN
+                  valueFrom:
+                    secretKeyRef:
+                      name: ms-continuus
+                      key: GITHUB_TOKEN
+          restartPolicy: Never
