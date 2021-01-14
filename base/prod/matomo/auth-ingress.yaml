@@ -1,0 +1,21 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: matomo-auth
+  namespace: prod
+  labels:
+    app: matomo
+spec:
+  tls:
+  - hosts:
+    - matomo.sdpaks.equinor.com
+    secretName: matomo-tls
+  rules:
+    - host: matomo.sdpaks.equinor.com
+      http:
+        paths:
+          - path: /oauth2 
+            backend:
+              serviceName: oauth2-proxy-sdp
+              servicePort: 4180

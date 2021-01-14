@@ -60,13 +60,12 @@ spec:
             flux/flux,
             flux/helm-operator,
             jetstack/cert-manager,
-            loki/loki-stack,
-            helm-stable/oauth2-proxy,
+            grafana/loki-stack,
             bitnami/external-dns,
+            bitnami-labs/sealed-secrets,
             kured/kured,
             ingress-nginx/ingress-nginx,
             prometheus-community/kube-prometheus-stack,
-            helm-stable/sealed-secrets,
             vmware-tanzu/velero
         - name: GITHUB_TOKEN
           valueFrom:

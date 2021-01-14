@@ -40,3 +40,4 @@ patchesStrategicMerge:
 - ./kubediff/kubediff-rc.yaml
 - ./kubediff/ingress-patch.yaml
 - ./ms-continuus/cronjob-patch.yaml
+- ./matomo/auth-ingress-patch.yaml

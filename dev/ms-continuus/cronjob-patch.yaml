@@ -6,5 +6,3 @@ metadata:
 spec:
   # Disble this cronjob in dev
   suspend: true
-  jobTemplate:
-    spec:

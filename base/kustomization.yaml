@@ -46,9 +46,11 @@ resources:
 - ./prod/hgir/service.yaml
 - ./prod/matomo/helm-release.yaml
 - ./prod/matomo/matomo-mariadb-secret.yaml
+- ./prod/matomo/auth-ingress.yaml
 - ./prod/sdp-web/deployment.yaml
 - ./prod/sdp-web/ingress.yaml
 - ./prod/sdp-web/service.yaml
+- ./prod/external-oauth2-svc.yaml
 - ./standalone-components/verdaccio/helm-release.yaml
 - ./standalone-components/verdaccio/oauth-client-secret.yaml
 - ./standalone-components/verdaccio/sealed-secret-tls.yaml
