@@ -62,6 +62,7 @@ spec:
             jetstack/cert-manager,
             grafana/loki-stack,
             bitnami/external-dns,
+            bitnami-labs/sealed-secrets
             kured/kured,
             ingress-nginx/ingress-nginx,
             prometheus-community/kube-prometheus-stack,
