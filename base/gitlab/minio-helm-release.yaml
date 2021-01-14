@@ -8,10 +8,10 @@ spec:
   chart:
     repository: https://helm.min.io/
     name: minio
-    version: 5.0.32
+    version: 8.0.9
   values:
     image:
-      tag: RELEASE.2020-06-14T18-32-17Z
+      tag: RELEASE.2020-11-06T23-17-07Z
     existingSecret: gitlab-minio-secret
     extraArgs: [""]
     persistence:
