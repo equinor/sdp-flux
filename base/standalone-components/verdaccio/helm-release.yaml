@@ -13,7 +13,7 @@ spec:
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
-      tag: 4.8.1
+      tag: 4.10.0
     environmentsFromSecrets:
       enabled: true
     extraEnvVars:
