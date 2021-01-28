@@ -12,8 +12,7 @@ spec:
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
-      # Dont restart if failed
-      backoffLimit: 0
+      backoffLimit: 1
       template:
         spec:
           containers:
