@@ -4,7 +4,6 @@ kind: Kustomization
 bases:
 - ../base/
 resources:
-- ./gitlab/ingress.yaml
 - ./gitlab/gitlab-azure-saml.yaml
 - ./velero/prod-storagelocation.yaml
 - ./velero/default-storagelocation.yaml
