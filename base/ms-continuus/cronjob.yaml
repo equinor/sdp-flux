@@ -7,13 +7,12 @@ metadata:
     app: ms-continuus
 spec:
   # Every sunday at 21:15
-  schedule: '15 21 * * 6'
+  schedule: '15 21 * * 7'
   # No parallel jobs
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
-      # Dont restart if failed
-      backoffLimit: 0
+      backoffLimit: 1
       template:
         spec:
           containers:
