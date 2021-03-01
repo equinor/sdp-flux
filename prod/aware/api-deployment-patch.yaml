@@ -19,7 +19,7 @@ spec:
         - name: DEPLOYMENT_NAME
           value: "SDPAKS-PROD"
         - name: IGNORE_PROMETHEUS_ALERTS
-          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog,PrometheusRuleFailures"
+          value: "CoreDNSDown,KubeAPIDown,KubeControllerManagerDown,KubeSchedulerDown,KubeletDown,TargetDown,KubeAPIErrorsHigh,Watchdog,PrometheusRuleFailures,KubeCPUOvercommit"
         - name: SENSU_KEY
           valueFrom:
             secretKeyRef:
