@@ -13,14 +13,14 @@ spec:
     name: loki-stack
     version: 2.3.1
   values:
-    config:
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 720h
     loki:
+      config:
+        table_manager:
+          retention_deletes_enabled: true
+          retention_period: 1344h
       persistence:
         enabled: true
-        size: 100Gi
+        size: 200Gi
         storageClassName: managed-premium-retain-nocache
     fluent-bit:
       enabled: false
