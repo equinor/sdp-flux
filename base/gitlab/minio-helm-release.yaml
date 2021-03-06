@@ -8,7 +8,7 @@ spec:
   chart:
     repository: https://helm.min.io/
     name: minio
-    version: 8.0.9
+    version: 8.0.10
   values:
     image:
       tag: RELEASE.2020-11-06T23-17-07Z

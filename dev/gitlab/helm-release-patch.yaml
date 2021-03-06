@@ -14,6 +14,12 @@ spec:
             schedule: 45 1 * * *
             extraArgs:
               "--skip artifacts --skip registry --skip uploads --skip lfs"
+      webservice:
+        ingress:
+          tls:
+            secretName: gitlab-sdp-tls
+          annotations:
+            kubernetes.io/tls-acme: "true"
     global:
       psql:
         database: postgres
