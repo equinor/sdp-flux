@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: aware-web
-        image: sdpequinor/aware-web:4.0.0
+        image: sdpequinor/aware-web:4.1.0
         securityContext:
           readOnlyRootFilesystem: true
           runAsUser: 1000
