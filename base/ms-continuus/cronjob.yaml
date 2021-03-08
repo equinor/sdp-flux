@@ -22,8 +22,6 @@ spec:
               env:
                 - name: BLOB_CONTAINER
                   value: github-archives
-                - name: BLOB_TAG
-                  value: weekly
                 - name: GITHUB_ORG
                   value: equinor
                 - name: STORAGE_KEY
