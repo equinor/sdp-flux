@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: verdaccio
   namespace: verdaccio
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
 spec:
   values:
     ingress:
