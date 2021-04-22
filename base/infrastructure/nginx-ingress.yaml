@@ -15,7 +15,7 @@ spec:
     version: 3.23.0
   values:
     tcp:
-      22: "gitlab/gitlab-gitlab-shell:22"
+      "22": "gitlab/gitlab-gitlab-shell:22"
     controller:
       replicaCount: 2
       ingressClass: nginx
