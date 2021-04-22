@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: sdp-web
-        image: sdpequinor/sdpweb-gatsby
+        image: ghcr.io/equinor/sdpweb-gatsby
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: false
