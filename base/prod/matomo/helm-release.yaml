@@ -9,7 +9,7 @@ metadata:
     app: matomo
     service: web
   annotations:
-    flux.weave.works/automated: "true"
+    flux.weave.works/automated: "false"
 spec:
   releaseName: matomo
   chart:

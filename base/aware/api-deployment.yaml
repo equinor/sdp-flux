@@ -8,7 +8,7 @@ metadata:
   name: aware-api
   namespace: aware
   annotations:
-    flux.weave.works/automated: 'true'
+    flux.weave.works/automated: 'false'
 spec:
   replicas: 1
   selector:

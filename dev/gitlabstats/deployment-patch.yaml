@@ -7,6 +7,6 @@ metadata:
   name: gitlabstats
   namespace: monitoring
   annotations:
-    flux.weave.works/automated: 'true'
+    flux.weave.works/automated: 'false'
 spec:
   replicas: 0

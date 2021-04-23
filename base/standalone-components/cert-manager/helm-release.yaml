@@ -8,7 +8,7 @@ metadata:
   name: cert-manager
   namespace: cert-manager
   annotations:
-    flux.weave.works/automated: "true"
+    flux.weave.works/automated: "false"
 spec:
   releaseName: cert-manager
   chart:
