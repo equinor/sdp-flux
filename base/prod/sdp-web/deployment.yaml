@@ -7,7 +7,8 @@ metadata:
   name: sdp-web
   namespace: prod
   annotations:
-    flux.weave.works/automated: 'true'
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.app: glob:*
 spec:
   replicas: 1
   selector:
@@ -20,7 +21,7 @@ spec:
     spec:
       containers:
       - name: sdp-web
-        image: ghcr.io/equinor/sdpweb-gatsby
+        image: ghcr.io/equinor/sdpweb-gatsby:main
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: false
