@@ -7,7 +7,7 @@ metadata:
   name: kured
   namespace: infrastructure
   annotations:
-    flux.weave.works/automated: "true"
+    flux.weave.works/automated: "false"
 spec:
   releaseName: kured
   chart:
@@ -18,12 +18,13 @@ spec:
     updateStrategy: RollingUpdate
     configuration:
       period: 10m0s
+      rebootDays: [mo,we,fr]
       slackUsername: "SDPTeam Kured"
       slackChannel: "sdpteam-team"
       slackHookUrl: $(SLACK_WEBHOOK)
-      # blockingPodSelector: "app=example,release=myreleasename" - ',' means 'AND'
+      blockingPodSelector: ["app=ms-continuus"]
       timeZone: "Europe/Oslo"
-      startTime: "01:30"
+      startTime: "03:30"
       endTime: "04:30"
     extraEnvVars:
     - name: SLACK_WEBHOOK

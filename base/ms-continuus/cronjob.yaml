@@ -6,8 +6,8 @@ metadata:
   labels:
     app: ms-continuus
 spec:
-  # Every sunday at 21:15
-  schedule: '15 21 * * 7'
+  # Every sunday at 18:15
+  schedule: '15 18 * * 7'
   # No parallel jobs
   concurrencyPolicy: Forbid
   jobTemplate:
@@ -22,8 +22,6 @@ spec:
               env:
                 - name: BLOB_CONTAINER
                   value: github-archives
-                - name: BLOB_TAG
-                  value: weekly
                 - name: GITHUB_ORG
                   value: equinor
                 - name: STORAGE_KEY

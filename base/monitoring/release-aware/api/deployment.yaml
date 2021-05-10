@@ -8,7 +8,7 @@ metadata:
   name: release-aware-api
   namespace: monitoring
   annotations:
-    flux.weave.works/automated: 'true'
+    flux.weave.works/automated: 'false'
     flux.weave.works/tag.aware: glob:1.*
 spec:
   replicas: 1
@@ -22,7 +22,7 @@ spec:
         app: release-aware
         tier: api
       annotations:
-        flux.weave.works/automated: 'true'
+        flux.weave.works/automated: 'false'
     spec:
       containers:
       - name: release-aware-api

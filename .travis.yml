@@ -5,7 +5,7 @@ env:
   global:
     - HELM_URL=https://get.helm.sh
     - HELM_TAR=helm-v3.5.2-linux-amd64.tar.gz
-    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/0.15.0/
+    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/v0.16.1/
     - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
 
 stages:
