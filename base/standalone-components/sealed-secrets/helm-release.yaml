@@ -15,3 +15,5 @@ spec:
   values:
     secretName: "sealed-secret-custom-key"
     commandArgs: ["--key-renew-period=0"]
+    crd:
+      create: true
