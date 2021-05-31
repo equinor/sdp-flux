@@ -1,5 +1,5 @@
 ---
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: alertmanager-auth
@@ -10,12 +10,9 @@ spec:
     http:
       paths:
       - backend:
-          service:
-            name: oauth2-proxy-sdp
-            port:
-              number: 4180
+          serviceName: oauth2-proxy-sdp
+          servicePort: 4180
         path: /oauth2
-        pathType: ImplementationSpecific
   tls:
   - hosts:
     - alertmanager.sdpaks.equinor.com
@@ -32,12 +29,9 @@ spec:
     http:
       paths:
       - backend:
-          service:
-            name: oauth2-proxy-sdp
-            port:
-              number: 4180
+          serviceName: oauth2-proxy-sdp
+          servicePort: 4180
         path: /oauth2
-        pathType: ImplementationSpecific
   tls:
   - hosts:
     - prometheus.sdpaks.equinor.com
