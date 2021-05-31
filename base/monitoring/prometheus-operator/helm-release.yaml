@@ -24,6 +24,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - alertmanager.sdpaks.equinor.com
+        pathType: ImplementationSpecific
         tls:
         - secretName: alertmanager-tls
           hosts:
