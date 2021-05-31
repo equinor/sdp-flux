@@ -196,6 +196,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - prometheus.sdpaks.equinor.com
+        pathType: ImplementationSpecific
         tls:
         - secretName: prometheus-tls
           hosts:
