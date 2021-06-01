@@ -152,7 +152,6 @@ spec:
           kubernetes.io/tls-acme: "true"
         hosts:
         - grafana.sdpaks.equinor.com
-        pathType: ImplementationSpecific
         tls:
         - secretName: grafana-tls
           hosts:
