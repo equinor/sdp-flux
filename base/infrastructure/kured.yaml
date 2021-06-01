@@ -13,7 +13,7 @@ spec:
   chart:
     repository: https://weaveworks.github.io/kured
     name: kured
-    version: 2.3.2
+    version: 2.5.0
   values:
     updateStrategy: RollingUpdate
     configuration:

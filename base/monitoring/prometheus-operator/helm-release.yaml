@@ -12,7 +12,7 @@ spec:
   chart:
     repository: https://prometheus-community.github.io/helm-charts
     name: kube-prometheus-stack
-    version: 13.13.1
+    version: 16.1.2
   values:
     alertmanager:
       ingress:
@@ -24,6 +24,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - alertmanager.sdpaks.equinor.com
+        pathType: ImplementationSpecific
         tls:
         - secretName: alertmanager-tls
           hosts:
@@ -195,6 +196,7 @@ spec:
           nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=$escaped_request_uri"
         hosts:
         - prometheus.sdpaks.equinor.com
+        pathType: ImplementationSpecific
         tls:
         - secretName: prometheus-tls
           hosts:
