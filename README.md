@@ -73,13 +73,13 @@ You need to use the kubectl to initially create the secret and then pipe this to
 
 ``` bash
 # From literal
-kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run --from-literal=<KEY>=<VALUES> -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret.yaml
+kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run=client --from-literal=<KEY>=<VALUES> -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret.yaml
 
 # From file
-kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run --from-file=<FILENAME> -o json | kubeseal --cert sealed-secret.pem --format yaml > sealed-secret.yaml
+kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run=client --from-file=<FILENAME> -o json | kubeseal --cert sealed-secret.pem --format yaml > sealed-secret.yaml
 
 # TLS secret
-kubectl create secret tls <SECRETNAME> --key myTLSCert.key --cert myTLSCert.crt --dry-run -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret-tls.yaml
+kubectl create secret tls <SECRETNAME> --key myTLSCert.key --cert myTLSCert.crt --dry-run=client -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret-tls.yaml
 ```
 
 Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
