@@ -8,18 +8,8 @@ resources:
 - ./velero/prod-storagelocation.yaml
 - ./velero/default-storagelocation.yaml
 - ./namespaces/dev-only-namespaces.yaml
-- ./falco/helm-release.yaml
-- ./falco/exporter-helm-release.yaml
-- ./falco/sysdig-inspect-deployment.yaml
-- ./falco/sysdig-inspect-pvc.yaml
-- ./falco/sysdig-inspect-service.yaml
-- ./falco/sysdig-inspect-ingress.yaml
-- ./falco/external-oauth2-svc.yaml
-- ./keda/helm-release.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
-- ./gitlabstats/deployment-patch.yaml
-- ./sensu/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
 - ./aware/api-deployment-patch.yaml
 - ./monitor/ingress-patch.yaml
@@ -35,7 +25,5 @@ patchesStrategicMerge:
 - ./nginx-ingress/helm-release-patch.yaml
 - ./gitlab/helm-release-patch.yaml
 - ./loki/ingress-patch.yaml
-- ./kubediff/kubediff-rc.yaml
-- ./kubediff/ingress-patch.yaml
 - ./ms-continuus/cronjob-patch.yaml
 - ./matomo/auth-ingress-patch.yaml
