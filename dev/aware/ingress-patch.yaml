@@ -44,7 +44,7 @@ spec:
       http:
         paths:
           - path: /oauth2 
-            pathType: Exact
+            pathType: Prefix
             backend:
               service:
                 name: oauth2-proxy-sdp
