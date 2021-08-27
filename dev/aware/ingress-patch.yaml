@@ -13,12 +13,14 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
               service:
                 name: aware-web
                 port:
                   number: 80
           - path: /api
+            pathType: Prefix
             backend:
               service:
                 name: aware-api
@@ -42,6 +44,7 @@ spec:
       http:
         paths:
           - path: /oauth2 
+            pathType: Exact
             backend:
               service:
                 name: oauth2-proxy-sdp
