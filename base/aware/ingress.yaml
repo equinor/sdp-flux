@@ -50,7 +50,7 @@ spec:
     - host: aware.sdpaks.equinor.com
       http:
         paths:
-          - path: /oauth2 
+          - path: /oauth2
             pathType: Prefix
             backend:
               service:

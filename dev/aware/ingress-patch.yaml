@@ -43,7 +43,7 @@ spec:
     - host: aware.dev.sdpaks.equinor.com
       http:
         paths:
-          - path: /oauth2 
+          - path: /oauth2
             pathType: Prefix
             backend:
               service:
