@@ -7,7 +7,6 @@ resources:
 - ./gitlab/gitlab-azure-saml.yaml
 - ./velero/prod-storagelocation.yaml
 - ./velero/default-storagelocation.yaml
-- ./namespaces/dev-only-namespaces.yaml
 patchesStrategicMerge:
 - ./sdp-web/ingress-patch.yaml
 - ./aware/ingress-patch.yaml
