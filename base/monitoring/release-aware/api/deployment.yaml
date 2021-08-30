@@ -56,7 +56,7 @@ spec:
           value: |
             gitlab/gitlab,
             minio/minio,
-            community-operators/flux
+            community-operators/flux,
             cert-manager/cert-manager,
             grafana/loki-stack,
             bitnami/external-dns,
