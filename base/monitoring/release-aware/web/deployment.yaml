@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: release-aware-web
-        image: sdpequinor/release-aware-web:1.9.2
+        image: sdpequinor/release-aware-web:1.10.0
         imagePullPolicy: Always
         securityContext:
           readOnlyRootFilesystem: true
