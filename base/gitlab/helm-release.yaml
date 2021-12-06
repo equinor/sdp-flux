@@ -10,7 +10,8 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    version: 5.5.1
+    # version: 5.5.1
+    version: 5.0.11
   values:
     certmanager:
       install: false
@@ -20,7 +21,17 @@ spec:
           enabled: true
           storageClass: managed-premium-retain-nocache
           size: "256Gi"
-      task-runner:
+      toolbox:
+        persistence:
+          enabled: false
+          storageClass: managed-premium
+          size: "600Gi"
+        backups:
+          objectStorage:
+            config:
+              key: config
+              secret: backup-storage-config
+      task-runner: # Remove on version 5.0.11
         persistence:
           enabled: false
           storageClass: managed-premium
