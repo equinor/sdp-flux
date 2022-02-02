@@ -16,8 +16,8 @@ spec:
     # version: 5.3.6
     # version: 5.4.5
     # version: 5.5.3
-    version: 5.6.3
-    # version: 5.7.0
+    # version: 5.6.3
+    version: 5.7.0
   values:
     certmanager:
       install: false
