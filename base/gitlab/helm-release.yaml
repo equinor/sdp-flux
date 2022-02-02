@@ -15,9 +15,9 @@ spec:
     # version: 5.2.7
     # version: 5.3.6
     # version: 5.4.5
-    # version: 5.5.3
+    version: 5.5.3
     # version: 5.6.3
-    version: 5.7.0
+    # version: 5.7.0
   values:
     certmanager:
       install: false
@@ -28,16 +28,6 @@ spec:
           storageClass: managed-premium-retain-nocache
           size: "256Gi"
       toolbox:
-        persistence:
-          enabled: false
-          storageClass: managed-premium
-          size: "600Gi"
-        backups:
-          objectStorage:
-            config:
-              key: config
-              secret: backup-storage-config
-      task-runner: # Remove on version 5.0.11
         persistence:
           enabled: false
           storageClass: managed-premium

@@ -7,13 +7,6 @@ metadata:
 spec:
   values:
     gitlab:
-      task-runner:
-        backups: # test for dev
-          cron:
-            enabled: false
-            schedule: 45 1 * * *
-            extraArgs:
-              "--skip artifacts --skip registry --skip uploads --skip lfs"
       webservice:
         ingress:
           tls:
