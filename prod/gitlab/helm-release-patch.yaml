@@ -44,7 +44,7 @@ spec:
         annotations:
           kubernetes.io/tls-acme: "false"
     gitlab:
-      task-runner:
+      toolbox:
         backups: # Backup only required for prod cluster
           cron:
             enabled: false
