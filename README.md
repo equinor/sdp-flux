@@ -65,7 +65,7 @@ After first run we need to export the private and public key. The public key is 
   `kubectl get secret -n sealed-secrets sealed-secret-custom-key -o yaml > sealedsecrets.yaml`
 
 - Use the kubeseal tool to get the __public key__
-  `kubeseal --controller-namespace infrastructure --controller-name sealed-secrets --fetch-cert > secret.pem`
+  `kubeseal --controller-namespace sealed-secrets --controller-name sealed-secrets --fetch-cert > secret.pem`
 
 ### Creating SealedSecrets
 
@@ -73,13 +73,16 @@ You need to use the kubectl to initially create the secret and then pipe this to
 
 ``` bash
 # From literal
-kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run=client --from-literal=<KEY>=<VALUES> -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret.yaml
+kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --namespace=<NAMESPACE> --dry-run=client --from-literal=<KEY>=<VALUES> -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret.yaml
 
 # From file
-kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --dry-run=client --from-file=<FILENAME> -o json | kubeseal --cert sealed-secret.pem --format yaml > sealed-secret.yaml
+kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --namespace=<NAMESPACE> --dry-run=client --from-file=<FILENAME> -o json | kubeseal --cert sealed-secret.pem --format yaml > sealed-secret.yaml
 
 # TLS secret
-kubectl create secret tls <SECRETNAME> --key myTLSCert.key --cert myTLSCert.crt --dry-run=client -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret-tls.yaml
+kubectl create secret tls <SECRETNAME> --namespace=<NAMESPACE> --key myTLSCert.key --cert myTLSCert.crt --dry-run=client -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret-tls.yaml
+
+# Validate that the SS controller can decrypt the sealed-secret
+cat ./sealed-secret-tls.yaml |kubeseal --controller-namespace sealed-secrets --controller-name sealed-secrets --validate
 ```
 
 Make sure to place the secrets in the appropriate namespace folder to keep the repository organised.
