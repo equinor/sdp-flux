@@ -62,7 +62,7 @@ Note that some secrets must be in place before deployments such as flux are in p
 After first run we need to export the private and public key. The public key is what we all use to encrypt the secrets and the private key is used by the controller to decrypt the secrets and put them in the cluster. It is important to have a backup of the private key, but _NEVER_ commit that to the repository.
 
 - To get the __private key__ (remember to store this file somewhere safe so we can restore in case of emergency)
-  `kubectl get secret -n infrastructure sealed-secrets-key -o yaml > sealedsecrets.yaml`
+  `kubectl get secret -n sealed-secrets sealed-secret-custom-key -o yaml > sealedsecrets.yaml`
 
 - Use the kubeseal tool to get the __public key__
   `kubeseal --controller-namespace infrastructure --controller-name sealed-secrets --fetch-cert > secret.pem`
