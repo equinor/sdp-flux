@@ -79,6 +79,7 @@ kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --namespace=<NAMESPACE
 kubectl -n <NAMESPACE> create secret generic <SECRETNAME> --namespace=<NAMESPACE> --dry-run=client --from-file=<FILENAME> -o json | kubeseal --cert sealed-secret.pem --format yaml > sealed-secret.yaml
 
 # TLS secret
+# Remember to include intermediate certificates if any (goes on the end of the .crt file)
 kubectl create secret tls <SECRETNAME> --namespace=<NAMESPACE> --key myTLSCert.key --cert myTLSCert.crt --dry-run=client -o json | kubeseal --format yaml --cert sealed-secret.pem > sealed-secret-tls.yaml
 
 # Validate that the SS controller can decrypt the sealed-secret
