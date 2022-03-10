@@ -27,13 +27,13 @@ jobs:
     needs: [install]
     steps:
       - name: Custom Charts
-        run: ../../ci.sh charts
+        run: ./ci.sh charts
         shell: bash
       - name: Kustomize
-        run: ../../ci.sh kustomize
+        run: ./ci.sh kustomize
         shell: bash
       - name: Native K8s Manifest
-        run: ../../ci.sh manifests
+        run: ./ci.sh manifests
         shell: bash
 
     # super-lint: 
