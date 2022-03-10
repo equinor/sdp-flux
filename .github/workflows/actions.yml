@@ -1,0 +1,53 @@
+
+name: GithubAction
+
+on:
+  push
+
+env:
+    - HELM_URL=https://get.helm.sh
+    - HELM_TAR=helm-v3.6.0-linux-amd64.tar.gz
+    - KUBEVAL_URL=https://github.com/instrumenta/kubeval/releases/download/v0.16.1/
+    - KUBEVAL_TAR=kubeval-linux-amd64.tar.gz
+jobs: 
+  install: 
+    runs-on: ubuntu-latest
+    steps:
+      - run: wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
+      - run: tar xzfv ${KUBEVAL_TAR}
+      - run: wget -q ${HELM_URL}/${HELM_TAR}
+      - run: tar xzfv ${HELM_TAR}
+      - run: PATH=`pwd`/linux-amd64/:$PATH
+      - run: PATH=`pwd`:$PATH
+      # Kubectl
+      - run: curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+      - run: chmod +x ./kubectl
+  scripts:
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - name: Custom Charts
+        run: ../../ci.sh charts
+        shell: bash
+      - name: Kustomize
+        run: ../../ci.sh kustomize
+        shell: bash
+      - name: Native K8s Manifest
+        run: ../../ci.sh manifests
+        shell: bash
+
+    # super-lint: 
+    #     runs-on:
+    #     steps: 
+    #       - name: Run Super-Linter
+    #         uses: github/super-linter@v3
+    #         env:
+    #           DEFAULT_BRANCH: main
+    #
+    #  - name: Check out repository code
+    #    uses: actions/checkout@v2    
+
+
+
+  
+    
