@@ -9,8 +9,7 @@ env:
     HELM_TAR: helm-v3.6.0-linux-amd64.tar.gz
     KUBEVAL_URL: https://github.com/instrumenta/kubeval/releases/download/v0.16.1/
     KUBEVAL_TAR: kubeval-linux-amd64.tar.gz
-strategy:
-  max-parallel: 1
+
 jobs: 
   # Linting: 
   #   runs-on: ubuntu-latest
@@ -39,6 +38,8 @@ jobs:
   # --------Varianten ----------- #
   LintingCustomCharts: 
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
     steps:
       - run: | 
           wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
@@ -55,6 +56,8 @@ jobs:
         shell: bash
   LintingKustomize: 
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
     steps:
       - run: | 
           wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
@@ -69,6 +72,8 @@ jobs:
         run: ./ci.sh kustomize
         shell: bash        
   LintingNativeK8sManifest: 
+    strategy:
+      max-parallel: 1
     runs-on: ubuntu-latest
     steps:
       - run: | 
