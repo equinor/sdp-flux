@@ -25,6 +25,9 @@ jobs:
 
       - uses: actions/checkout@v2 
       - name: Custom Charts
+        run: ./ci.sh charts
+        shell: bash
+      - name: Kustomize
         run: | 
           wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
           tar xzfv ${KUBEVAL_TAR}
@@ -34,10 +37,7 @@ jobs:
           PATH=`pwd`:$PATH
           curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
           chmod +x ./kubectl
-        run: ./ci.sh charts
-        shell: bash
-      - name: Kustomize
-        run: ./ci.sh kustomize
+          ./ci.sh kustomize
         shell: bash
       - name: Native K8s Manifest
         run: ./ci.sh manifests
