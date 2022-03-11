@@ -9,6 +9,8 @@ env:
     HELM_TAR: helm-v3.6.0-linux-amd64.tar.gz
     KUBEVAL_URL: https://github.com/instrumenta/kubeval/releases/download/v0.16.1/
     KUBEVAL_TAR: kubeval-linux-amd64.tar.gz
+strategy:
+  max-parallel: 1
 jobs: 
   # Linting: 
   #   runs-on: ubuntu-latest
@@ -32,6 +34,9 @@ jobs:
   #     - name: Native K8s Manifest
   #       run: ./ci.sh manifests
   #       shell: bash
+
+
+  # --------Varianten ----------- #
   LintingCustomCharts: 
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +65,6 @@ jobs:
           PATH=`pwd`:$PATH
           curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
           chmod +x ./kubectl
-      - uses: actions/checkout@v2 
       - name: Kustomize
         run: ./ci.sh kustomize
         shell: bash        
@@ -76,7 +80,6 @@ jobs:
           PATH=`pwd`:$PATH
           curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
           chmod +x ./kubectl
-      - uses: actions/checkout@v2 
       - name: Kustomize
         run: ./ci.sh manifests
         shell: bash 
