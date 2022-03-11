@@ -32,7 +32,7 @@ jobs:
   #     - name: Native K8s Manifest
   #       run: ./ci.sh manifests
   #       shell: bash
-  Linting Custom Charts: 
+  LintingCustomCharts: 
     runs-on: ubuntu-latest
     steps:
       - run: | 
@@ -48,7 +48,7 @@ jobs:
       - name: Custom Charts
         run: ./ci.sh charts
         shell: bash
-  Linting Kustomize: 
+  LintingKustomize: 
     runs-on: ubuntu-latest
     steps:
       - run: | 
@@ -64,7 +64,7 @@ jobs:
       - name: Kustomize
         run: ./ci.sh kustomize
         shell: bash        
-  Linting Native K8s Manifest: 
+  LintingNativeK8sManifest: 
     runs-on: ubuntu-latest
     steps:
       - run: | 
