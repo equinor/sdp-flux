@@ -39,7 +39,7 @@ jobs:
   LintingCustomCharts: 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1
+      max-parallel: 0
     steps:
       - run: | 
           wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
@@ -57,7 +57,7 @@ jobs:
   LintingKustomize: 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1
+      max-parallel: 0
     steps:
       - uses: actions/checkout@v2
       - run: | 
@@ -74,7 +74,7 @@ jobs:
         shell: bash        
   LintingNativeK8sManifest: 
     strategy:
-      max-parallel: 1
+      max-parallel: 10
     runs-on: ubuntu-latest
     steps:
       - run: | 
