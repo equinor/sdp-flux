@@ -59,6 +59,7 @@ jobs:
     strategy:
       max-parallel: 1
     steps:
+      - uses: actions/checkout@v2
       - run: | 
           wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
           tar xzfv ${KUBEVAL_TAR}
