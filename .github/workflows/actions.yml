@@ -20,6 +20,7 @@ jobs:
           tar xzfv ${KUBEVAL_TAR}
           wget -q ${HELM_URL}/${HELM_TAR}
           tar xzfv ${HELM_TAR}
+          sudo cp kubeval /usr/local/bin
           PATH=`pwd`/linux-amd64/:$PATH
           PATH=`pwd`:$PATH
           curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -39,8 +40,8 @@ jobs:
   # ------------------------------- Varianten -------------------------- #
   # LintingCustomCharts: 
   #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 0
+  # #   strategy:
+  # #     max-parallel: 0
   #   steps:
   #     - run: | 
   #         wget -q ${KUBEVAL_URL}/${KUBEVAL_TAR}
@@ -57,8 +58,8 @@ jobs:
   #       shell: bash
   # LintingKustomize: 
   #   runs-on: ubuntu-latest
-  #   strategy:
-  #     max-parallel: 0
+  # #   strategy:
+  # #     max-parallel: 0
   #   steps:
   #     - uses: actions/checkout@v2
   #     - run: | 
@@ -70,12 +71,13 @@ jobs:
   #         PATH=`pwd`:$PATH
   #         curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   #         chmod +x ./kubectl
+  #     - uses: actions/checkout@v2 
   #     - name: Kustomize
   #       run: ./ci.sh kustomize
   #       shell: bash        
   # LintingNativeK8sManifest: 
-  #   strategy:
-  #     max-parallel: 10
+  # #   strategy:
+  # #     max-parallel: 0
   #   runs-on: ubuntu-latest
   #   steps:
   #     - run: | 
@@ -87,6 +89,7 @@ jobs:
   #         PATH=`pwd`:$PATH
   #         curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   #         chmod +x ./kubectl
+  #     - uses: actions/checkout@v2 
   #     - name: Kustomize
   #       run: ./ci.sh manifests
   #       shell: bash 
