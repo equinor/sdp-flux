@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hgir-ingress
@@ -13,7 +13,9 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: hgir-frontend
-              servicePort: 80
-
+              service:
+                name: hgir-frontend
+                port:
+                  number: 80
