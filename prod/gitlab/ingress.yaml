@@ -34,7 +34,8 @@ metadata:
   namespace: gitlab
   annotations:
     kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-acme: "true"
+    kubernetes.io/tls-acme: "true"    
+    kubernetes.io/proxy-body-size: 1G
 spec:
   rules:
   - host: registry.sdpaks.equinor.com
