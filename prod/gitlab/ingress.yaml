@@ -1,6 +1,6 @@
 # Ingresses for gitlab.sdpaks.equinor.com and registry.sdpaks.equinor.com are required as they work as CNAMES for legacy support
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-webservice-ingress
@@ -16,21 +16,27 @@ spec:
   - host: gitlab.sdpaks.equinor.com
     http:
       paths:
-      - backend:
-          serviceName: gitlab-webservice
-          servicePort: 8181
-        path: /
-      - backend:
-          serviceName: gitlab-webservice
-          servicePort: 8080
-        path: /admin/sidekiq
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gitlab-webservice
+            port:
+              number: 8181
+      - path: /admin/sidekiq
+        pathType: Prefix
+        backend:
+          service:
+            name: gitlab-webservice
+            port:
+              number: 8080
   tls:
   - hosts:
     - gitlab.sdpaks.equinor.com
     secretName: gitlab-webservice-tls
     
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: gitlab-registry-ingress
@@ -47,10 +53,13 @@ spec:
   - host: registry.sdpaks.equinor.com
     http:
       paths:
-      - backend:
-          serviceName: gitlab-registry
-          servicePort: 5000
-        path: /
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gitlab-registry
+            port:
+              number: 5000
   tls:
   - hosts:
     - registry.sdpaks.equinor.com

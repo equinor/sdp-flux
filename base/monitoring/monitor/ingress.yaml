@@ -20,7 +20,7 @@ spec:
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: monitor
@@ -44,7 +44,7 @@ spec:
       http:
         paths:
           - path: /oauth2
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: oauth2-proxy-sdp
