@@ -117,7 +117,7 @@ spec:
         gitlab:
           name: git.equinor.com
         registry:
-          name: registry.git.equinor.com
+          name: registry.sdpaks.equinor.com
       ingress:
         enabled: true
         class: nginx
