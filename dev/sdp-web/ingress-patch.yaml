@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sdp-web
@@ -13,13 +13,19 @@ spec:
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: sdp-web
-              servicePort: 80
+              service:
+                name: sdp-web
+                port:
+                  number: 80
     - host: sdp-web.dev.sdpaks.equinor.com
       http:
         paths:
           - path: /
+            pathType: Prefix
             backend:
-              serviceName: sdp-web
-              servicePort: 80
+              service:
+                name: sdp-web
+                port:
+                  number: 80

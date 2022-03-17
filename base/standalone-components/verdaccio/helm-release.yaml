@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.verdaccio.org
     name: verdaccio
-    version: 1.0.0
+    version: 4.6.2
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
@@ -17,6 +17,10 @@ spec:
     environmentsFromSecrets:
       enabled: true
     extraEnvVars:
+    - name: KUBERNETES_PORT
+      value: "4873"
+    - name: VERDACCIO_PORT
+      value: "4873"
     - name: OAUTH_CLIENT_SECRET
       valueFrom:
         secretKeyRef:
