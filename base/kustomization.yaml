@@ -34,9 +34,6 @@ resources:
 - ./prod/hgir/pvc.yaml
 - ./prod/hgir/sealedsecret.yaml
 - ./prod/hgir/service.yaml
-- ./prod/matomo/helm-release.yaml
-- ./prod/matomo/matomo-mariadb-secret.yaml
-- ./prod/matomo/auth-ingress.yaml
 - ./prod/sdp-web/deployment.yaml
 - ./prod/sdp-web/ingress.yaml
 - ./prod/sdp-web/service.yaml

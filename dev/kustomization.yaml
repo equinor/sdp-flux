@@ -16,7 +16,6 @@ patchesStrategicMerge:
 - ./prometheus-operator/helm-release-patch.yaml
 - ./release-aware/ingress-patch.yaml
 - ./verdaccio/helm-release-patch.yaml
-- ./matomo/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
 - ./velero/helm-release-patch.yaml
 - ./hgir/ingress-patch.yaml
@@ -25,4 +24,3 @@ patchesStrategicMerge:
 - ./gitlab/helm-release-patch.yaml
 - ./loki/ingress-patch.yaml
 - ./ms-continuus/cronjob-patch.yaml
-- ./matomo/auth-ingress-patch.yaml
