@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.verdaccio.org
     name: verdaccio
-    version: 1.0.0
+    version: 4.6.2
   values:
     image:
       repository: sdpequinor/verdaccio-github-auth
