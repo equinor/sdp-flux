@@ -38,3 +38,4 @@ spec:
       - secretName: npm-equinor-com-tls
         hosts:
         - npm.equinor.com
+    secrets:
