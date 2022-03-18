@@ -27,6 +27,11 @@ spec:
           name: verdaccio-client-secret
           key: OAUTH_CLIENT_SECRET
     existingConfigMap: verdaccio-configmap
+    persistence:
+      existingClaim: verdaccio
+      selector: 
+        matchLabels: 
+          app: verdaccio
     ingress:
       enabled: true
       annotations:

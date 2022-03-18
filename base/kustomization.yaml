@@ -40,6 +40,7 @@ resources:
 - ./prod/external-oauth2-svc.yaml
 - ./standalone-components/verdaccio/helm-release.yaml
 - ./standalone-components/verdaccio/oauth-client-secret.yaml
+- ./standalone-components/verdaccio/pvc.yaml
 - ./standalone-components/verdaccio/sealed-secret-tls.yaml
 - ./standalone-components/verdaccio/verdaccio-configmap.yaml
 - ./prod/aks-registry-prod.yaml
