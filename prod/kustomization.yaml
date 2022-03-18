@@ -18,8 +18,6 @@ bases:
 - ../base/
 resources:
 - ./gitlab/gitlab-sdp-tls.yaml
-- ./gitlab/ingress.yaml
-- ./gitlab/gitlab-registry-custom-tls.yaml
 - ./gitlab/gitlab-azure-saml.yaml
 - ./gitlab/gitlab-smtp-secret.yaml
 - ./velero/default-storagelocation.yaml
