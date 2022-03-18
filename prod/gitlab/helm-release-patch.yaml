@@ -36,13 +36,6 @@ spec:
           secretName: gitlab-email-tls
           keyName: "tls.key"
           certName: "tls.crt"
-    registry: # custom certificate only in prod cluster
-      ingress:
-        tls:
-          enabled: true
-          secretName: gitlab-registry-custom-tls
-        annotations:
-          kubernetes.io/tls-acme: "false"
     gitlab:
       toolbox:
         backups: # Backup only required for prod cluster

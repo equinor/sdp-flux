@@ -27,8 +27,4 @@ spec:
           name: gitlab.dev.sdpaks.equinor.com
         registry:
           name: registry.dev.sdpaks.equinor.com
-      ingress:
-        class: nginx
-        annotations:
-          kubernetes.io/tls-acme: "true"
-        configureCertmanager: false
+
