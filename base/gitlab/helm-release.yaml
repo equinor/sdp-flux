@@ -26,8 +26,8 @@ spec:
       gitaly:
         persistence:
           enabled: true
-          storageClass: managed-premium-retain-nocache
-          size: "256Gi"
+          storageClass: managed-premium-retain-expandable
+          size: "512Gi"
       toolbox:
         persistence:
           enabled: false
