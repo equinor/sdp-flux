@@ -36,7 +36,7 @@ jobs:
         run: ./ci.sh manifests
         shell: bash
 
-
+  #
   # ------------------------------- Varianten -------------------------- #
   # LintingCustomCharts: 
   #   runs-on: ubuntu-latest
