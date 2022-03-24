@@ -7,7 +7,7 @@ metadata:
 spec:
   releaseName: external-dns
   values:
-    domainFilters: ["dev.sdpaks.equinor.com"]
+    domainFilters: ["tfdev.sdpaks.equinor.com"]
     azure:
       secretName: azure-dns-config-file
       resourceGroup: sdpaks-dev-dns
