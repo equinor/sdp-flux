@@ -11,9 +11,7 @@ spec:
   chart:
     repository: https://bitnami-labs.github.io/sealed-secrets
     name: sealed-secrets
-    version: 1.16.1
+    version: 2.1.6
   values:
     secretName: "sealed-secret-custom-key"
-    commandArgs: ["--key-renew-period=0"]
-    crd:
-      create: true
+    args: ["--key-renew-period=0"]
