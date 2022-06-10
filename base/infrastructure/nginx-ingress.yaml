@@ -32,22 +32,22 @@ spec:
       externalTrafficPolicy: "Local"
 
 # Define a servicemonitor for the nginx-ingress so that Prometheus can scrape metrics
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: nginx-ingress
-  namespace: infrastructure
-  labels:
-    release: prometheus-operator
-spec:
-  endpoints:
-  - interval: 5s
-    port: metrics
-  jobLabel: nginx-ingress
-  namespaceSelector:
-    matchNames:
-    - infrastructure
-  selector:
-    matchLabels:
-      app: nginx-ingress
+# ---
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: nginx-ingress
+#   namespace: infrastructure
+#   labels:
+#     release: prometheus-operator
+# spec:
+#   endpoints:
+#   - interval: 5s
+#     port: metrics
+#   jobLabel: nginx-ingress
+#   namespaceSelector:
+#     matchNames:
+#     - infrastructure
+#   selector:
+#     matchLabels:
+#       app: nginx-ingress
