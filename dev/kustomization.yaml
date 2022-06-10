@@ -8,13 +8,6 @@ resources:
 - ./velero/prod-storagelocation.yaml
 - ./velero/default-storagelocation.yaml
 patchesStrategicMerge:
-- ./sdp-web/ingress-patch.yaml
-- ./aware/ingress-patch.yaml
-- ./aware/api-deployment-patch.yaml
-- ./monitor/ingress-patch.yaml
-- ./prometheus-operator/auth-ingress-patch.yaml
-- ./prometheus-operator/helm-release-patch.yaml
-- ./release-aware/ingress-patch.yaml
 - ./verdaccio/helm-release-patch.yaml
 - ./external-dns/helm-release-patch.yaml
 - ./velero/helm-release-patch.yaml

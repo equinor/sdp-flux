@@ -22,11 +22,6 @@ metadata:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: aware
----
-apiVersion: v1
-kind: Namespace
-metadata:
   name: loki
 ---
 apiVersion: v1
