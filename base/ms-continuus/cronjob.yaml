@@ -24,11 +24,11 @@ spec:
                   value: github-archives
                 - name: GITHUB_ORG
                   value: equinor
-                - name: STORAGE_KEY
+                - name: STORAGE_ACCOUNT_CON_STRING
                   valueFrom:
                     secretKeyRef:
                       name: ms-continuus
-                      key: STORAGE_KEY
+                      key: STORAGE_ACCOUNT_CON_STRING
                 - name: GITHUB_TOKEN
                   valueFrom:
                     secretKeyRef:
