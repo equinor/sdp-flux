@@ -10,14 +10,13 @@ spec:
   chart:
     repository: https://charts.gitlab.io/
     name: gitlab
-    # version: 5.7.7
-    # version: 5.10.1
     # version: 5.10.3
     # version: 6.0.0
     # version: 6.0.1
     # version: 6.0.4
     # version: 6.1.5
-    version: 6.1.6
+    #version: 6.1.6
+    version: 6.4.0
   values:
     certmanager:
       install: false
