@@ -20,7 +20,8 @@ spec:
     # version: 6.5.6
     # version: 6.5.8
     # version: 6.8.1
-    version: 6.9.3       
+    # version: 6.9.3
+    version: 6.10.0       
   values:
     certmanager:
       install: false
