@@ -24,7 +24,7 @@ resources:
 - ./gitlab/gitlab-azure-oauth2.yaml
 - ./gitlab/gitlab-common-postgres-tls.yaml
 - ./gitlab/gitlab-ssh-keys.yaml
-- ./gitlab/helm-release.yaml
+#- ./gitlab/helm-release.yaml
 - ./gitlab/minio-helm-release.yaml
 - ./gitlab/gitlab-rails-secret.yaml
 - ./gitlab/gitlab-runner-secret.yaml
